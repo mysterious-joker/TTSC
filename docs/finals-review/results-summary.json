@@ -1,0 +1,1087 @@
+{
+  "schema": "finalist-review-v1",
+  "review_date": "2026-09-07",
+  "baseline": {
+    "team_commit": "5378908",
+    "working_tree_snapshot_commit": "e4d5dab",
+    "runtime_changes_promoted": false
+  },
+  "datasets": {
+    "public": {
+      "sha256": "857259f7a438e6188ac63e18995b6ff4489bfcfc4a716a798b9a2aa0ee8f7579",
+      "rows": 200
+    },
+    "development": {
+      "sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+      "rows": 800
+    },
+    "language_stress": {
+      "sha256": "984d8e468d37d0a96197c11af29b64ccb185cab6e3a7e39d8a2ae5b86efa6fec",
+      "rows": 200
+    },
+    "confirmation_reserved": {
+      "sha256": "1c4c233584a0599786ebf833e09c22c638742718d04bea6b004dae0cd61dc0ae",
+      "rows": 1600
+    }
+  },
+  "confirmation_evaluated": false,
+  "historical_synthetic_target_overlap": "Unknown; public target exclusion and within-review partition disjointness are verified.",
+  "reproduced_sources": {
+    "kopi": {
+      "repository": "https://github.com/shaohong126/techjam-Kopi-O-1-",
+      "commit": "ddd5b30cdff74fd422fcf30a1f16d020732f809d"
+    },
+    "vibe": {
+      "repository": "https://github.com/Panecord/Tiktok-TechJam---AI-shopping-assistant",
+      "commit": "0af6251ae2d747a299057fe521358b4b9fc0c9e3"
+    },
+    "shreyansh": {
+      "repository": "https://github.com/13shreyansh/shopping-copilot-techjam-2026",
+      "commit": "a56991a5116ff7c1868fc67ea19f4d6496f12615"
+    }
+  },
+  "unavailable_sources": [
+    {
+      "repository": "https://github.com/kelvin715/techjam-2026-shopping-copilot",
+      "http_status": 404
+    },
+    {
+      "repository": "https://github.com/SrivathsanRam/tiktok-techjam-conversational-search",
+      "http_status": 404
+    }
+  ],
+  "runs": {
+    "public-baseline-instrumented": {
+      "sample_count": 200,
+      "hit_rate_at_10": 1.0,
+      "mrr": 0.99625,
+      "mttc": 2.35,
+      "efficiency": 0.865,
+      "recommended_technical_score": 0.971875,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 10,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 2.7
+        },
+        "browsing": {
+          "sample_count": 80,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 2.2125
+        },
+        "buying": {
+          "sample_count": 80,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.990625,
+          "mttc": 1.9
+        },
+        "intent_override": {
+          "sample_count": 30,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 3.8
+        }
+      },
+      "measurement": {
+        "arm": "baseline",
+        "external_root": null,
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "857259f7a438e6188ac63e18995b6ff4489bfcfc4a716a798b9a2aa0ee8f7579",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.185549166984856,
+        "evaluation_seconds": 17.26615545799723,
+        "respond_mean_ms": 36.63474067790493,
+        "respond_p95_ms": 78.44812498660758,
+        "respond_max_ms": 182.44887504260987,
+        "calls": 470,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "617ed260db8fedc5f1add9054f515afc8cfb2aac05c742794864b66b404b6417"
+      }
+    },
+    "public-kopi": {
+      "sample_count": 200,
+      "hit_rate_at_10": 1.0,
+      "mrr": 1.0,
+      "mttc": 2.02,
+      "efficiency": 0.898,
+      "recommended_technical_score": 0.9796,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 10,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 2.6
+        },
+        "browsing": {
+          "sample_count": 80,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 1.825
+        },
+        "buying": {
+          "sample_count": 80,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 1.5
+        },
+        "intent_override": {
+          "sample_count": 30,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 3.733333
+        }
+      },
+      "measurement": {
+        "arm": "baseline",
+        "external_root": "../competitors/kopi",
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "857259f7a438e6188ac63e18995b6ff4489bfcfc4a716a798b9a2aa0ee8f7579",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.904557416972239,
+        "evaluation_seconds": 10.50029658403946,
+        "respond_mean_ms": 25.882275185506273,
+        "respond_p95_ms": 62.98808299470693,
+        "respond_max_ms": 106.50379199068993,
+        "calls": 404,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "37dfb9b6a6fe07ff6114baac96a5fe7a2c3d33bf21d42ccd8fdb5cb81c501dff"
+      }
+    },
+    "public-vibe": {
+      "sample_count": 200,
+      "hit_rate_at_10": 1.0,
+      "mrr": 0.996,
+      "mttc": 2.04,
+      "efficiency": 0.896,
+      "recommended_technical_score": 0.978,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 10,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 2.5
+        },
+        "browsing": {
+          "sample_count": 80,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.99,
+          "mttc": 1.875
+        },
+        "buying": {
+          "sample_count": 80,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 1.525
+        },
+        "intent_override": {
+          "sample_count": 30,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 3.7
+        }
+      },
+      "measurement": {
+        "arm": "baseline",
+        "external_root": "../competitors/vibe/techjam-conversational-search",
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "857259f7a438e6188ac63e18995b6ff4489bfcfc4a716a798b9a2aa0ee8f7579",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 5.324285333044827,
+        "evaluation_seconds": 35.28278050001245,
+        "respond_mean_ms": 86.36956243243927,
+        "respond_p95_ms": 194.5868330076337,
+        "respond_max_ms": 315.5812920304015,
+        "calls": 408,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "786710713403724191b67ab9553e9dfcfc95a4ba0787294187d451fbbc2b4c15"
+      }
+    },
+    "public-shreyansh": {
+      "sample_count": 200,
+      "hit_rate_at_10": 0.99,
+      "mrr": 0.630409,
+      "mttc": 2.03,
+      "efficiency": 0.897,
+      "recommended_technical_score": 0.863523,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 10,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.8,
+          "mttc": 2.3
+        },
+        "browsing": {
+          "sample_count": 80,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.576761,
+          "mttc": 1.5875
+        },
+        "buying": {
+          "sample_count": 80,
+          "hit_rate_at_10": 0.9875,
+          "mrr": 0.624539,
+          "mttc": 1.7
+        },
+        "intent_override": {
+          "sample_count": 30,
+          "hit_rate_at_10": 0.966667,
+          "mrr": 0.732593,
+          "mttc": 4.0
+        }
+      },
+      "measurement": {
+        "arm": "baseline",
+        "external_root": "../competitors/shreyansh",
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "857259f7a438e6188ac63e18995b6ff4489bfcfc4a716a798b9a2aa0ee8f7579",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.8475008749519475,
+        "evaluation_seconds": 16.027214500005357,
+        "respond_mean_ms": 39.55445583134032,
+        "respond_p95_ms": 74.66429204214364,
+        "respond_max_ms": 133.53891600854695,
+        "calls": 404,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "fb5414a7b6244ed2d28c61957cfc5f0b492179bd0d7ad78a787409eef74a1789"
+      }
+    },
+    "development-baseline": {
+      "sample_count": 800,
+      "hit_rate_at_10": 0.99,
+      "mrr": 0.974892,
+      "mttc": 2.5625,
+      "efficiency": 0.84375,
+      "recommended_technical_score": 0.956218,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 40,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 3.4
+        },
+        "browsing": {
+          "sample_count": 322,
+          "hit_rate_at_10": 0.984472,
+          "mrr": 0.96944,
+          "mttc": 2.608696
+        },
+        "buying": {
+          "sample_count": 327,
+          "hit_rate_at_10": 0.990826,
+          "mrr": 0.973152,
+          "mttc": 2.042813
+        },
+        "intent_override": {
+          "sample_count": 111,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.986787,
+          "mttc": 3.657658
+        }
+      }
+    },
+    "development-kopi": {
+      "sample_count": 800,
+      "hit_rate_at_10": 0.9725,
+      "mrr": 0.964076,
+      "mttc": 2.86875,
+      "efficiency": 0.813125,
+      "recommended_technical_score": 0.938098,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 40,
+          "hit_rate_at_10": 0.95,
+          "mrr": 0.905903,
+          "mttc": 4.925
+        },
+        "browsing": {
+          "sample_count": 322,
+          "hit_rate_at_10": 0.962733,
+          "mrr": 0.962733,
+          "mttc": 2.822981
+        },
+        "buying": {
+          "sample_count": 327,
+          "hit_rate_at_10": 0.975535,
+          "mrr": 0.96236,
+          "mttc": 2.284404
+        },
+        "intent_override": {
+          "sample_count": 111,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.993994,
+          "mttc": 3.981982
+        }
+      },
+      "measurement": {
+        "arm": "baseline",
+        "external_root": "../competitors/kopi",
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.8232647079858,
+        "evaluation_seconds": 64.56774520804174,
+        "respond_mean_ms": 28.324538026116887,
+        "respond_p95_ms": 58.57904098229483,
+        "respond_max_ms": 203.437666001264,
+        "calls": 2273,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "2d5b7d57fe2e7971a996075201321254a79415c29afd210b7999f58964ac4b15"
+      }
+    },
+    "development-vibe": {
+      "sample_count": 800,
+      "hit_rate_at_10": 0.98,
+      "mrr": 0.952493,
+      "mttc": 2.8125,
+      "efficiency": 0.81875,
+      "recommended_technical_score": 0.939498,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 40,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.96125,
+          "mttc": 3.7
+        },
+        "browsing": {
+          "sample_count": 322,
+          "hit_rate_at_10": 0.975155,
+          "mrr": 0.944281,
+          "mttc": 2.854037
+        },
+        "buying": {
+          "sample_count": 327,
+          "hit_rate_at_10": 0.981651,
+          "mrr": 0.960398,
+          "mttc": 2.250765
+        },
+        "intent_override": {
+          "sample_count": 111,
+          "hit_rate_at_10": 0.981982,
+          "mrr": 0.949875,
+          "mttc": 4.027027
+        }
+      },
+      "measurement": {
+        "arm": "baseline",
+        "external_root": "../competitors/vibe/techjam-conversational-search",
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 5.461345667019486,
+        "evaluation_seconds": 225.85407058300916,
+        "respond_mean_ms": 101.02165769715293,
+        "respond_p95_ms": 198.513625015039,
+        "respond_max_ms": 384.05641698045656,
+        "calls": 2234,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "aa1778c8195f5509c8be103d76e0958e764e6cf1aa499e3c910c70e1fb86c5b4"
+      }
+    },
+    "development-shreyansh": {
+      "sample_count": 800,
+      "hit_rate_at_10": 0.97375,
+      "mrr": 0.708409,
+      "mttc": 2.655,
+      "efficiency": 0.8345,
+      "recommended_technical_score": 0.866298,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 40,
+          "hit_rate_at_10": 0.975,
+          "mrr": 0.635308,
+          "mttc": 3.475
+        },
+        "browsing": {
+          "sample_count": 322,
+          "hit_rate_at_10": 0.978261,
+          "mrr": 0.695943,
+          "mttc": 2.677019
+        },
+        "buying": {
+          "sample_count": 327,
+          "hit_rate_at_10": 0.978593,
+          "mrr": 0.702371,
+          "mttc": 2.042813
+        },
+        "intent_override": {
+          "sample_count": 111,
+          "hit_rate_at_10": 0.945946,
+          "mrr": 0.788699,
+          "mttc": 4.099099
+        }
+      },
+      "measurement": {
+        "arm": "baseline",
+        "external_root": "../competitors/shreyansh",
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.661775083048269,
+        "evaluation_seconds": 92.64813979103928,
+        "respond_mean_ms": 43.94334657721667,
+        "respond_p95_ms": 78.91662500333041,
+        "respond_max_ms": 178.0239999643527,
+        "calls": 2103,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "c95d394f06a51a060f0f4d916f5be699c5d310c0715f8512c73ef131a1564c9e"
+      }
+    },
+    "development-cold-start": {
+      "sample_count": 800,
+      "hit_rate_at_10": 0.99,
+      "mrr": 0.974892,
+      "mttc": 2.5625,
+      "efficiency": 0.84375,
+      "recommended_technical_score": 0.956218,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 40,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 3.425
+        },
+        "browsing": {
+          "sample_count": 322,
+          "hit_rate_at_10": 0.984472,
+          "mrr": 0.96944,
+          "mttc": 2.60559
+        },
+        "buying": {
+          "sample_count": 327,
+          "hit_rate_at_10": 0.990826,
+          "mrr": 0.973152,
+          "mttc": 2.042813
+        },
+        "intent_override": {
+          "sample_count": 111,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.986787,
+          "mttc": 3.657658
+        }
+      },
+      "measurement": {
+        "arm": "cold_start_reviews",
+        "external_root": null,
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.500851583958138,
+        "evaluation_seconds": 77.80327912501525,
+        "respond_mean_ms": 38.02496733320202,
+        "respond_p95_ms": 77.2327909944579,
+        "respond_max_ms": 320.2680830145255,
+        "calls": 2042,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "ce6f6d067e574ea618199af75562e6fced46926c1a40faba7c95a3e232144fdf"
+      }
+    },
+    "development-strict_top1": {
+      "sample_count": 800,
+      "hit_rate_at_10": 0.9775,
+      "mrr": 0.971106,
+      "mttc": 2.67625,
+      "efficiency": 0.832375,
+      "recommended_technical_score": 0.946557,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 40,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 3.4
+        },
+        "browsing": {
+          "sample_count": 322,
+          "hit_rate_at_10": 0.97205,
+          "mrr": 0.96765,
+          "mttc": 2.714286
+        },
+        "buying": {
+          "sample_count": 327,
+          "hit_rate_at_10": 0.972477,
+          "mrr": 0.967817,
+          "mttc": 2.165138
+        },
+        "intent_override": {
+          "sample_count": 111,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.980405,
+          "mttc": 3.810811
+        }
+      },
+      "measurement": {
+        "arm": "strict_top1",
+        "external_root": null,
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.219567916996311,
+        "evaluation_seconds": 78.76951512502274,
+        "respond_mean_ms": 37.02627462337124,
+        "respond_p95_ms": 77.81395799247548,
+        "respond_max_ms": 256.2230419716798,
+        "calls": 2123,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "61424c91e6ddef1125afadc3f287690077d3e58b03e275b1359fbc19cb5f164e"
+      }
+    },
+    "development-lossless_slots": {
+      "sample_count": 800,
+      "hit_rate_at_10": 0.99125,
+      "mrr": 0.974859,
+      "mttc": 2.5525,
+      "efficiency": 0.84475,
+      "recommended_technical_score": 0.957033,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 40,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 3.325
+        },
+        "browsing": {
+          "sample_count": 322,
+          "hit_rate_at_10": 0.987578,
+          "mrr": 0.970911,
+          "mttc": 2.593168
+        },
+        "buying": {
+          "sample_count": 327,
+          "hit_rate_at_10": 0.990826,
+          "mrr": 0.974681,
+          "mttc": 2.036697
+        },
+        "intent_override": {
+          "sample_count": 111,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.977778,
+          "mttc": 3.675676
+        }
+      },
+      "measurement": {
+        "arm": "lossless_slots",
+        "external_root": null,
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.07478337502107,
+        "evaluation_seconds": 76.72824579203734,
+        "respond_mean_ms": 37.62710817760035,
+        "respond_p95_ms": 77.88866601185873,
+        "respond_max_ms": 265.018375008367,
+        "calls": 2035,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "33220524c66260d291f594a34e54f676a632d761842c1f2fb6894a0803211740"
+      }
+    },
+    "stress-baseline": {
+      "sample_count": 200,
+      "hit_rate_at_10": 0.845,
+      "mrr": 0.56569,
+      "mttc": 3.665,
+      "efficiency": 0.7335,
+      "recommended_technical_score": 0.738907,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 12,
+          "hit_rate_at_10": 0.916667,
+          "mrr": 0.666997,
+          "mttc": 4.083333
+        },
+        "browsing": {
+          "sample_count": 82,
+          "hit_rate_at_10": 0.95122,
+          "mrr": 0.662331,
+          "mttc": 2.731707
+        },
+        "buying": {
+          "sample_count": 81,
+          "hit_rate_at_10": 0.962963,
+          "mrr": 0.618185,
+          "mttc": 2.407407
+        },
+        "intent_override": {
+          "sample_count": 25,
+          "hit_rate_at_10": 0.08,
+          "mrr": 0.03,
+          "mttc": 10.6
+        }
+      },
+      "measurement": {
+        "arm": "baseline",
+        "external_root": null,
+        "wording": "paraphrase",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "984d8e468d37d0a96197c11af29b64ccb185cab6e3a7e39d8a2ae5b86efa6fec",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.137946375005413,
+        "evaluation_seconds": 19.237428582971916,
+        "respond_mean_ms": 27.324518595458645,
+        "respond_p95_ms": 61.21925002662465,
+        "respond_max_ms": 103.77937502926216,
+        "calls": 702,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "d7116fa16b29e1d40c58db76ee1f8398dc290585ca0b158fbd70c6aa6f6dfc31"
+      }
+    },
+    "stress-kopi": {
+      "sample_count": 200,
+      "hit_rate_at_10": 0.95,
+      "mrr": 0.919881,
+      "mttc": 3.285,
+      "efficiency": 0.7715,
+      "recommended_technical_score": 0.905264,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 12,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 3.666667
+        },
+        "browsing": {
+          "sample_count": 82,
+          "hit_rate_at_10": 0.95122,
+          "mrr": 0.940244,
+          "mttc": 2.939024
+        },
+        "buying": {
+          "sample_count": 81,
+          "hit_rate_at_10": 0.925926,
+          "mrr": 0.870899,
+          "mttc": 3.358025
+        },
+        "intent_override": {
+          "sample_count": 25,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.973333,
+          "mttc": 4.0
+        }
+      },
+      "measurement": {
+        "arm": "baseline",
+        "external_root": "../competitors/kopi",
+        "wording": "paraphrase",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "984d8e468d37d0a96197c11af29b64ccb185cab6e3a7e39d8a2ae5b86efa6fec",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.843762291944586,
+        "evaluation_seconds": 22.588035416963976,
+        "respond_mean_ms": 34.83163716224378,
+        "respond_p95_ms": 60.72670902358368,
+        "respond_max_ms": 101.7391660134308,
+        "calls": 647,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "f75bec2fca344c81d9ca68188b7280fee7eb5367315294c1d11938bf326ac104"
+      }
+    },
+    "stress-vibe": {
+      "sample_count": 200,
+      "hit_rate_at_10": 0.195,
+      "mrr": 0.132992,
+      "mttc": 9.65,
+      "efficiency": 0.135,
+      "recommended_technical_score": 0.164398,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 12,
+          "hit_rate_at_10": 0.083333,
+          "mrr": 0.008333,
+          "mttc": 10.666667
+        },
+        "browsing": {
+          "sample_count": 82,
+          "hit_rate_at_10": 0.085366,
+          "mrr": 0.065244,
+          "mttc": 10.390244
+        },
+        "buying": {
+          "sample_count": 81,
+          "hit_rate_at_10": 0.358025,
+          "mrr": 0.256633,
+          "mttc": 8.419753
+        },
+        "intent_override": {
+          "sample_count": 25,
+          "hit_rate_at_10": 0.08,
+          "mrr": 0.014444,
+          "mttc": 10.72
+        }
+      },
+      "measurement": {
+        "arm": "baseline",
+        "external_root": "../competitors/vibe/techjam-conversational-search",
+        "wording": "paraphrase",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "984d8e468d37d0a96197c11af29b64ccb185cab6e3a7e39d8a2ae5b86efa6fec",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 5.434064666973427,
+        "evaluation_seconds": 138.26097875001142,
+        "respond_mean_ms": 78.09659384916641,
+        "respond_p95_ms": 135.70054102456197,
+        "respond_max_ms": 336.6047920426354,
+        "calls": 1769,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "07508e7d596633dabdecaa76b272b954f2ecac83dccd77ed4949837c5f90b4d1"
+      }
+    },
+    "stress-shreyansh": {
+      "sample_count": 200,
+      "hit_rate_at_10": 0.775,
+      "mrr": 0.534018,
+      "mttc": 4.895,
+      "efficiency": 0.6105,
+      "recommended_technical_score": 0.669805,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 12,
+          "hit_rate_at_10": 0.666667,
+          "mrr": 0.502778,
+          "mttc": 6.333333
+        },
+        "browsing": {
+          "sample_count": 82,
+          "hit_rate_at_10": 0.853659,
+          "mrr": 0.658924,
+          "mttc": 4.158537
+        },
+        "buying": {
+          "sample_count": 81,
+          "hit_rate_at_10": 0.839506,
+          "mrr": 0.511175,
+          "mttc": 4.111111
+        },
+        "intent_override": {
+          "sample_count": 25,
+          "hit_rate_at_10": 0.36,
+          "mrr": 0.213333,
+          "mttc": 9.16
+        }
+      },
+      "measurement": {
+        "arm": "baseline",
+        "external_root": "../competitors/shreyansh",
+        "wording": "paraphrase",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "984d8e468d37d0a96197c11af29b64ccb185cab6e3a7e39d8a2ae5b86efa6fec",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.711152540985495,
+        "evaluation_seconds": 35.94143066601828,
+        "respond_mean_ms": 38.41312211896821,
+        "respond_p95_ms": 67.17274995753542,
+        "respond_max_ms": 108.60750003485009,
+        "calls": 934,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "62cb61ca288440657867f4b774f4d440d9370f3bbdf7cb50a369673cf12235c2"
+      }
+    },
+    "stress-lossless_slots": {
+      "sample_count": 200,
+      "hit_rate_at_10": 0.86,
+      "mrr": 0.546236,
+      "mttc": 3.575,
+      "efficiency": 0.7425,
+      "recommended_technical_score": 0.742371,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 12,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.684358,
+          "mttc": 4.083333
+        },
+        "browsing": {
+          "sample_count": 82,
+          "hit_rate_at_10": 0.963415,
+          "mrr": 0.644377,
+          "mttc": 2.634146
+        },
+        "buying": {
+          "sample_count": 81,
+          "hit_rate_at_10": 0.962963,
+          "mrr": 0.589114,
+          "mttc": 2.382716
+        },
+        "intent_override": {
+          "sample_count": 25,
+          "hit_rate_at_10": 0.12,
+          "mrr": 0.019111,
+          "mttc": 10.28
+        }
+      },
+      "measurement": {
+        "arm": "lossless_slots",
+        "external_root": null,
+        "wording": "paraphrase",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "984d8e468d37d0a96197c11af29b64ccb185cab6e3a7e39d8a2ae5b86efa6fec",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.165697959018871,
+        "evaluation_seconds": 18.858223500021268,
+        "respond_mean_ms": 27.37025271521968,
+        "respond_p95_ms": 60.993791033979505,
+        "respond_max_ms": 105.53000000072643,
+        "calls": 687,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "43bcf7c8a5503a56be7a652de1833de1dbf80fd4967359e99aa51cc3bb747086"
+      }
+    },
+    "stress-catalog-category": {
+      "sample_count": 200,
+      "hit_rate_at_10": 0.845,
+      "mrr": 0.545139,
+      "mttc": 3.66,
+      "efficiency": 0.734,
+      "recommended_technical_score": 0.732842,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 12,
+          "hit_rate_at_10": 0.916667,
+          "mrr": 0.610417,
+          "mttc": 4.25
+        },
+        "browsing": {
+          "sample_count": 82,
+          "hit_rate_at_10": 0.95122,
+          "mrr": 0.657327,
+          "mttc": 2.731707
+        },
+        "buying": {
+          "sample_count": 81,
+          "hit_rate_at_10": 0.962963,
+          "mrr": 0.582946,
+          "mttc": 2.37037
+        },
+        "intent_override": {
+          "sample_count": 25,
+          "hit_rate_at_10": 0.08,
+          "mrr": 0.023333,
+          "mttc": 10.6
+        }
+      },
+      "measurement": {
+        "arm": "catalog_category",
+        "external_root": null,
+        "wording": "paraphrase",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "984d8e468d37d0a96197c11af29b64ccb185cab6e3a7e39d8a2ae5b86efa6fec",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.558060666953679,
+        "evaluation_seconds": 19.602738832996693,
+        "respond_mean_ms": 27.876364437367677,
+        "respond_p95_ms": 61.736625037156045,
+        "respond_max_ms": 101.7160409828648,
+        "calls": 701,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "ea3419ea80db38e48e2c326601ea3a3ffee5301cba1d4743a248b12511048d07"
+      }
+    },
+    "development-baseline-instrumented": {
+      "sample_count": 800,
+      "hit_rate_at_10": 0.99,
+      "mrr": 0.974892,
+      "mttc": 2.5625,
+      "efficiency": 0.84375,
+      "recommended_technical_score": 0.956218,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 40,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 3.4
+        },
+        "browsing": {
+          "sample_count": 322,
+          "hit_rate_at_10": 0.984472,
+          "mrr": 0.96944,
+          "mttc": 2.608696
+        },
+        "buying": {
+          "sample_count": 327,
+          "hit_rate_at_10": 0.990826,
+          "mrr": 0.973152,
+          "mttc": 2.042813
+        },
+        "intent_override": {
+          "sample_count": 111,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.986787,
+          "mttc": 3.657658
+        }
+      },
+      "measurement": {
+        "arm": "baseline",
+        "external_root": null,
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.154352832993027,
+        "evaluation_seconds": 78.04580312495818,
+        "respond_mean_ms": 38.1401448897289,
+        "respond_p95_ms": 78.843625029549,
+        "respond_max_ms": 320.24266599910334,
+        "calls": 2042,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "550322df9baa8214b06758f3c234a17ca8f128be6ac5875a71c161aa043a65b9"
+      }
+    }
+  },
+  "checks": {
+    "baseline_tests_passed": 361,
+    "final_tests_passed": 365,
+    "baseline_tracked_file_count": 98,
+    "baseline_files_changed": [],
+    "instrumented_development_sessions_identical": true
+  }
+}

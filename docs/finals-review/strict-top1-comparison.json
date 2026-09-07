@@ -1,0 +1,42 @@
+{
+  "n": 800,
+  "mean_utility_delta": -0.009660863095238096,
+  "improved_sessions": 6,
+  "regressed_sessions": 19,
+  "unchanged_sessions": 775,
+  "lost_hits": 10,
+  "gained_hits": 0,
+  "one_sided_bootstrap_lower_bound": -0.016373251488095236,
+  "alpha": 0.016666666666666666,
+  "bootstrap_draws": 20000,
+  "scenario_deltas": {
+    "boundary": {
+      "n": 40,
+      "utility_delta": 0.0,
+      "regressions": 0
+    },
+    "browsing": {
+      "n": 322,
+      "utility_delta": -0.008859804791481811,
+      "regressions": 7
+    },
+    "buying": {
+      "n": 327,
+      "utility_delta": -0.01322120285423038,
+      "regressions": 8
+    },
+    "intent_override": {
+      "n": 111,
+      "utility_delta": -0.004977477477477476,
+      "regressions": 4
+    }
+  },
+  "development_gate_pass": false,
+  "rejection_reasons": [
+    "no_strict_score_improvement",
+    "individual_session_regression",
+    "lost_hits",
+    "scenario_regression",
+    "bootstrap_lower_bound_not_positive"
+  ]
+}
