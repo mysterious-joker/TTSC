@@ -5,7 +5,7 @@ from scripts.benchmark_runtime_pairs import summarize
 
 
 def result(duration):
-    return {"sessions": [{"sample_id": str(i)} for i in range(12)],
+    return {"sessions": [{"sample_id": str(i), "scenario_type": "buying"} for i in range(12)],
             "measurement": {"response_sha256": "same", "dataset_sha256": "data",
                             "catalog_sha256": "catalog", "evaluator_sha256": "evaluator",
                             "wording": "official", "exceptions": 0, "invalid_outputs": 0,
@@ -16,6 +16,23 @@ def result(duration):
 
 
 class RuntimeComparisonTests(unittest.TestCase):
+    def test_accuracy_change_requires_explicit_timing_mode(self):
+        pairs = [(result(10), result(8)) for _ in range(3)]
+        for a, b in pairs:
+            b["measurement"]["response_sha256"] = "changed"
+            b["sessions"][0]["first_hit_turn"] = 1
+        with self.assertRaises(ValueError):
+            summarize(pairs, alpha=.05)
+        summary = summarize(pairs, alpha=.05, require_identical=False)
+        self.assertFalse(summary["identical_sessions_and_responses"])
+        self.assertTrue(summary["aggregate_runtime_nonregression"])
+
+    def test_nonidentical_mode_still_rejects_mismatched_pairs(self):
+        pairs = [(result(10), result(8)) for _ in range(3)]
+        pairs[1][1]["sessions"].reverse()
+        with self.assertRaises(ValueError):
+            summarize(pairs, alpha=.05, require_identical=False)
+
     def test_identical_faster_responses_pass(self):
         comparison = summarize([(result(10), result(8)) for _ in range(3)], alpha=.05)
         self.assertTrue(comparison["aggregate_runtime_nonregression"])

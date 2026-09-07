@@ -61,8 +61,9 @@ initial hypotheses were recorded before their outputs were inspected.
 | Counterfactual question shield | Not run | 0.990000 | 0.974892 | 2.562500 | 0.956218 | 0; no gain |
 
 The all-turn review prior approaches ARC's reported public result while harming
-the shared development result. Public improvement alone would have selected the
-wrong change. The two-step planner improves mean development utility by
+the shared development result. We rejected it under the declared development
+gate; that does not establish its performance on the unknown private target
+distribution. See the later [distribution audit](DISTRIBUTION-AUDIT.md). The two-step planner improves mean development utility by
 0.000949107, but harms eight sessions and the override scenario. Its corrected
 one-sided bootstrap lower bound is negative. Neither is safe to promote under
 the team's requested non-regression rule.

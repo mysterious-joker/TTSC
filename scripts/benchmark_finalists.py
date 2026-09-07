@@ -26,7 +26,8 @@ from starter.agent import Agent as Baseline
 
 ARMS = ("baseline", "cold_start_reviews", "strict_top1", "lossless_slots", "catalog_category",
         "support_cold_prior", "support_review_prior", "answer_value", "two_step_value",
-        "counterfactual_shield", "direct_prior", "direct_value", "direct_opportunity", "baseline_continuation")
+        "counterfactual_shield", "direct_prior", "direct_value", "direct_opportunity", "baseline_continuation",
+        "first_turn_prior", "soft_prior", "recoverable_prior", "ambiguous_probe", "cold_ambiguous", "dominant_prior")
 
 
 def paraphrase(message: str) -> str:
@@ -50,6 +51,34 @@ def paraphrase(message: str) -> str:
     return message
 
 
+def punctuation_variants(message: str) -> str:
+    """Fixed new scaffolds; preserve all catalog-derived values verbatim."""
+    variant = int(hashlib.sha256(message.encode()).hexdigest()[:8], 16) % 2
+    match = re.fullmatch(r"I'm looking for (.+)\. A key requirement is: (.+)\.", message)
+    if match:
+        return (f"Please help me find {match[1]}. It must be: {match[2]}." if variant
+                else f"I need {match[1]}; it must have — {match[2]}.")
+    match = re.fullmatch(r"I'm looking for (.+), but I'm still exploring\.", message)
+    if match:
+        return (f"I'm browsing for {match[1]}. I am still deciding." if variant
+                else f"I'm shopping for {match[1]}. I have not decided on the details yet.")
+    match = re.fullmatch(r"I'm looking for (.+?)\. (.+)", message)
+    if match:
+        return (f"Please help me find {match[1]}. For now I prefer: {match[2]}" if variant
+                else f"Help me find {match[1]}. For now, I prefer — {match[2]}")
+    if message.startswith("For that, what matters is: "):
+        value = message.removeprefix("For that, what matters is: ")
+        return ("My priorities are — " if variant else "For that attribute, I prefer: ") + value
+    if message.startswith("Actually, ignore my earlier preference. What I need is: "):
+        value = message.split("What I need is: ", 1)[1]
+        return ("Change of plan — replace my earlier preference with: " if variant
+                else "Change of plan. Replace my earlier preference with ") + value
+    match = re.fullmatch(r"I don't have a preference for (.+); please use your judgment\.", message)
+    if match:
+        return f"Any {match[1]} is fine with me."
+    return message
+
+
 class ObservedAgent:
     def __init__(self, agent: object, catalog_ids: set[str], wording: str):
         self.agent = agent
@@ -66,7 +95,9 @@ class ObservedAgent:
         self.session_latencies.append(0.0)
 
     def respond(self, session_id: str, user_message: str, turn: int, top_k: int) -> dict:
-        message = paraphrase(user_message) if self.wording == "paraphrase" else user_message
+        message = (paraphrase(user_message) if self.wording == "paraphrase"
+                   else punctuation_variants(user_message) if self.wording == "punctuation"
+                   else user_message)
         started = time.perf_counter()
         try:
             result = self.agent.respond(session_id, message, turn, top_k)
@@ -89,6 +120,9 @@ class ObservedAgent:
 
 
 def local_agent(arm: str, catalog: Path) -> object:
+    if arm in {"first_turn_prior", "soft_prior", "recoverable_prior", "ambiguous_probe", "cold_ambiguous", "dominant_prior"}:
+        from scripts.early_probe_candidates import make_agent
+        return make_agent(arm, catalog)
     if arm == "baseline_continuation":
         from conversational_search import exposure
         from scripts.direct_belief import opportunity_action
@@ -189,7 +223,7 @@ def main() -> None:
     parser.add_argument("--arm", choices=ARMS, default="baseline")
     parser.add_argument("--external-root", type=Path)
     parser.add_argument("--module", default="starter.agent")
-    parser.add_argument("--wording", choices=("official", "paraphrase"), default="official")
+    parser.add_argument("--wording", choices=("official", "paraphrase", "punctuation"), default="official")
     args = parser.parse_args()
     if args.external_root and args.arm != "baseline":
         parser.error("external agents cannot be combined with local experiments")

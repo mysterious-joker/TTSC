@@ -1,17 +1,25 @@
 # Finalist engineering review — i anything
 
-**Latest decision:** adopt the response-preserving runtime optimization in the
-personal fork. The [third-round results](ROUND3-RESULTS.md) cover the revised
-aggregate gate, four rejected accuracy alternatives, repeated timing, and fresh
-validation on 1,600 sessions. Accuracy is unchanged; the new code reduces
-repeated computation. The [championship strategy](CHAMPIONSHIP-STRATEGY.md)
-sets out the strongest defensible differentiation, remaining gaps and a concrete
-finals demonstration.
+**Latest decision:** adopt the bounded intent repair and exact planner pruning
+in the personal fork. The [fourth-round results](ROUND4-RESULTS.md) report large
+controlled-language gains, unchanged public score **.971875**, and lower total
+runtime/p95 on every validation suite, including 4,000 fresh synthetic targets.
+Seven ranking alternatives were rejected. See the
+[before/after architecture](ROUND4-RESULTS.md#architecture-before-and-after),
+[aggregate evidence](round4-results-summary.json),
+[target-distribution audit](DISTRIBUTION-AUDIT.md), and
+[ARC/Fable7 access correction](COMPETITOR-ACCESS-ADDENDUM.md).
+The [championship strategy](CHAMPIONSHIP-STRATEGY.md) sets out measured strengths,
+remaining gaps and a concrete finals demonstration.
+
+**Previous accepted improvement:** the [third-round results](ROUND3-RESULTS.md)
+cover bounded computation reuse and validation on an earlier 1,600 sessions.
+Its official outcomes remain unchanged in round four.
 
 **Earlier follow-up:** [ARC/Fable7 deep review and five new improvement experiments](ROUND2-RESULTS.md)
 covers both demo videos, full-support priors, deeper planning, an actual
 baseline simulation gate, and the limits of the 0.99 target. The submission stays
-unchanged after this second round as well.
+unchanged at the end of that second round.
 
 **Initial review decision: retain the current agent.** The existing system beat all three
 source-accessible Track 4 competitors on the same fresh 800-target test. The three
@@ -48,6 +56,13 @@ sets a 10-minute pitch plus five-minute Q&A and an A1 foam-board poster for
 to send messages, register accounts, or publish to the team repository.
 
 ## 2. All twelve names checked
+
+The table and detailed competitor dispositions below record the initial review.
+On 8 September, indexed ARC/Fable7 README content and one ARC source file became
+readable through the web reader, while both Git clones still returned 404.
+The [access addendum](COMPETITOR-ACCESS-ADDENDUM.md) supersedes any blanket
+description of their documents as unavailable. No complete runnable source was
+obtained and their scores remain unverified in our harness.
 
 The finalist roster comes from the user. Devpost searches and project descriptions
 establish the mappings below; they do not independently establish which project

@@ -2,20 +2,23 @@
 
 The defensible strategy is to preserve our measured retrieval strength, make
 its decisions inspectable, and reduce the cost of delivering them. We have not
-established that we beat ARC or Fable7 on hidden targets. Their public source is
-unavailable, and our latest accuracy experiments do not justify replacing the
-current decision policies. The accepted round-three runtime optimization
-preserves accuracy; its disposition and measurements are in
-[ROUND3-RESULTS.md](ROUND3-RESULTS.md).
+established that we beat ARC or Fable7 on hidden targets. Indexed documentation
+and partial ARC source are readable, but complete checkouts remain unavailable
+for reproduction. Our ranking experiments do not justify replacing the current
+policies under the agreed aggregate gate. The accepted
+[round-four changes](ROUND4-RESULTS.md) repair bounded preference-revision language
+and prune unnecessary planning, on top of round three's computation reuse.
+The public score remains .971875; our demonstrated official-protocol improvement
+is lower runtime at identical outputs.
 
 ## The opportunities, in order
 
 | Priority | Concrete change or deliverable | Why it matters | Evidence / disposition |
 |---|---|---|---|
-| 1 | Cache repeated clue classification, document tokens, exact category cards and count-only enumeration plans; use the existing category index | Preserve every ranking and question while reducing repeated work. This improves compute efficiency without relying on target distribution. | Accepted after identical-response checks and three sequential paired runs on every frozen suite, including the fresh 1,600. |
+| 1 | Reuse exact repeated computations, use the category index, and prune widths with an irreparable immediate rank loss | Preserve every official ranking and question while reducing repeated work. | Accepted in rounds three/four. Round four reduces total runtime a further 5.78% on fresh official 1,600, with identical responses and lower p95. |
 | 2 | Show the full evidence-to-action chain in the finals demo | Judges can distinguish engineering depth from a favorable score screenshot: complete support, eligible misses, useful questions, ambiguity and fallback. | The underlying mechanisms and action traces already exist. A focused presentation/replay is the remaining deliverable; it is not a new learned model. |
-| 3 | Make the validation argument reproducible | Public-only popularity gains can hurt target-disjoint performance. Show paired outcomes, confidence bounds, frozen code/data identities and an untouched confirmation test. | Implemented in the personal research branch. Competitor comparisons are controlled only where source is accessible. |
-| 4 | Isolate better natural-language revision handling as a future experiment | On our fixed paraphrase stress test, override HR is only .08; Kopi performs substantially better on the complete language suite. This is the largest measured real-user gap. | Not solved. Broadly enabling our lossless parser previously caused regressions. A future intervention should be scoped to unsupported dialogue and tested on newly authored, diverse revisions, not the existing paraphrase strings. |
+| 3 | Make the validation argument reproducible and state population mismatch | Public targets have median 6,846 reviews; old uniform development has 12. Target disjointness alone cannot establish performance on purchase-derived hidden targets. | Implemented: seven rejected ranking hypotheses, new weighted/category sensitivity suites, frozen 4,000-target confirmation. See the distribution audit. |
+| 4 | Correctly retain and withdraw tentative preferences in ordinary language | An unrecognized opening could retain stale evidence after a replacement. Fixing provenance addresses a concrete failure. | Accepted bounded repair: fresh weighted-language override HR 7.08% → 96.25%; category-language 2.50% → 98.33%. Full suites improve all aggregate metrics, total runtime and p95. This does not validate unrestricted language. |
 | 5 | Improve question selection using actual continuation value | Some questions skip generic clues and expose a discriminating attribute sooner. The benefit depends on future ranking and what the user can answer. | Four new round-three alternatives were tested. Direct priors lose an aggregate metric; retaining baseline rank and using longer continuation has only a tiny, statistically unsupported gain. Keep experimental. |
 
 This is an engineering priority order, not a prediction of prize placement.
@@ -37,8 +40,9 @@ still ambiguous.** Demonstrate four concrete properties together:
    The current planner's dominance guarantee is conditional on its continuation
    model, not a universal end-to-end guarantee.
 4. **Measured computation.** Tie the same visible decisions to reproducible
-   CPU time, tail latency, zero model-token use and bounded cache sizes. Keep
-   the hybrid fallback for inputs outside the exact dialogue contract.
+   CPU time, tail latency, zero model-token use and bounded cache sizes. Show
+   the repaired preference provenance on ordinary wording while keeping its
+   hybrid fallback distinct from exact dialogue-contract reasoning.
 
 ARC also presents decision certificates, and Fable7 also uses prefix matching.
 Claiming that either mechanism alone is unique would be inaccurate. Our pitch
@@ -114,14 +118,15 @@ and limitations; 1 minute conclusion and transition to questions.
 
 - **Why not a larger LLM?** The released replies are deterministic and catalog
   grounded. Exact computation is appropriate there; learned interpretation
-  remains useful for unrestricted language, where our stress test shows work
-  remains. Do not claim the fallback solves every free-form request.
+  remains useful for unrestricted language. Our bounded grammar repair passes
+  controlled language tests, but does not solve every free-form request.
 - **Are you overfitting the public 200?** Show target-disjoint construction,
-  frozen hypotheses, rejected public-score improvements and untouched validation.
-  These reduce overfitting risk; they do not prove performance on unknown labels.
+  frozen hypotheses, rejected public-score improvements and confirmation opened
+  only after freezing. Also disclose the target-distribution mismatch. Higher
+  public scores do not by themselves prove anyone overfit.
 - **Do you beat ARC and Fable7?** Their reported public scores are higher. Their
-  source was unavailable for controlled reproduction. State our controlled
+  complete source was unavailable for controlled reproduction. State our controlled
   comparisons and our own improvements without converting claims into wins.
 - **What changed since preliminary submission?** Name only the changes actually
-  accepted in ROUND3-RESULTS.md and show before/after evidence. Keep experimental
+  accepted in ROUND3-RESULTS.md and ROUND4-RESULTS.md and show before/after evidence. Keep experimental
   planners out of the release story.

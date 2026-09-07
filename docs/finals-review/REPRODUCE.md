@@ -1,6 +1,6 @@
 # Reproduce the finalist review
 
-For the latest aggregate gate and runtime study, see the round-three section
+For the latest aggregate gate and runtime study, see the round-four section
 at the end of this document. The original rounds below are retained as history.
 
 Run from the personal checkout after following its normal runtime setup. The
@@ -115,8 +115,9 @@ are byte-identical to ours. Every runtime uses our catalog, whose SHA-256 is
 The official evaluator hash is
 `79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564`.
 
-No candidate cleared the non-regression gate. Keep the confirmation partition
-unused; there is no team PR to merge from this review. If reviewing the branch
+At the end of the initial review, no candidate cleared its non-regression gate;
+the confirmation partition was then unused. It was subsequently consumed in
+round three. There is no team PR to merge from this review. If reviewing the branch
 against team `main`, distinguish the first baseline-snapshot commit (pre-existing
 local work) from the subsequent review/tooling commit.
 
@@ -163,3 +164,72 @@ new output directory to evaluate the reserved 1,600, without changing the agent.
 That partition is consumed once opened; it cannot serve as a fresh holdout for
 later tuned policies. Use [ROUND3-RESULTS.md](ROUND3-RESULTS.md) for its actual
 status and the observed results, including the rejected first runtime candidate.
+
+## Round four: frozen language repair and exact pruning
+
+Use a **new research directory** with the original generated `development.jsonl`,
+`confirmation.jsonl` and `language-stress.jsonl` from above. Reproducing a consumed
+suite verifies a result; it does not make that suite fresh for another experiment.
+Keep the original outputs intact. The following paths are illustrative absolute
+paths and should be replaced with your new research root and personal checkout.
+
+```bash
+python -m scripts.generate_distribution_suites \
+  --exclude /absolute/research/development.jsonl \
+  --exclude /absolute/research/confirmation.jsonl \
+  --seed 202609074 --output /absolute/research/round4/suites
+```
+
+The generator excludes public targets automatically. It produces two development
+suites (weighted/category, 800 each) and three confirmation suites (uniform 1,600,
+weighted 1,600, category 800), mutually target-disjoint. Compare their hashes with
+the committed `round4-results-summary.json`. Weighted means sampling without
+replacement using square-root review counts; category means uniform choice of a
+remaining coarse category followed by a product in it. These are sensitivity
+populations, not estimates of the private target distribution.
+
+Create `/absolute/research/round4/baseline` from `git archive 1ef7440`, and supply
+its ignored catalog from the same frozen catalog. Copy the **current**
+`scripts/benchmark_finalists.py` into that archive so both sides use identical
+instrumentation and wording transforms. Keep model assets from the archive.
+Then run from the personal checkout:
+
+```bash
+python -m scripts.validate_planner_pruning \
+  --reference /absolute/research/round4/baseline/conversational_search/exposure.py \
+  --output /absolute/research/round4/pruning-differential.json
+python -m unittest discover -s tests
+python -m scripts.validate_finals_round4 \
+  --research-root /absolute/research \
+  --candidate-root /absolute/personal-checkout --stage development
+python -m scripts.validate_finals_round4 \
+  --research-root /absolute/research \
+  --candidate-root /absolute/personal-checkout --stage confirmation
+```
+
+The validator refuses existing output directories and requires every development
+gate plus an unchanged source fingerprint before confirmation. Every suite runs
+three sequential process pairs in B/C, C/B, B/C order. Official wording requires
+identical session outcomes and complete response digests. Changed language
+requires non-decreasing aggregate HR/MRR/turn efficiency and a positive paired
+score-gain bound at alpha .05/8 (seven ranking hypotheses plus one language
+intervention). An official identical-accuracy arm deliberately does not pass
+the separate strict-score-improvement comparator; its adoption route is identical
+behavior plus measured runtime improvement.
+
+Both routes require non-increasing median total runtime and p95, and a positive
+session-block timing saving bound. Timing alpha is .05 divided by the number of
+suites in that stage. Both bootstrap procedures use 20,000 draws. Whole response
+and session identities are checked independently from rounded metric summaries.
+
+The separate explicit research arms are `support_cold_prior`, `first_turn_prior`,
+`soft_prior`, `recoverable_prior`, `ambiguous_probe`, `cold_ambiguous` and
+`dominant_prior`. All are rejected and none is enabled by the Agent entry point.
+Screening of those arms preceded the final intent repair; reproduce their exact
+historical source from the recorded runtime fingerprints/baseline when comparing
+changed-language inputs. Official responses of the baseline and accepted repair
+were identical on the screened official suites.
+
+After the primary timing study, a single replay of the old round-three
+confirmation checks preservation of its responses. It is explicitly a consumed
+suite replay and is not included in the fresh 4,000-target claim.

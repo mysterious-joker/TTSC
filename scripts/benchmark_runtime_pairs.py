@@ -11,13 +11,17 @@ import sys
 import numpy as np
 
 
-def summarize(pairs, *, alpha):
+def summarize(pairs, *, alpha, require_identical=True):
     if len(pairs) != 3:
         raise ValueError("the frozen timing protocol requires three pairs")
     for baseline, candidate in pairs:
-        if baseline["sessions"] != candidate["sessions"]:
+        if require_identical and baseline["sessions"] != candidate["sessions"]:
             raise ValueError("per-session behavior changed")
-        for key in ("response_sha256", "dataset_sha256", "catalog_sha256", "evaluator_sha256", "wording"):
+        if [(r["sample_id"], r["scenario_type"]) for r in baseline["sessions"]] != [
+                (r["sample_id"], r["scenario_type"]) for r in candidate["sessions"]]:
+            raise ValueError("paired session identities or order changed")
+        for key in ("dataset_sha256", "catalog_sha256", "evaluator_sha256", "wording",
+                    *(("response_sha256",) if require_identical else ())):
             if baseline["measurement"][key] != candidate["measurement"][key]:
                 raise ValueError(f"paired {key} mismatch")
         for result in (baseline, candidate):
@@ -51,7 +55,11 @@ def summarize(pairs, *, alpha):
             m["startup_seconds"] + m["evaluation_seconds"] for m in measurements)
     a, b = timing["baseline"], timing["candidate"]
     result = {
-        "sample_count": len(savings), "identical_sessions_and_responses": True,
+        "sample_count": len(savings),
+        "identical_sessions_and_responses": all(
+            a["sessions"] == b["sessions"] and a["measurement"]["response_sha256"] == b["measurement"]["response_sha256"]
+            for a, b in pairs),
+        "requires_identical_behavior": require_identical,
         "timing_medians": timing, "paired_runs": [
             {label: pair[side]["measurement"] for side, label in enumerate(("baseline", "candidate"))}
             for pair in pairs
