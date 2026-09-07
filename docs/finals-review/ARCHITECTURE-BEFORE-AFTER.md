@@ -1,5 +1,9 @@
 # Architecture before and after the finalist review
 
+The [second research round](ROUND2-RESULTS.md#architecture-before-and-after)
+adds deeper question planners and counterfactual simulation as disabled research
+arms. It also retains this submission architecture unchanged.
+
 ## Version boundary
 
 The team repository was at `5378908`. The working tree already contained a

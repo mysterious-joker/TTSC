@@ -1,0 +1,728 @@
+{
+  "baseline_commit": "08cd1f1bd39808d001ccff65764e8ac6cf21be71",
+  "reproduction_sources_sha256": {
+    "scripts/finals_candidates.py": "14ff404b3f63dcba1e4d81d8fd0a77966389bf49d222e1dd4765f1425bb25d42",
+    "scripts/counterfactual_shield.py": "71e04ddf578070a8bbce0756574a56e835322c1283a03369de7556884320ed86",
+    "scripts/audit_observability.py": "e6e19a038b727ddcb2eda2fe0886eacc6910f01cd7dbdc79ab78e873ed7268e8",
+    "scripts/benchmark_finalists.py": "a01b5f2efefb514327b425d259f95d9869a9eeaee08f7a842e5a936718e6c6a8",
+    "scripts/compare_finalist_results.py": "649af150878a79431aa45299899b5d58f175a1eaa292a6411800ae361c418864"
+  },
+  "baseline_development_measurement": {
+    "arm": "baseline",
+    "external_root": null,
+    "wording": "official",
+    "python": "3.13.15",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+    "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+    "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+    "startup_seconds": 4.154352832993027,
+    "evaluation_seconds": 78.04580312495818,
+    "respond_mean_ms": 38.1401448897289,
+    "respond_p95_ms": 78.843625029549,
+    "respond_max_ms": 320.24266599910334,
+    "calls": 2042,
+    "exceptions": 0,
+    "invalid_outputs": 0,
+    "response_sha256": "550322df9baa8214b06758f3c234a17ca8f128be6ac5875a71c161aa043a65b9"
+  },
+  "runs": {
+    "development-answer_value": {
+      "sample_count": 800,
+      "hit_rate_at_10": 0.99,
+      "mrr": 0.975517,
+      "mttc": 2.55875,
+      "efficiency": 0.844125,
+      "recommended_technical_score": 0.95648,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 40,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 3.375
+        },
+        "browsing": {
+          "sample_count": 322,
+          "hit_rate_at_10": 0.984472,
+          "mrr": 0.96944,
+          "mttc": 2.608696
+        },
+        "buying": {
+          "sample_count": 327,
+          "hit_rate_at_10": 0.990826,
+          "mrr": 0.974681,
+          "mttc": 2.036697
+        },
+        "intent_override": {
+          "sample_count": 111,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.986787,
+          "mttc": 3.657658
+        }
+      },
+      "measurement": {
+        "arm": "answer_value",
+        "external_root": null,
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.244220709020738,
+        "evaluation_seconds": 68.55319158401107,
+        "respond_mean_ms": 33.541810309880724,
+        "respond_p95_ms": 65.28366700513288,
+        "respond_max_ms": 113.81462501594797,
+        "calls": 2039,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "92e902096f6d497d33ff0a3ff79c74295ebd62cca01b3b98e05dbbe8446e2666",
+        "research_diagnostics": {
+          "interventions": 517,
+          "errors": 0
+        }
+      }
+    },
+    "development-counterfactual_shield": {
+      "sample_count": 800,
+      "hit_rate_at_10": 0.99,
+      "mrr": 0.974892,
+      "mttc": 2.5625,
+      "efficiency": 0.84375,
+      "recommended_technical_score": 0.956218,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 40,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 3.4
+        },
+        "browsing": {
+          "sample_count": 322,
+          "hit_rate_at_10": 0.984472,
+          "mrr": 0.96944,
+          "mttc": 2.608696
+        },
+        "buying": {
+          "sample_count": 327,
+          "hit_rate_at_10": 0.990826,
+          "mrr": 0.973152,
+          "mttc": 2.042813
+        },
+        "intent_override": {
+          "sample_count": 111,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.986787,
+          "mttc": 3.657658
+        }
+      },
+      "measurement": {
+        "arm": "counterfactual_shield",
+        "external_root": null,
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.257879540964495,
+        "evaluation_seconds": 276.67339758301387,
+        "respond_mean_ms": 135.4132561619637,
+        "respond_p95_ms": 87.36504201078787,
+        "respond_max_ms": 13229.120582982432,
+        "calls": 2042,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "550322df9baa8214b06758f3c234a17ca8f128be6ac5875a71c161aa043a65b9",
+        "research_diagnostics": {
+          "eligible": 445,
+          "proposals": 30,
+          "accepted": 0,
+          "rejected": 30,
+          "simulation_calls": 4742,
+          "budget_rejections": 0,
+          "errors": 0
+        }
+      }
+    },
+    "development-support_cold_prior": {
+      "sample_count": 800,
+      "hit_rate_at_10": 0.99,
+      "mrr": 0.974892,
+      "mttc": 2.5625,
+      "efficiency": 0.84375,
+      "recommended_technical_score": 0.956218,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 40,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 3.425
+        },
+        "browsing": {
+          "sample_count": 322,
+          "hit_rate_at_10": 0.984472,
+          "mrr": 0.96944,
+          "mttc": 2.60559
+        },
+        "buying": {
+          "sample_count": 327,
+          "hit_rate_at_10": 0.990826,
+          "mrr": 0.973152,
+          "mttc": 2.042813
+        },
+        "intent_override": {
+          "sample_count": 111,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.986787,
+          "mttc": 3.657658
+        }
+      },
+      "measurement": {
+        "arm": "support_cold_prior",
+        "external_root": null,
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.330493750050664,
+        "evaluation_seconds": 78.40632337500574,
+        "respond_mean_ms": 38.319218577395205,
+        "respond_p95_ms": 80.13337501324713,
+        "respond_max_ms": 284.8634169786237,
+        "calls": 2042,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "839ab5996862eb9c2aca7c51bee11776b70ea3a3d28bb7227dba287d6be8abba",
+        "research_diagnostics": {
+          "interventions": 362,
+          "errors": 0
+        }
+      }
+    },
+    "development-support_review_prior": {
+      "sample_count": 800,
+      "hit_rate_at_10": 0.99,
+      "mrr": 0.975052,
+      "mttc": 2.58875,
+      "efficiency": 0.841125,
+      "recommended_technical_score": 0.955741,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 40,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 3.5
+        },
+        "browsing": {
+          "sample_count": 322,
+          "hit_rate_at_10": 0.984472,
+          "mrr": 0.978002,
+          "mttc": 2.68323
+        },
+        "buying": {
+          "sample_count": 327,
+          "hit_rate_at_10": 0.990826,
+          "mrr": 0.969436,
+          "mttc": 2.036697
+        },
+        "intent_override": {
+          "sample_count": 111,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.974045,
+          "mttc": 3.612613
+        }
+      },
+      "measurement": {
+        "arm": "support_review_prior",
+        "external_root": null,
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.334394624980632,
+        "evaluation_seconds": 78.43108725000639,
+        "respond_mean_ms": 37.940934207651566,
+        "respond_p95_ms": 78.87508301064372,
+        "respond_max_ms": 304.1976660024375,
+        "calls": 2063,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "45031db5bd8904bc9a0d1154e7b50ef4e4f5fc6f9d3d656300addb5c3058d47f",
+        "research_diagnostics": {
+          "interventions": 2063,
+          "errors": 0
+        }
+      }
+    },
+    "development-two_step_value": {
+      "sample_count": 800,
+      "hit_rate_at_10": 0.99,
+      "mrr": 0.976972,
+      "mttc": 2.54625,
+      "efficiency": 0.845375,
+      "recommended_technical_score": 0.957167,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 40,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 3.325
+        },
+        "browsing": {
+          "sample_count": 322,
+          "hit_rate_at_10": 0.984472,
+          "mrr": 0.973482,
+          "mttc": 2.60559
+        },
+        "buying": {
+          "sample_count": 327,
+          "hit_rate_at_10": 0.990826,
+          "mrr": 0.976555,
+          "mttc": 2.018349
+        },
+        "intent_override": {
+          "sample_count": 111,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.98003,
+          "mttc": 3.648649
+        }
+      },
+      "measurement": {
+        "arm": "two_step_value",
+        "external_root": null,
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.267163749958854,
+        "evaluation_seconds": 225.30351116601378,
+        "respond_mean_ms": 110.95805513142838,
+        "respond_p95_ms": 404.5608750311658,
+        "respond_max_ms": 4064.3538330332376,
+        "calls": 2029,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "0395b4c01c8edcf30a7281224168eb96444bb59d40e4bd83487ad092b4278149",
+        "research_diagnostics": {
+          "interventions": 517,
+          "errors": 0
+        }
+      }
+    },
+    "public-answer_value": {
+      "sample_count": 200,
+      "hit_rate_at_10": 1.0,
+      "mrr": 0.99625,
+      "mttc": 2.36,
+      "efficiency": 0.864,
+      "recommended_technical_score": 0.971675,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 10,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 2.9
+        },
+        "browsing": {
+          "sample_count": 80,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 2.2125
+        },
+        "buying": {
+          "sample_count": 80,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.990625,
+          "mttc": 1.9
+        },
+        "intent_override": {
+          "sample_count": 30,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 3.8
+        }
+      },
+      "measurement": {
+        "arm": "answer_value",
+        "external_root": null,
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "857259f7a438e6188ac63e18995b6ff4489bfcfc4a716a798b9a2aa0ee8f7579",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.487451291002799,
+        "evaluation_seconds": 15.106634791998658,
+        "respond_mean_ms": 31.909560404497917,
+        "respond_p95_ms": 58.5740830283612,
+        "respond_max_ms": 110.39308301405981,
+        "calls": 472,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "04b069d09bdefa4d4a08fb1983a3093cf4fa302b42f347ce0ec7020e9dd43e43",
+        "research_diagnostics": {
+          "interventions": 137,
+          "errors": 0
+        }
+      }
+    },
+    "public-support_cold_prior": {
+      "sample_count": 200,
+      "hit_rate_at_10": 1.0,
+      "mrr": 0.99625,
+      "mttc": 2.215,
+      "efficiency": 0.8785,
+      "recommended_technical_score": 0.974575,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 10,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 2.7
+        },
+        "browsing": {
+          "sample_count": 80,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 1.875
+        },
+        "buying": {
+          "sample_count": 80,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.990625,
+          "mttc": 1.9
+        },
+        "intent_override": {
+          "sample_count": 30,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 3.8
+        }
+      },
+      "measurement": {
+        "arm": "support_cold_prior",
+        "external_root": null,
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "857259f7a438e6188ac63e18995b6ff4489bfcfc4a716a798b9a2aa0ee8f7579",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.710781625006348,
+        "evaluation_seconds": 16.08942366699921,
+        "respond_mean_ms": 36.2175025351232,
+        "respond_p95_ms": 77.29849999304861,
+        "respond_max_ms": 179.30041695944965,
+        "calls": 443,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "256675b39978a92d26b85f1e56e7d089f769ac128ffe4248a498428122285af5",
+        "research_diagnostics": {
+          "interventions": 90,
+          "errors": 0
+        }
+      }
+    },
+    "public-support_review_prior": {
+      "sample_count": 200,
+      "hit_rate_at_10": 1.0,
+      "mrr": 0.9975,
+      "mttc": 1.975,
+      "efficiency": 0.9025,
+      "recommended_technical_score": 0.97975,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 10,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 2.5
+        },
+        "browsing": {
+          "sample_count": 80,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 1.775
+        },
+        "buying": {
+          "sample_count": 80,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 1.4875
+        },
+        "intent_override": {
+          "sample_count": 30,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.983333,
+          "mttc": 3.633333
+        }
+      },
+      "measurement": {
+        "arm": "support_review_prior",
+        "external_root": null,
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "857259f7a438e6188ac63e18995b6ff4489bfcfc4a716a798b9a2aa0ee8f7579",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.728025457996409,
+        "evaluation_seconds": 14.643071957980283,
+        "respond_mean_ms": 36.95806371183665,
+        "respond_p95_ms": 78.24383303523064,
+        "respond_max_ms": 167.02570900088176,
+        "calls": 395,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "2242de8c6ddf1111d09dc153e87287501abb4f51f2e6721e7c7cc78423350466",
+        "research_diagnostics": {
+          "interventions": 395,
+          "errors": 0
+        }
+      }
+    },
+    "public-two_step_value": {
+      "sample_count": 200,
+      "hit_rate_at_10": 1.0,
+      "mrr": 0.996,
+      "mttc": 2.35,
+      "efficiency": 0.865,
+      "recommended_technical_score": 0.9718,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 10,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 2.8
+        },
+        "browsing": {
+          "sample_count": 80,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 2.2125
+        },
+        "buying": {
+          "sample_count": 80,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.99,
+          "mttc": 1.8875
+        },
+        "intent_override": {
+          "sample_count": 30,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 3.8
+        }
+      },
+      "measurement": {
+        "arm": "two_step_value",
+        "external_root": null,
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "857259f7a438e6188ac63e18995b6ff4489bfcfc4a716a798b9a2aa0ee8f7579",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.483264916983899,
+        "evaluation_seconds": 52.55645416700281,
+        "respond_mean_ms": 111.72451597633474,
+        "respond_p95_ms": 551.0964170098305,
+        "respond_max_ms": 3259.376958012581,
+        "calls": 470,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "bc2064477e370d11505b3ab0da5478cff3604ab3e4cbd4ed2b69d7d7af1f8ded",
+        "research_diagnostics": {
+          "interventions": 136,
+          "errors": 0
+        }
+      }
+    },
+    "shield-small-support": {
+      "sample_count": 800,
+      "hit_rate_at_10": 0.99,
+      "mrr": 0.974892,
+      "mttc": 2.5625,
+      "efficiency": 0.84375,
+      "recommended_technical_score": 0.956218,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 40,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 3.4
+        },
+        "browsing": {
+          "sample_count": 322,
+          "hit_rate_at_10": 0.984472,
+          "mrr": 0.96944,
+          "mttc": 2.608696
+        },
+        "buying": {
+          "sample_count": 327,
+          "hit_rate_at_10": 0.990826,
+          "mrr": 0.973152,
+          "mttc": 2.042813
+        },
+        "intent_override": {
+          "sample_count": 111,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.986787,
+          "mttc": 3.657658
+        }
+      },
+      "measurement": {
+        "arm": "counterfactual_shield",
+        "external_root": null,
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.097811500017997,
+        "evaluation_seconds": 83.0178898749873,
+        "respond_mean_ms": 40.57462761453631,
+        "respond_p95_ms": 82.4593750294298,
+        "respond_max_ms": 677.5807500234805,
+        "calls": 2042,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "550322df9baa8214b06758f3c234a17ca8f128be6ac5875a71c161aa043a65b9",
+        "research_diagnostics": {
+          "eligible": 285,
+          "proposals": 2,
+          "accepted": 0,
+          "rejected": 2,
+          "simulation_calls": 38,
+          "budget_rejections": 0,
+          "errors": 0
+        }
+      }
+    },
+    "shield-turn2-noop": {
+      "sample_count": 800,
+      "hit_rate_at_10": 0.99,
+      "mrr": 0.974892,
+      "mttc": 2.5625,
+      "efficiency": 0.84375,
+      "recommended_technical_score": 0.956218,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 40,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 3.4
+        },
+        "browsing": {
+          "sample_count": 322,
+          "hit_rate_at_10": 0.984472,
+          "mrr": 0.96944,
+          "mttc": 2.608696
+        },
+        "buying": {
+          "sample_count": 327,
+          "hit_rate_at_10": 0.990826,
+          "mrr": 0.973152,
+          "mttc": 2.042813
+        },
+        "intent_override": {
+          "sample_count": 111,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.986787,
+          "mttc": 3.657658
+        }
+      },
+      "measurement": {
+        "arm": "counterfactual_shield",
+        "external_root": null,
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.072500124981161,
+        "evaluation_seconds": 81.1534922500141,
+        "respond_mean_ms": 39.662112175689025,
+        "respond_p95_ms": 80.72070899652317,
+        "respond_max_ms": 414.5343750133179,
+        "calls": 2042,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "550322df9baa8214b06758f3c234a17ca8f128be6ac5875a71c161aa043a65b9",
+        "research_diagnostics": {
+          "proposals": 0,
+          "accepted": 0,
+          "rejected": 0,
+          "simulation_calls": 0,
+          "budget_rejections": 0,
+          "errors": 0
+        }
+      }
+    }
+  },
+  "decision": "No arm passed strict improvement/non-regression; submission unchanged; 1600 confirmation rows not evaluated."
+}

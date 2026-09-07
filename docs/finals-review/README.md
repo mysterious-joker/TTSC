@@ -1,5 +1,10 @@
 # Finalist engineering review — i anything
 
+**Follow-up:** [ARC/Fable7 deep review and five new improvement experiments](ROUND2-RESULTS.md)
+covers both demo videos, full-support priors, deeper planning, an actual
+baseline simulation gate, and the limits of the 0.99 target. The submission stays
+unchanged after this second round as well.
+
 **Decision: retain the current agent.** The existing system beat all three
 source-accessible Track 4 competitors on the same fresh 800-target test. The three
 predeclared candidate changes and one exploratory language-grounding change

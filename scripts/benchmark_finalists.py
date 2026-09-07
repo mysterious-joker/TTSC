@@ -23,7 +23,9 @@ from evaluator import local_evaluator as official
 from starter.agent import Agent as Baseline
 
 
-ARMS = ("baseline", "cold_start_reviews", "strict_top1", "lossless_slots", "catalog_category")
+ARMS = ("baseline", "cold_start_reviews", "strict_top1", "lossless_slots", "catalog_category",
+        "support_cold_prior", "support_review_prior", "answer_value", "two_step_value",
+        "counterfactual_shield")
 
 
 def paraphrase(message: str) -> str:
@@ -82,6 +84,12 @@ class ObservedAgent:
 
 
 def local_agent(arm: str, catalog: Path) -> object:
+    if arm == "counterfactual_shield":
+        from scripts.counterfactual_shield import make_shielded_agent
+        return make_shielded_agent(catalog)
+    if arm in {"support_cold_prior", "support_review_prior", "answer_value", "two_step_value"}:
+        from scripts.finals_candidates import make_agent
+        return make_agent(arm, catalog)
     if arm == "catalog_category":
         from conversational_search.decision import ProtocolObservation, recognize_protocol_observation
         from conversational_search.intent import apply_user_message
@@ -203,6 +211,8 @@ def main() -> None:
         "exceptions": observed.errors, "invalid_outputs": observed.invalid_outputs,
         "response_sha256": observed.response_hash.hexdigest(),
     }
+    if hasattr(agent, "research_diagnostics"):
+        result["measurement"]["research_diagnostics"] = agent.research_diagnostics
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps({key: value for key, value in result.items() if key != "sessions"}, sort_keys=True), flush=True)

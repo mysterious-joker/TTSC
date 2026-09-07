@@ -1,0 +1,70 @@
+{
+  "assumptions": [
+    "Target uniformly sampled from all 50,000 catalog products.",
+    "No target-correlated profile signal; disclosure card granted free before first response.",
+    "Each metric optimized independently; ceilings need not be jointly achievable.",
+    "At most 10 products each turn, at most 10 turns; first appearance ends scoring.",
+    "Duplicate signatures remain exchangeable; no hidden purchase distribution is inferred."
+  ],
+  "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+  "catalog_rows": 50000,
+  "signature_groups": 45470,
+  "group_size_distribution": {
+    "1": 43770,
+    "2": 1086,
+    "3": 267,
+    "4": 114,
+    "5": 75,
+    "6": 38,
+    "7": 24,
+    "8": 9,
+    "9": 16,
+    "10": 12,
+    "11": 6,
+    "12": 8,
+    "13": 5,
+    "14": 2,
+    "15": 2,
+    "16": 4,
+    "17": 3,
+    "18": 4,
+    "19": 1,
+    "20": 4,
+    "21": 2,
+    "23": 1,
+    "24": 2,
+    "25": 3,
+    "28": 1,
+    "29": 2,
+    "33": 1,
+    "47": 1,
+    "50": 2,
+    "51": 1,
+    "89": 1,
+    "111": 1,
+    "154": 1,
+    "264": 1
+  },
+  "oracle_ceilings_by_first_eligible_turn": {
+    "1": {
+      "hit_rate_at_10": 0.99542,
+      "mrr": 0.9839106190476191,
+      "technical_score": 0.987456919047619
+    },
+    "3": {
+      "hit_rate_at_10": 0.99404,
+      "mrr": 0.9815115396825397,
+      "technical_score": 0.9466912142857143
+    },
+    "4": {
+      "hit_rate_at_10": 0.99324,
+      "mrr": 0.9800211746031746,
+      "technical_score": 0.9262025071428572
+    }
+  },
+  "oracle_ceilings_85pct_turn1_7_5pct_turn3_7_5pct_turn4": {
+    "hit_rate_at_10": 0.995153,
+    "mrr": 0.9834389797619048,
+    "technical_score": 0.979805410297619
+  }
+}

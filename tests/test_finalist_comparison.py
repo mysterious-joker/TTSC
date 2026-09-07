@@ -42,6 +42,19 @@ class PromotionGateTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             compare(a, b)
 
+    def test_internal_planner_errors_block_a_clean_score_gain(self):
+        candidate = result([1, 1, 1])
+        candidate["measurement"] = {"research_diagnostics": {"errors": 1}}
+        decision = compare(result([2, 2, 2]), candidate, family_size=5)
+        self.assertFalse(decision["development_gate_pass"])
+        self.assertIn("internal_research_failure", decision["rejection_reasons"])
+        self.assertEqual(decision["alpha"], .01)
+
+    def test_invalid_multiplicity_is_rejected(self):
+        for count in (0, -1, True, 1.5):
+            with self.assertRaises(ValueError):
+                compare(result([2]), result([1]), family_size=count)
+
 
 if __name__ == "__main__":
     unittest.main()

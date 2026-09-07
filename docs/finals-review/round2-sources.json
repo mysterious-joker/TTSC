@@ -1,0 +1,90 @@
+{
+  "checked_at_utc": "2026-09-07T13:57:59.796579+00:00",
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=2yUYXPNMEwI",
+      "type": "complete auto-generated English transcript",
+      "sha256": "2711638fc77d71deb4f7a598e8b7a5b6dacbb72ca261146c63c16fba40ec52bf"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=-7QWSWkh2mw",
+      "type": "complete auto-generated English transcript",
+      "sha256": "cb05091f61c5128c2c571fcdd1f20d31cc58ad5edfba4053a6a3d58502aea37e"
+    },
+    {
+      "url": "https://devpost.com/software/constraintflow-shopping-copilot",
+      "type": "public project page HTML",
+      "sha256": "a94f67602427e268125a5780f37cb281df7f1f11b62e8cf50acab1a055ec5cc8"
+    },
+    {
+      "url": "https://devpost.com/software/fable7",
+      "type": "public project page HTML",
+      "sha256": "b9367deaa30e926a4d5b2ea11be95ef46a006919a3c8f537b165e3ee02fb4493"
+    },
+    {
+      "url": "https://devpost.com/software/constraintflow-shopping-copilot/updates/823706",
+      "type": "public update, no added technical detail",
+      "sha256": "fb2c56c258b3d8d9390b4ae56064ceff2fb3b1024255072677d84d408059dc66"
+    },
+    {
+      "url": "https://devpost.com/software/constraintflow-shopping-copilot/updates/823658",
+      "type": "public update, no added technical detail",
+      "sha256": "57d22979a96c9817345e3085b342beb41c293284e2a2641961b4b4922c05ecd6"
+    },
+    {
+      "url": "https://devpost.com/software/constraintflow-shopping-copilot/updates/823657",
+      "type": "public update, no added technical detail",
+      "sha256": "baae9d916806129c6b5920bd842d7be8674e617d0bc77eb184f9dec64385144e"
+    },
+    {
+      "url": "https://devpost.com/software/constraintflow-shopping-copilot/updates/823652",
+      "type": "public update, no added technical detail",
+      "sha256": "f380abf35f7c1bd8e5ba2e26346820506320b44ab888e63bb72552808a29329f"
+    },
+    {
+      "url": "https://devpost.com/software/constraintflow-shopping-copilot/updates/823038",
+      "type": "public update, no added technical detail",
+      "sha256": "ed0b72c66c7df7cb4cfa89035d05138ef20ad5eaf6bcddc8d26b06f39c0b9447"
+    },
+    {
+      "url": "https://devpost.com/software/constraintflow-shopping-copilot/updates/823030",
+      "type": "public update, no added technical detail",
+      "sha256": "219b16321d7b9b52f830470dc559706646252bc825df0173a3521ee42d57fda3"
+    },
+    {
+      "url": "https://devpost.com/software/fable7/updates/823497",
+      "type": "public update, no added technical detail",
+      "sha256": "286a24ecc8723cd989fc08f4bca8750f12dead85c5eeccf0189dd458f997f1c2"
+    },
+    {
+      "url": "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/005/230/780/datas/original.png",
+      "type": "gallery image viewed in browser",
+      "description": "performance"
+    },
+    {
+      "url": "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/005/225/905/datas/original.png",
+      "type": "gallery image viewed in browser",
+      "description": "dashboard"
+    },
+    {
+      "url": "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/005/225/904/datas/original.png",
+      "type": "gallery image viewed in browser",
+      "description": "problem formulation"
+    },
+    {
+      "url": "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/005/225/906/datas/original.png",
+      "type": "gallery image viewed in browser",
+      "description": "case study"
+    },
+    {
+      "url": "https://github.com/kelvin715/techjam-2026-shopping-copilot",
+      "type": "publicly linked repository",
+      "result": "GitHub REST HTTP 404; author public repository list checked, no renamed Track 4 match found"
+    },
+    {
+      "url": "https://github.com/SrivathsanRam/tiktok-techjam-conversational-search",
+      "type": "publicly linked repository",
+      "result": "GitHub REST HTTP 404; author public repository list checked, no renamed Track 4 match found"
+    }
+  ]
+}
