@@ -358,12 +358,12 @@ _ROBUST_BUYING_RES = (
     ),
     re.compile(
         r"^(?:please\s+)?help me find\s+(?P<category>.+?)\.\s*"
-        r"it\s+must\s+(?:have|be)\s+(?P<value>.+?)\.?$",
+        r"it\s+must\s+(?:have|be)\s*[:\u2014-]?\s+(?P<value>.+?)\.?$",
         re.IGNORECASE,
     ),
     re.compile(
         r"^i\s+need\s+(?P<category>.+?)[;,]\s*"
-        r"(?:it\s+)?must\s+(?:have|be)\s+(?P<value>.+?)\.?$",
+        r"(?:it\s+)?must\s+(?:have|be)\s*[:\u2014-]?\s+(?P<value>.+?)\.?$",
         re.IGNORECASE,
     ),
     re.compile(
@@ -374,6 +374,13 @@ _ROBUST_BUYING_RES = (
     ),
 )
 _ROBUST_BROWSING_RES = (
+    re.compile(
+        r"^(?:i['\u2019]?m\s+)?(?:looking|browsing|shopping)\s+for\s+"
+        r"(?P<category>.+?)\.\s*i\s*(?:['\u2019]m|am)?\s*"
+        r"(?:still\s+(?:exploring|deciding)|have(?:n['\u2019]?t|\s+not)\s+"
+        r"decided\s+(?:on\s+)?(?:the\s+)?details\s+yet)\.?$",
+        re.IGNORECASE,
+    ),
     re.compile(
         r"^(?:i['\u2019]?m\s+)?(?:looking|browsing|shopping)\s+for\s+"
         r"(?P<category>.+?)(?:,\s*(?:but\s+)?|\s+and\s+)"
@@ -408,6 +415,11 @@ _ROBUST_BROWSING_RES = (
 )
 _ROBUST_TENTATIVE_RES = (
     re.compile(
+        r"^(?:please\s+)?help\s+me\s+find\s+(?P<category>.+?)\.\s*"
+        r"for\s+now,?\s*i\s+prefer\s*[:\u2014-]?\s+(?P<value>.+?)\.?$",
+        re.IGNORECASE,
+    ),
+    re.compile(
         r"^i['\u2019]?m\s+considering\s+(?P<category>.+?)\.\s*"
         r"one\s+tentative\s+preference\s+is\s*[:\u2014-]?\s*"
         r"(?P<value>.+?)\.?$",
@@ -430,6 +442,10 @@ _ROBUST_TENTATIVE_RES = (
     ),
 )
 _ROBUST_CONTEXTUAL_ANSWER_RES = (
+    re.compile(
+        r"^my\s+priorities\s+are\s*[:\u2014-]?\s+(?P<value>.+?)\.?$",
+        re.IGNORECASE,
+    ),
     re.compile(
         r"^for\s+that,\s*(?:the\s+important\s+detail|what\s+matters)\s+"
         r"is\s*[:\u2014-]?\s*(?P<value>.+?)\.?$",
@@ -475,8 +491,8 @@ _ROBUST_OVERRIDE_RES = (
         re.IGNORECASE,
     ),
     re.compile(
-        r"^change\s+of\s+plan\s*:\s*replace\s+my\s+earlier\s+preference\s+"
-        r"with\s+(?P<value>.+?)\.?$",
+        r"^change\s+of\s+plan\s*[:.\u2014-]\s*replace\s+my\s+earlier\s+preference\s+"
+        r"with\s*:?\s+(?P<value>.+?)\.?$",
         re.IGNORECASE,
     ),
     re.compile(
@@ -535,7 +551,7 @@ _ROBUST_NO_PREFERENCE_RES = (
         re.IGNORECASE,
     ),
     re.compile(
-        r"^(?:any\s+(?P<any_attribute>[a-z_ ]+?)\s+is\s+fine|"
+        r"^(?:any\s+(?P<any_attribute>[a-z_ ]+?)\s+is\s+fine(?:\s+with\s+me)?|"
         r"(?P<matter_attribute>[a-z_ ]+?)\s+does(?:n['\u2019]?t|\s+not)\s+"
         r"matter\s+to\s+me)\.?$",
         re.IGNORECASE,

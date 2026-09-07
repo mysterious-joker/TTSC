@@ -37,6 +37,14 @@ The deterministic reducer handles:
 Turn order, types, and bounded collections are validated. Unsupported parsing
 falls back to conservative evidence rather than discarding the turn.
 
+The anchored prose grammar accepts common punctuation around requirements and
+replacements, a tentative preference after `help me find`, and an opening
+uncertainty sentence. It preserves the requirement payload and its provenance:
+replacing an opening tentative preference removes that value while retaining
+later confirmed answers. Contextual priority statements and `any ... is fine
+with me` use the existing answer/decline reducers. This extends intent parsing;
+it does not make paraphrases eligible for exact simulator replay or refutation.
+
 ## 2. Query construction and cache
 
 The state renders separate lexical and dense queries. All ranking-relevant
@@ -208,6 +216,14 @@ question or width is accepted only if no possible catalog target loses official
 utility and the mean utility strictly improves. This lets a typed question skip
 the evaluator's two-value `other` truncation when that is provably useful,
 without assuming a target prior or weakening the protected ranking.
+
+The planner prunes a prefix as soon as one immediate hit would have lower
+utility than that target's modeled baseline continuation. Every wider prefix
+contains the same target at the same rank, and a clarification cannot undo an
+already scored hit. The entire remaining width search can therefore stop.
+This uses the existing comparison tolerance and preserves the selected action;
+it does not alter the utility formula or approximate the remaining question
+search.
 
 The check is disabled while an intent override is pending and on the first
 boundary-ambiguous browsing turn. When the exact support is larger than the

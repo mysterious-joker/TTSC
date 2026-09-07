@@ -613,6 +613,11 @@ def plan_protocol_pareto_action(
     best_question = "other"
     count = len(hypotheses)
     for width in range(1, min(top_k, count) + 1):
+        # This target is hit immediately at this rank. No question can undo
+        # that loss, and every wider prefix keeps the same target at this rank.
+        immediate_utility = hit_utility(current_turn, width)
+        if immediate_utility + 1e-12 < baseline[hypotheses[width - 1][0]]:
+            break
         seen_transitions: set[
             tuple[tuple[tuple[str, tuple[str, ...]], ...], ...]
         ] = set()
