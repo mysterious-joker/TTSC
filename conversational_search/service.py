@@ -34,6 +34,7 @@ from conversational_search.exposure_policy import (
     BUYING_TOP3_AMBIGUOUS_TOP1_EXPOSURE_POLICY,
     DISABLED_EVIDENCE_EXPOSURE_POLICY,
     PROTOCOL_METRIC_AWARE_EXPOSURE_POLICY,
+    PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY,
     PROTOCOL_POSTERIOR_EXPOSURE_POLICY,
     PROTOCOL_REPLY_TREE_EXPOSURE_POLICY,
     TOP3_STRUCTURAL_EXPOSURE_POLICY,
@@ -465,6 +466,7 @@ class ConversationalSearchAgent:
                 PROTOCOL_POSTERIOR_EXPOSURE_POLICY,
                 PROTOCOL_METRIC_AWARE_EXPOSURE_POLICY,
                 PROTOCOL_REPLY_TREE_EXPOSURE_POLICY,
+                PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY,
             }
             and protocol_catalog_policy
             is not FULL_TRANSCRIPT_PROTOCOL_CATALOG_POLICY
@@ -477,6 +479,7 @@ class ConversationalSearchAgent:
             in {
                 PROTOCOL_METRIC_AWARE_EXPOSURE_POLICY,
                 PROTOCOL_REPLY_TREE_EXPOSURE_POLICY,
+                PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY,
             }
             and protocol_refutation_policy
             is not ELIGIBLE_CONTINUATION_REFUTATION_POLICY
@@ -1963,6 +1966,7 @@ class ConversationalSearchAgent:
                 PROTOCOL_POSTERIOR_EXPOSURE_POLICY,
                 PROTOCOL_METRIC_AWARE_EXPOSURE_POLICY,
                 PROTOCOL_REPLY_TREE_EXPOSURE_POLICY,
+                PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY,
             }
             and full_ranked_ids is not None
             and result_count > 0
@@ -1993,6 +1997,10 @@ class ConversationalSearchAgent:
                     )
             if protocol_resolution is not None and protocol_resolution.exact:
                 retrieval_fault_or_fallback = False
+            planning_events = getattr(self, "_protocol_events", {}).get(
+                session_id,
+                (),
+            )
             try:
                 from conversational_search.exact_evidence import ExactEvidenceResult
                 from conversational_search.exposure import (
@@ -2042,6 +2050,7 @@ class ConversationalSearchAgent:
                             PROTOCOL_POSTERIOR_EXPOSURE_POLICY,
                             PROTOCOL_METRIC_AWARE_EXPOSURE_POLICY,
                             PROTOCOL_REPLY_TREE_EXPOSURE_POLICY,
+                            PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY,
                         }
                         else None
                     ),
@@ -2050,11 +2059,27 @@ class ConversationalSearchAgent:
                         in {
                             PROTOCOL_METRIC_AWARE_EXPOSURE_POLICY,
                             PROTOCOL_REPLY_TREE_EXPOSURE_POLICY,
+                            PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY,
                         }
                     ),
                     reply_tree_protocol_planning=(
                         self.evidence_exposure_policy
                         is PROTOCOL_REPLY_TREE_EXPOSURE_POLICY
+                    ),
+                    pareto_protocol_planning=(
+                        self.evidence_exposure_policy
+                        is PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY
+                    ),
+                    protocol_planning_locked=(
+                        getattr(self, "_protocol_override_pending", {}).get(
+                            session_id,
+                            False,
+                        )
+                        or (
+                            len(planning_events) == 1
+                            and planning_events[0].kind.value
+                            == "initial_browsing"
+                        )
                     ),
                 )
                 exposure_decision = self._validate_evidence_exposure_decision(
@@ -2080,6 +2105,7 @@ class ConversationalSearchAgent:
                     EvidenceExposureStatus.POSTERIOR_SINGLETON,
                     EvidenceExposureStatus.POSTERIOR_PROBE,
                     EvidenceExposureStatus.POSTERIOR_REPLY_TREE,
+                    EvidenceExposureStatus.POSTERIOR_PARETO_HORIZON,
                 }:
                     full_ranked_ids = exposure_decision.presentation_ids
                     parent_asins = full_ranked_ids
@@ -3458,6 +3484,18 @@ class ConversationalSearchAgent:
                 or current_turn >= 10
             ):
                 raise ValueError("reply-tree exposure is outside its safe bound")
+        elif result.status is EvidenceExposureStatus.POSTERIOR_PARETO_HORIZON:
+            if (
+                result.presentation_ids != ranked_ids
+                or not 1 <= result.width <= min(
+                    requested_top_k,
+                    len(ranked_ids),
+                    result.plausible_count,
+                )
+                or result.question not in QUESTION_TEXT
+                or current_turn >= 10
+            ):
+                raise ValueError("Pareto exposure is outside its safe bound")
         elif result.status is EvidenceExposureStatus.POSTERIOR_BATCH:
             if (
                 result.presentation_ids != ranked_ids
@@ -3492,6 +3530,7 @@ class ConversationalSearchAgent:
                 EvidenceExposureStatus.AMBIGUOUS_TOP1_PREVIEW,
                 EvidenceExposureStatus.POSTERIOR_PROBE,
                 EvidenceExposureStatus.POSTERIOR_REPLY_TREE,
+                EvidenceExposureStatus.POSTERIOR_PARETO_HORIZON,
             }
             and result.question is not None
         ):

@@ -185,6 +185,22 @@ continuation-refutation transition. There are no fitted thresholds or public
 labels. It changes only presentation width, never candidate membership or
 relative order.
 
+Before falling back to the repeatable `other` probe, the active agent now
+performs a bounded Pareto check over the complete protocol support. It predicts
+every legal question's exact deterministic reply partitions, then compares the
+result target by target with the existing rank-one/`other` continuation. A new
+question or width is accepted only if no possible catalog target loses official
+utility and the mean utility strictly improves. This lets a typed question skip
+the evaluator's two-value `other` truncation when that is provably useful,
+without assuming a target prior or weakening the protected ranking.
+
+The check is disabled while an intent override is pending and on the first
+boundary-ambiguous browsing turn. When the exact support is larger than the
+existing 200-candidate ranking pool, width remains one and a named question may
+replace `other` only when its full-catalog reply partition strictly refines the
+`other` partition. Otherwise the previously validated metric-aware policy is
+unchanged.
+
 Unsupported turns use the ordinary evidence gate; the older rank-safe preview
 remains available only as an ablation. Its score-threshold dynamic-width
 experiment remains disabled because it lacked an exact protocol posterior and

@@ -4,7 +4,7 @@
 evaluated for submission: smart hybrid retrieval routing, lexicographic
 exact-evidence ranking, full-transcript protocol resolution with eligible
 continuation refutation, the wildcard ``other`` question policy,
-metric-aware exposure, exact-ranking reuse orchestration, and
+Pareto-safe protocol planning, exact-ranking reuse orchestration, and
 intent-epoch novelty slates.
 """
 
@@ -13,7 +13,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from conversational_search.exposure_policy import (
-    PROTOCOL_METRIC_AWARE_EXPOSURE_POLICY,
+    PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY,
 )
 from conversational_search.orchestration import (
     EXACT_RANKING_REUSE_ORCHESTRATION_POLICY,
@@ -42,7 +42,9 @@ class Agent(ConversationalSearchAgent):
     def __init__(self, catalog_path: str | Path = DEFAULT_CATALOG_PATH) -> None:
         super().__init__(
             catalog_path,
-            evidence_exposure_policy=PROTOCOL_METRIC_AWARE_EXPOSURE_POLICY,
+            evidence_exposure_policy=(
+                PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY
+            ),
             orchestration_policy=EXACT_RANKING_REUSE_ORCHESTRATION_POLICY,
             protocol_catalog_policy=FULL_TRANSCRIPT_PROTOCOL_CATALOG_POLICY,
             protocol_refutation_policy=(

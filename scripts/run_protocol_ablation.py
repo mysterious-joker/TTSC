@@ -15,6 +15,7 @@ from conversational_search.exposure_policy import (
     BUYING_TOP3_AMBIGUOUS_TOP1_EXPOSURE_POLICY,
     DISABLED_EVIDENCE_EXPOSURE_POLICY,
     PROTOCOL_METRIC_AWARE_EXPOSURE_POLICY,
+    PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY,
     PROTOCOL_POSTERIOR_EXPOSURE_POLICY,
     PROTOCOL_REPLY_TREE_EXPOSURE_POLICY,
 )
@@ -47,6 +48,7 @@ ARMS = (
     "catalog_refute_posterior",
     "catalog_metric_aware",
     "catalog_reply_tree",
+    "catalog_pareto_horizon",
     "catalog_expected",
     "catalog_refute_expected",
 )
@@ -62,7 +64,11 @@ def build_agent(
     refutation = (
         ELIGIBLE_CONTINUATION_REFUTATION_POLICY
         if "refute" in arm
-        or arm in {"catalog_metric_aware", "catalog_reply_tree"}
+        or arm in {
+            "catalog_metric_aware",
+            "catalog_reply_tree",
+            "catalog_pareto_horizon",
+        }
         else DISABLED_PROTOCOL_REFUTATION_POLICY
     )
     if arm.endswith("expected"):
@@ -70,7 +76,9 @@ def build_agent(
         decision_options = {"decision_policy": EXPECTED_UTILITY_DECISION_POLICY}
     else:
         exposure = (
-            PROTOCOL_REPLY_TREE_EXPOSURE_POLICY
+            PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY
+            if arm == "catalog_pareto_horizon"
+            else PROTOCOL_REPLY_TREE_EXPOSURE_POLICY
             if arm == "catalog_reply_tree"
             else PROTOCOL_METRIC_AWARE_EXPOSURE_POLICY
             if arm == "catalog_metric_aware"

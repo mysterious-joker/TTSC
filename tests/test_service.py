@@ -8,7 +8,7 @@ from types import SimpleNamespace
 from unittest import mock
 
 from conversational_search.exposure_policy import (
-    PROTOCOL_METRIC_AWARE_EXPOSURE_POLICY,
+    PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY,
 )
 from conversational_search.intent import (
     CANONICAL_INTENT_POLICY,
@@ -1442,7 +1442,9 @@ class ConversationalSearchAgentTest(unittest.TestCase):
             Agent()
         initialize.assert_called_once_with(
             DEFAULT_CATALOG_PATH,
-            evidence_exposure_policy=PROTOCOL_METRIC_AWARE_EXPOSURE_POLICY,
+            evidence_exposure_policy=(
+                PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY
+            ),
             orchestration_policy=EXACT_RANKING_REUSE_ORCHESTRATION_POLICY,
             protocol_catalog_policy=FULL_TRANSCRIPT_PROTOCOL_CATALOG_POLICY,
             protocol_refutation_policy=(

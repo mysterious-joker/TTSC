@@ -373,8 +373,9 @@ and [DATA_ATTRIBUTION.md](DATA_ATTRIBUTION.md).
 
 - **MTTC–MRR tradeoff.** Protocol replay and metric-aware enumeration
   deliberately trade slightly later first hits for better first-hit rank.
-  Sessions with many indistinguishable survivors may require more turns to
-  reach the target.
+  The Pareto-safe question planner can skip truncated shared values without
+  weakening any modeled target, but genuinely indistinguishable survivors may
+  still require more turns.
 
 - **Memory footprint.** The BGE model and 4-shard dense index add ~107 MiB of
   assets compared to the pure-BM25 starter. This is modest but non-trivial

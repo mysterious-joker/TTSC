@@ -6,6 +6,7 @@ from conversational_search.exact_evidence import rank_exact_evidence
 from conversational_search.exposure import (
     plan_evidence_gated_exposure,
     plan_protocol_enumeration_width,
+    plan_protocol_pareto_action,
     plan_protocol_reply_tree_width,
 )
 from conversational_search.exposure_policy import EvidenceExposureStatus
@@ -510,6 +511,53 @@ class EvidenceExposureTests(unittest.TestCase):
                 top_k=10,
             ),
             1,
+        )
+
+    def test_pareto_planner_can_skip_truncated_other_values(self) -> None:
+        colors = ("red", "blue", "green")
+        evidence = tuple(
+            ProductProtocolEvidence(
+                parent_asin=f"P{index}",
+                coarse_category="Shoes",
+                card=DisclosureCard(
+                    "same shoe",
+                    ("waterproof", "cotton"),
+                    ("shared feature", f"color: {color}"),
+                ),
+                text=f"waterproof cotton shared {color} shoe",
+            )
+            for index, color in enumerate(colors)
+        )
+        ids = tuple(item.parent_asin for item in evidence)
+        resolution = resolve_protocol_transcript(
+            evidence,
+            (
+                ObservedProtocolEvent(
+                    1,
+                    ProtocolEventKind.INITIAL_EXPLICIT,
+                    values=("waterproof",),
+                ),
+            ),
+            observed_turn_count=1,
+        )
+
+        self.assertEqual(
+            plan_protocol_pareto_action(
+                ids,
+                resolution,
+                current_turn=1,
+                top_k=10,
+            ),
+            (1, "color"),
+        )
+        self.assertEqual(
+            plan_protocol_pareto_action(
+                ids[:2],
+                resolution,
+                current_turn=1,
+                top_k=10,
+            ),
+            (1, "color"),
         )
 
 if __name__ == "__main__":

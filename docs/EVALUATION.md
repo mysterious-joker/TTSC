@@ -54,6 +54,38 @@ The final candidate preserved hit rate on all three suites while improving MRR
 and TechnicalScore. The mixed suite includes unsupported shifted language;
 those turns exercise the ordinary fail-open hybrid path.
 
+## Pareto-safe protocol planning
+
+The active planner adds typed-question lookahead only when it weakly dominates
+the prior rank-one/`other` policy for every candidate in the exact posterior.
+The planner uses reconstructed frozen-catalog cards, deterministic official
+reply partitions, continuation refutation, and the published metric. It has no
+target prior, public-case threshold, or fitted parameter.
+
+The comparison suite was frozen at seed `20260901` before evaluation, excluded
+all 200 public target ASINs, used the official 40/40/15/5 scenario mix, and let
+the unmodified evaluator materialize every hidden card and message.
+
+| Frozen suite | Arm | N | HR@10 | MRR | MTTC | TechnicalScore |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| Organizer public | Metric-aware | 200 | 1.000000 | 0.996250 | 2.350000 | 0.971875 |
+| Organizer public | Pareto-safe | 200 | 1.000000 | 0.996250 | 2.350000 | 0.971875 |
+| Target-disjoint official templates | Metric-aware | 800 | 0.992500 | 0.981654 | 2.566250 | 0.959421 |
+| Target-disjoint official templates | Pareto-safe | 800 | 0.992500 | 0.981654 | 2.566250 | 0.959421 |
+
+A second untouched seed (`20260902`) evaluated the full-catalog strict-
+refinement extension. Metric-aware and Pareto-safe policies were again
+identical across every aggregate and scenario metric: HR@10 `0.985000`, MRR
+`0.973948`, MTTC `2.582500`, and TechnicalScore `0.953034` on 800 cases.
+
+A focused card-level test covers the improvement case absent from those two
+aggregate suites: `other` exposes two shared early card values, while a typed
+`color` question skips the truncation and separates all remaining candidates.
+The Pareto planner selects `color` at the same rank-one width. An earlier
+unconstrained width-and-question experiment was rejected: on the same 800-case
+suite it changed TechnicalScore from `0.959421` to `0.959215` by trading too
+much MRR for a 0.00375-turn MTTC reduction.
+
 ## Teammate `yl-dev` reproduction and synthesis check
 
 The unmodified `yl-dev` head at commit `5684ff9` was evaluated against the same
