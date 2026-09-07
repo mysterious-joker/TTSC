@@ -1,11 +1,19 @@
 # Finalist engineering review — i anything
 
-**Follow-up:** [ARC/Fable7 deep review and five new improvement experiments](ROUND2-RESULTS.md)
+**Latest decision:** adopt the response-preserving runtime optimization in the
+personal fork. The [third-round results](ROUND3-RESULTS.md) cover the revised
+aggregate gate, four rejected accuracy alternatives, repeated timing, and fresh
+validation on 1,600 sessions. Accuracy is unchanged; the new code reduces
+repeated computation. The [championship strategy](CHAMPIONSHIP-STRATEGY.md)
+sets out the strongest defensible differentiation, remaining gaps and a concrete
+finals demonstration.
+
+**Earlier follow-up:** [ARC/Fable7 deep review and five new improvement experiments](ROUND2-RESULTS.md)
 covers both demo videos, full-support priors, deeper planning, an actual
 baseline simulation gate, and the limits of the 0.99 target. The submission stays
 unchanged after this second round as well.
 
-**Decision: retain the current agent.** The existing system beat all three
+**Initial review decision: retain the current agent.** The existing system beat all three
 source-accessible Track 4 competitors on the same fresh 800-target test. The three
 predeclared candidate changes and one exploratory language-grounding change
 failed the requested non-regression standard. This is evidence to keep the current design, not a claim that it is

@@ -1,5 +1,10 @@
 # Architecture before and after the finalist review
 
+The latest [third-round comparison](ROUND3-RESULTS.md#architecture-comparison)
+records bounded computation reuse and an indexed category query, with the
+existing decision policies preserved. Its report states the final validation
+and adoption status. The architecture below records the original baseline.
+
 The [second research round](ROUND2-RESULTS.md#architecture-before-and-after)
 adds deeper question planners and counterfactual simulation as disabled research
 arms. It also retains this submission architecture unchanged.

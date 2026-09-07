@@ -14,9 +14,11 @@ def utility(session: dict) -> float:
     return 0.5 * int(session["hit"]) + 0.3 * session["reciprocal_rank"] + 0.02 * (11 - turn)
 
 
-def compare(baseline: dict, candidate: dict, *, family_size: int = 3) -> dict:
+def compare(baseline: dict, candidate: dict, *, family_size: int = 3, gate: str = "pointwise") -> dict:
     if isinstance(family_size, bool) or not isinstance(family_size, int) or family_size < 1:
         raise ValueError("family_size must be a positive integer")
+    if gate not in {"pointwise", "aggregate"}:
+        raise ValueError("gate must be pointwise or aggregate")
     left = {row["sample_id"]: row for row in baseline["sessions"]}
     right = {row["sample_id"]: row for row in candidate["sessions"]}
     if (not left or left.keys() != right.keys()
@@ -48,16 +50,26 @@ def compare(baseline: dict, candidate: dict, *, family_size: int = 3) -> dict:
             "regressions": int((delta[selected] < -1e-12).sum()),
         }
     lost_hits = sum(left[key]["hit"] and not right[key]["hit"] for key in ids)
+    metric_deltas = {
+        "hit_rate": sum(int(right[key]["hit"]) - int(left[key]["hit"]) for key in ids) / len(ids),
+        "mrr": sum(right[key]["reciprocal_rank"] - left[key]["reciprocal_rank"] for key in ids) / len(ids),
+        "turn_efficiency": sum(
+            ((left[key]["first_hit_turn"] if left[key]["hit"] else 11)
+             - (right[key]["first_hit_turn"] if right[key]["hit"] else 11)) / 10 for key in ids
+        ) / len(ids),
+    }
     measured = candidate.get("measurement", {})
     reasons = []
     if float(delta.mean()) <= 1e-12:
         reasons.append("no_strict_score_improvement")
-    if (delta < -1e-12).any():
+    if gate == "pointwise" and (delta < -1e-12).any():
         reasons.append("individual_session_regression")
-    if lost_hits:
+    if gate == "pointwise" and lost_hits:
         reasons.append("lost_hits")
-    if any(row["utility_delta"] < -1e-12 for row in scenarios.values()):
+    if gate == "pointwise" and any(row["utility_delta"] < -1e-12 for row in scenarios.values()):
         reasons.append("scenario_regression")
+    if gate == "aggregate":
+        reasons.extend(f"aggregate_{key}_regression" for key, value in metric_deltas.items() if value < -1e-12)
     if lower <= 0:
         reasons.append("bootstrap_lower_bound_not_positive")
     if measured.get("exceptions", 0) or measured.get("invalid_outputs", 0):
@@ -65,6 +77,7 @@ def compare(baseline: dict, candidate: dict, *, family_size: int = 3) -> dict:
     if measured.get("research_diagnostics", {}).get("errors", 0):
         reasons.append("internal_research_failure")
     return {
+        "gate": gate, "aggregate_metric_deltas": metric_deltas,
         "n": len(ids), "mean_utility_delta": float(delta.mean()),
         "improved_sessions": int((delta > 1e-12).sum()),
         "regressed_sessions": int((delta < -1e-12).sum()),
@@ -84,9 +97,10 @@ def main() -> None:
     parser.add_argument("candidate", type=Path)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--family-size", default=3, type=int)
+    parser.add_argument("--gate", choices=("pointwise", "aggregate"), default="pointwise")
     args = parser.parse_args()
     result = compare(json.loads(args.baseline.read_text()), json.loads(args.candidate.read_text()),
-                     family_size=args.family_size)
+                     family_size=args.family_size, gate=args.gate)
     args.output.write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps(result, sort_keys=True))
 

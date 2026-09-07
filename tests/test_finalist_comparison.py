@@ -14,6 +14,26 @@ def result(turns):
 
 
 class PromotionGateTest(unittest.TestCase):
+    def test_aggregate_gate_accepts_supported_gain_with_individual_tradeoff(self):
+        decision = compare(result([5] * 31), result([1] * 30 + [6]), gate="aggregate")
+        self.assertTrue(decision["development_gate_pass"])
+        self.assertEqual(decision["regressed_sessions"], 1)
+        self.assertGreater(decision["one_sided_bootstrap_lower_bound"], 0)
+
+    def test_aggregate_gate_does_not_trade_mrr_for_speed(self):
+        candidate = result([1] * 31)
+        candidate["sessions"][0]["reciprocal_rank"] = .5
+        decision = compare(result([5] * 31), candidate, gate="aggregate")
+        self.assertGreater(decision["mean_utility_delta"], 0)
+        self.assertFalse(decision["development_gate_pass"])
+        self.assertIn("aggregate_mrr_regression", decision["rejection_reasons"])
+
+    def test_aggregate_gate_reports_equal_hit_swaps_without_veto(self):
+        decision = compare(result([None] + [5] * 301), result([1] * 301 + [None]), gate="aggregate")
+        self.assertTrue(decision["development_gate_pass"])
+        self.assertEqual(decision["lost_hits"], 1)
+        self.assertEqual(decision["gained_hits"], 1)
+
     def test_aggregate_gain_cannot_hide_one_regression(self):
         decision = compare(result([5, 5, 5]), result([1, 1, 6]))
         self.assertGreater(decision["mean_utility_delta"], 0)

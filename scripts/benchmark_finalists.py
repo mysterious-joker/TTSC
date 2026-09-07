@@ -15,6 +15,7 @@ import os
 from pathlib import Path
 import platform
 import re
+import resource
 import statistics
 import sys
 import time
@@ -25,7 +26,7 @@ from starter.agent import Agent as Baseline
 
 ARMS = ("baseline", "cold_start_reviews", "strict_top1", "lossless_slots", "catalog_category",
         "support_cold_prior", "support_review_prior", "answer_value", "two_step_value",
-        "counterfactual_shield")
+        "counterfactual_shield", "direct_prior", "direct_value", "direct_opportunity", "baseline_continuation")
 
 
 def paraphrase(message: str) -> str:
@@ -55,12 +56,14 @@ class ObservedAgent:
         self.catalog_ids = catalog_ids
         self.wording = wording
         self.latencies: list[float] = []
+        self.session_latencies: list[float] = []
         self.errors = 0
         self.invalid_outputs = 0
         self.response_hash = hashlib.sha256()
 
     def reset(self, session_id: str, user_profile: dict) -> None:
         self.agent.reset(session_id, user_profile)
+        self.session_latencies.append(0.0)
 
     def respond(self, session_id: str, user_message: str, turn: int, top_k: int) -> dict:
         message = paraphrase(user_message) if self.wording == "paraphrase" else user_message
@@ -71,7 +74,9 @@ class ObservedAgent:
             self.errors += 1
             raise
         finally:
-            self.latencies.append(time.perf_counter() - started)
+            elapsed = time.perf_counter() - started
+            self.latencies.append(elapsed)
+            self.session_latencies[-1] += elapsed
         recs = result.get("recommendations", []) if isinstance(result, dict) else []
         ids = [item.get("parent_asin") if isinstance(item, dict) else item for item in recs]
         if (not isinstance(result, dict) or not isinstance(result.get("message"), str)
@@ -84,6 +89,19 @@ class ObservedAgent:
 
 
 def local_agent(arm: str, catalog: Path) -> object:
+    if arm == "baseline_continuation":
+        from conversational_search import exposure
+        from scripts.direct_belief import opportunity_action
+        def continuation(ids, resolution, **kwargs):
+            if set(ids) != set(resolution.candidate_ids):
+                return 1, "other"
+            _, width, question = opportunity_action(tuple(ids), resolution, **kwargs, allow_reorder=False)
+            return width, question
+        exposure.plan_protocol_pareto_action = continuation
+        return Baseline(catalog)
+    if arm in {"direct_prior", "direct_value", "direct_opportunity"}:
+        from scripts.direct_belief import DirectBeliefAgent
+        return DirectBeliefAgent(catalog, arm=arm)
     if arm == "counterfactual_shield":
         from scripts.counterfactual_shield import make_shielded_agent
         return make_shielded_agent(catalog)
@@ -198,6 +216,13 @@ def main() -> None:
     result = official.evaluate(observed, samples, catalog_ids, categories, products)
     elapsed = time.perf_counter() - started
     latencies = sorted(observed.latencies)
+    source_root = args.external_root.resolve() if args.external_root else Path(__file__).resolve().parents[1]
+    source_hash = hashlib.sha256()
+    sources = list(source_root.rglob("*.py")) if args.external_root else [
+        source_root / "agent.py", *source_root.glob("starter/**/*.py"),
+        *source_root.glob("conversational_search/**/*.py")]
+    for source in sorted(sources):
+        source_hash.update(str(source.relative_to(source_root)).encode() + b"\0" + source.read_bytes())
     result["measurement"] = {
         "arm": args.arm, "external_root": str(args.external_root) if args.external_root else None,
         "wording": args.wording, "python": platform.python_version(), "platform": platform.platform(),
@@ -210,12 +235,16 @@ def main() -> None:
         "respond_max_ms": max(latencies) * 1000, "calls": len(latencies),
         "exceptions": observed.errors, "invalid_outputs": observed.invalid_outputs,
         "response_sha256": observed.response_hash.hexdigest(),
+        "runtime_source_sha256": source_hash.hexdigest(),
+        "peak_rss_mib": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+                        / (1024 * 1024 if platform.system() == "Darwin" else 1024),
     }
     if hasattr(agent, "research_diagnostics"):
         result["measurement"]["research_diagnostics"] = agent.research_diagnostics
+    result["timing"] = {"session_response_ms": [value * 1000 for value in observed.session_latencies]}
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2) + "\n")
-    print(json.dumps({key: value for key, value in result.items() if key != "sessions"}, sort_keys=True), flush=True)
+    print(json.dumps({key: value for key, value in result.items() if key not in {"sessions", "timing"}}, sort_keys=True), flush=True)
 
 
 if __name__ == "__main__":

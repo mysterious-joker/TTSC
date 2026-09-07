@@ -1,5 +1,8 @@
 # Reproduce the finalist review
 
+For the latest aggregate gate and runtime study, see the round-three section
+at the end of this document. The original rounds below are retained as history.
+
 Run from the personal checkout after following its normal runtime setup. The
 measurement environment was Python 3.13.15, macOS arm64, using the pinned runtime
 requirements and the bundled BGE assets. Experiments are invoked explicitly;
@@ -116,3 +119,47 @@ No candidate cleared the non-regression gate. Keep the confirmation partition
 unused; there is no team PR to merge from this review. If reviewing the branch
 against team `main`, distinguish the first baseline-snapshot commit (pre-existing
 local work) from the subsequent review/tooling commit.
+
+## Round three: aggregate decisions and response-identical runtime
+
+The user's revised accuracy gate is explicit:
+
+```bash
+python -m scripts.compare_finalist_results baseline.json candidate.json \
+  --gate aggregate --family-size 4 --output comparison.json
+```
+
+It checks aggregate HR, MRR and turn efficiency separately and retains the
+paired score confidence requirement. Individual losses remain visible but no
+longer automatically veto promotion. Omit `--gate` to reproduce the historical
+pointwise gate. The four new research arms are `direct_prior`, `direct_value`,
+`direct_opportunity` and `baseline_continuation`; none is selected by the
+submission entry point.
+
+For response-identical runtime comparisons, create a separate baseline source
+archive at `5e59d21` using `git archive`. Copy the **current**
+`scripts/benchmark_finalists.py` into that archive so both trees use identical
+instrumentation. Supply its ignored `data/catalog.jsonl` from the same frozen
+catalog; model assets are already tracked in the archive. Do not use an external
+module import that could accidentally retain the candidate's Python modules.
+
+```bash
+python -m scripts.benchmark_runtime_pairs \
+  --baseline-root /absolute/path/to/baseline-runtime \
+  --candidate-root /absolute/path/to/personal-checkout \
+  --data-root /absolute/path/to/frozen-suites \
+  --output /absolute/path/to/new-timing-output \
+  --runtime-family-size 2
+```
+
+This runs three sequential alternating pairs on development, public and stress.
+It refuses to overwrite any repetition. The runner records exact response
+digests, per-session timings, source/data/evaluator identities, exceptions,
+invalid output and peak process RSS. Raw files stay local; aggregate reports
+contain no session transcripts or target IDs.
+
+Only after those gates pass, run the same command with `--confirmation` and a
+new output directory to evaluate the reserved 1,600, without changing the agent.
+That partition is consumed once opened; it cannot serve as a fresh holdout for
+later tuned policies. Use [ROUND3-RESULTS.md](ROUND3-RESULTS.md) for its actual
+status and the observed results, including the rejected first runtime candidate.

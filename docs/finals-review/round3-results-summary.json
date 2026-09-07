@@ -1,0 +1,2158 @@
+{
+  "decision": "accept behavior-preserving runtime optimization; reject four accuracy alternatives",
+  "baseline_ref": "5e59d21f02eed867be46d7808e8ddac1907c65ad",
+  "accuracy_experiments": {
+    "direct_prior": {
+      "sample_count": 800,
+      "hit_rate_at_10": 0.99,
+      "mrr": 0.975052,
+      "mttc": 2.58875,
+      "efficiency": 0.841125,
+      "recommended_technical_score": 0.955741,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 40,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 3.5
+        },
+        "browsing": {
+          "sample_count": 322,
+          "hit_rate_at_10": 0.984472,
+          "mrr": 0.978002,
+          "mttc": 2.68323
+        },
+        "buying": {
+          "sample_count": 327,
+          "hit_rate_at_10": 0.990826,
+          "mrr": 0.969436,
+          "mttc": 2.036697
+        },
+        "intent_override": {
+          "sample_count": 111,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.974045,
+          "mttc": 3.612613
+        }
+      },
+      "measurement": {
+        "arm": "direct_prior",
+        "external_root": null,
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 3.7495240829885006,
+        "evaluation_seconds": 12.616666666988749,
+        "respond_mean_ms": 6.051506848384636,
+        "respond_p95_ms": 38.17945800255984,
+        "respond_max_ms": 191.980000003241,
+        "calls": 2063,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "fdb02938813b27126935c91d13c0117ff96cc59ae7bca7ab7e2cb246e7d2a559",
+        "research_diagnostics": {
+          "direct_calls": 2063,
+          "fallback_calls": 0,
+          "errors": 0,
+          "retrieval_calls_avoided": 2063,
+          "opportunity_probe_changes": 0
+        }
+      }
+    },
+    "direct_value": {
+      "sample_count": 800,
+      "hit_rate_at_10": 0.99,
+      "mrr": 0.975718,
+      "mttc": 2.585,
+      "efficiency": 0.8415,
+      "recommended_technical_score": 0.956015,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 40,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 3.5
+        },
+        "browsing": {
+          "sample_count": 322,
+          "hit_rate_at_10": 0.984472,
+          "mrr": 0.978002,
+          "mttc": 2.68323
+        },
+        "buying": {
+          "sample_count": 327,
+          "hit_rate_at_10": 0.990826,
+          "mrr": 0.971067,
+          "mttc": 2.027523
+        },
+        "intent_override": {
+          "sample_count": 111,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.974045,
+          "mttc": 3.612613
+        }
+      },
+      "measurement": {
+        "arm": "direct_value",
+        "external_root": null,
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 3.886606917018071,
+        "evaluation_seconds": 4.082544667006005,
+        "respond_mean_ms": 1.9318934465313184,
+        "respond_p95_ms": 6.345957983285189,
+        "respond_max_ms": 73.14637501258403,
+        "calls": 2060,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "6e9134439cc75362a433a2b1b8ada74e8105e451aa5271c6d5e2df8356d83958",
+        "research_diagnostics": {
+          "direct_calls": 2060,
+          "fallback_calls": 0,
+          "errors": 0,
+          "retrieval_calls_avoided": 2060,
+          "opportunity_probe_changes": 0
+        }
+      }
+    },
+    "direct_opportunity": {
+      "sample_count": 800,
+      "hit_rate_at_10": 0.99,
+      "mrr": 0.974645,
+      "mttc": 2.56,
+      "efficiency": 0.844,
+      "recommended_technical_score": 0.956193,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 40,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 3.4
+        },
+        "browsing": {
+          "sample_count": 322,
+          "hit_rate_at_10": 0.984472,
+          "mrr": 0.975311,
+          "mttc": 2.661491
+        },
+        "buying": {
+          "sample_count": 327,
+          "hit_rate_at_10": 0.990826,
+          "mrr": 0.971092,
+          "mttc": 2.0
+        },
+        "intent_override": {
+          "sample_count": 111,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.974045,
+          "mttc": 3.612613
+        }
+      },
+      "measurement": {
+        "arm": "direct_opportunity",
+        "external_root": null,
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 3.889277709007729,
+        "evaluation_seconds": 9.820565124973655,
+        "respond_mean_ms": 4.756239717672168,
+        "respond_p95_ms": 31.323667033575475,
+        "respond_max_ms": 140.41883300524205,
+        "calls": 2040,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "b2169f4c5b29266f0ccba93356f850eff347a2aab75fb714e1e89fde88641685",
+        "research_diagnostics": {
+          "direct_calls": 2040,
+          "fallback_calls": 0,
+          "errors": 0,
+          "retrieval_calls_avoided": 2040,
+          "opportunity_probe_changes": 144
+        }
+      }
+    },
+    "baseline_continuation": {
+      "sample_count": 800,
+      "hit_rate_at_10": 0.99,
+      "mrr": 0.974892,
+      "mttc": 2.55875,
+      "efficiency": 0.844125,
+      "recommended_technical_score": 0.956293,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 40,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 3.425
+        },
+        "browsing": {
+          "sample_count": 322,
+          "hit_rate_at_10": 0.984472,
+          "mrr": 0.96944,
+          "mttc": 2.608696
+        },
+        "buying": {
+          "sample_count": 327,
+          "hit_rate_at_10": 0.990826,
+          "mrr": 0.973152,
+          "mttc": 2.030581
+        },
+        "intent_override": {
+          "sample_count": 111,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.986787,
+          "mttc": 3.657658
+        }
+      },
+      "measurement": {
+        "arm": "baseline_continuation",
+        "external_root": null,
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.105303791991901,
+        "evaluation_seconds": 66.99164683400886,
+        "respond_mean_ms": 32.77810639259303,
+        "respond_p95_ms": 61.87504099216312,
+        "respond_max_ms": 155.36945802159607,
+        "calls": 2039,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "27466bda6a228698c1c0987c36ac464b4dd60dc4d067877d1965826e405d51cf"
+      }
+    }
+  },
+  "accuracy_comparisons": {
+    "direct_prior": {
+      "gate": "aggregate",
+      "aggregate_metric_deltas": {
+        "hit_rate": 0.0,
+        "mrr": 0.00015972222222222207,
+        "turn_efficiency": -0.002625
+      },
+      "n": 800,
+      "mean_utility_delta": -0.00047708333333333365,
+      "improved_sessions": 37,
+      "regressed_sessions": 45,
+      "unchanged_sessions": 718,
+      "lost_hits": 0,
+      "gained_hits": 0,
+      "one_sided_bootstrap_lower_bound": -0.0022616257440476193,
+      "alpha": 0.0125,
+      "bootstrap_draws": 20000,
+      "scenario_deltas": {
+        "boundary": {
+          "n": 40,
+          "utility_delta": -0.001999999999999996,
+          "regressions": 5
+        },
+        "browsing": {
+          "n": 322,
+          "utility_delta": 0.0010780834072759548,
+          "regressions": 17
+        },
+        "buying": {
+          "n": 327,
+          "utility_delta": -0.000992427552060581,
+          "regressions": 20
+        },
+        "intent_override": {
+          "n": 111,
+          "utility_delta": -0.0029214929214929236,
+          "regressions": 3
+        }
+      },
+      "development_gate_pass": false,
+      "rejection_reasons": [
+        "no_strict_score_improvement",
+        "aggregate_turn_efficiency_regression",
+        "bootstrap_lower_bound_not_positive"
+      ]
+    },
+    "direct_value": {
+      "gate": "aggregate",
+      "aggregate_metric_deltas": {
+        "hit_rate": 0.0,
+        "mrr": 0.0008263888888888888,
+        "turn_efficiency": -0.0022500000000000003
+      },
+      "n": 800,
+      "mean_utility_delta": -0.0002020833333333337,
+      "improved_sessions": 45,
+      "regressed_sessions": 49,
+      "unchanged_sessions": 706,
+      "lost_hits": 0,
+      "gained_hits": 0,
+      "one_sided_bootstrap_lower_bound": -0.002043162202380953,
+      "alpha": 0.0125,
+      "bootstrap_draws": 20000,
+      "scenario_deltas": {
+        "boundary": {
+          "n": 40,
+          "utility_delta": -0.001999999999999996,
+          "regressions": 7
+        },
+        "browsing": {
+          "n": 322,
+          "utility_delta": 0.0010780834072759548,
+          "regressions": 17
+        },
+        "buying": {
+          "n": 327,
+          "utility_delta": -0.00031964467744284407,
+          "regressions": 22
+        },
+        "intent_override": {
+          "n": 111,
+          "utility_delta": -0.0029214929214929236,
+          "regressions": 3
+        }
+      },
+      "development_gate_pass": false,
+      "rejection_reasons": [
+        "no_strict_score_improvement",
+        "aggregate_turn_efficiency_regression",
+        "bootstrap_lower_bound_not_positive"
+      ]
+    },
+    "direct_opportunity": {
+      "gate": "aggregate",
+      "aggregate_metric_deltas": {
+        "hit_rate": 0.0,
+        "mrr": -0.00024652777777777797,
+        "turn_efficiency": 0.00025000000000000006
+      },
+      "n": 800,
+      "mean_utility_delta": -2.3958333333333747e-05,
+      "improved_sessions": 52,
+      "regressed_sessions": 43,
+      "unchanged_sessions": 705,
+      "lost_hits": 0,
+      "gained_hits": 0,
+      "one_sided_bootstrap_lower_bound": -0.0017483630952380951,
+      "alpha": 0.0125,
+      "bootstrap_draws": 20000,
+      "scenario_deltas": {
+        "boundary": {
+          "n": 40,
+          "utility_delta": 5.551115123125783e-18,
+          "regressions": 5
+        },
+        "browsing": {
+          "n": 322,
+          "utility_delta": 0.0007054125998225382,
+          "regressions": 16
+        },
+        "buying": {
+          "n": 327,
+          "utility_delta": 0.0002384592980923241,
+          "regressions": 19
+        },
+        "intent_override": {
+          "n": 111,
+          "utility_delta": -0.0029214929214929236,
+          "regressions": 3
+        }
+      },
+      "development_gate_pass": false,
+      "rejection_reasons": [
+        "no_strict_score_improvement",
+        "aggregate_mrr_regression",
+        "bootstrap_lower_bound_not_positive"
+      ]
+    },
+    "baseline_continuation": {
+      "gate": "aggregate",
+      "aggregate_metric_deltas": {
+        "hit_rate": 0.0,
+        "mrr": 0.0,
+        "turn_efficiency": 0.00037500000000000006
+      },
+      "n": 800,
+      "mean_utility_delta": 7.499999999999965e-05,
+      "improved_sessions": 4,
+      "regressed_sessions": 2,
+      "unchanged_sessions": 794,
+      "lost_hits": 0,
+      "gained_hits": 0,
+      "one_sided_bootstrap_lower_bound": -7.500000000000006e-05,
+      "alpha": 0.0125,
+      "bootstrap_draws": 20000,
+      "scenario_deltas": {
+        "boundary": {
+          "n": 40,
+          "utility_delta": -0.0005000000000000004,
+          "regressions": 1
+        },
+        "browsing": {
+          "n": 322,
+          "utility_delta": 0.0,
+          "regressions": 0
+        },
+        "buying": {
+          "n": 327,
+          "utility_delta": 0.00024464831804281266,
+          "regressions": 1
+        },
+        "intent_override": {
+          "n": 111,
+          "utility_delta": 0.0,
+          "regressions": 0
+        }
+      },
+      "development_gate_pass": false,
+      "rejection_reasons": [
+        "bootstrap_lower_bound_not_positive"
+      ]
+    }
+  },
+  "runtime_v1_rejected": {
+    "development": {
+      "sample_count": 800,
+      "identical_sessions_and_responses": true,
+      "timing_medians": {
+        "baseline": {
+          "startup_seconds": 4.087394041009247,
+          "evaluation_seconds": 77.58510137500707,
+          "respond_mean_ms": 37.91545425793343,
+          "respond_p95_ms": 77.53316598245874,
+          "peak_rss_mib": 607.03125,
+          "end_to_end_seconds": 81.74707958300132
+        },
+        "candidate": {
+          "startup_seconds": 3.9133377919788472,
+          "evaluation_seconds": 66.71791191602824,
+          "respond_mean_ms": 32.594794536416025,
+          "respond_p95_ms": 64.39345801481977,
+          "peak_rss_mib": 616.515625,
+          "end_to_end_seconds": 70.63124970800709
+        }
+      },
+      "paired_runs": [
+        {
+          "baseline": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 3.92564804200083,
+            "evaluation_seconds": 73.2995079579996,
+            "respond_mean_ms": 35.82447529390174,
+            "respond_p95_ms": 75.21987502695993,
+            "respond_max_ms": 241.57941597513855,
+            "calls": 2042,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "550322df9baa8214b06758f3c234a17ca8f128be6ac5875a71c161aa043a65b9",
+            "runtime_source_sha256": "21348bcad374c3c7ec92b765986f01fbb5d3ee86ebd97b491ebc4adf172eb9ee",
+            "peak_rss_mib": 662.9375
+          },
+          "candidate": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 3.8716084170155227,
+            "evaluation_seconds": 64.29382945800899,
+            "respond_mean_ms": 31.413905793429468,
+            "respond_p95_ms": 61.58962496556342,
+            "respond_max_ms": 217.96325000468642,
+            "calls": 2042,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "550322df9baa8214b06758f3c234a17ca8f128be6ac5875a71c161aa043a65b9",
+            "runtime_source_sha256": "6236a84596ecde78432d7398360c836748c0b05d7531cad03cfbe264e766f7cb",
+            "peak_rss_mib": 668.609375
+          }
+        },
+        {
+          "baseline": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.161978207994252,
+            "evaluation_seconds": 77.58510137500707,
+            "respond_mean_ms": 37.91545425793343,
+            "respond_p95_ms": 77.53316598245874,
+            "respond_max_ms": 319.42145799985155,
+            "calls": 2042,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "550322df9baa8214b06758f3c234a17ca8f128be6ac5875a71c161aa043a65b9",
+            "runtime_source_sha256": "21348bcad374c3c7ec92b765986f01fbb5d3ee86ebd97b491ebc4adf172eb9ee",
+            "peak_rss_mib": 607.03125
+          },
+          "candidate": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 3.9133377919788472,
+            "evaluation_seconds": 66.71791191602824,
+            "respond_mean_ms": 32.594794536416025,
+            "respond_p95_ms": 64.39345801481977,
+            "respond_max_ms": 226.90979100298136,
+            "calls": 2042,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "550322df9baa8214b06758f3c234a17ca8f128be6ac5875a71c161aa043a65b9",
+            "runtime_source_sha256": "6236a84596ecde78432d7398360c836748c0b05d7531cad03cfbe264e766f7cb",
+            "peak_rss_mib": 616.515625
+          }
+        },
+        {
+          "baseline": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.087394041009247,
+            "evaluation_seconds": 77.80488458299078,
+            "respond_mean_ms": 38.01775940472258,
+            "respond_p95_ms": 77.67558301566169,
+            "respond_max_ms": 318.74162500025705,
+            "calls": 2042,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "550322df9baa8214b06758f3c234a17ca8f128be6ac5875a71c161aa043a65b9",
+            "runtime_source_sha256": "21348bcad374c3c7ec92b765986f01fbb5d3ee86ebd97b491ebc4adf172eb9ee",
+            "peak_rss_mib": 600.453125
+          },
+          "candidate": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.084609084005933,
+            "evaluation_seconds": 67.65326529199956,
+            "respond_mean_ms": 33.049705386521886,
+            "respond_p95_ms": 65.0942919892259,
+            "respond_max_ms": 227.0722920075059,
+            "calls": 2042,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "550322df9baa8214b06758f3c234a17ca8f128be6ac5875a71c161aa043a65b9",
+            "runtime_source_sha256": "6236a84596ecde78432d7398360c836748c0b05d7531cad03cfbe264e766f7cb",
+            "peak_rss_mib": 608.96875
+          }
+        }
+      ],
+      "median_end_to_end_speedup": 1.157378354778481,
+      "mean_paired_session_saving_ms": 12.76592749869451,
+      "one_sided_saving_lower_bound_ms": 10.728662935870185,
+      "alpha": 0.016666666666666666,
+      "bootstrap_draws": 20000,
+      "aggregate_runtime_nonregression": true
+    },
+    "public": {
+      "sample_count": 200,
+      "identical_sessions_and_responses": true,
+      "timing_medians": {
+        "baseline": {
+          "startup_seconds": 4.154742958024144,
+          "evaluation_seconds": 17.03233541699592,
+          "respond_mean_ms": 36.13698928210726,
+          "respond_p95_ms": 76.56950003001839,
+          "peak_rss_mib": 648.625,
+          "end_to_end_seconds": 21.14714987599291
+        },
+        "candidate": {
+          "startup_seconds": 4.116026207979303,
+          "evaluation_seconds": 14.9821587500046,
+          "respond_mean_ms": 31.779631979619847,
+          "respond_p95_ms": 62.93170800199732,
+          "peak_rss_mib": 652.359375,
+          "end_to_end_seconds": 19.098184957983904
+        }
+      },
+      "paired_runs": [
+        {
+          "baseline": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "857259f7a438e6188ac63e18995b6ff4489bfcfc4a716a798b9a2aa0ee8f7579",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.154742958024144,
+            "evaluation_seconds": 16.929063458985183,
+            "respond_mean_ms": 35.91987510357904,
+            "respond_p95_ms": 75.69766597589478,
+            "respond_max_ms": 179.88212499767542,
+            "calls": 470,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "617ed260db8fedc5f1add9054f515afc8cfb2aac05c742794864b66b404b6417",
+            "runtime_source_sha256": "21348bcad374c3c7ec92b765986f01fbb5d3ee86ebd97b491ebc4adf172eb9ee",
+            "peak_rss_mib": 652.71875
+          },
+          "candidate": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "857259f7a438e6188ac63e18995b6ff4489bfcfc4a716a798b9a2aa0ee8f7579",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.078933542012237,
+            "evaluation_seconds": 14.971183708985336,
+            "respond_mean_ms": 31.755210645001462,
+            "respond_p95_ms": 62.78166698757559,
+            "respond_max_ms": 142.28554198052734,
+            "calls": 470,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "617ed260db8fedc5f1add9054f515afc8cfb2aac05c742794864b66b404b6417",
+            "runtime_source_sha256": "6236a84596ecde78432d7398360c836748c0b05d7531cad03cfbe264e766f7cb",
+            "peak_rss_mib": 652.359375
+          }
+        },
+        {
+          "baseline": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "857259f7a438e6188ac63e18995b6ff4489bfcfc4a716a798b9a2aa0ee8f7579",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.114814458996989,
+            "evaluation_seconds": 17.03233541699592,
+            "respond_mean_ms": 36.13698928210726,
+            "respond_p95_ms": 76.56950003001839,
+            "respond_max_ms": 181.3590000383556,
+            "calls": 470,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "617ed260db8fedc5f1add9054f515afc8cfb2aac05c742794864b66b404b6417",
+            "runtime_source_sha256": "21348bcad374c3c7ec92b765986f01fbb5d3ee86ebd97b491ebc4adf172eb9ee",
+            "peak_rss_mib": 648.625
+          },
+          "candidate": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "857259f7a438e6188ac63e18995b6ff4489bfcfc4a716a798b9a2aa0ee8f7579",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.181416791980155,
+            "evaluation_seconds": 15.075995125051122,
+            "respond_mean_ms": 31.96244086609519,
+            "respond_p95_ms": 62.99887498607859,
+            "respond_max_ms": 140.74904198059812,
+            "calls": 470,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "617ed260db8fedc5f1add9054f515afc8cfb2aac05c742794864b66b404b6417",
+            "runtime_source_sha256": "6236a84596ecde78432d7398360c836748c0b05d7531cad03cfbe264e766f7cb",
+            "peak_rss_mib": 602.84375
+          }
+        },
+        {
+          "baseline": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "857259f7a438e6188ac63e18995b6ff4489bfcfc4a716a798b9a2aa0ee8f7579",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.158454291988164,
+            "evaluation_seconds": 17.106914541043807,
+            "respond_mean_ms": 36.2974550825187,
+            "respond_p95_ms": 77.37841695779935,
+            "respond_max_ms": 178.94075001822785,
+            "calls": 470,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "617ed260db8fedc5f1add9054f515afc8cfb2aac05c742794864b66b404b6417",
+            "runtime_source_sha256": "21348bcad374c3c7ec92b765986f01fbb5d3ee86ebd97b491ebc4adf172eb9ee",
+            "peak_rss_mib": 596.453125
+          },
+          "candidate": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "857259f7a438e6188ac63e18995b6ff4489bfcfc4a716a798b9a2aa0ee8f7579",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.116026207979303,
+            "evaluation_seconds": 14.9821587500046,
+            "respond_mean_ms": 31.779631979619847,
+            "respond_p95_ms": 62.93170800199732,
+            "respond_max_ms": 139.51895898208022,
+            "calls": 470,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "617ed260db8fedc5f1add9054f515afc8cfb2aac05c742794864b66b404b6417",
+            "runtime_source_sha256": "6236a84596ecde78432d7398360c836748c0b05d7531cad03cfbe264e766f7cb",
+            "peak_rss_mib": 654.828125
+          }
+        }
+      ],
+      "median_end_to_end_speedup": 1.1072858453573855,
+      "mean_paired_session_saving_ms": 10.033280326751992,
+      "one_sided_saving_lower_bound_ms": 7.699044620302932,
+      "alpha": 0.016666666666666666,
+      "bootstrap_draws": 20000,
+      "aggregate_runtime_nonregression": true
+    },
+    "stress": {
+      "sample_count": 200,
+      "identical_sessions_and_responses": true,
+      "timing_medians": {
+        "baseline": {
+          "startup_seconds": 4.162996625003871,
+          "evaluation_seconds": 19.333798833016772,
+          "respond_mean_ms": 27.466818914507275,
+          "respond_p95_ms": 61.25650001922622,
+          "peak_rss_mib": 645.96875,
+          "end_to_end_seconds": 23.463270666019525
+        },
+        "candidate": {
+          "startup_seconds": 4.129771875042934,
+          "evaluation_seconds": 19.345370166003704,
+          "respond_mean_ms": 27.47625475187197,
+          "respond_p95_ms": 62.01612501172349,
+          "peak_rss_mib": 647.484375,
+          "end_to_end_seconds": 23.48432650003815
+        }
+      },
+      "paired_runs": [
+        {
+          "baseline": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "paraphrase",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "984d8e468d37d0a96197c11af29b64ccb185cab6e3a7e39d8a2ae5b86efa6fec",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.166244583029766,
+            "evaluation_seconds": 19.43901787500363,
+            "respond_mean_ms": 27.617051925157273,
+            "respond_p95_ms": 62.84787500044331,
+            "respond_max_ms": 104.97816698625684,
+            "calls": 702,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "d7116fa16b29e1d40c58db76ee1f8398dc290585ca0b158fbd70c6aa6f6dfc31",
+            "runtime_source_sha256": "21348bcad374c3c7ec92b765986f01fbb5d3ee86ebd97b491ebc4adf172eb9ee",
+            "peak_rss_mib": 629.34375
+          },
+          "candidate": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "paraphrase",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "984d8e468d37d0a96197c11af29b64ccb185cab6e3a7e39d8a2ae5b86efa6fec",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.17386866704328,
+            "evaluation_seconds": 19.345370166003704,
+            "respond_mean_ms": 27.47625475187197,
+            "respond_p95_ms": 61.34212500182912,
+            "respond_max_ms": 104.53854198567569,
+            "calls": 702,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "d7116fa16b29e1d40c58db76ee1f8398dc290585ca0b158fbd70c6aa6f6dfc31",
+            "runtime_source_sha256": "6236a84596ecde78432d7398360c836748c0b05d7531cad03cfbe264e766f7cb",
+            "peak_rss_mib": 647.484375
+          }
+        },
+        {
+          "baseline": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "paraphrase",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "984d8e468d37d0a96197c11af29b64ccb185cab6e3a7e39d8a2ae5b86efa6fec",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.162996625003871,
+            "evaluation_seconds": 19.300274041015655,
+            "respond_mean_ms": 27.42076780674568,
+            "respond_p95_ms": 61.25650001922622,
+            "respond_max_ms": 103.76970801735297,
+            "calls": 702,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "d7116fa16b29e1d40c58db76ee1f8398dc290585ca0b158fbd70c6aa6f6dfc31",
+            "runtime_source_sha256": "21348bcad374c3c7ec92b765986f01fbb5d3ee86ebd97b491ebc4adf172eb9ee",
+            "peak_rss_mib": 653.0625
+          },
+          "candidate": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "paraphrase",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "984d8e468d37d0a96197c11af29b64ccb185cab6e3a7e39d8a2ae5b86efa6fec",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.129771875042934,
+            "evaluation_seconds": 19.354554624995217,
+            "respond_mean_ms": 27.49235932469803,
+            "respond_p95_ms": 62.47350003104657,
+            "respond_max_ms": 103.23866701219231,
+            "calls": 702,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "d7116fa16b29e1d40c58db76ee1f8398dc290585ca0b158fbd70c6aa6f6dfc31",
+            "runtime_source_sha256": "6236a84596ecde78432d7398360c836748c0b05d7531cad03cfbe264e766f7cb",
+            "peak_rss_mib": 614.1875
+          }
+        },
+        {
+          "baseline": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "paraphrase",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "984d8e468d37d0a96197c11af29b64ccb185cab6e3a7e39d8a2ae5b86efa6fec",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.12708887498593,
+            "evaluation_seconds": 19.333798833016772,
+            "respond_mean_ms": 27.466818914507275,
+            "respond_p95_ms": 61.0161250224337,
+            "respond_max_ms": 102.3463339661248,
+            "calls": 702,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "d7116fa16b29e1d40c58db76ee1f8398dc290585ca0b158fbd70c6aa6f6dfc31",
+            "runtime_source_sha256": "21348bcad374c3c7ec92b765986f01fbb5d3ee86ebd97b491ebc4adf172eb9ee",
+            "peak_rss_mib": 645.96875
+          },
+          "candidate": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "paraphrase",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "984d8e468d37d0a96197c11af29b64ccb185cab6e3a7e39d8a2ae5b86efa6fec",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.099413500051014,
+            "evaluation_seconds": 19.335121041047387,
+            "respond_mean_ms": 27.46369099011313,
+            "respond_p95_ms": 62.01612501172349,
+            "respond_max_ms": 104.24629098270088,
+            "calls": 702,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "d7116fa16b29e1d40c58db76ee1f8398dc290585ca0b158fbd70c6aa6f6dfc31",
+            "runtime_source_sha256": "6236a84596ecde78432d7398360c836748c0b05d7531cad03cfbe264e766f7cb",
+            "peak_rss_mib": 648.15625
+          }
+        }
+      ],
+      "median_end_to_end_speedup": 0.9991034090750446,
+      "mean_paired_session_saving_ms": 0.08794110006419942,
+      "one_sided_saving_lower_bound_ms": -0.021413180220406502,
+      "alpha": 0.016666666666666666,
+      "bootstrap_draws": 20000,
+      "aggregate_runtime_nonregression": false
+    }
+  },
+  "runtime_v2_development": {
+    "development": {
+      "sample_count": 800,
+      "identical_sessions_and_responses": true,
+      "timing_medians": {
+        "baseline": {
+          "startup_seconds": 4.110911458032206,
+          "evaluation_seconds": 77.00114587502321,
+          "respond_mean_ms": 37.626947507528584,
+          "respond_p95_ms": 77.31108297593892,
+          "peak_rss_mib": 609.296875,
+          "end_to_end_seconds": 81.10305716702715
+        },
+        "candidate": {
+          "startup_seconds": 4.122645583003759,
+          "evaluation_seconds": 65.94949912501033,
+          "respond_mean_ms": 32.21663374671107,
+          "respond_p95_ms": 64.65529196429998,
+          "peak_rss_mib": 612.125,
+          "end_to_end_seconds": 70.0721447080141
+        }
+      },
+      "paired_runs": [
+        {
+          "baseline": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.127986041945405,
+            "evaluation_seconds": 77.72262158396188,
+            "respond_mean_ms": 37.97889404483099,
+            "respond_p95_ms": 77.84641702892259,
+            "respond_max_ms": 319.3446670193225,
+            "calls": 2042,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "550322df9baa8214b06758f3c234a17ca8f128be6ac5875a71c161aa043a65b9",
+            "runtime_source_sha256": "21348bcad374c3c7ec92b765986f01fbb5d3ee86ebd97b491ebc4adf172eb9ee",
+            "peak_rss_mib": 638.828125
+          },
+          "candidate": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.2198723329929635,
+            "evaluation_seconds": 66.26653570798226,
+            "respond_mean_ms": 32.37321441327235,
+            "respond_p95_ms": 64.65529196429998,
+            "respond_max_ms": 227.45808400213718,
+            "calls": 2042,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "550322df9baa8214b06758f3c234a17ca8f128be6ac5875a71c161aa043a65b9",
+            "runtime_source_sha256": "c9f9e14853ae28e10633ff4353645ce1e5330c1ded7e2440c29f0f86c29b177e",
+            "peak_rss_mib": 618.828125
+          }
+        },
+        {
+          "baseline": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.101911292003933,
+            "evaluation_seconds": 77.00114587502321,
+            "respond_mean_ms": 37.626947507528584,
+            "respond_p95_ms": 76.89704198855907,
+            "respond_max_ms": 314.20183303998783,
+            "calls": 2042,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "550322df9baa8214b06758f3c234a17ca8f128be6ac5875a71c161aa043a65b9",
+            "runtime_source_sha256": "21348bcad374c3c7ec92b765986f01fbb5d3ee86ebd97b491ebc4adf172eb9ee",
+            "peak_rss_mib": 604.5
+          },
+          "candidate": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.122645583003759,
+            "evaluation_seconds": 65.94949912501033,
+            "respond_mean_ms": 32.21663374671107,
+            "respond_p95_ms": 64.65600000228733,
+            "respond_max_ms": 227.30483300983906,
+            "calls": 2042,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "550322df9baa8214b06758f3c234a17ca8f128be6ac5875a71c161aa043a65b9",
+            "runtime_source_sha256": "c9f9e14853ae28e10633ff4353645ce1e5330c1ded7e2440c29f0f86c29b177e",
+            "peak_rss_mib": 612.125
+          }
+        },
+        {
+          "baseline": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.110911458032206,
+            "evaluation_seconds": 76.95843083399814,
+            "respond_mean_ms": 37.60932790681362,
+            "respond_p95_ms": 77.31108297593892,
+            "respond_max_ms": 316.7708749533631,
+            "calls": 2042,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "550322df9baa8214b06758f3c234a17ca8f128be6ac5875a71c161aa043a65b9",
+            "runtime_source_sha256": "21348bcad374c3c7ec92b765986f01fbb5d3ee86ebd97b491ebc4adf172eb9ee",
+            "peak_rss_mib": 609.296875
+          },
+          "candidate": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.0458774589933455,
+            "evaluation_seconds": 65.57359512499534,
+            "respond_mean_ms": 32.03087328299451,
+            "respond_p95_ms": 64.22241701511666,
+            "respond_max_ms": 235.22787500405684,
+            "calls": 2042,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "550322df9baa8214b06758f3c234a17ca8f128be6ac5875a71c161aa043a65b9",
+            "runtime_source_sha256": "c9f9e14853ae28e10633ff4353645ce1e5330c1ded7e2440c29f0f86c29b177e",
+            "peak_rss_mib": 610.078125
+          }
+        }
+      ],
+      "median_end_to_end_speedup": 1.1574222182720126,
+      "mean_paired_session_saving_ms": 14.225375180903939,
+      "one_sided_saving_lower_bound_ms": 12.035176685971237,
+      "alpha": 0.008333333333333333,
+      "bootstrap_draws": 20000,
+      "aggregate_runtime_nonregression": true
+    },
+    "public": {
+      "sample_count": 200,
+      "identical_sessions_and_responses": true,
+      "timing_medians": {
+        "baseline": {
+          "startup_seconds": 4.004038000013679,
+          "evaluation_seconds": 16.541004957980476,
+          "respond_mean_ms": 35.10087350088647,
+          "respond_p95_ms": 73.72866699006408,
+          "peak_rss_mib": 647.765625,
+          "end_to_end_seconds": 20.545042957994156
+        },
+        "candidate": {
+          "startup_seconds": 4.032284916960634,
+          "evaluation_seconds": 14.0417955830344,
+          "respond_mean_ms": 29.783562672116418,
+          "respond_p95_ms": 58.99375001899898,
+          "peak_rss_mib": 664.6875,
+          "end_to_end_seconds": 18.074080499995034
+        }
+      },
+      "paired_runs": [
+        {
+          "baseline": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "857259f7a438e6188ac63e18995b6ff4489bfcfc4a716a798b9a2aa0ee8f7579",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.004038000013679,
+            "evaluation_seconds": 16.541004957980476,
+            "respond_mean_ms": 35.10087350088647,
+            "respond_p95_ms": 73.72866699006408,
+            "respond_max_ms": 173.3378330245614,
+            "calls": 470,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "617ed260db8fedc5f1add9054f515afc8cfb2aac05c742794864b66b404b6417",
+            "runtime_source_sha256": "21348bcad374c3c7ec92b765986f01fbb5d3ee86ebd97b491ebc4adf172eb9ee",
+            "peak_rss_mib": 650.71875
+          },
+          "candidate": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "857259f7a438e6188ac63e18995b6ff4489bfcfc4a716a798b9a2aa0ee8f7579",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 3.987167458049953,
+            "evaluation_seconds": 14.12330654199468,
+            "respond_mean_ms": 29.95473492737027,
+            "respond_p95_ms": 59.15195896523073,
+            "respond_max_ms": 134.88300004974008,
+            "calls": 470,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "617ed260db8fedc5f1add9054f515afc8cfb2aac05c742794864b66b404b6417",
+            "runtime_source_sha256": "c9f9e14853ae28e10633ff4353645ce1e5330c1ded7e2440c29f0f86c29b177e",
+            "peak_rss_mib": 658.25
+          }
+        },
+        {
+          "baseline": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "857259f7a438e6188ac63e18995b6ff4489bfcfc4a716a798b9a2aa0ee8f7579",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 3.9629751670290716,
+            "evaluation_seconds": 16.474812958971597,
+            "respond_mean_ms": 34.96013218388358,
+            "respond_p95_ms": 73.4847909770906,
+            "respond_max_ms": 172.34124999959022,
+            "calls": 470,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "617ed260db8fedc5f1add9054f515afc8cfb2aac05c742794864b66b404b6417",
+            "runtime_source_sha256": "21348bcad374c3c7ec92b765986f01fbb5d3ee86ebd97b491ebc4adf172eb9ee",
+            "peak_rss_mib": 647.453125
+          },
+          "candidate": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "857259f7a438e6188ac63e18995b6ff4489bfcfc4a716a798b9a2aa0ee8f7579",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.032284916960634,
+            "evaluation_seconds": 14.0417955830344,
+            "respond_mean_ms": 29.783562672116418,
+            "respond_p95_ms": 58.99375001899898,
+            "respond_max_ms": 137.76666700141504,
+            "calls": 470,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "617ed260db8fedc5f1add9054f515afc8cfb2aac05c742794864b66b404b6417",
+            "runtime_source_sha256": "c9f9e14853ae28e10633ff4353645ce1e5330c1ded7e2440c29f0f86c29b177e",
+            "peak_rss_mib": 664.6875
+          }
+        },
+        {
+          "baseline": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "857259f7a438e6188ac63e18995b6ff4489bfcfc4a716a798b9a2aa0ee8f7579",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.048636916035321,
+            "evaluation_seconds": 16.767612666997593,
+            "respond_mean_ms": 35.57857747816362,
+            "respond_p95_ms": 76.7131659667939,
+            "respond_max_ms": 180.93725002836436,
+            "calls": 470,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "617ed260db8fedc5f1add9054f515afc8cfb2aac05c742794864b66b404b6417",
+            "runtime_source_sha256": "21348bcad374c3c7ec92b765986f01fbb5d3ee86ebd97b491ebc4adf172eb9ee",
+            "peak_rss_mib": 647.765625
+          },
+          "candidate": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "857259f7a438e6188ac63e18995b6ff4489bfcfc4a716a798b9a2aa0ee8f7579",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.146465750003699,
+            "evaluation_seconds": 13.444013541040476,
+            "respond_mean_ms": 28.520277754200542,
+            "respond_p95_ms": 57.3135000304319,
+            "respond_max_ms": 128.7398340064101,
+            "calls": 470,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "617ed260db8fedc5f1add9054f515afc8cfb2aac05c742794864b66b404b6417",
+            "runtime_source_sha256": "c9f9e14853ae28e10633ff4353645ce1e5330c1ded7e2440c29f0f86c29b177e",
+            "peak_rss_mib": 665.25
+          }
+        }
+      ],
+      "median_end_to_end_speedup": 1.1367130382095954,
+      "mean_paired_session_saving_ms": 12.689330621797126,
+      "one_sided_saving_lower_bound_ms": 10.157537127934726,
+      "alpha": 0.008333333333333333,
+      "bootstrap_draws": 20000,
+      "aggregate_runtime_nonregression": true
+    },
+    "stress": {
+      "sample_count": 200,
+      "identical_sessions_and_responses": true,
+      "timing_medians": {
+        "baseline": {
+          "startup_seconds": 3.8483797919470817,
+          "evaluation_seconds": 18.470890666998457,
+          "respond_mean_ms": 26.224974024708537,
+          "respond_p95_ms": 59.28333301562816,
+          "peak_rss_mib": 636.90625,
+          "end_to_end_seconds": 22.31927045894554
+        },
+        "candidate": {
+          "startup_seconds": 3.7951974580064416,
+          "evaluation_seconds": 17.599820292030927,
+          "respond_mean_ms": 25.00679840022324,
+          "respond_p95_ms": 56.63916596677154,
+          "peak_rss_mib": 651.359375,
+          "end_to_end_seconds": 21.393829333013855
+        }
+      },
+      "paired_runs": [
+        {
+          "baseline": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "paraphrase",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "984d8e468d37d0a96197c11af29b64ccb185cab6e3a7e39d8a2ae5b86efa6fec",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 3.814703040989116,
+            "evaluation_seconds": 17.957985916000325,
+            "respond_mean_ms": 25.520657003456538,
+            "respond_p95_ms": 57.40974994841963,
+            "respond_max_ms": 98.48437504842877,
+            "calls": 702,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "d7116fa16b29e1d40c58db76ee1f8398dc290585ca0b158fbd70c6aa6f6dfc31",
+            "runtime_source_sha256": "21348bcad374c3c7ec92b765986f01fbb5d3ee86ebd97b491ebc4adf172eb9ee",
+            "peak_rss_mib": 643.3125
+          },
+          "candidate": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "paraphrase",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "984d8e468d37d0a96197c11af29b64ccb185cab6e3a7e39d8a2ae5b86efa6fec",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 3.794009040982928,
+            "evaluation_seconds": 17.599820292030927,
+            "respond_mean_ms": 25.00679840022324,
+            "respond_p95_ms": 56.10629200236872,
+            "respond_max_ms": 97.12020796723664,
+            "calls": 702,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "d7116fa16b29e1d40c58db76ee1f8398dc290585ca0b158fbd70c6aa6f6dfc31",
+            "runtime_source_sha256": "c9f9e14853ae28e10633ff4353645ce1e5330c1ded7e2440c29f0f86c29b177e",
+            "peak_rss_mib": 651.359375
+          }
+        },
+        {
+          "baseline": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "paraphrase",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "984d8e468d37d0a96197c11af29b64ccb185cab6e3a7e39d8a2ae5b86efa6fec",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.009457125037443,
+            "evaluation_seconds": 18.83236479095649,
+            "respond_mean_ms": 26.75593166464165,
+            "respond_p95_ms": 60.33095804741606,
+            "respond_max_ms": 100.4832080216147,
+            "calls": 702,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "d7116fa16b29e1d40c58db76ee1f8398dc290585ca0b158fbd70c6aa6f6dfc31",
+            "runtime_source_sha256": "21348bcad374c3c7ec92b765986f01fbb5d3ee86ebd97b491ebc4adf172eb9ee",
+            "peak_rss_mib": 636.90625
+          },
+          "candidate": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "paraphrase",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "984d8e468d37d0a96197c11af29b64ccb185cab6e3a7e39d8a2ae5b86efa6fec",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 3.7951974580064416,
+            "evaluation_seconds": 18.059065332985483,
+            "respond_mean_ms": 25.63051936626925,
+            "respond_p95_ms": 57.45154101168737,
+            "respond_max_ms": 181.97350000264123,
+            "calls": 702,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "d7116fa16b29e1d40c58db76ee1f8398dc290585ca0b158fbd70c6aa6f6dfc31",
+            "runtime_source_sha256": "c9f9e14853ae28e10633ff4353645ce1e5330c1ded7e2440c29f0f86c29b177e",
+            "peak_rss_mib": 587.234375
+          }
+        },
+        {
+          "baseline": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "paraphrase",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "984d8e468d37d0a96197c11af29b64ccb185cab6e3a7e39d8a2ae5b86efa6fec",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 3.8483797919470817,
+            "evaluation_seconds": 18.470890666998457,
+            "respond_mean_ms": 26.224974024708537,
+            "respond_p95_ms": 59.28333301562816,
+            "respond_max_ms": 101.35266598081216,
+            "calls": 702,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "d7116fa16b29e1d40c58db76ee1f8398dc290585ca0b158fbd70c6aa6f6dfc31",
+            "runtime_source_sha256": "21348bcad374c3c7ec92b765986f01fbb5d3ee86ebd97b491ebc4adf172eb9ee",
+            "peak_rss_mib": 578.765625
+          },
+          "candidate": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "paraphrase",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "984d8e468d37d0a96197c11af29b64ccb185cab6e3a7e39d8a2ae5b86efa6fec",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 3.807950999995228,
+            "evaluation_seconds": 17.562131332990248,
+            "respond_mean_ms": 24.959037994731755,
+            "respond_p95_ms": 56.63916596677154,
+            "respond_max_ms": 96.90341603709385,
+            "calls": 702,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "d7116fa16b29e1d40c58db76ee1f8398dc290585ca0b158fbd70c6aa6f6dfc31",
+            "runtime_source_sha256": "c9f9e14853ae28e10633ff4353645ce1e5330c1ded7e2440c29f0f86c29b177e",
+            "peak_rss_mib": 651.515625
+          }
+        }
+      ],
+      "median_end_to_end_speedup": 1.043257385647346,
+      "mean_paired_session_saving_ms": 3.852638475073036,
+      "one_sided_saving_lower_bound_ms": 3.2125296567658856,
+      "alpha": 0.008333333333333333,
+      "bootstrap_draws": 20000,
+      "aggregate_runtime_nonregression": true
+    }
+  },
+  "runtime_v2_confirmation": {
+    "confirmation": {
+      "sample_count": 1600,
+      "identical_sessions_and_responses": true,
+      "timing_medians": {
+        "baseline": {
+          "startup_seconds": 3.828645374975167,
+          "evaluation_seconds": 143.79315116698854,
+          "respond_mean_ms": 35.46500047157358,
+          "respond_p95_ms": 74.40866698743775,
+          "peak_rss_mib": 609.015625,
+          "end_to_end_seconds": 147.6201885829796
+        },
+        "candidate": {
+          "startup_seconds": 4.057200666982681,
+          "evaluation_seconds": 121.06709870795021,
+          "respond_mean_ms": 29.851531368130413,
+          "respond_p95_ms": 59.03587501961738,
+          "peak_rss_mib": 622.0625,
+          "end_to_end_seconds": 125.22812362399418
+        }
+      },
+      "paired_runs": [
+        {
+          "baseline": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "1c4c233584a0599786ebf833e09c22c638742718d04bea6b004dae0cd61dc0ae",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 3.900171458022669,
+            "evaluation_seconds": 147.8744520409964,
+            "respond_mean_ms": 36.465345465824726,
+            "respond_p95_ms": 75.57833299506456,
+            "respond_max_ms": 251.43487501190975,
+            "calls": 4047,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "2f7876b60a06e8876b97e4ef8e36417707ea0afb4bf0e6b8ed9f86942bbfacba",
+            "runtime_source_sha256": "21348bcad374c3c7ec92b765986f01fbb5d3ee86ebd97b491ebc4adf172eb9ee",
+            "peak_rss_mib": 609.984375
+          },
+          "candidate": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "1c4c233584a0599786ebf833e09c22c638742718d04bea6b004dae0cd61dc0ae",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.057200666982681,
+            "evaluation_seconds": 129.02624691603705,
+            "respond_mean_ms": 31.805639647032876,
+            "respond_p95_ms": 62.57683300646022,
+            "respond_max_ms": 256.66279200231656,
+            "calls": 4047,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "2f7876b60a06e8876b97e4ef8e36417707ea0afb4bf0e6b8ed9f86942bbfacba",
+            "runtime_source_sha256": "c9f9e14853ae28e10633ff4353645ce1e5330c1ded7e2440c29f0f86c29b177e",
+            "peak_rss_mib": 622.0625
+          }
+        },
+        {
+          "baseline": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "1c4c233584a0599786ebf833e09c22c638742718d04bea6b004dae0cd61dc0ae",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 3.8270374159910716,
+            "evaluation_seconds": 143.79315116698854,
+            "respond_mean_ms": 35.46500047157358,
+            "respond_p95_ms": 74.40866698743775,
+            "respond_max_ms": 249.79454098502174,
+            "calls": 4047,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "2f7876b60a06e8876b97e4ef8e36417707ea0afb4bf0e6b8ed9f86942bbfacba",
+            "runtime_source_sha256": "21348bcad374c3c7ec92b765986f01fbb5d3ee86ebd97b491ebc4adf172eb9ee",
+            "peak_rss_mib": 607.109375
+          },
+          "candidate": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "1c4c233584a0599786ebf833e09c22c638742718d04bea6b004dae0cd61dc0ae",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.161024916043971,
+            "evaluation_seconds": 121.06709870795021,
+            "respond_mean_ms": 29.851531368130413,
+            "respond_p95_ms": 59.03587501961738,
+            "respond_max_ms": 235.28754099970683,
+            "calls": 4047,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "2f7876b60a06e8876b97e4ef8e36417707ea0afb4bf0e6b8ed9f86942bbfacba",
+            "runtime_source_sha256": "c9f9e14853ae28e10633ff4353645ce1e5330c1ded7e2440c29f0f86c29b177e",
+            "peak_rss_mib": 631.375
+          }
+        },
+        {
+          "baseline": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "1c4c233584a0599786ebf833e09c22c638742718d04bea6b004dae0cd61dc0ae",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 3.828645374975167,
+            "evaluation_seconds": 141.6883459999808,
+            "respond_mean_ms": 34.944153880174746,
+            "respond_p95_ms": 72.36370799364522,
+            "respond_max_ms": 235.70720897987485,
+            "calls": 4047,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "2f7876b60a06e8876b97e4ef8e36417707ea0afb4bf0e6b8ed9f86942bbfacba",
+            "runtime_source_sha256": "21348bcad374c3c7ec92b765986f01fbb5d3ee86ebd97b491ebc4adf172eb9ee",
+            "peak_rss_mib": 609.015625
+          },
+          "candidate": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "1c4c233584a0599786ebf833e09c22c638742718d04bea6b004dae0cd61dc0ae",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 3.7677570420200936,
+            "evaluation_seconds": 120.06558420800138,
+            "respond_mean_ms": 29.60577576992433,
+            "respond_p95_ms": 58.818917023018,
+            "respond_max_ms": 234.4840409932658,
+            "calls": 4047,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "2f7876b60a06e8876b97e4ef8e36417707ea0afb4bf0e6b8ed9f86942bbfacba",
+            "runtime_source_sha256": "c9f9e14853ae28e10633ff4353645ce1e5330c1ded7e2440c29f0f86c29b177e",
+            "peak_rss_mib": 618.875
+          }
+        }
+      ],
+      "median_end_to_end_speedup": 1.1788101930379402,
+      "mean_paired_session_saving_ms": 12.70798333815037,
+      "one_sided_saving_lower_bound_ms": 11.856475512557154,
+      "alpha": 0.05,
+      "bootstrap_draws": 20000,
+      "aggregate_runtime_nonregression": true
+    }
+  },
+  "frozen_suite_metrics": {
+    "Public 200": {
+      "sample_count": 200,
+      "hit_rate_at_10": 1.0,
+      "mrr": 0.99625,
+      "mttc": 2.35,
+      "efficiency": 0.865,
+      "recommended_technical_score": 0.971875,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 10,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 2.7
+        },
+        "browsing": {
+          "sample_count": 80,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 2.2125
+        },
+        "buying": {
+          "sample_count": 80,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.990625,
+          "mttc": 1.9
+        },
+        "intent_override": {
+          "sample_count": 30,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 3.8
+        }
+      },
+      "measurement": {
+        "arm": "baseline",
+        "external_root": null,
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "857259f7a438e6188ac63e18995b6ff4489bfcfc4a716a798b9a2aa0ee8f7579",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 3.987167458049953,
+        "evaluation_seconds": 14.12330654199468,
+        "respond_mean_ms": 29.95473492737027,
+        "respond_p95_ms": 59.15195896523073,
+        "respond_max_ms": 134.88300004974008,
+        "calls": 470,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "617ed260db8fedc5f1add9054f515afc8cfb2aac05c742794864b66b404b6417",
+        "runtime_source_sha256": "c9f9e14853ae28e10633ff4353645ce1e5330c1ded7e2440c29f0f86c29b177e",
+        "peak_rss_mib": 658.25
+      }
+    },
+    "Development 800": {
+      "sample_count": 800,
+      "hit_rate_at_10": 0.99,
+      "mrr": 0.974892,
+      "mttc": 2.5625,
+      "efficiency": 0.84375,
+      "recommended_technical_score": 0.956218,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 40,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 3.4
+        },
+        "browsing": {
+          "sample_count": 322,
+          "hit_rate_at_10": 0.984472,
+          "mrr": 0.96944,
+          "mttc": 2.608696
+        },
+        "buying": {
+          "sample_count": 327,
+          "hit_rate_at_10": 0.990826,
+          "mrr": 0.973152,
+          "mttc": 2.042813
+        },
+        "intent_override": {
+          "sample_count": 111,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.986787,
+          "mttc": 3.657658
+        }
+      },
+      "measurement": {
+        "arm": "baseline",
+        "external_root": null,
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "de848394915b253890989e487860cef98d776f339d8011cd64d571032bea2b60",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.2198723329929635,
+        "evaluation_seconds": 66.26653570798226,
+        "respond_mean_ms": 32.37321441327235,
+        "respond_p95_ms": 64.65529196429998,
+        "respond_max_ms": 227.45808400213718,
+        "calls": 2042,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "550322df9baa8214b06758f3c234a17ca8f128be6ac5875a71c161aa043a65b9",
+        "runtime_source_sha256": "c9f9e14853ae28e10633ff4353645ce1e5330c1ded7e2440c29f0f86c29b177e",
+        "peak_rss_mib": 618.828125
+      }
+    },
+    "Language stress 200": {
+      "sample_count": 200,
+      "hit_rate_at_10": 0.845,
+      "mrr": 0.56569,
+      "mttc": 3.665,
+      "efficiency": 0.7335,
+      "recommended_technical_score": 0.738907,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 12,
+          "hit_rate_at_10": 0.916667,
+          "mrr": 0.666997,
+          "mttc": 4.083333
+        },
+        "browsing": {
+          "sample_count": 82,
+          "hit_rate_at_10": 0.95122,
+          "mrr": 0.662331,
+          "mttc": 2.731707
+        },
+        "buying": {
+          "sample_count": 81,
+          "hit_rate_at_10": 0.962963,
+          "mrr": 0.618185,
+          "mttc": 2.407407
+        },
+        "intent_override": {
+          "sample_count": 25,
+          "hit_rate_at_10": 0.08,
+          "mrr": 0.03,
+          "mttc": 10.6
+        }
+      },
+      "measurement": {
+        "arm": "baseline",
+        "external_root": null,
+        "wording": "paraphrase",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "984d8e468d37d0a96197c11af29b64ccb185cab6e3a7e39d8a2ae5b86efa6fec",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 3.794009040982928,
+        "evaluation_seconds": 17.599820292030927,
+        "respond_mean_ms": 25.00679840022324,
+        "respond_p95_ms": 56.10629200236872,
+        "respond_max_ms": 97.12020796723664,
+        "calls": 702,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "d7116fa16b29e1d40c58db76ee1f8398dc290585ca0b158fbd70c6aa6f6dfc31",
+        "runtime_source_sha256": "c9f9e14853ae28e10633ff4353645ce1e5330c1ded7e2440c29f0f86c29b177e",
+        "peak_rss_mib": 651.359375
+      }
+    },
+    "Fresh confirmation 1,600": {
+      "sample_count": 1600,
+      "hit_rate_at_10": 0.995,
+      "mrr": 0.982847,
+      "mttc": 2.534375,
+      "efficiency": 0.846562,
+      "recommended_technical_score": 0.961667,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 80,
+          "hit_rate_at_10": 1.0,
+          "mrr": 1.0,
+          "mttc": 3.275
+        },
+        "browsing": {
+          "sample_count": 638,
+          "hit_rate_at_10": 0.995298,
+          "mrr": 0.985266,
+          "mttc": 2.479624
+        },
+        "buying": {
+          "sample_count": 633,
+          "hit_rate_at_10": 0.995261,
+          "mrr": 0.980847,
+          "mttc": 1.993681
+        },
+        "intent_override": {
+          "sample_count": 249,
+          "hit_rate_at_10": 0.991968,
+          "mrr": 0.976221,
+          "mttc": 3.811245
+        }
+      },
+      "measurement": {
+        "arm": "baseline",
+        "external_root": null,
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "1c4c233584a0599786ebf833e09c22c638742718d04bea6b004dae0cd61dc0ae",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.057200666982681,
+        "evaluation_seconds": 129.02624691603705,
+        "respond_mean_ms": 31.805639647032876,
+        "respond_p95_ms": 62.57683300646022,
+        "respond_max_ms": 256.66279200231656,
+        "calls": 4047,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "2f7876b60a06e8876b97e4ef8e36417707ea0afb4bf0e6b8ed9f86942bbfacba",
+        "runtime_source_sha256": "c9f9e14853ae28e10633ff4353645ce1e5330c1ded7e2440c29f0f86c29b177e",
+        "peak_rss_mib": 622.0625
+      }
+    }
+  },
+  "confirmation_competitors": {
+    "kopi": {
+      "sample_count": 1600,
+      "hit_rate_at_10": 0.984375,
+      "mrr": 0.97666,
+      "mttc": 2.80375,
+      "efficiency": 0.819625,
+      "recommended_technical_score": 0.94911,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 80,
+          "hit_rate_at_10": 0.9625,
+          "mrr": 0.920833,
+          "mttc": 4.45
+        },
+        "browsing": {
+          "sample_count": 638,
+          "hit_rate_at_10": 0.987461,
+          "mrr": 0.979293,
+          "mttc": 2.695925
+        },
+        "buying": {
+          "sample_count": 633,
+          "hit_rate_at_10": 0.985782,
+          "mrr": 0.982148,
+          "mttc": 2.208531
+        },
+        "intent_override": {
+          "sample_count": 249,
+          "hit_rate_at_10": 0.97992,
+          "mrr": 0.973896,
+          "mttc": 4.064257
+        }
+      },
+      "measurement": {
+        "arm": "baseline",
+        "external_root": "../competitors/kopi",
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "1c4c233584a0599786ebf833e09c22c638742718d04bea6b004dae0cd61dc0ae",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.720946667017415,
+        "evaluation_seconds": 118.08839841600275,
+        "respond_mean_ms": 26.398028855413912,
+        "respond_p95_ms": 55.94370898324996,
+        "respond_max_ms": 195.07520901970565,
+        "calls": 4461,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "30b68e0160584928fe754814ad3f9b691de4c1d942056e7b6c0e0f4e0c039033",
+        "runtime_source_sha256": "d631af10fffb31e16f7a84717bcc3b5f8d29c694f9fd3dfb991f78527f3247f8",
+        "peak_rss_mib": 1065.203125
+      }
+    },
+    "vibe": {
+      "sample_count": 1600,
+      "hit_rate_at_10": 0.988125,
+      "mrr": 0.968361,
+      "mttc": 2.7675,
+      "efficiency": 0.82325,
+      "recommended_technical_score": 0.949221,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 80,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.977951,
+          "mttc": 3.5
+        },
+        "browsing": {
+          "sample_count": 638,
+          "hit_rate_at_10": 0.989028,
+          "mrr": 0.971142,
+          "mttc": 2.688088
+        },
+        "buying": {
+          "sample_count": 633,
+          "hit_rate_at_10": 0.990521,
+          "mrr": 0.965407,
+          "mttc": 2.255924
+        },
+        "intent_override": {
+          "sample_count": 249,
+          "hit_rate_at_10": 0.975904,
+          "mrr": 0.965663,
+          "mttc": 4.036145
+        }
+      },
+      "measurement": {
+        "arm": "baseline",
+        "external_root": "../competitors/vibe/techjam-conversational-search",
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "1c4c233584a0599786ebf833e09c22c638742718d04bea6b004dae0cd61dc0ae",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 5.035539083008189,
+        "evaluation_seconds": 400.50303304195404,
+        "respond_mean_ms": 90.76243694146345,
+        "respond_p95_ms": 181.33879103697836,
+        "respond_max_ms": 458.1098749767989,
+        "calls": 4409,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "c0e00c398e411e072b0ccb3f203f914d63d208f17b67a1151c3f61fc2c36e2da",
+        "runtime_source_sha256": "243381a5573eca70919707dd30bfd4fdeb074ecb560b0e0935d5ae346c33e878",
+        "peak_rss_mib": 1532.765625
+      }
+    },
+    "shreyansh": {
+      "sample_count": 1600,
+      "hit_rate_at_10": 0.981875,
+      "mrr": 0.71608,
+      "mttc": 2.62375,
+      "efficiency": 0.837625,
+      "recommended_technical_score": 0.873287,
+      "reported_token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      },
+      "scenario_metrics": {
+        "boundary": {
+          "sample_count": 80,
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.67815,
+          "mttc": 3.3
+        },
+        "browsing": {
+          "sample_count": 638,
+          "hit_rate_at_10": 0.989028,
+          "mrr": 0.717562,
+          "mttc": 2.557994
+        },
+        "buying": {
+          "sample_count": 633,
+          "hit_rate_at_10": 0.987362,
+          "mrr": 0.70715,
+          "mttc": 1.966825
+        },
+        "intent_override": {
+          "sample_count": 249,
+          "hit_rate_at_10": 0.943775,
+          "mrr": 0.747174,
+          "mttc": 4.24498
+        }
+      },
+      "measurement": {
+        "arm": "baseline",
+        "external_root": "../competitors/shreyansh",
+        "wording": "official",
+        "python": "3.13.15",
+        "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+        "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+        "dataset_sha256": "1c4c233584a0599786ebf833e09c22c638742718d04bea6b004dae0cd61dc0ae",
+        "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+        "startup_seconds": 4.623187624965794,
+        "evaluation_seconds": 177.8749992499943,
+        "respond_mean_ms": 42.56541368702733,
+        "respond_p95_ms": 78.366499976255,
+        "respond_max_ms": 198.38212500326335,
+        "calls": 4169,
+        "exceptions": 0,
+        "invalid_outputs": 0,
+        "response_sha256": "70530d1abcbc7e047defb2734d6feb2552d0b818046ecf4dcdb173aee572718d",
+        "runtime_source_sha256": "44fecba0d997c0919dc76a821a41c7909ecf601efcb7bc9cf0096f9dbe34aa83",
+        "peak_rss_mib": 254.515625
+      }
+    }
+  },
+  "competitor_revisions": {
+    "kopi": "ddd5b30cdff74fd422fcf30a1f16d020732f809d",
+    "vibe": "0af6251ae2d747a299057fe521358b4b9fc0c9e3",
+    "shreyansh": "a56991a5116ff7c1868fc67ea19f4d6496f12615"
+  },
+  "competitor_comparisons": {
+    "kopi": {
+      "gate": "aggregate",
+      "aggregate_metric_deltas": {
+        "hit_rate": 0.010625,
+        "mrr": 0.006187251984126983,
+        "turn_efficiency": 0.0269375
+      },
+      "n": 1600,
+      "mean_utility_delta": 0.012556175595238092,
+      "improved_sessions": 255,
+      "regressed_sessions": 86,
+      "unchanged_sessions": 1259,
+      "lost_hits": 0,
+      "gained_hits": 17,
+      "one_sided_bootstrap_lower_bound": 0.00809559151785714,
+      "alpha": 0.016666666666666666,
+      "bootstrap_draws": 20000,
+      "scenario_deltas": {
+        "boundary": {
+          "n": 80,
+          "utility_delta": 0.066,
+          "regressions": 6
+        },
+        "browsing": {
+          "n": 638,
+          "utility_delta": 0.010036572622779514,
+          "regressions": 36
+        },
+        "buying": {
+          "n": 633,
+          "utility_delta": 0.008645903859174,
+          "regressions": 37
+        },
+        "intent_override": {
+          "n": 249,
+          "utility_delta": 0.011781889462612357,
+          "regressions": 7
+        }
+      },
+      "development_gate_pass": true,
+      "rejection_reasons": []
+    },
+    "vibe": {
+      "gate": "aggregate",
+      "aggregate_metric_deltas": {
+        "hit_rate": 0.006875,
+        "mrr": 0.014485863095238097,
+        "turn_efficiency": 0.023312500000000003
+      },
+      "n": 1600,
+      "mean_utility_delta": 0.012445758928571426,
+      "improved_sessions": 275,
+      "regressed_sessions": 66,
+      "unchanged_sessions": 1259,
+      "lost_hits": 0,
+      "gained_hits": 11,
+      "one_sided_bootstrap_lower_bound": 0.00876198784722222,
+      "alpha": 0.016666666666666666,
+      "bootstrap_draws": 20000,
+      "scenario_deltas": {
+        "boundary": {
+          "n": 80,
+          "utility_delta": 0.01111458333333334,
+          "regressions": 5
+        },
+        "browsing": {
+          "n": 638,
+          "utility_delta": 0.011541274817136883,
+          "regressions": 30
+        },
+        "buying": {
+          "n": 633,
+          "utility_delta": 0.01224648311141202,
+          "regressions": 25
+        },
+        "intent_override": {
+          "n": 249,
+          "utility_delta": 0.015697552113214764,
+          "regressions": 6
+        }
+      },
+      "development_gate_pass": true,
+      "rejection_reasons": []
+    },
+    "shreyansh": {
+      "gate": "aggregate",
+      "aggregate_metric_deltas": {
+        "hit_rate": 0.013125,
+        "mrr": 0.2667666170634921,
+        "turn_efficiency": 0.0089375
+      },
+      "n": 1600,
+      "mean_utility_delta": 0.08837998511904761,
+      "improved_sessions": 758,
+      "regressed_sessions": 41,
+      "unchanged_sessions": 801,
+      "lost_hits": 0,
+      "gained_hits": 21,
+      "one_sided_bootstrap_lower_bound": 0.08109366939484126,
+      "alpha": 0.016666666666666666,
+      "bootstrap_draws": 20000,
+      "scenario_deltas": {
+        "boundary": {
+          "n": 80,
+          "utility_delta": 0.09705505952380952,
+          "regressions": 0
+        },
+        "browsing": {
+          "n": 638,
+          "utility_delta": 0.08501362143603522,
+          "regressions": 16
+        },
+        "buying": {
+          "n": 633,
+          "utility_delta": 0.08552151508312644,
+          "regressions": 23
+        },
+        "intent_override": {
+          "n": 249,
+          "utility_delta": 0.10148498756932495,
+          "regressions": 2
+        }
+      },
+      "development_gate_pass": true,
+      "rejection_reasons": []
+    }
+  },
+  "confirmation_freeze": {
+    "frozen_at_utc": "2026-09-07T14:54:35.587783+00:00",
+    "runtime_source_sha256": "c9f9e14853ae28e10633ff4353645ce1e5330c1ded7e2440c29f0f86c29b177e",
+    "confirmation_sha256": "1c4c233584a0599786ebf833e09c22c638742718d04bea6b004dae0cd61dc0ae",
+    "status": "fixed candidate; confirmation validation authorized by completed development gates",
+    "runtime_files": {
+      "conversational_search/exposure.py": "11004cd66010bb6136700c42a6e79b3d28ce71e90b520db9f241d02a4eef9ee8",
+      "conversational_search/protocol.py": "ea114e78c2fc7250cbd7e2054066a310ce408522d3032d44ae24d6bbb01f854f",
+      "conversational_search/ranking.py": "b9bffd097bc6f18fe9591d86f798f58d398e0d726c7052d2fede290166de623f",
+      "conversational_search/retrieval.py": "4971f6c041566679aaf8a9e4804a17ebb66a03d87f1f853cee7518e107242c21"
+    }
+  },
+  "confirmation_status": "consumed for fixed-candidate validation; never reuse as fresh validation after tuning",
+  "original_tree_integrity": {
+    "checked_files": 98,
+    "changed_files": []
+  },
+  "unit_tests_passed": 390
+}
