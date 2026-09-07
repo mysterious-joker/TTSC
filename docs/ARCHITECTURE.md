@@ -48,7 +48,22 @@ dependency digest.
 - Any ranking-relevant change: run retrieval and ranking again.
 - Backend/fault inconsistency: invalidate and search.
 
-The cache stores catalog IDs only and has a fixed capacity.
+The ranking-reuse cache stores catalog IDs only and has a fixed capacity.
+
+The finals optimization also caches pure calculations without changing ranking,
+question selection or slate policies:
+
+| Calculation | Bound and validity |
+| --- | --- |
+| Attribute classification | 8,192 normalized strings, at most 180 characters each; longer text uses the original calculation. |
+| Stage-A significant tokens | 512 immutable tuples, inputs at most 4,096 characters; preserves normalization, token order and duplicates. |
+| Exact category cards | 16 category tuples per retriever, keyed by backend snapshot identity and exact category. Availability is checked before reuse; failed loads are not cached. |
+| Exhausted-support enumeration | 8,192 results keyed only by survivor count, current turn and top-k; the underlying dynamic program is unchanged. |
+
+Category lookup retains its case-sensitive equality and adds a redundant NOCASE
+predicate to use the existing SQLite index. Case-distinct categories remain
+separate. Catalog updates require a new backend identity. The measured before/
+after results and validation status are in [the finals report](finals-review/ROUND3-RESULTS.md).
 
 ## 3. Smart hybrid retrieval
 

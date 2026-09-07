@@ -6,6 +6,7 @@ import re
 from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass
 from enum import Enum
+from functools import lru_cache
 from math import isclose, isfinite
 
 
@@ -715,6 +716,15 @@ def classify_constraint(value: str) -> str:
     """Return the attribute bucket selected by the official evaluator."""
 
     lowered = value.lower()
+    # Planner branches repeatedly classify the same immutable catalog clues.
+    # Bound both entry count and retained text; long free-form inputs keep the
+    # original uncached behavior. No session state participates in this cache.
+    if len(lowered) <= MAX_CONSTRAINT_CHARACTERS:
+        return _classify_bounded_constraint(lowered)
+    return _classify_lowered_constraint(lowered)
+
+
+def _classify_lowered_constraint(lowered: str) -> str:
     if "budget" in lowered or re.search(r"(?:\$|<=|under)\s*\d", lowered):
         return "budget"
     if any(material in lowered for material in _MATERIALS):
@@ -737,6 +747,9 @@ def classify_constraint(value: str) -> str:
     ):
         return "use_case"
     return "feature"
+
+
+_classify_bounded_constraint = lru_cache(maxsize=8192)(_classify_lowered_constraint)
 
 
 def remaining_reply(

@@ -17,7 +17,7 @@ import json
 import math
 import re
 import sqlite3
-from collections import Counter
+from collections import Counter, OrderedDict
 from collections.abc import Sequence
 from dataclasses import dataclass
 from enum import Enum
@@ -284,6 +284,12 @@ class HybridRetriever:
         # HybridRetriever assets are immutable after initialization; wrappers
         # must forward this exact object rather than inventing a new token.
         self._snapshot_token = BackendSnapshotToken()
+        # Per-backend cache: never retain another retriever or session. The
+        # small category bound limits retained cards; snapshot identity prevents
+        # reuse if a backend is explicitly replaced. Failures are not cached.
+        self._protocol_category_cache: OrderedDict[
+            tuple[BackendSnapshotToken, str], tuple[ProductProtocolEvidence, ...]
+        ] = OrderedDict()
 
     @property
     def ranking_cache_capability(self) -> object:
@@ -670,14 +676,6 @@ class HybridRetriever:
         evaluator-visible category and exists only for strict transcript replay.
         """
 
-        from conversational_search.protocol import (
-            DisclosureCard,
-            ProductProtocolEvidence,
-        )
-        from conversational_search.protocol_index import (
-            MAX_PROTOCOL_CATEGORY_PRODUCTS,
-        )
-
         if not isinstance(category, str):
             raise TypeError("category must be a string")
         if not category or category != " ".join(category.split()):
@@ -685,12 +683,33 @@ class HybridRetriever:
         if not self.protocol_evidence_available:
             return ()
 
+        key = (self.snapshot_token, category)
+        if key in self._protocol_category_cache:
+            self._protocol_category_cache.move_to_end(key)
+            return self._protocol_category_cache[key]
+        evidence = self._load_protocol_category_evidence(category)
+        self._protocol_category_cache[key] = evidence
+        if len(self._protocol_category_cache) > 16:
+            self._protocol_category_cache.popitem(last=False)
+        return evidence
+
+    def _load_protocol_category_evidence(
+        self,
+        category: str,
+    ) -> tuple[ProductProtocolEvidence, ...]:
+        """Load one immutable category; called only after a validated cache miss."""
+        from conversational_search.protocol import DisclosureCard, ProductProtocolEvidence
+        from conversational_search.protocol_index import MAX_PROTOCOL_CATEGORY_PRODUCTS
+
         rows = self._connection.execute(
             "SELECT rowid, parent_asin, coarse_category, target_category, "
             "hard_0, hard_1, soft_0, soft_1, price, popularity "
+            # Preserve exact case-sensitive membership, while the redundant
+            # NOCASE predicate lets SQLite use the existing category index.
             "FROM protocol_products WHERE coarse_category = ? "
+            "AND coarse_category = ? COLLATE NOCASE "
             "ORDER BY COALESCE(popularity, 0) DESC, rowid",
-            (category,),
+            (category, category),
         ).fetchall()
         if len(rows) > MAX_PROTOCOL_CATEGORY_PRODUCTS:
             raise RuntimeError("protocol category exceeds the replay bound")

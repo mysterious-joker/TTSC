@@ -724,13 +724,18 @@ def _protocol_reply_branches(
     return tuple(tuple(branch) for branch in branches.values())
 
 
+@lru_cache(maxsize=8192)
 def _protocol_enumeration_plan(
     support_count: int,
     *,
     current_turn: int,
     top_k: int,
 ) -> tuple[float, int]:
-    """Return exact value and width for an indistinguishable posterior."""
+    """Return exact value and width for an indistinguishable posterior.
+
+    The outer bounded cache reuses the unchanged dynamic program across
+    branches and sessions. Its key contains only count, turn and top-k.
+    """
 
     @lru_cache(maxsize=None)
     def best_value(remaining: int, turn: int) -> tuple[float, int]:

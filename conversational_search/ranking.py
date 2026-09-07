@@ -8,6 +8,7 @@ import unicodedata
 from collections.abc import Mapping
 from dataclasses import dataclass
 from enum import Enum
+from functools import lru_cache
 from types import MappingProxyType
 from typing import Sequence
 
@@ -239,6 +240,14 @@ class _Bm25RescueComputation:
 
 
 def _significant_tokens(value: str) -> tuple[str, ...]:
+    # Candidate documents recur across turns and exact/profile ranking passes.
+    # Bound retained text and entries; longer documents keep the original path.
+    if len(value) <= 4096:
+        return _cached_significant_tokens(value)
+    return _uncached_significant_tokens(value)
+
+
+def _uncached_significant_tokens(value: str) -> tuple[str, ...]:
     folded = value.casefold()
     if folded.isascii():
         without_marks = folded
@@ -256,6 +265,9 @@ def _significant_tokens(value: str) -> tuple[str, ...]:
         for token in _TOKEN_RE.findall(without_marks)
         if token not in _SIGNIFICANT_STOPWORDS
     )
+
+
+_cached_significant_tokens = lru_cache(maxsize=512)(_uncached_significant_tokens)
 
 
 _PROFILE_CUE_TEXT = MappingProxyType({
