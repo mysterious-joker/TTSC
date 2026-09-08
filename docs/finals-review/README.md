@@ -1,12 +1,17 @@
 # Finalist engineering review — i anything
 
-**Latest decision:** adopt the [round-eight bounded conversation fixes](ROUND8-RESULTS.md).
+**Latest decision:** [remove the generative intent experiment](ROUND9-DECISION.md)
+and retain the accepted BM25/BGE architecture. All 457 tests pass; all 200 public
+session responses remain identical. Generative code, weights and the inference
+dependency have been removed.
+
+**Latest accepted improvement:** the [round-eight bounded conversation fixes](ROUND8-RESULTS.md).
 Fresh language 800 improves HR .830000 → .938750 and score .787013 → .883110,
 with positive corrected statistical evidence. Public, fresh official and prior
 language compatibility responses remain identical. Ablations attribute the gain
 to preference-edit handling, not the new opening parser. Both versions fail all
-52 independently authored complete-intent cases; broad language understanding
-remains unresolved. See the [competition-first priorities](COMPETITION-FIRST-PRIORITIES.md)
+52 independently authored complete-intent cases; that work did not establish
+broad language understanding. See the [competition-first priorities](COMPETITION-FIRST-PRIORITIES.md)
 for all eight requested directions and their actual implementation status.
 
 **Round-five decision:** retain the accepted round-four agent. The

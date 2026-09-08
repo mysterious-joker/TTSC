@@ -1,0 +1,2963 @@
+{
+  "version": "round9-prefix-oracle-explication-v1",
+  "original_corpus_sha256": "fe06a806bee465f0e1053f3e33c4e6d236dd5a255dbae7fd0e1016df697a63d3",
+  "provenance": "These prefix states explicate the already frozen messages and final expectations for every-turn adjudication. They are not changes to the source corpus or new test inputs. Equivalent meanings may be represented across category and appropriate requirement fields. Explicit sizing systems and other qualifiers must remain.",
+  "control_metrics": {
+    "complete_conversation": "All turns must satisfy the frozen prefix meaning, with final meaning and allowed disposition from the source corpus.",
+    "complete_control_turn": "The final control turn satisfies its entire expected effective state, pending issue, and allowed disposition.",
+    "targeted_control_delta": "Separately assess the control action against its actual input state: preserve already established still-valid constraints, avoid invented values, identify unsupported/ambiguous scope, and apply independent explicit supported edits. This diagnostic does not erase initial-state failures or imply complete conversation correctness.",
+    "taxonomy_only_uncertainty": "Record separately; accept category plus an appropriate requirement when the combined product meaning is preserved."
+  },
+  "cases": [
+    {
+      "id": "r9-A01",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Blue running shoes, US size 9, please. My maximum is $120.",
+          "expected_state": {
+            "category": "running shoes",
+            "required": {
+              "color": [
+                "blue"
+              ],
+              "size": [
+                "US 9"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 120
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A02",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Could you find a green cotton polo shirt for $45 or less?",
+          "expected_state": {
+            "category": "polo shirt",
+            "required": {
+              "color": [
+                "green"
+              ],
+              "material": [
+                "cotton"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 45
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A03",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I'm after sterling silver earrings. I can spend up to US$75.",
+          "expected_state": {
+            "category": "earrings",
+            "required": {
+              "material": [
+                "sterling silver"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 75
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A04",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "A beige baseball cap with an adjustable strap is what I need. Nothing over $25.",
+          "expected_state": {
+            "category": "baseball cap",
+            "required": {
+              "color": [
+                "beige"
+              ],
+              "feature": [
+                "adjustable strap"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 25
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A05",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Show me indigo jeans with a straight-leg fit, waist 32 inches. The price ceiling is $85.",
+          "expected_state": {
+            "category": "jeans",
+            "required": {
+              "color": [
+                "indigo"
+              ],
+              "size": [
+                "32-inch waist"
+              ],
+              "style": [
+                "straight leg"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 85
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A06",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "For ankle boots, I need brown leather and EU 38. Let's stay at $140 or below.",
+          "expected_state": {
+            "category": "ankle boots",
+            "required": {
+              "color": [
+                "brown"
+              ],
+              "material": [
+                "leather"
+              ],
+              "size": [
+                "EU 38"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 140
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A07",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I'd like a burgundy hoodie in medium. My limit is $65.",
+          "expected_state": {
+            "category": "hoodie",
+            "required": {
+              "color": [
+                "burgundy"
+              ],
+              "size": [
+                "M"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 65
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A08",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I need a gold-colored stainless steel necklace, no more than $40. It must be hypoallergenic.",
+          "expected_state": {
+            "category": "necklace",
+            "required": {
+              "color": [
+                "gold"
+              ],
+              "material": [
+                "stainless steel"
+              ],
+              "feature": [
+                "hypoallergenic"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 40
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A09",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Black puffer jacket. Waterproof is essential, and $150 is my absolute maximum.",
+          "expected_state": {
+            "category": "puffer jacket",
+            "required": {
+              "color": [
+                "black"
+              ],
+              "feature": [
+                "waterproof"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 150
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A10",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Find a cream handbag made from vegan leather. It needs a zip closure, and it cannot cost more than $90.",
+          "expected_state": {
+            "category": "handbag",
+            "required": {
+              "color": [
+                "cream"
+              ],
+              "material": [
+                "vegan leather"
+              ],
+              "feature": [
+                "zip closure"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 90
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A11",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Adidas trainers in UK size 6, with a $100 maximum, please.",
+          "expected_state": {
+            "category": "trainers",
+            "required": {
+              "size": [
+                "UK 6"
+              ],
+              "brand": [
+                "Adidas"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 100
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A12",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I'm looking for a red linen summer dress in small. Sleeveless, please, and at most $80.",
+          "expected_state": {
+            "category": "summer dress",
+            "required": {
+              "color": [
+                "red"
+              ],
+              "material": [
+                "linen"
+              ],
+              "size": [
+                "S"
+              ],
+              "feature": [
+                "sleeveless"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 80
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A13",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Can you find a navy-and-gold baseball cap? I want both colors on the cap, and my budget ceiling is $35.",
+          "expected_state": {
+            "category": "baseball cap",
+            "required": {
+              "color": [
+                "navy",
+                "gold"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 35
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A14",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "A charcoal grey wool beanie in a one-size option would suit me. Keep it to $30 maximum.",
+          "expected_state": {
+            "category": "beanie",
+            "required": {
+              "color": [
+                "charcoal grey"
+              ],
+              "material": [
+                "wool"
+              ],
+              "size": [
+                "one size"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 30
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A15",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I need black high-waisted leggings in large, with pockets. $55 is the most I'll pay.",
+          "expected_state": {
+            "category": "leggings",
+            "required": {
+              "color": [
+                "black"
+              ],
+              "size": [
+                "L"
+              ],
+              "style": [
+                "high waisted"
+              ],
+              "feature": [
+                "pockets"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 55
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A16",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Please look for an olive green nylon watch strap, 20 mm wide. The listing price must be $20 or less.",
+          "expected_state": {
+            "category": "watch strap",
+            "required": {
+              "color": [
+                "olive green"
+              ],
+              "material": [
+                "nylon"
+              ],
+              "size": [
+                "20 mm width"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 20
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A17",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I need a navy scarf with a paisley pattern, max $70. Silk would be lovely, but another fabric is okay.",
+          "expected_state": {
+            "category": "scarf",
+            "required": {
+              "color": [
+                "navy"
+              ],
+              "style": [
+                "paisley"
+              ]
+            },
+            "preferred": {
+              "material": [
+                "silk"
+              ]
+            },
+            "excluded": {},
+            "price_max_usd": 70
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A18",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Leather sandals in UK 7 are a must. Tan would be nice, though I'm open to other colors. Maximum $60.",
+          "expected_state": {
+            "category": "sandals",
+            "required": {
+              "material": [
+                "leather"
+              ],
+              "size": [
+                "UK 7"
+              ]
+            },
+            "preferred": {
+              "color": [
+                "tan"
+              ]
+            },
+            "excluded": {},
+            "price_max_usd": 60
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A19",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "The blazer must be black and formal, within $110. Zara is my first choice, but the brand isn't a dealbreaker.",
+          "expected_state": {
+            "category": "blazer",
+            "required": {
+              "color": [
+                "black"
+              ],
+              "style": [
+                "formal"
+              ]
+            },
+            "preferred": {
+              "brand": [
+                "Zara"
+              ]
+            },
+            "excluded": {},
+            "price_max_usd": 110
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A20",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Find a titanium bracelet in a 19 cm size, no more than $50. I'd prefer a matte finish, but shiny is acceptable.",
+          "expected_state": {
+            "category": "bracelet",
+            "required": {
+              "material": [
+                "titanium"
+              ],
+              "size": [
+                "19 cm"
+              ]
+            },
+            "preferred": {
+              "style": [
+                "matte finish"
+              ]
+            },
+            "excluded": {},
+            "price_max_usd": 50
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A21",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I'd like a light blue denim jacket costing at most $80. No distressed styling or ripped details.",
+          "expected_state": {
+            "category": "denim jacket",
+            "required": {
+              "color": [
+                "light blue"
+              ],
+              "material": [
+                "denim"
+              ]
+            },
+            "preferred": {},
+            "excluded": {
+              "style": [
+                "distressed"
+              ],
+              "feature": [
+                "ripped details"
+              ]
+            },
+            "price_max_usd": 80
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A22",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I'm buying a yellow raincoat in XL. My maximum is $95.",
+          "expected_state": {
+            "category": "raincoat",
+            "required": {
+              "color": [
+                "yellow"
+              ],
+              "size": [
+                "XL"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 95
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "Let's change yellow to forest green; the size and price ceiling stay as they are.",
+          "expected_state": {
+            "category": "raincoat",
+            "required": {
+              "color": [
+                "forest green"
+              ],
+              "size": [
+                "XL"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 95
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A23",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Taupe suede loafers in EU 42, at most $130.",
+          "expected_state": {
+            "category": "loafers",
+            "required": {
+              "color": [
+                "taupe"
+              ],
+              "material": [
+                "suede"
+              ],
+              "size": [
+                "EU 42"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 130
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "For the material, choose smooth leather instead. Keep taupe, EU 42, and the same budget.",
+          "expected_state": {
+            "category": "loafers",
+            "required": {
+              "color": [
+                "taupe"
+              ],
+              "material": [
+                "smooth leather"
+              ],
+              "size": [
+                "EU 42"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 130
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A24",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "An emerald green satin clutch would be great. I can spend up to $70.",
+          "expected_state": {
+            "category": "clutch",
+            "required": {
+              "color": [
+                "emerald green"
+              ],
+              "material": [
+                "satin"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 70
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "I need to tighten the budget: make the maximum $55. Keep the same color and fabric.",
+          "expected_state": {
+            "category": "clutch",
+            "required": {
+              "color": [
+                "emerald green"
+              ],
+              "material": [
+                "satin"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 55
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A25",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "A grey fleece crew-neck sweatshirt in L, up to $60, please.",
+          "expected_state": {
+            "category": "crew-neck sweatshirt",
+            "required": {
+              "color": [
+                "grey"
+              ],
+              "size": [
+                "L"
+              ],
+              "material": [
+                "fleece"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 60
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "The fabric can be anything now. All my other requirements still apply.",
+          "expected_state": {
+            "category": "crew-neck sweatshirt",
+            "required": {
+              "color": [
+                "grey"
+              ],
+              "size": [
+                "L"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 60
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A26",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Black linen trousers in medium with a wide-leg cut. Maximum $85.",
+          "expected_state": {
+            "category": "trousers",
+            "required": {
+              "material": [
+                "linen"
+              ],
+              "size": [
+                "M"
+              ],
+              "style": [
+                "wide leg"
+              ],
+              "color": [
+                "black"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 85
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "I don't need a particular color anymore; keep the linen, medium size, wide-leg cut, and budget.",
+          "expected_state": {
+            "category": "trousers",
+            "required": {
+              "material": [
+                "linen"
+              ],
+              "size": [
+                "M"
+              ],
+              "style": [
+                "wide leg"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 85
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A27",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "A rose-gold-colored stainless steel necklace, at most $35.",
+          "expected_state": {
+            "category": "necklace",
+            "required": {
+              "color": [
+                "rose gold"
+              ],
+              "material": [
+                "stainless steel"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 35
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "There is no price limit now. The rest of that description is still right.",
+          "expected_state": {
+            "category": "necklace",
+            "required": {
+              "color": [
+                "rose gold"
+              ],
+              "material": [
+                "stainless steel"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": null
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A28",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I need brown leather hiking boots in US 10. Ceiling $180.",
+          "expected_state": {
+            "category": "hiking boots",
+            "required": {
+              "color": [
+                "brown"
+              ],
+              "material": [
+                "leather"
+              ],
+              "size": [
+                "US 10"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 180
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "Add waterproofing as a firm requirement. Nothing else changes.",
+          "expected_state": {
+            "category": "hiking boots",
+            "required": {
+              "color": [
+                "brown"
+              ],
+              "material": [
+                "leather"
+              ],
+              "size": [
+                "US 10"
+              ],
+              "feature": [
+                "waterproof"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 180
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A29",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Red swim shorts in medium, with a drawstring, for no more than $45.",
+          "expected_state": {
+            "category": "swim shorts",
+            "required": {
+              "color": [
+                "red"
+              ],
+              "size": [
+                "M"
+              ],
+              "feature": [
+                "drawstring"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 45
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "One more thing: no external pockets. Keep the drawstring and everything else.",
+          "expected_state": {
+            "category": "swim shorts",
+            "required": {
+              "color": [
+                "red"
+              ],
+              "size": [
+                "M"
+              ],
+              "feature": [
+                "drawstring"
+              ]
+            },
+            "preferred": {},
+            "excluded": {
+              "feature": [
+                "external pockets"
+              ]
+            },
+            "price_max_usd": 45
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A30",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Look for a black nylon crossbody bag with a zip top, maximum $50.",
+          "expected_state": {
+            "category": "crossbody bag",
+            "required": {
+              "color": [
+                "black"
+              ],
+              "material": [
+                "nylon"
+              ],
+              "feature": [
+                "zip top"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 50
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "Make the color cream and the material canvas. The zip top and $50 limit should stay.",
+          "expected_state": {
+            "category": "crossbody bag",
+            "required": {
+              "color": [
+                "cream"
+              ],
+              "material": [
+                "canvas"
+              ],
+              "feature": [
+                "zip top"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 50
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A31",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I want white cotton athletic socks, ankle length, within $15.",
+          "expected_state": {
+            "category": "athletic socks",
+            "required": {
+              "color": [
+                "white"
+              ],
+              "style": [
+                "ankle length"
+              ],
+              "material": [
+                "cotton"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 15
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "Cotton would merely be nice to have. White and ankle length are still required, and so is the $15 ceiling.",
+          "expected_state": {
+            "category": "athletic socks",
+            "required": {
+              "color": [
+                "white"
+              ],
+              "style": [
+                "ankle length"
+              ]
+            },
+            "preferred": {
+              "material": [
+                "cotton"
+              ]
+            },
+            "excluded": {},
+            "price_max_usd": 15
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A32",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Black leather knee-high boots in EU 39, maximum $160.",
+          "expected_state": {
+            "category": "knee-high boots",
+            "required": {
+              "material": [
+                "leather"
+              ],
+              "size": [
+                "EU 39"
+              ],
+              "color": [
+                "black"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 160
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "Leather and EU 39 are non-negotiable, but black is just my preference now. The budget stays.",
+          "expected_state": {
+            "category": "knee-high boots",
+            "required": {
+              "material": [
+                "leather"
+              ],
+              "size": [
+                "EU 39"
+              ]
+            },
+            "preferred": {
+              "color": [
+                "black"
+              ]
+            },
+            "excluded": {},
+            "price_max_usd": 160
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A33",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "A light grey cotton T-shirt in L, no more than $40. I'd like an oversized fit, but regular fit is acceptable.",
+          "expected_state": {
+            "category": "T-shirt",
+            "required": {
+              "color": [
+                "light grey"
+              ],
+              "material": [
+                "cotton"
+              ],
+              "size": [
+                "L"
+              ]
+            },
+            "preferred": {
+              "style": [
+                "oversized"
+              ]
+            },
+            "excluded": {},
+            "price_max_usd": 40
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "I've decided the oversized fit is essential. Keep all the other details.",
+          "expected_state": {
+            "category": "T-shirt",
+            "required": {
+              "color": [
+                "light grey"
+              ],
+              "material": [
+                "cotton"
+              ],
+              "size": [
+                "L"
+              ],
+              "style": [
+                "oversized"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 40
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A34",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Black leather gloves in medium, up to $70. Avoid suede entirely.",
+          "expected_state": {
+            "category": "gloves",
+            "required": {
+              "color": [
+                "black"
+              ],
+              "material": [
+                "leather"
+              ],
+              "size": [
+                "M"
+              ]
+            },
+            "preferred": {},
+            "excluded": {
+              "material": [
+                "suede"
+              ]
+            },
+            "price_max_usd": 70
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "Switch black to navy and lower the maximum to $55. Keep medium, leather, and the no-suede rule.",
+          "expected_state": {
+            "category": "gloves",
+            "required": {
+              "color": [
+                "navy"
+              ],
+              "material": [
+                "leather"
+              ],
+              "size": [
+                "M"
+              ]
+            },
+            "preferred": {},
+            "excluded": {
+              "material": [
+                "suede"
+              ]
+            },
+            "price_max_usd": 55
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A35",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I need a brown leather belt, 30 mm wide, maximum $45. No plastic.",
+          "expected_state": {
+            "category": "belt",
+            "required": {
+              "color": [
+                "brown"
+              ],
+              "size": [
+                "30 mm width"
+              ],
+              "material": [
+                "leather"
+              ]
+            },
+            "preferred": {},
+            "excluded": {
+              "material": [
+                "plastic"
+              ]
+            },
+            "price_max_usd": 45
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "Remove the leather requirement, please. The color, width, budget, and ban on plastic all remain.",
+          "expected_state": {
+            "category": "belt",
+            "required": {
+              "color": [
+                "brown"
+              ],
+              "size": [
+                "30 mm width"
+              ]
+            },
+            "preferred": {},
+            "excluded": {
+              "material": [
+                "plastic"
+              ]
+            },
+            "price_max_usd": 45
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A36",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Find a Uniqlo green cotton polo shirt in M for no more than $35.",
+          "expected_state": {
+            "category": "polo shirt",
+            "required": {
+              "color": [
+                "green"
+              ],
+              "material": [
+                "cotton"
+              ],
+              "size": [
+                "M"
+              ],
+              "brand": [
+                "Uniqlo"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 35
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "Any brand is fine now. Keep the exact same color, material, size, and price ceiling.",
+          "expected_state": {
+            "category": "polo shirt",
+            "required": {
+              "color": [
+                "green"
+              ],
+              "material": [
+                "cotton"
+              ],
+              "size": [
+                "M"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 35
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A37",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "A burnt orange canvas cap with an adjustable strap, maximum $30. Embroidery would be a bonus, not a must.",
+          "expected_state": {
+            "category": "cap",
+            "required": {
+              "color": [
+                "burnt orange"
+              ],
+              "material": [
+                "canvas"
+              ],
+              "feature": [
+                "adjustable strap"
+              ]
+            },
+            "preferred": {
+              "feature": [
+                "embroidery"
+              ]
+            },
+            "excluded": {},
+            "price_max_usd": 30
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "Ignore my embroidery preference; I don't care about that detail anymore.",
+          "expected_state": {
+            "category": "cap",
+            "required": {
+              "color": [
+                "burnt orange"
+              ],
+              "material": [
+                "canvas"
+              ],
+              "feature": [
+                "adjustable strap"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 30
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A38",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I need a silver-colored brooch with a magnetic fastening, maximum $25.",
+          "expected_state": {
+            "category": "brooch",
+            "required": {
+              "color": [
+                "silver"
+              ],
+              "feature": [
+                "magnetic fastening"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 25
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "It also has to include a pearl decoration.",
+          "expected_state": {
+            "category": "brooch",
+            "required": {
+              "color": [
+                "silver"
+              ],
+              "feature": [
+                "magnetic fastening",
+                "pearl decoration"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 25
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 3,
+          "message": "Please rule out a pin fastening, but leave all the positive requirements as they are.",
+          "expected_state": {
+            "category": "brooch",
+            "required": {
+              "color": [
+                "silver"
+              ],
+              "feature": [
+                "magnetic fastening",
+                "pearl decoration"
+              ]
+            },
+            "preferred": {},
+            "excluded": {
+              "feature": [
+                "pin fastening"
+              ]
+            },
+            "price_max_usd": 25
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A39",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Navy blue fleece joggers in XL, with a $75 maximum.",
+          "expected_state": {
+            "category": "joggers",
+            "required": {
+              "color": [
+                "navy blue"
+              ],
+              "material": [
+                "fleece"
+              ],
+              "size": [
+                "XL"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 75
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "Add a tapered cut and zip pockets as requirements.",
+          "expected_state": {
+            "category": "joggers",
+            "required": {
+              "color": [
+                "navy blue"
+              ],
+              "material": [
+                "fleece"
+              ],
+              "size": [
+                "XL"
+              ],
+              "feature": [
+                "zip pockets"
+              ],
+              "style": [
+                "tapered"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 75
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 3,
+          "message": "The cut can be anything after all. Keep the zip pockets and every original requirement.",
+          "expected_state": {
+            "category": "joggers",
+            "required": {
+              "color": [
+                "navy blue"
+              ],
+              "material": [
+                "fleece"
+              ],
+              "size": [
+                "XL"
+              ],
+              "feature": [
+                "zip pockets"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 75
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-A40",
+      "lane": "A",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I'd like an off-white cotton bucket hat, no more than $30.",
+          "expected_state": {
+            "category": "bucket hat",
+            "required": {
+              "color": [
+                "off-white"
+              ],
+              "material": [
+                "cotton"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 30
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "No visible logos, please. The North Face would be my preferred brand, but other brands are okay.",
+          "expected_state": {
+            "category": "bucket hat",
+            "required": {
+              "color": [
+                "off-white"
+              ],
+              "material": [
+                "cotton"
+              ]
+            },
+            "preferred": {
+              "brand": [
+                "The North Face"
+              ]
+            },
+            "excluded": {
+              "feature": [
+                "visible logos"
+              ]
+            },
+            "price_max_usd": 30
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        }
+      ]
+    },
+    {
+      "id": "r9-B01",
+      "lane": "B",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Please find a black wool cardigan in medium, with a maximum listing price of $100.",
+          "expected_state": {
+            "category": "cardigan",
+            "required": {
+              "color": [
+                "black"
+              ],
+              "material": [
+                "wool"
+              ],
+              "size": [
+                "M"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 100
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "For the color, either rust or teal would work instead; keep everything else.",
+          "expected_state": {
+            "category": "cardigan",
+            "required": {
+              "color": [
+                "black"
+              ],
+              "material": [
+                "wool"
+              ],
+              "size": [
+                "M"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 100
+          },
+          "allowed_dispositions": [
+            "clarification_required",
+            "abstained"
+          ],
+          "pending_issue": "The proposed replacement is an OR between rust and teal, outside this lane's single-value edit scope.",
+          "is_control_turn": true
+        }
+      ]
+    },
+    {
+      "id": "r9-B02",
+      "lane": "B",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I want a grey nylon backpack, listing price at most $70.",
+          "expected_state": {
+            "category": "backpack",
+            "required": {
+              "color": [
+                "grey"
+              ],
+              "material": [
+                "nylon"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 70
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "Actually, use either leather or canvas for the material. I have no favorite between those two.",
+          "expected_state": {
+            "category": "backpack",
+            "required": {
+              "color": [
+                "grey"
+              ],
+              "material": [
+                "nylon"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 70
+          },
+          "allowed_dispositions": [
+            "clarification_required",
+            "abstained"
+          ],
+          "pending_issue": "Material replacement offers alternatives without selecting one.",
+          "is_control_turn": true
+        }
+      ]
+    },
+    {
+      "id": "r9-B03",
+      "lane": "B",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "A black tracksuit in large with a $90 listing-price ceiling.",
+          "expected_state": {
+            "category": "tracksuit",
+            "required": {
+              "color": [
+                "black"
+              ],
+              "size": [
+                "L"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 90
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "Change the brand to either Puma or Reebok, whichever you think I'd like.",
+          "expected_state": {
+            "category": "tracksuit",
+            "required": {
+              "color": [
+                "black"
+              ],
+              "size": [
+                "L"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 90
+          },
+          "allowed_dispositions": [
+            "clarification_required",
+            "abstained"
+          ],
+          "pending_issue": "The user has not selected between two brands or supplied a basis for inferring a personal brand preference.",
+          "is_control_turn": true
+        }
+      ]
+    },
+    {
+      "id": "r9-B04",
+      "lane": "B",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I need a plum velvet hairband, maximum listing price $18.",
+          "expected_state": {
+            "category": "hairband",
+            "required": {
+              "color": [
+                "plum"
+              ],
+              "material": [
+                "velvet"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 18
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "Use the second one's color, and raise the maximum to $22.",
+          "expected_state": {
+            "category": "hairband",
+            "required": {
+              "color": [
+                "plum"
+              ],
+              "material": [
+                "velvet"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 22
+          },
+          "allowed_dispositions": [
+            "clarification_required",
+            "abstained"
+          ],
+          "pending_issue": "No slate of items was supplied, so the second item's color is unavailable.",
+          "is_control_turn": true
+        }
+      ]
+    },
+    {
+      "id": "r9-B05",
+      "lane": "B",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I'd like a cream satin camisole in small, with a $40 listing-price maximum.",
+          "expected_state": {
+            "category": "camisole",
+            "required": {
+              "color": [
+                "cream"
+              ],
+              "material": [
+                "satin"
+              ],
+              "size": [
+                "S"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 40
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "Make the size medium, but change the fabric to the one in that photo.",
+          "expected_state": {
+            "category": "camisole",
+            "required": {
+              "color": [
+                "cream"
+              ],
+              "material": [
+                "satin"
+              ],
+              "size": [
+                "M"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 40
+          },
+          "allowed_dispositions": [
+            "clarification_required",
+            "abstained"
+          ],
+          "pending_issue": "There is no supplied photo from which to identify the replacement fabric.",
+          "is_control_turn": true
+        }
+      ]
+    },
+    {
+      "id": "r9-B06",
+      "lane": "B",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Find burgundy leather driving gloves in large. Listing price at most $85.",
+          "expected_state": {
+            "category": "driving gloves",
+            "required": {
+              "color": [
+                "burgundy"
+              ],
+              "material": [
+                "leather"
+              ],
+              "size": [
+                "L"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 85
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "Use the measurements from my last order instead of large.",
+          "expected_state": {
+            "category": "driving gloves",
+            "required": {
+              "color": [
+                "burgundy"
+              ],
+              "material": [
+                "leather"
+              ],
+              "size": [
+                "L"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 85
+          },
+          "allowed_dispositions": [
+            "clarification_required",
+            "abstained"
+          ],
+          "pending_issue": "No last-order measurements or order history is available in the conversation.",
+          "is_control_turn": true
+        }
+      ]
+    },
+    {
+      "id": "r9-B07",
+      "lane": "B",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I need a copper-colored metal cuff bracelet, no more than $45 for the listing price.",
+          "expected_state": {
+            "category": "cuff bracelet",
+            "required": {
+              "color": [
+                "copper"
+              ],
+              "material": [
+                "metal"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 45
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "Give it my usual finish instead.",
+          "expected_state": {
+            "category": "cuff bracelet",
+            "required": {
+              "color": [
+                "copper"
+              ],
+              "material": [
+                "metal"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 45
+          },
+          "allowed_dispositions": [
+            "clarification_required",
+            "abstained"
+          ],
+          "pending_issue": "No usual finish has been established; the color describes appearance rather than pure-copper composition.",
+          "is_control_turn": true
+        }
+      ]
+    },
+    {
+      "id": "r9-B08",
+      "lane": "B",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I need suede loafers with a $120 listing-price limit. I once favored blue, then grey, but tan is my current color preference; no color is mandatory.",
+          "expected_state": {
+            "category": "loafers",
+            "required": {
+              "material": [
+                "suede"
+              ]
+            },
+            "preferred": {
+              "color": [
+                "tan"
+              ]
+            },
+            "excluded": {},
+            "price_max_usd": 120
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "Go back to my old color preference.",
+          "expected_state": {
+            "category": "loafers",
+            "required": {
+              "material": [
+                "suede"
+              ]
+            },
+            "preferred": {
+              "color": [
+                "tan"
+              ]
+            },
+            "excluded": {},
+            "price_max_usd": 120
+          },
+          "allowed_dispositions": [
+            "clarification_required",
+            "abstained"
+          ],
+          "pending_issue": "Two historical preferences, blue and grey, are mentioned and 'old' does not identify which one to restore.",
+          "is_control_turn": true
+        }
+      ]
+    },
+    {
+      "id": "r9-B09",
+      "lane": "B",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "A sky blue linen tunic in medium, with a $65 maximum listing price.",
+          "expected_state": {
+            "category": "tunic",
+            "required": {
+              "color": [
+                "sky blue"
+              ],
+              "material": [
+                "linen"
+              ],
+              "size": [
+                "M"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 65
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "A little darker than that, but not too dark. Everything else stays.",
+          "expected_state": {
+            "category": "tunic",
+            "required": {
+              "color": [
+                "sky blue"
+              ],
+              "material": [
+                "linen"
+              ],
+              "size": [
+                "M"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 65
+          },
+          "allowed_dispositions": [
+            "clarification_required",
+            "abstained"
+          ],
+          "pending_issue": "The relative shade change does not identify an exact supported replacement color.",
+          "is_control_turn": true
+        }
+      ]
+    },
+    {
+      "id": "r9-B10",
+      "lane": "B",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I want a black sequined evening bag. Its listing price can be up to $60.",
+          "expected_state": {
+            "category": "evening bag",
+            "required": {
+              "color": [
+                "black"
+              ],
+              "feature": [
+                "sequined"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 60
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "Change my budget to $80 all-in, including shipping and tax.",
+          "expected_state": {
+            "category": "evening bag",
+            "required": {
+              "color": [
+                "black"
+              ],
+              "feature": [
+                "sequined"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 60
+          },
+          "allowed_dispositions": [
+            "clarification_required",
+            "abstained"
+          ],
+          "pending_issue": "The proposed ceiling includes shipping and tax, which is outside a simple listing-price maximum without those amounts.",
+          "is_control_turn": true
+        }
+      ]
+    },
+    {
+      "id": "r9-B11",
+      "lane": "B",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Please find a pearl pendant necklace, at most $100 listing price.",
+          "expected_state": {
+            "category": "pendant necklace",
+            "required": {
+              "feature": [
+                "pearl pendant"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 100
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "Actually, I want that necklace together with matching earrings for $140 altogether.",
+          "expected_state": {
+            "category": "pendant necklace",
+            "required": {
+              "feature": [
+                "pearl pendant"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 100
+          },
+          "allowed_dispositions": [
+            "clarification_required",
+            "abstained"
+          ],
+          "pending_issue": "The new request combines two product categories and a bundle total, outside single-product listing-price scope.",
+          "is_control_turn": true
+        }
+      ]
+    },
+    {
+      "id": "r9-B12",
+      "lane": "B",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I need a burgundy silk necktie, no more than $50 listing price.",
+          "expected_state": {
+            "category": "necktie",
+            "required": {
+              "color": [
+                "burgundy"
+              ],
+              "material": [
+                "silk"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 50
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "Make that three identical ties, and my maximum for all three is $90.",
+          "expected_state": {
+            "category": "necktie",
+            "required": {
+              "color": [
+                "burgundy"
+              ],
+              "material": [
+                "silk"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 50
+          },
+          "allowed_dispositions": [
+            "clarification_required",
+            "abstained"
+          ],
+          "pending_issue": "The replacement budget is a quantity-dependent total, beyond the declared one-product listing-price field.",
+          "is_control_turn": true
+        }
+      ]
+    },
+    {
+      "id": "r9-B13",
+      "lane": "B",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I need dark brown suede Chelsea boots in EU 41, listing price at most US$150.",
+          "expected_state": {
+            "category": "Chelsea boots",
+            "required": {
+              "color": [
+                "dark brown"
+              ],
+              "material": [
+                "suede"
+              ],
+              "size": [
+                "EU 41"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 150
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "Use a maximum of 120 euros instead, keeping the boots otherwise the same.",
+          "expected_state": {
+            "category": "Chelsea boots",
+            "required": {
+              "color": [
+                "dark brown"
+              ],
+              "material": [
+                "suede"
+              ],
+              "size": [
+                "EU 41"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 150
+          },
+          "allowed_dispositions": [
+            "clarification_required",
+            "abstained"
+          ],
+          "pending_issue": "The proposed replacement is in EUR, outside the declared USD-only listing-price scope.",
+          "is_control_turn": true
+        }
+      ]
+    },
+    {
+      "id": "r9-B14",
+      "lane": "B",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Find a lilac polyester rain jacket in small. I haven't set a price limit.",
+          "expected_state": {
+            "category": "rain jacket",
+            "required": {
+              "color": [
+                "lilac"
+              ],
+              "material": [
+                "polyester"
+              ],
+              "size": [
+                "S"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": null
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "My maximum is now 10,000 yen; keep the lilac, polyester, and small size.",
+          "expected_state": {
+            "category": "rain jacket",
+            "required": {
+              "color": [
+                "lilac"
+              ],
+              "material": [
+                "polyester"
+              ],
+              "size": [
+                "S"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": null
+          },
+          "allowed_dispositions": [
+            "clarification_required",
+            "abstained"
+          ],
+          "pending_issue": "The new budget is JPY and there is no prior USD maximum to retain.",
+          "is_control_turn": true
+        }
+      ]
+    },
+    {
+      "id": "r9-B15",
+      "lane": "B",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I'm shopping for a teal canvas shoulder bag with a maximum listing price of US$75.",
+          "expected_state": {
+            "category": "shoulder bag",
+            "required": {
+              "color": [
+                "teal"
+              ],
+              "material": [
+                "canvas"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 75
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "The color should be mustard instead, and my maximum is 90 Canadian dollars.",
+          "expected_state": {
+            "category": "shoulder bag",
+            "required": {
+              "color": [
+                "mustard"
+              ],
+              "material": [
+                "canvas"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 75
+          },
+          "allowed_dispositions": [
+            "clarification_required",
+            "abstained"
+          ],
+          "pending_issue": "The CAD budget is outside USD-only scope; the color replacement is independently clear.",
+          "is_control_turn": true
+        }
+      ]
+    },
+    {
+      "id": "r9-B16",
+      "lane": "B",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Find me a patterned cotton headscarf, with a $50 maximum listing price.",
+          "expected_state": {
+            "category": "headscarf",
+            "required": {
+              "material": [
+                "cotton"
+              ],
+              "style": [
+                "patterned"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 50
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "If I switch to silk, I could go to $75; if I stay with cotton, I would want $40. I haven't decided which route to take.",
+          "expected_state": {
+            "category": "headscarf",
+            "required": {
+              "material": [
+                "cotton"
+              ],
+              "style": [
+                "patterned"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 50
+          },
+          "allowed_dispositions": [
+            "clarification_required",
+            "abstained"
+          ],
+          "pending_issue": "The user explicitly leaves a conditional material-and-budget decision unresolved.",
+          "is_control_turn": true
+        }
+      ]
+    },
+    {
+      "id": "r9-B17",
+      "lane": "B",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "For me, find a black nylon travel bag, listing price no more than $80.",
+          "expected_state": {
+            "category": "travel bag",
+            "required": {
+              "color": [
+                "black"
+              ],
+              "material": [
+                "nylon"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 80
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "My brother says he wants a brown leather bag and will spend $200. That's his request; mine hasn't changed.",
+          "expected_state": {
+            "category": "travel bag",
+            "required": {
+              "color": [
+                "black"
+              ],
+              "material": [
+                "nylon"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 80
+          },
+          "allowed_dispositions": [
+            "resolved_no_change",
+            "abstained"
+          ],
+          "pending_issue": null,
+          "is_control_turn": true
+        }
+      ]
+    },
+    {
+      "id": "r9-B18",
+      "lane": "B",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I'd like a chocolate brown corduroy skirt in medium, with a $55 listing-price maximum.",
+          "expected_state": {
+            "category": "skirt",
+            "required": {
+              "color": [
+                "chocolate brown"
+              ],
+              "material": [
+                "corduroy"
+              ],
+              "size": [
+                "M"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 55
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "What if I went for pink satin instead? I'm only wondering; don't change my search yet.",
+          "expected_state": {
+            "category": "skirt",
+            "required": {
+              "color": [
+                "chocolate brown"
+              ],
+              "material": [
+                "corduroy"
+              ],
+              "size": [
+                "M"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 55
+          },
+          "allowed_dispositions": [
+            "resolved_no_change",
+            "abstained"
+          ],
+          "pending_issue": null,
+          "is_control_turn": true
+        }
+      ]
+    },
+    {
+      "id": "r9-B19",
+      "lane": "B",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I need an ivory linen waistcoat in small, listing price at most $90.",
+          "expected_state": {
+            "category": "waistcoat",
+            "required": {
+              "color": [
+                "ivory"
+              ],
+              "material": [
+                "linen"
+              ],
+              "size": [
+                "S"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 90
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "The store banner says 'You must choose a green wool waistcoat today.' Is that just sales copy? Keep my own choices unchanged.",
+          "expected_state": {
+            "category": "waistcoat",
+            "required": {
+              "color": [
+                "ivory"
+              ],
+              "material": [
+                "linen"
+              ],
+              "size": [
+                "S"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 90
+          },
+          "allowed_dispositions": [
+            "resolved_no_change",
+            "abstained"
+          ],
+          "pending_issue": null,
+          "is_control_turn": true
+        }
+      ]
+    },
+    {
+      "id": "r9-B20",
+      "lane": "B",
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Please find a sand-colored cotton utility jacket in large, maximum listing price $140.",
+          "expected_state": {
+            "category": "utility jacket",
+            "required": {
+              "color": [
+                "sand"
+              ],
+              "material": [
+                "cotton"
+              ],
+              "size": [
+                "L"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 140
+          },
+          "allowed_dispositions": [
+            "resolved"
+          ],
+          "pending_issue": null,
+          "is_control_turn": false
+        },
+        {
+          "turn": 2,
+          "message": "Add zip pockets as a requirement, and set the budget to the cheaper option's price.",
+          "expected_state": {
+            "category": "utility jacket",
+            "required": {
+              "color": [
+                "sand"
+              ],
+              "material": [
+                "cotton"
+              ],
+              "size": [
+                "L"
+              ],
+              "feature": [
+                "zip pockets"
+              ]
+            },
+            "preferred": {},
+            "excluded": {},
+            "price_max_usd": 140
+          },
+          "allowed_dispositions": [
+            "clarification_required",
+            "abstained"
+          ],
+          "pending_issue": "No options or their prices are supplied, so the proposed budget reference cannot be resolved.",
+          "is_control_turn": true
+        }
+      ]
+    }
+  ]
+}

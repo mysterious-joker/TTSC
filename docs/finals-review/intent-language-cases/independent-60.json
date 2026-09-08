@@ -1,0 +1,320 @@
+{
+  "version": "round9-independent-meaning-v1",
+  "authorship": "Fresh model-authored conversations and expectations, written without inspecting the runtime, semantic-parser prompt, or prior corpus during this task. No runtime or model evaluation was performed during authorship. This is not human validation or a representative population sample.",
+  "lanes": {
+    "A": "40 single-product clothing, footwear, jewelry, and accessory cases within the declared category/color/material/size/style/feature/brand and simple USD listing-price maximum scope.",
+    "B": "20 ambiguity, reference, reported/conditional-request, and price-scope controls. Allowed dispositions and effective constraints while pending are declared before observing any implementation output."
+  },
+  "interpretation": {
+    "category": "Equivalent category wording is acceptable when it identifies the same product type; exact spelling is not the target.",
+    "required": "Hard positive constraints. An omitted attribute has no hard constraint. Multiple values under one attribute are jointly required unless the expected_meaning explicitly states otherwise. A compound color such as navy-and-gold requires the stated combination, not a guessed single shade.",
+    "preferred": "Soft preferences only. An omitted attribute has no active preference. A preference must not become a hard filter.",
+    "excluded": "Hard negative constraints. Omitted attributes have no explicit exclusion. Replacement or withdrawal of a positive requirement does not itself create an exclusion.",
+    "price_max_usd": "An inclusive maximum for one product's listing price in USD. Dollar amounts in lane A are explicitly USD or use $ in the declared USD scope. null means no active listing-price maximum.",
+    "dispositions": "These are semantic labels, not required runtime enum spellings. resolved means the complete supported intent has been applied; resolved_no_change means an informational, reported, or hypothetical statement correctly leaves active intent unchanged; clarification_required means the unresolved issue is identified and clarification is requested; abstained means the unsupported or unresolved edit is explicitly left unapplied without inventing values.",
+    "pending_state": "For a lane B proposal that cannot be safely represented, the expected required/preferred/excluded/price fields specify effective established constraints while the proposal is pending. They do not claim the user definitively reaffirmed the old value. Clearly independent supported edits named in the expectation must still apply.",
+    "completeness": "Read expected_meaning and any pending_issue with the structured fields. These texts predeclare scope, preference strength, preservation, and prohibited guesses; they are part of the oracle. Merely retaining a user command as opaque text does not establish that its intent was resolved."
+  },
+  "cases": [
+    {
+      "id": "r9-A01", "lane": "A",
+      "messages": ["Blue running shoes, US size 9, please. My maximum is $120."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "running shoes", "required": {"color": ["blue"], "size": ["US 9"]}, "preferred": {}, "excluded": {}, "price_max_usd": 120, "expected_meaning": "Require blue running shoes in US size 9 at a listing price of no more than USD 120."}
+    },
+    {
+      "id": "r9-A02", "lane": "A",
+      "messages": ["Could you find a green cotton polo shirt for $45 or less?"],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "polo shirt", "required": {"color": ["green"], "material": ["cotton"]}, "preferred": {}, "excluded": {}, "price_max_usd": 45, "expected_meaning": "The interrogative wording is a shopping request: green and cotton are required, with a USD 45 ceiling."}
+    },
+    {
+      "id": "r9-A03", "lane": "A",
+      "messages": ["I'm after sterling silver earrings. I can spend up to US$75."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "earrings", "required": {"material": ["sterling silver"]}, "preferred": {}, "excluded": {}, "price_max_usd": 75, "expected_meaning": "Require sterling-silver material and a USD 75 maximum. The material name alone does not impose a separate color filter."}
+    },
+    {
+      "id": "r9-A04", "lane": "A",
+      "messages": ["A beige baseball cap with an adjustable strap is what I need. Nothing over $25."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "baseball cap", "required": {"color": ["beige"], "feature": ["adjustable strap"]}, "preferred": {}, "excluded": {}, "price_max_usd": 25, "expected_meaning": "Require beige, an adjustable strap, and a listing price at most USD 25."}
+    },
+    {
+      "id": "r9-A05", "lane": "A",
+      "messages": ["Show me indigo jeans with a straight-leg fit, waist 32 inches. The price ceiling is $85."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "jeans", "required": {"color": ["indigo"], "size": ["32-inch waist"], "style": ["straight leg"]}, "preferred": {}, "excluded": {}, "price_max_usd": 85, "expected_meaning": "Require indigo straight-leg jeans with a 32-inch waist at no more than USD 85. Do not infer an inseam."}
+    },
+    {
+      "id": "r9-A06", "lane": "A",
+      "messages": ["For ankle boots, I need brown leather and EU 38. Let's stay at $140 or below."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "ankle boots", "required": {"color": ["brown"], "material": ["leather"], "size": ["EU 38"]}, "preferred": {}, "excluded": {}, "price_max_usd": 140, "expected_meaning": "Require brown leather ankle boots in EU 38 with a USD 140 maximum; preserve the stated sizing system."}
+    },
+    {
+      "id": "r9-A07", "lane": "A",
+      "messages": ["I'd like a burgundy hoodie in medium. My limit is $65."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "hoodie", "required": {"color": ["burgundy"], "size": ["M"]}, "preferred": {}, "excluded": {}, "price_max_usd": 65, "expected_meaning": "This polite direct request requires burgundy and medium; it does not make every requested attribute optional."}
+    },
+    {
+      "id": "r9-A08", "lane": "A",
+      "messages": ["I need a gold-colored stainless steel necklace, no more than $40. It must be hypoallergenic."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "necklace", "required": {"color": ["gold"], "material": ["stainless steel"], "feature": ["hypoallergenic"]}, "preferred": {}, "excluded": {}, "price_max_usd": 40, "expected_meaning": "Gold describes color; stainless steel describes material. Hypoallergenic is required, and the ceiling is USD 40."}
+    },
+    {
+      "id": "r9-A09", "lane": "A",
+      "messages": ["Black puffer jacket. Waterproof is essential, and $150 is my absolute maximum."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "puffer jacket", "required": {"color": ["black"], "feature": ["waterproof"]}, "preferred": {}, "excluded": {}, "price_max_usd": 150, "expected_meaning": "Require a black waterproof puffer jacket. Water-resistant alone must not be silently equated with the explicit waterproof requirement."}
+    },
+    {
+      "id": "r9-A10", "lane": "A",
+      "messages": ["Find a cream handbag made from vegan leather. It needs a zip closure, and it cannot cost more than $90."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "handbag", "required": {"color": ["cream"], "material": ["vegan leather"], "feature": ["zip closure"]}, "preferred": {}, "excluded": {}, "price_max_usd": 90, "expected_meaning": "Require cream, vegan leather, and a zip closure, within USD 90. Do not reinterpret vegan leather as animal leather."}
+    },
+    {
+      "id": "r9-A11", "lane": "A",
+      "messages": ["Adidas trainers in UK size 6, with a $100 maximum, please."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "trainers", "required": {"size": ["UK 6"], "brand": ["Adidas"]}, "preferred": {}, "excluded": {}, "price_max_usd": 100, "expected_meaning": "Require Adidas trainers, UK 6, at no more than USD 100. Color and material remain unrestricted."}
+    },
+    {
+      "id": "r9-A12", "lane": "A",
+      "messages": ["I'm looking for a red linen summer dress in small. Sleeveless, please, and at most $80."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "summer dress", "required": {"color": ["red"], "material": ["linen"], "size": ["S"], "feature": ["sleeveless"]}, "preferred": {}, "excluded": {}, "price_max_usd": 80, "expected_meaning": "Require a red linen sleeveless summer dress in small at a listing price up to USD 80."}
+    },
+    {
+      "id": "r9-A13", "lane": "A",
+      "messages": ["Can you find a navy-and-gold baseball cap? I want both colors on the cap, and my budget ceiling is $35."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "baseball cap", "required": {"color": ["navy", "gold"]}, "preferred": {}, "excluded": {}, "price_max_usd": 35, "expected_meaning": "Require navy AND gold together on one cap, not a choice between solid navy and solid gold. Maximum USD 35."}
+    },
+    {
+      "id": "r9-A14", "lane": "A",
+      "messages": ["A charcoal grey wool beanie in a one-size option would suit me. Keep it to $30 maximum."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "beanie", "required": {"color": ["charcoal grey"], "material": ["wool"], "size": ["one size"]}, "preferred": {}, "excluded": {}, "price_max_usd": 30, "expected_meaning": "The requested product is charcoal grey, wool, and one size, with a USD 30 ceiling. Do not reduce the compound shade to an unrelated color."}
+    },
+    {
+      "id": "r9-A15", "lane": "A",
+      "messages": ["I need black high-waisted leggings in large, with pockets. $55 is the most I'll pay."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "leggings", "required": {"color": ["black"], "size": ["L"], "style": ["high waisted"], "feature": ["pockets"]}, "preferred": {}, "excluded": {}, "price_max_usd": 55, "expected_meaning": "Require black, large, high-waisted leggings with pockets at no more than USD 55."}
+    },
+    {
+      "id": "r9-A16", "lane": "A",
+      "messages": ["Please look for an olive green nylon watch strap, 20 mm wide. The listing price must be $20 or less."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "watch strap", "required": {"color": ["olive green"], "material": ["nylon"], "size": ["20 mm width"]}, "preferred": {}, "excluded": {}, "price_max_usd": 20, "expected_meaning": "The product is the strap itself, not a watch. Require olive green nylon and 20 mm width, within USD 20."}
+    },
+    {
+      "id": "r9-A17", "lane": "A",
+      "messages": ["I need a navy scarf with a paisley pattern, max $70. Silk would be lovely, but another fabric is okay."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "scarf", "required": {"color": ["navy"], "style": ["paisley"]}, "preferred": {"material": ["silk"]}, "excluded": {}, "price_max_usd": 70, "expected_meaning": "Navy, paisley, and the USD 70 ceiling are required. Silk is a soft preference and must not exclude other fabrics."}
+    },
+    {
+      "id": "r9-A18", "lane": "A",
+      "messages": ["Leather sandals in UK 7 are a must. Tan would be nice, though I'm open to other colors. Maximum $60."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "sandals", "required": {"material": ["leather"], "size": ["UK 7"]}, "preferred": {"color": ["tan"]}, "excluded": {}, "price_max_usd": 60, "expected_meaning": "Require leather, UK 7, and price at most USD 60; prefer tan without a hard color constraint."}
+    },
+    {
+      "id": "r9-A19", "lane": "A",
+      "messages": ["The blazer must be black and formal, within $110. Zara is my first choice, but the brand isn't a dealbreaker."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "blazer", "required": {"color": ["black"], "style": ["formal"]}, "preferred": {"brand": ["Zara"]}, "excluded": {}, "price_max_usd": 110, "expected_meaning": "Require black formal styling and a USD 110 ceiling. Zara is preferred; other brands remain eligible."}
+    },
+    {
+      "id": "r9-A20", "lane": "A",
+      "messages": ["Find a titanium bracelet in a 19 cm size, no more than $50. I'd prefer a matte finish, but shiny is acceptable."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "bracelet", "required": {"material": ["titanium"], "size": ["19 cm"]}, "preferred": {"style": ["matte finish"]}, "excluded": {}, "price_max_usd": 50, "expected_meaning": "Require titanium and the stated 19 cm size within USD 50. Matte is soft; shiny is allowed, not required."}
+    },
+    {
+      "id": "r9-A21", "lane": "A",
+      "messages": ["I'd like a light blue denim jacket costing at most $80. No distressed styling or ripped details."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "denim jacket", "required": {"color": ["light blue"], "material": ["denim"]}, "preferred": {}, "excluded": {"style": ["distressed"], "feature": ["ripped details"]}, "price_max_usd": 80, "expected_meaning": "Require light blue denim with a USD 80 ceiling; prohibit distressed styling and ripped details. The negatives are not positive requirements."}
+    },
+    {
+      "id": "r9-A22", "lane": "A",
+      "messages": ["I'm buying a yellow raincoat in XL. My maximum is $95.", "Let's change yellow to forest green; the size and price ceiling stay as they are."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "raincoat", "required": {"color": ["forest green"], "size": ["XL"]}, "preferred": {}, "excluded": {}, "price_max_usd": 95, "expected_meaning": "Replace yellow with forest green. Preserve the raincoat category, XL size, and USD 95 maximum; do not retain yellow as an alternative or add an explicit yellow exclusion."}
+    },
+    {
+      "id": "r9-A23", "lane": "A",
+      "messages": ["Taupe suede loafers in EU 42, at most $130.", "For the material, choose smooth leather instead. Keep taupe, EU 42, and the same budget."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "loafers", "required": {"color": ["taupe"], "material": ["smooth leather"], "size": ["EU 42"]}, "preferred": {}, "excluded": {}, "price_max_usd": 130, "expected_meaning": "Smooth leather replaces suede as the material requirement; taupe, EU 42, and USD 130 remain. No separate hard exclusion is newly stated."}
+    },
+    {
+      "id": "r9-A24", "lane": "A",
+      "messages": ["An emerald green satin clutch would be great. I can spend up to $70.", "I need to tighten the budget: make the maximum $55. Keep the same color and fabric."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "clutch", "required": {"color": ["emerald green"], "material": ["satin"]}, "preferred": {}, "excluded": {}, "price_max_usd": 55, "expected_meaning": "Replace the USD 70 maximum with USD 55 while retaining emerald green satin and the clutch category."}
+    },
+    {
+      "id": "r9-A25", "lane": "A",
+      "messages": ["A grey fleece crew-neck sweatshirt in L, up to $60, please.", "The fabric can be anything now. All my other requirements still apply."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "crew-neck sweatshirt", "required": {"color": ["grey"], "size": ["L"]}, "preferred": {}, "excluded": {}, "price_max_usd": 60, "expected_meaning": "Withdraw the fleece material requirement without excluding fleece or inventing a material preference. Retain grey, L, crew-neck sweatshirt, and USD 60."}
+    },
+    {
+      "id": "r9-A26", "lane": "A",
+      "messages": ["Black linen trousers in medium with a wide-leg cut. Maximum $85.", "I don't need a particular color anymore; keep the linen, medium size, wide-leg cut, and budget."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "trousers", "required": {"material": ["linen"], "size": ["M"], "style": ["wide leg"]}, "preferred": {}, "excluded": {}, "price_max_usd": 85, "expected_meaning": "Remove the hard black color constraint. Retain linen, medium, wide leg, and USD 85, with no new color preference or exclusion."}
+    },
+    {
+      "id": "r9-A27", "lane": "A",
+      "messages": ["A rose-gold-colored stainless steel necklace, at most $35.", "There is no price limit now. The rest of that description is still right."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "necklace", "required": {"color": ["rose gold"], "material": ["stainless steel"]}, "preferred": {}, "excluded": {}, "price_max_usd": null, "expected_meaning": "Withdraw the listing-price ceiling only. Retain rose-gold color and stainless-steel material; do not infer solid rose-gold material."}
+    },
+    {
+      "id": "r9-A28", "lane": "A",
+      "messages": ["I need brown leather hiking boots in US 10. Ceiling $180.", "Add waterproofing as a firm requirement. Nothing else changes."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "hiking boots", "required": {"color": ["brown"], "material": ["leather"], "size": ["US 10"], "feature": ["waterproof"]}, "preferred": {}, "excluded": {}, "price_max_usd": 180, "expected_meaning": "Add waterproof as required while preserving every established category, color, material, size, and price constraint."}
+    },
+    {
+      "id": "r9-A29", "lane": "A",
+      "messages": ["Red swim shorts in medium, with a drawstring, for no more than $45.", "One more thing: no external pockets. Keep the drawstring and everything else."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "swim shorts", "required": {"color": ["red"], "size": ["M"], "feature": ["drawstring"]}, "preferred": {}, "excluded": {"feature": ["external pockets"]}, "price_max_usd": 45, "expected_meaning": "Add a hard external-pocket exclusion while retaining the required drawstring, red, medium, and USD 45 maximum."}
+    },
+    {
+      "id": "r9-A30", "lane": "A",
+      "messages": ["Look for a black nylon crossbody bag with a zip top, maximum $50.", "Make the color cream and the material canvas. The zip top and $50 limit should stay."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "crossbody bag", "required": {"color": ["cream"], "material": ["canvas"], "feature": ["zip top"]}, "preferred": {}, "excluded": {}, "price_max_usd": 50, "expected_meaning": "Apply both replacements: black to cream and nylon to canvas. Keep zip top, crossbody bag, and USD 50; do not make the explicitly retained requirements optional because 'should stay' is polite wording."}
+    },
+    {
+      "id": "r9-A31", "lane": "A",
+      "messages": ["I want white cotton athletic socks, ankle length, within $15.", "Cotton would merely be nice to have. White and ankle length are still required, and so is the $15 ceiling."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "athletic socks", "required": {"color": ["white"], "style": ["ankle length"]}, "preferred": {"material": ["cotton"]}, "excluded": {}, "price_max_usd": 15, "expected_meaning": "Downgrade only cotton to a soft material preference. Preserve the hard white color, ankle length, and USD 15 maximum."}
+    },
+    {
+      "id": "r9-A32", "lane": "A",
+      "messages": ["Black leather knee-high boots in EU 39, maximum $160.", "Leather and EU 39 are non-negotiable, but black is just my preference now. The budget stays."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "knee-high boots", "required": {"material": ["leather"], "size": ["EU 39"]}, "preferred": {"color": ["black"]}, "excluded": {}, "price_max_usd": 160, "expected_meaning": "Relax black from required to preferred, retaining knee-high boots, hard leather and EU 39, and the USD 160 ceiling."}
+    },
+    {
+      "id": "r9-A33", "lane": "A",
+      "messages": ["A light grey cotton T-shirt in L, no more than $40. I'd like an oversized fit, but regular fit is acceptable.", "I've decided the oversized fit is essential. Keep all the other details."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "T-shirt", "required": {"color": ["light grey"], "material": ["cotton"], "size": ["L"], "style": ["oversized"]}, "preferred": {}, "excluded": {}, "price_max_usd": 40, "expected_meaning": "Promote oversized from a preference to a hard style constraint; retain light grey, cotton, L, and USD 40. No redundant soft oversized preference is needed."}
+    },
+    {
+      "id": "r9-A34", "lane": "A",
+      "messages": ["Black leather gloves in medium, up to $70. Avoid suede entirely.", "Switch black to navy and lower the maximum to $55. Keep medium, leather, and the no-suede rule."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "gloves", "required": {"color": ["navy"], "material": ["leather"], "size": ["M"]}, "preferred": {}, "excluded": {"material": ["suede"]}, "price_max_usd": 55, "expected_meaning": "Apply navy and USD 55 replacements while preserving the leather requirement, medium size, and hard suede exclusion."}
+    },
+    {
+      "id": "r9-A35", "lane": "A",
+      "messages": ["I need a brown leather belt, 30 mm wide, maximum $45. No plastic.", "Remove the leather requirement, please. The color, width, budget, and ban on plastic all remain."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "belt", "required": {"color": ["brown"], "size": ["30 mm width"]}, "preferred": {}, "excluded": {"material": ["plastic"]}, "price_max_usd": 45, "expected_meaning": "Withdraw positive leather while preserving the independent plastic exclusion and brown/30 mm/USD 45 constraints. Leather becomes allowed, not forbidden."}
+    },
+    {
+      "id": "r9-A36", "lane": "A",
+      "messages": ["Find a Uniqlo green cotton polo shirt in M for no more than $35.", "Any brand is fine now. Keep the exact same color, material, size, and price ceiling."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "polo shirt", "required": {"color": ["green"], "material": ["cotton"], "size": ["M"]}, "preferred": {}, "excluded": {}, "price_max_usd": 35, "expected_meaning": "Remove the Uniqlo brand requirement without excluding or preferring it. Retain green cotton, M, and the USD 35 maximum."}
+    },
+    {
+      "id": "r9-A37", "lane": "A",
+      "messages": ["A burnt orange canvas cap with an adjustable strap, maximum $30. Embroidery would be a bonus, not a must.", "Ignore my embroidery preference; I don't care about that detail anymore."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "cap", "required": {"color": ["burnt orange"], "material": ["canvas"], "feature": ["adjustable strap"]}, "preferred": {}, "excluded": {}, "price_max_usd": 30, "expected_meaning": "Withdraw only the soft embroidery preference. Retain burnt orange canvas, an adjustable strap, and the USD 30 ceiling; embroidery is not excluded."}
+    },
+    {
+      "id": "r9-A38", "lane": "A",
+      "messages": ["I need a silver-colored brooch with a magnetic fastening, maximum $25.", "It also has to include a pearl decoration.", "Please rule out a pin fastening, but leave all the positive requirements as they are."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "brooch", "required": {"color": ["silver"], "feature": ["magnetic fastening", "pearl decoration"]}, "preferred": {}, "excluded": {"feature": ["pin fastening"]}, "price_max_usd": 25, "expected_meaning": "Accumulate the required pearl decoration and excluded pin fastening while retaining magnetic fastening, silver color, and USD 25. Color does not imply a silver-material requirement."}
+    },
+    {
+      "id": "r9-A39", "lane": "A",
+      "messages": ["Navy blue fleece joggers in XL, with a $75 maximum.", "Add a tapered cut and zip pockets as requirements.", "The cut can be anything after all. Keep the zip pockets and every original requirement."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "joggers", "required": {"color": ["navy blue"], "material": ["fleece"], "size": ["XL"], "feature": ["zip pockets"]}, "preferred": {}, "excluded": {}, "price_max_usd": 75, "expected_meaning": "Add two requirements, then remove only tapered cut. Retain zip pockets and the original navy blue, fleece, XL, and USD 75 constraints; there is no active fit preference."}
+    },
+    {
+      "id": "r9-A40", "lane": "A",
+      "messages": ["I'd like an off-white cotton bucket hat, no more than $30.", "No visible logos, please. The North Face would be my preferred brand, but other brands are okay."],
+      "expected": {"allowed_dispositions": ["resolved"], "category": "bucket hat", "required": {"color": ["off-white"], "material": ["cotton"]}, "preferred": {"brand": ["The North Face"]}, "excluded": {"feature": ["visible logos"]}, "price_max_usd": 30, "expected_meaning": "Preserve off-white cotton and USD 30, add a hard visible-logo exclusion, and add only a soft brand preference. Do not infer catalog availability or discard the logo rule because of the preferred brand."}
+    },
+    {
+      "id": "r9-B01", "lane": "B",
+      "messages": ["Please find a black wool cardigan in medium, with a maximum listing price of $100.", "For the color, either rust or teal would work instead; keep everything else."],
+      "expected": {"allowed_dispositions": ["clarification_required", "abstained"], "category": "cardigan", "required": {"color": ["black"], "material": ["wool"], "size": ["M"]}, "preferred": {}, "excluded": {}, "price_max_usd": 100, "pending_issue": "The proposed replacement is an OR between rust and teal, outside this lane's single-value edit scope.", "expected_meaning": "Preserve the established state while identifying the unresolved alternative-color proposal. Do not arbitrarily require rust, require teal, require both together, or silently call the old black constraint the accepted final color."}
+    },
+    {
+      "id": "r9-B02", "lane": "B",
+      "messages": ["I want a grey nylon backpack, listing price at most $70.", "Actually, use either leather or canvas for the material. I have no favorite between those two."],
+      "expected": {"allowed_dispositions": ["clarification_required", "abstained"], "category": "backpack", "required": {"color": ["grey"], "material": ["nylon"]}, "preferred": {}, "excluded": {}, "price_max_usd": 70, "pending_issue": "Material replacement offers alternatives without selecting one.", "expected_meaning": "Leave the prior material in effective state pending clarification or explicit abstention on the OR proposal; preserve grey and USD 70. Do not invent a single chosen material, a preference ranking, or a leather-and-canvas conjunction."}
+    },
+    {
+      "id": "r9-B03", "lane": "B",
+      "messages": ["A black tracksuit in large with a $90 listing-price ceiling.", "Change the brand to either Puma or Reebok, whichever you think I'd like."],
+      "expected": {"allowed_dispositions": ["clarification_required", "abstained"], "category": "tracksuit", "required": {"color": ["black"], "size": ["L"]}, "preferred": {}, "excluded": {}, "price_max_usd": 90, "pending_issue": "The user has not selected between two brands or supplied a basis for inferring a personal brand preference.", "expected_meaning": "Preserve black, large, and USD 90, leaving brand unconstrained while the alternatives are unresolved. Do not fabricate a required or preferred brand."}
+    },
+    {
+      "id": "r9-B04", "lane": "B",
+      "messages": ["I need a plum velvet hairband, maximum listing price $18.", "Use the second one's color, and raise the maximum to $22."],
+      "expected": {"allowed_dispositions": ["clarification_required", "abstained"], "category": "hairband", "required": {"color": ["plum"], "material": ["velvet"]}, "preferred": {}, "excluded": {}, "price_max_usd": 22, "pending_issue": "No slate of items was supplied, so the second item's color is unavailable.", "expected_meaning": "Apply the independent clear USD 22 ceiling. Preserve plum until a replacement color is identified, retain velvet and hairband, and identify or abstain on only the unsupported reference."}
+    },
+    {
+      "id": "r9-B05", "lane": "B",
+      "messages": ["I'd like a cream satin camisole in small, with a $40 listing-price maximum.", "Make the size medium, but change the fabric to the one in that photo."],
+      "expected": {"allowed_dispositions": ["clarification_required", "abstained"], "category": "camisole", "required": {"color": ["cream"], "material": ["satin"], "size": ["M"]}, "preferred": {}, "excluded": {}, "price_max_usd": 40, "pending_issue": "There is no supplied photo from which to identify the replacement fabric.", "expected_meaning": "Apply medium as the clear size replacement; preserve cream, satin, and USD 40 while the fabric reference is pending. Do not guess a fabric or ignore the independent size edit."}
+    },
+    {
+      "id": "r9-B06", "lane": "B",
+      "messages": ["Find burgundy leather driving gloves in large. Listing price at most $85.", "Use the measurements from my last order instead of large."],
+      "expected": {"allowed_dispositions": ["clarification_required", "abstained"], "category": "driving gloves", "required": {"color": ["burgundy"], "material": ["leather"], "size": ["L"]}, "preferred": {}, "excluded": {}, "price_max_usd": 85, "pending_issue": "No last-order measurements or order history is available in the conversation.", "expected_meaning": "Preserve large as the established size while identifying the unresolved replacement. Keep burgundy leather, driving gloves, and USD 85; do not infer a measurement or size conversion."}
+    },
+    {
+      "id": "r9-B07", "lane": "B",
+      "messages": ["I need a copper-colored metal cuff bracelet, no more than $45 for the listing price.", "Give it my usual finish instead."],
+      "expected": {"allowed_dispositions": ["clarification_required", "abstained"], "category": "cuff bracelet", "required": {"color": ["copper"], "material": ["metal"]}, "preferred": {}, "excluded": {}, "price_max_usd": 45, "pending_issue": "No usual finish has been established; the color describes appearance rather than pure-copper composition.", "expected_meaning": "Retain copper color, metal, and USD 45. Do not invent matte, polished, brushed, or another finish, and do not reinterpret the color as a copper-material requirement."}
+    },
+    {
+      "id": "r9-B08", "lane": "B",
+      "messages": ["I need suede loafers with a $120 listing-price limit. I once favored blue, then grey, but tan is my current color preference; no color is mandatory.", "Go back to my old color preference."],
+      "expected": {"allowed_dispositions": ["clarification_required", "abstained"], "category": "loafers", "required": {"material": ["suede"]}, "preferred": {"color": ["tan"]}, "excluded": {}, "price_max_usd": 120, "pending_issue": "Two historical preferences, blue and grey, are mentioned and 'old' does not identify which one to restore.", "expected_meaning": "Keep tan as the current soft preference pending clarification. Preserve suede and USD 120; do not select blue or grey, merge them, or promote any color to a hard constraint."}
+    },
+    {
+      "id": "r9-B09", "lane": "B",
+      "messages": ["A sky blue linen tunic in medium, with a $65 maximum listing price.", "A little darker than that, but not too dark. Everything else stays."],
+      "expected": {"allowed_dispositions": ["clarification_required", "abstained"], "category": "tunic", "required": {"color": ["sky blue"], "material": ["linen"], "size": ["M"]}, "preferred": {}, "excluded": {}, "price_max_usd": 65, "pending_issue": "The relative shade change does not identify an exact supported replacement color.", "expected_meaning": "Preserve sky blue while the shade request is unresolved, along with linen, medium, and USD 65. Do not arbitrarily select royal blue, navy, or another exact shade, or invent an exact exclusion from 'not too dark'."}
+    },
+    {
+      "id": "r9-B10", "lane": "B",
+      "messages": ["I want a black sequined evening bag. Its listing price can be up to $60.", "Change my budget to $80 all-in, including shipping and tax."],
+      "expected": {"allowed_dispositions": ["clarification_required", "abstained"], "category": "evening bag", "required": {"color": ["black"], "feature": ["sequined"]}, "preferred": {}, "excluded": {}, "price_max_usd": 60, "pending_issue": "The proposed ceiling includes shipping and tax, which is outside a simple listing-price maximum without those amounts.", "expected_meaning": "Keep the existing USD 60 listing ceiling effective pending resolution of the all-in proposal. Preserve black and sequined. Do not silently install USD 80 as an exact replacement listing-price maximum or invent shipping/tax deductions."}
+    },
+    {
+      "id": "r9-B11", "lane": "B",
+      "messages": ["Please find a pearl pendant necklace, at most $100 listing price.", "Actually, I want that necklace together with matching earrings for $140 altogether."],
+      "expected": {"allowed_dispositions": ["clarification_required", "abstained"], "category": "pendant necklace", "required": {"feature": ["pearl pendant"]}, "preferred": {}, "excluded": {}, "price_max_usd": 100, "pending_issue": "The new request combines two product categories and a bundle total, outside single-product listing-price scope.", "expected_meaning": "Preserve the existing necklace intent while asking how to handle or abstaining on the bundle proposal. Do not merge categories, switch to earrings, allocate USD 140 to either item, or guess a per-item split."}
+    },
+    {
+      "id": "r9-B12", "lane": "B",
+      "messages": ["I need a burgundy silk necktie, no more than $50 listing price.", "Make that three identical ties, and my maximum for all three is $90."],
+      "expected": {"allowed_dispositions": ["clarification_required", "abstained"], "category": "necktie", "required": {"color": ["burgundy"], "material": ["silk"]}, "preferred": {}, "excluded": {}, "price_max_usd": 50, "pending_issue": "The replacement budget is a quantity-dependent total, beyond the declared one-product listing-price field.", "expected_meaning": "Keep the existing single-product constraints effective while identifying the unsupported quantity/total scope. Do not treat USD 90 as a per-item ceiling or silently divide it into a USD 30 maximum; no per-item normalization was authorized."}
+    },
+    {
+      "id": "r9-B13", "lane": "B",
+      "messages": ["I need dark brown suede Chelsea boots in EU 41, listing price at most US$150.", "Use a maximum of 120 euros instead, keeping the boots otherwise the same."],
+      "expected": {"allowed_dispositions": ["clarification_required", "abstained"], "category": "Chelsea boots", "required": {"color": ["dark brown"], "material": ["suede"], "size": ["EU 41"]}, "preferred": {}, "excluded": {}, "price_max_usd": 150, "pending_issue": "The proposed replacement is in EUR, outside the declared USD-only listing-price scope.", "expected_meaning": "Identify the unsupported euro budget and preserve the established USD 150 ceiling while pending. Do not relabel EUR 120 as USD 120, invent a conversion, or change any boot attribute."}
+    },
+    {
+      "id": "r9-B14", "lane": "B",
+      "messages": ["Find a lilac polyester rain jacket in small. I haven't set a price limit.", "My maximum is now 10,000 yen; keep the lilac, polyester, and small size."],
+      "expected": {"allowed_dispositions": ["clarification_required", "abstained"], "category": "rain jacket", "required": {"color": ["lilac"], "material": ["polyester"], "size": ["S"]}, "preferred": {}, "excluded": {}, "price_max_usd": null, "pending_issue": "The new budget is JPY and there is no prior USD maximum to retain.", "expected_meaning": "Preserve the known category and attributes, leave the USD listing ceiling unset, and identify or abstain on the yen budget. Do not install USD 10,000 or guess an exchange rate."}
+    },
+    {
+      "id": "r9-B15", "lane": "B",
+      "messages": ["I'm shopping for a teal canvas shoulder bag with a maximum listing price of US$75.", "The color should be mustard instead, and my maximum is 90 Canadian dollars."],
+      "expected": {"allowed_dispositions": ["clarification_required", "abstained"], "category": "shoulder bag", "required": {"color": ["mustard"], "material": ["canvas"]}, "preferred": {}, "excluded": {}, "price_max_usd": 75, "pending_issue": "The CAD budget is outside USD-only scope; the color replacement is independently clear.", "expected_meaning": "Apply mustard as the color replacement and retain canvas. Keep the prior USD 75 ceiling effective pending resolution of CAD 90. Do not treat CAD as USD or discard the supported color edit."}
+    },
+    {
+      "id": "r9-B16", "lane": "B",
+      "messages": ["Find me a patterned cotton headscarf, with a $50 maximum listing price.", "If I switch to silk, I could go to $75; if I stay with cotton, I would want $40. I haven't decided which route to take."],
+      "expected": {"allowed_dispositions": ["clarification_required", "abstained"], "category": "headscarf", "required": {"material": ["cotton"], "style": ["patterned"]}, "preferred": {}, "excluded": {}, "price_max_usd": 50, "pending_issue": "The user explicitly leaves a conditional material-and-budget decision unresolved.", "expected_meaning": "Preserve the prior cotton/patterned/USD 50 state while the decision is pending. Do not activate silk, USD 75, or USD 40, and do not infer that mentioning silk establishes a preference."}
+    },
+    {
+      "id": "r9-B17", "lane": "B",
+      "messages": ["For me, find a black nylon travel bag, listing price no more than $80.", "My brother says he wants a brown leather bag and will spend $200. That's his request; mine hasn't changed."],
+      "expected": {"allowed_dispositions": ["resolved_no_change", "abstained"], "category": "travel bag", "required": {"color": ["black"], "material": ["nylon"]}, "preferred": {}, "excluded": {}, "price_max_usd": 80, "pending_issue": null, "expected_meaning": "The reported request belongs to someone else and is explicitly not an edit. Preserve only the user's black nylon travel-bag intent and USD 80 ceiling; do not add brown, leather, or USD 200 as requirements or preferences. Clarification is not necessary."}
+    },
+    {
+      "id": "r9-B18", "lane": "B",
+      "messages": ["I'd like a chocolate brown corduroy skirt in medium, with a $55 listing-price maximum.", "What if I went for pink satin instead? I'm only wondering; don't change my search yet."],
+      "expected": {"allowed_dispositions": ["resolved_no_change", "abstained"], "category": "skirt", "required": {"color": ["chocolate brown"], "material": ["corduroy"], "size": ["M"]}, "preferred": {}, "excluded": {}, "price_max_usd": 55, "pending_issue": null, "expected_meaning": "Treat pink satin as a hypothetical question, not an active requirement or preference. Preserve chocolate brown corduroy, medium, and USD 55. The explicit no-change instruction does not require clarification."}
+    },
+    {
+      "id": "r9-B19", "lane": "B",
+      "messages": ["I need an ivory linen waistcoat in small, listing price at most $90.", "The store banner says 'You must choose a green wool waistcoat today.' Is that just sales copy? Keep my own choices unchanged."],
+      "expected": {"allowed_dispositions": ["resolved_no_change", "abstained"], "category": "waistcoat", "required": {"color": ["ivory"], "material": ["linen"], "size": ["S"]}, "preferred": {}, "excluded": {}, "price_max_usd": 90, "pending_issue": null, "expected_meaning": "Quoted retailer language is not the user's intent, even though it contains 'must'. Preserve ivory linen, small, and USD 90; do not add green or wool or ask which explicit unchanged choice the user wants."}
+    },
+    {
+      "id": "r9-B20", "lane": "B",
+      "messages": ["Please find a sand-colored cotton utility jacket in large, maximum listing price $140.", "Add zip pockets as a requirement, and set the budget to the cheaper option's price."],
+      "expected": {"allowed_dispositions": ["clarification_required", "abstained"], "category": "utility jacket", "required": {"color": ["sand"], "material": ["cotton"], "size": ["L"], "feature": ["zip pockets"]}, "preferred": {}, "excluded": {}, "price_max_usd": 140, "pending_issue": "No options or their prices are supplied, so the proposed budget reference cannot be resolved.", "expected_meaning": "Apply the clear zip-pocket requirement while preserving sand, cotton, large, and the existing USD 140 ceiling. Identify the missing price reference; do not invent a lower numerical maximum or ignore the independent feature addition."}
+    }
+  ]
+}

@@ -38,8 +38,9 @@ The team repository was at `5378908`. The working tree already contained a
 Pareto lookahead extension and related documentation/tests. The personal fork
 preserves that exact working tree as baseline commit `e4d5dab`.
 `baseline-manifest.json` records SHA-256 identities of all 98 tracked files.
-The untracked suite generator was also preserved. Local demo outputs and the
-untracked Qwen GGUF are not part of the scored agent or this branch.
+The untracked suite generator was also preserved. Local demo outputs are not
+part of the scored agent or this branch. The unused generative model asset and
+the later generative intent experiment have been removed from the workspace.
 
 **At the end of the initial review, all 98 baseline files were unchanged.**
 Only review documents, aggregate results, experimental runners, and their tests

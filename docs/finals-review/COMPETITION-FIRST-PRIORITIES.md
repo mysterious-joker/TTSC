@@ -1,5 +1,10 @@
 # Competition-first priorities
 
+The [round-nine decision](ROUND9-DECISION.md) removes the generative intent
+experiment completely. Further improvements will use the existing deterministic
+intent and evidence logic with BM25/BGE retrieval. The accepted runtime remains
+the round-eight configuration.
+
 The immediate objective is to strengthen the competition agent. Frontend work
 is deferred. Improvements must support the submission's practical value and
 technical contribution under the [official judging criteria](https://tiktoktechjam2026.devpost.com/#judging-criteria),
