@@ -1,5 +1,11 @@
 # Architecture before and after the finalist review
 
+The [final integration pass](ROUND10-FINAL-DECISION.md) tested the purchase
+prior, an exact two-step planner, their combination, and a constrained cold
+prior. None clears the aggregate, corrected-statistical, fresh-validation, and
+runtime gates together. The active runtime therefore remains `2234a3d`; this is
+an evidence-based non-change rather than an unfinished integration.
+
 The [eighth-round comparison](ROUND8-RESULTS.md#architecture-before-and-after)
 adopts bounded conversation corrections and truthful fallback wording. Four
 end-to-end accuracy/compatibility gates pass; the fresh language gain is due to
@@ -107,13 +113,14 @@ than asking once more and returning the target at rank one.
 
 ## Limits that should be stated accurately
 
-1. The saved specification allows organizer-added paraphrasing; the workshop
-   transcript says no undisclosed paraphrases would be introduced and template
-   updates would be published. Identical private wording must not be assumed
-   unconditionally. Exact replay is relevant to the released evaluator, but its
-   benefit is conditional on recognized wording. The accepted language repairs
-   cover bounded sentence forms with literal catalog values, not unrestricted
-   natural-language understanding. See the [paraphrase audit](PARAPHRASE-AUDIT.md).
+1. The workshop states that private evaluation uses the released templates,
+   introduces no undisclosed paraphrases, and will publish a revised evaluator
+   with representative examples before submission if that changes. This is the
+   primary operational assumption. The saved specification's conditional
+   paraphrase permission makes checking for a revised release part of the final
+   checklist; it does not establish that a revision will occur. The accepted
+   language repairs remain secondary fallback coverage. See the
+   [paraphrase audit](PARAPHRASE-AUDIT.md).
 2. The current Pareto planner proves dominance **inside its continuation model**.
    It holds an ordering of survivors while predicting future branches; the live
    service can reretrieve and rerank after replies. It is not a proof of

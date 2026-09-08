@@ -1,9 +1,11 @@
 # Finalist engineering review — i anything
 
-**Latest decision:** [remove the generative intent experiment](ROUND9-DECISION.md)
-and retain the accepted BM25/BGE architecture. All 457 tests pass; all 200 public
-session responses remain identical. Generative code, weights and the inference
-dependency have been removed.
+**Latest decision:** [retain the protected agent after the final integration
+gate](ROUND10-FINAL-DECISION.md). The combined purchase-prior and deeper-planning
+candidate reaches public HR/MRR `1.0` and score `0.9788`, but regresses MRR on a
+fresh purchase-derived 1,600-session confirmation. Its isolated components also
+fail either an aggregate metric, corrected statistical evidence, or runtime.
+The active agent remains `2234a3d`; it contains no LLM or generative runtime.
 
 **Latest accepted improvement:** the [round-eight bounded conversation fixes](ROUND8-RESULTS.md).
 Fresh language 800 improves HR .830000 → .938750 and score .787013 → .883110,
@@ -55,6 +57,8 @@ was opened. The branch first preserves the pre-existing working tree at
 `e4d5dab`, then adds this review and isolated evaluation tooling.
 
 - [Architecture before/after](ARCHITECTURE-BEFORE-AFTER.md)
+- [Final integration decision](ROUND10-FINAL-DECISION.md)
+- [Final machine-readable results](round10-final-results.json)
 - [Predeclared experiments and promotion gate](EXPERIMENT-PLAN.md)
 - [Reproduction and measurement details](REPRODUCE.md)
 - [Machine-readable aggregate evidence](results-summary.json)
@@ -72,14 +76,16 @@ public p95 latency rises .022 ms and strict runtime non-regression is not claime
 
 The official task is exact parent-ASIN retrieval from a frozen 50,000-product
 catalog, with ten turns and Buying/Browsing/Override/Boundary scenarios. The
-public 200 and private 800 use disjoint users and target products. The saved
-specification allows organizer-added natural-language paraphrasing. The supplied
-workshop Q&A says no undisclosed paraphrases would be introduced and any template
-updates would be published before submission. These statements must be reported
-together: identical private wording is an assumption, not an unconditional
-guarantee. The released local evaluator provides the deterministic reference
-policy. Pretrained models and catalog-derived indexes are permitted; an LLM is
-optional. Sources: [saved specification](../competition_specification.md),
+public 200 and private 800 use disjoint users and target products. The supplied
+workshop Q&A gives the specific operational rule for finals: the private run uses
+the released templates, no undisclosed paraphrases will be introduced, and any
+change will be published through a revised evaluator with representative
+examples before submission. The saved specification's conditional paraphrase
+permission does not establish that a change will occur. We therefore optimize
+the exact released protocol first and keep bounded language handling as secondary
+fallback. Pretrained models and catalog-derived indexes are permitted; the
+active agent contains no LLM. Sources:
+[saved specification](../competition_specification.md),
 [official Track 4 resources](https://bytedance.larkoffice.com/wiki/GdYFwzWNLiREsSkuIjZcDznInWc#SyMVd34O6o2gEsxc5HZmMLoWyvi),
 and the user-supplied workshop transcript. See the
 [paraphrase audit](PARAPHRASE-AUDIT.md) for the actual coverage and remaining gaps.

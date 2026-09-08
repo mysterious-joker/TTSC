@@ -1,0 +1,75 @@
+{
+  "decision": "retain protected agent; reject round-ten runtime integration",
+  "active_commit": "2234a3d",
+  "competition_assumption": {
+    "message_policy": "released evaluator templates; no undisclosed paraphrases per workshop",
+    "target_population": "purchase-derived eligible products",
+    "fallback": "deterministic BM25+BGE hybrid retrieval for unsupported text",
+    "llm": false
+  },
+  "environment": {
+    "python": "3.13.15",
+    "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+    "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564"
+  },
+  "active_public_200": {
+    "dataset_sha256": "857259f7a438e6188ac63e18995b6ff4489bfcfc4a716a798b9a2aa0ee8f7579",
+    "hit_rate_at_10": 1.0,
+    "mrr": 0.99625,
+    "mttc": 2.35,
+    "recommended_technical_score": 0.971875,
+    "response_sha256": "617ed260db8fedc5f1add9054f515afc8cfb2aac05c742794864b66b404b6417"
+  },
+  "active_fresh_purchase_1600": {
+    "dataset_sha256": "7206b676a3434a9451c34d5c33ec1a8e3c93022c6ec732233f98d990ecb17ce3",
+    "sampling": "target-disjoint, without replacement, weight = rating_number + 1",
+    "hit_rate_at_10": 0.99875,
+    "mrr": 0.981143,
+    "mttc": 2.61125,
+    "recommended_technical_score": 0.961493
+  },
+  "rejected_candidates": {
+    "full_integration": {
+      "public": {"hit_rate_at_10": 1.0, "mrr": 1.0, "mttc": 2.06, "score": 0.9788},
+      "fresh_purchase": {"hit_rate_at_10": 0.99875, "mrr": 0.980055, "mttc": 2.56125, "score": 0.962167},
+      "reason": "fresh aggregate MRR regression"
+    },
+    "purchase_and_two_step_without_cold_slate": {
+      "public": {"hit_rate_at_10": 1.0, "mrr": 1.0, "mttc": 2.195, "score": 0.9761},
+      "fresh_purchase": {"hit_rate_at_10": 0.99875, "mrr": 0.980055, "mttc": 2.559375, "score": 0.962204},
+      "reason": "fresh aggregate MRR regression"
+    },
+    "purchase_probe_only": {
+      "fresh_purchase": {"hit_rate_at_10": 0.99875, "mrr": 0.980755, "mttc": 2.573125, "score": 0.962139},
+      "reason": "fresh aggregate MRR regression"
+    },
+    "two_step_only": {
+      "fresh_purchase": {"hit_rate_at_10": 0.99875, "mrr": 0.981436, "mttc": 2.6025, "score": 0.961756},
+      "mean_utility_delta": 0.0002630952380952389,
+      "one_sided_bootstrap_lower_bound": -0.00041056547619047567,
+      "alpha": 0.025,
+      "reason": "bootstrap lower bound not positive"
+    },
+    "exact_cold_prior_only": {
+      "public": {"hit_rate_at_10": 1.0, "mrr": 0.99625, "mttc": 2.215, "score": 0.974575},
+      "fresh_purchase": {"hit_rate_at_10": 0.99875, "mrr": 0.981143, "mttc": 2.613125, "score": 0.961455},
+      "reason": "fresh aggregate turn-efficiency regression"
+    },
+    "per_target_safe_deeper_planner": {
+      "public_response_sha256": "617ed260db8fedc5f1add9054f515afc8cfb2aac05c742794864b66b404b6417",
+      "public_respond_mean_ms": 197.06064672023555,
+      "reason": "no output gain and material runtime regression"
+    }
+  },
+  "validation": {
+    "unit_tests": 457,
+    "exceptions": 0,
+    "invalid_outputs": 0,
+    "active_runtime_changed": false
+  },
+  "limitations": [
+    "Fresh synthetic confirmation is not the organizer private 800.",
+    "ARC and Fable7 complete runnable sources remain unavailable.",
+    "No 0.99 private score or championship result is guaranteed."
+  ]
+}
