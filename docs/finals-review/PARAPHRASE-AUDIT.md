@@ -1,5 +1,11 @@
 # Paraphrase coverage audit — 2026-09-08
 
+**Latest follow-up:** [round eight](ROUND8-RESULTS.md) improves bounded preference
+edits under fresh target sampling, but both baseline and candidate fail all 52
+complete-intent checks in a separately authored natural-language corpus. The
+earlier blanket concern remains material; the new opening grammar does not
+establish broad semantic interpretation.
+
 **Follow-up:** the [round-six repair](ROUND6-RESULTS.md) fixes the recorded
 black-to-white failure and passes fresh aggregate accuracy validation on 2,800
 targets across official, new-form, mixed and limited attribute-paraphrase suites.

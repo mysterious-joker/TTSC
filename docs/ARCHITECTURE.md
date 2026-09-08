@@ -58,6 +58,16 @@ over polite-answer parsing. Unknown values stay soft with revocable provenance;
 uncertain or incomplete interpretations fall back atomically. The original
 message still independently controls exact protocol recognition.
 
+The [round-eight correction fixes](finals-review/ROUND8-RESULTS.md) accept a
+bounded retain-other-preferences clause after a validated edit, preserve explicit
+importance cues, handle polite exclusions before answer normalization, and reject
+ambiguous singular withdrawals. A separate finite apparel-opening grammar splits
+fully recognized category/color/material/budget requests. Its additional benchmark
+benefit is unproven: ablations attribute the measured language gain to preference
+edits, and an independent 52-conversation intent challenge fails completely in
+both versions. Broad natural-language understanding remains unresolved. Empty and
+fallback searches now use wording that reflects the retrieval outcome.
+
 Coverage remains bounded. Outside the supported grammar, openings can still
 leave the category unset and corrections can still fall back to free text.
 BGE retrieval does not itself repair state transitions. The saved specification

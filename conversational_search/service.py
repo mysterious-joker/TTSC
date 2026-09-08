@@ -2274,6 +2274,20 @@ class ConversationalSearchAgent:
                 )
         else:
             message = "Here are the closest matches based on your current preferences."
+        if not exposure_withheld:
+            if not recommendations:
+                fallback_message = "I couldn't find any products to show for your current request."
+            elif retrieval is not None and retrieval.trace.used_fallback:
+                fallback_message = (
+                    "I couldn't establish reliable matches for your current preferences. "
+                    "Here are some catalog options to review."
+                )
+            else:
+                fallback_message = None
+            if fallback_message is not None:
+                message = fallback_message
+                if ask_attribute is not None:
+                    message += " " + QUESTION_TEXT[ask_attribute]
         self._sessions[session_id] = state
         self._slates[session_id] = next_slate_state
         if self.protocol_catalog_policy is FULL_TRANSCRIPT_PROTOCOL_CATALOG_POLICY:

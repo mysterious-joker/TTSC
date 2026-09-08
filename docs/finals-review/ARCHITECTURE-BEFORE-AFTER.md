@@ -1,15 +1,23 @@
 # Architecture before and after the finalist review
 
+The [eighth-round comparison](ROUND8-RESULTS.md#architecture-before-and-after)
+adopts bounded conversation corrections and truthful fallback wording. Four
+end-to-end accuracy/compatibility gates pass; the fresh language gain is due to
+preference-edit handling. A new apparel-opening grammar adds no measured benchmark
+gain, and the independent 52-case language challenge fails for both versions.
+Retrieval, ranking, models and question policies remain unchanged.
+
 The [seventh-round attribute-index experiment](ROUND7-RESULTS.md) adds an offline
 provenance sidecar and two opt-in tie-breaks. Both fail fresh accuracy gates;
-neither is enabled. The active architecture remains the accepted sixth round.
+neither is enabled. The active architecture at the end of that round was the
+accepted sixth round.
 
 The [sixth-round comparison](ROUND6-RESULTS.md#architecture-before-and-after)
 adds compositional intent operations while preserving exact protocol recognition.
 Its four fresh accuracy gates pass; public responses remain unchanged. The
 fifth round's ranking and planning experiments remain disabled.
 
-The latest [fourth-round comparison](ROUND4-RESULTS.md#architecture-before-and-after)
+The earlier [fourth-round comparison](ROUND4-RESULTS.md#architecture-before-and-after)
 adds anchored intent forms that correctly revise tentative preferences, and
 prunes planner widths whose immediate hit already violates the existing utility
 condition. Official outputs are preserved; controlled-language behavior improves.

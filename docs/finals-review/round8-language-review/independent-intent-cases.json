@@ -1,0 +1,579 @@
+{
+  "version": "1.0-independent-semantic",
+  "cases": [
+    {
+      "id": "independent-001",
+      "messages": ["I need a dark blue cotton T-shirt. It must cost no more than US$35."],
+      "expected": {
+        "category": "T-shirt",
+        "attributes": {"color": ["dark blue"], "material": ["cotton"], "budget": ["max:35 USD"]},
+        "excluded": [],
+        "notes": "Attribute arrays encode hard requirements. Budget strings explicitly identify the bound and currency; max is inclusive."
+      }
+    },
+    {
+      "id": "independent-002",
+      "messages": ["Find an office chair with a mesh back, in navy blue, at most US$250."],
+      "expected": {
+        "category": "office chair",
+        "attributes": {"color": ["navy blue"], "material": ["mesh"], "budget": ["max:250 USD"]},
+        "excluded": [],
+        "notes": "The material requirement applies to the chair back, not necessarily the entire chair."
+      },
+      "expected_semantics": "Require a mesh back. Do not strengthen this to a chair made entirely of mesh."
+    },
+    {
+      "id": "independent-003",
+      "messages": ["I'm shopping for a coffee table. I haven't decided on a finish or a price range."],
+      "expected": {
+        "category": "coffee table",
+        "attributes": {"color": [], "material": [], "budget": []},
+        "excluded": [],
+        "notes": "Undecided attributes create no requirements."
+      }
+    },
+    {
+      "id": "independent-004",
+      "messages": ["The dining table has to be oak and no more than US$900. White would be nice, but other colors are fine."],
+      "expected": {
+        "category": "dining table",
+        "attributes": {"color": [], "material": ["oak"], "budget": ["max:900 USD"]},
+        "excluded": [],
+        "notes": "White is preferred, not required."
+      },
+      "expected_semantics": "Prefer white; require oak and a maximum price of US$900."
+    },
+    {
+      "id": "independent-005",
+      "messages": ["Show me a black backpack. Canvas is my first choice, but nylon is fine too. My limit is US$80."],
+      "expected": {
+        "category": "backpack",
+        "attributes": {"color": ["black"], "material": [], "budget": ["max:80 USD"]},
+        "excluded": [],
+        "notes": "Canvas is preferred and nylon is expressly acceptable. No hard material filter is justified."
+      },
+      "expected_semantics": "Prefer canvas over nylon. Do not infer that all other materials are forbidden."
+    },
+    {
+      "id": "independent-006",
+      "messages": ["I want a linen cushion in green, at most US$45.", "Linen is only a preference, actually. The green color and US$45 limit are firm."],
+      "expected": {
+        "category": "cushion",
+        "attributes": {"color": ["green"], "material": [], "budget": ["max:45 USD"]},
+        "excluded": [],
+        "unchanged_attributes": ["color", "budget"],
+        "notes": "The latest turn downgrades linen from required to preferred."
+      },
+      "expected_semantics": "Retain a soft preference for linen."
+    },
+    {
+      "id": "independent-007",
+      "messages": ["I need blue cotton curtains with a US$100 ceiling.", "I'd rather avoid navy if possible, but navy is still acceptable."],
+      "expected": {
+        "category": "curtains",
+        "attributes": {"color": ["blue"], "material": ["cotton"], "budget": ["max:100 USD"]},
+        "excluded": [],
+        "unchanged_attributes": ["color", "material", "budget"],
+        "notes": "A soft dislike must not become a hard navy exclusion."
+      },
+      "expected_semantics": "Prefer non-navy shades of blue; navy blue remains allowed."
+    },
+    {
+      "id": "independent-008",
+      "messages": ["Find a white ceramic table lamp costing no more than US$120.", "I can go up to US$160 now. Keep everything else."],
+      "expected": {
+        "category": "table lamp",
+        "attributes": {"color": ["white"], "material": ["ceramic"], "budget": ["max:160 USD"]},
+        "excluded": [],
+        "unchanged_attributes": ["color", "material"],
+        "notes": "The new ceiling replaces US$120 rather than adding a second ceiling."
+      }
+    },
+    {
+      "id": "independent-009",
+      "messages": ["I need a leather wallet in brown, priced from US$40 to US$70 inclusive."],
+      "expected": {
+        "category": "wallet",
+        "attributes": {"color": ["brown"], "material": ["leather"], "budget": ["min:40 USD", "max:70 USD"]},
+        "excluded": [],
+        "notes": "Both budget bounds are explicit and inclusive."
+      }
+    },
+    {
+      "id": "independent-010",
+      "messages": ["A friend suggested US$300, but my own maximum is US$180. I want a grey wool rug."],
+      "expected": {
+        "category": "rug",
+        "attributes": {"color": ["grey"], "material": ["wool"], "budget": ["max:180 USD"]},
+        "excluded": [],
+        "notes": "The friend's amount is context, not an active budget."
+      }
+    },
+    {
+      "id": "independent-011",
+      "messages": ["I need a black steel bed frame for at most US$400.", "Correction: my limit is S$400, in Singapore dollars. All the other requirements stay."],
+      "expected": {
+        "category": "bed frame",
+        "attributes": {"color": ["black"], "material": ["steel"], "budget": ["max:400 SGD"]},
+        "excluded": [],
+        "unchanged_attributes": ["color", "material"],
+        "notes": "Currency correction is not an exchange-rate conversion."
+      }
+    },
+    {
+      "id": "independent-012",
+      "messages": ["A red silk scarf, at most US$60, please.", "Forget the price cap. I still want red silk."],
+      "expected": {
+        "category": "scarf",
+        "attributes": {"color": ["red"], "material": ["silk"], "budget": []},
+        "excluded": [],
+        "unchanged_attributes": ["color", "material"],
+        "notes": "Withdraw only the budget requirement."
+      }
+    },
+    {
+      "id": "independent-013",
+      "messages": ["Looking for a solid oak bedside table in white. Maximum US$150."],
+      "expected": {
+        "category": "bedside table",
+        "attributes": {"color": ["white"], "material": ["solid oak"], "budget": ["max:150 USD"]},
+        "excluded": [],
+        "notes": "Keep the multiword category and the solid-wood qualifier."
+      },
+      "expected_semantics": "An oak veneer over another material does not satisfy the explicit solid-oak requirement."
+    },
+    {
+      "id": "independent-014",
+      "messages": ["Find a blue cotton rug, maximum US$90.", "Change the item to curtains. Keep the blue, cotton, and US$90 maximum."],
+      "expected": {
+        "category": "curtains",
+        "attributes": {"color": ["blue"], "material": ["cotton"], "budget": ["max:90 USD"]},
+        "excluded": [],
+        "unchanged_attributes": ["color", "material", "budget"],
+        "notes": "Explicit category replacement preserves all named constraints."
+      }
+    },
+    {
+      "id": "independent-015",
+      "messages": ["I need two yellow linen cushions, with a maximum of US$60 for the pair."],
+      "expected": {
+        "category": "cushion",
+        "attributes": {"color": ["yellow"], "material": ["linen"], "budget": ["total_max:60 USD"]},
+        "excluded": [],
+        "notes": "Budget applies to the pair, not independently to each cushion."
+      },
+      "expected_semantics": "Quantity is two. The combined price must be no more than US$60; do not silently treat US$60 as a per-item ceiling."
+    },
+    {
+      "id": "independent-016",
+      "messages": ["I want a black cotton tote bag costing at most US$30.", "Use canvas instead of cotton. Keep the color and price limit."],
+      "expected": {
+        "category": "tote bag",
+        "attributes": {"color": ["black"], "material": ["canvas"], "budget": ["max:30 USD"]},
+        "excluded": [],
+        "unchanged_attributes": ["color", "budget"],
+        "notes": "Replace the named material requirement. The user did not explicitly ban cotton fibers in canvas."
+      }
+    },
+    {
+      "id": "independent-017",
+      "messages": ["A white metal floor lamp, no more than US$110.", "Make it black instead, please. Everything else stays."],
+      "expected": {
+        "category": "floor lamp",
+        "attributes": {"color": ["black"], "material": ["metal"], "budget": ["max:110 USD"]},
+        "excluded": [],
+        "unchanged_attributes": ["material", "budget"],
+        "notes": "A resolvable color replacement removes white from required colors."
+      }
+    },
+    {
+      "id": "independent-018",
+      "messages": ["Find a green glass vase with a US$50 maximum.", "Any color will do now. It still has to be glass and within US$50."],
+      "expected": {
+        "category": "vase",
+        "attributes": {"color": [], "material": ["glass"], "budget": ["max:50 USD"]},
+        "excluded": [],
+        "unchanged_attributes": ["material", "budget"],
+        "notes": "The color requirement is withdrawn without introducing a new color."
+      }
+    },
+    {
+      "id": "independent-019",
+      "messages": ["I need a navy wool coat, maximum US$220.", "Drop the wool requirement. Navy and the price limit still matter."],
+      "expected": {
+        "category": "coat",
+        "attributes": {"color": ["navy"], "material": [], "budget": ["max:220 USD"]},
+        "excluded": [],
+        "unchanged_attributes": ["color", "budget"],
+        "notes": "Dropping wool as a requirement does not exclude wool."
+      }
+    },
+    {
+      "id": "independent-020",
+      "messages": ["Show me pink linen curtains at no more than US$140.", "I no longer care about either the color or the fabric. Keep the US$140 ceiling."],
+      "expected": {
+        "category": "curtains",
+        "attributes": {"color": [], "material": [], "budget": ["max:140 USD"]},
+        "excluded": [],
+        "unchanged_attributes": ["budget"],
+        "notes": "One turn withdraws both color and material requirements."
+      }
+    },
+    {
+      "id": "independent-021",
+      "messages": ["I want a wooden dining chair, maximum US$130.", "No black and no leather, please. Keep everything else."],
+      "expected": {
+        "category": "dining chair",
+        "attributes": {"color": [], "material": ["wood"], "budget": ["max:130 USD"]},
+        "excluded": ["color:black", "material:leather"],
+        "unchanged_attributes": ["material", "budget"],
+        "notes": "Negative requirements do not become positive color or material requirements."
+      }
+    },
+    {
+      "id": "independent-022",
+      "messages": ["Find a cotton bed sheet, at most US$75. Exclude white and cream.", "White is okay now. Cream is still out."],
+      "expected": {
+        "category": "bed sheet",
+        "attributes": {"color": [], "material": ["cotton"], "budget": ["max:75 USD"]},
+        "excluded": ["color:cream"],
+        "unchanged_attributes": ["material", "budget"],
+        "notes": "Making white acceptable withdraws its exclusion; it does not require white."
+      }
+    },
+    {
+      "id": "independent-023",
+      "messages": ["A ceramic mug for no more than US$25. Absolutely no black; blue would be my preference."],
+      "expected": {
+        "category": "mug",
+        "attributes": {"color": [], "material": ["ceramic"], "budget": ["max:25 USD"]},
+        "excluded": ["color:black"],
+        "notes": "Blue is soft; the black exclusion is hard."
+      },
+      "expected_semantics": "Prefer blue while allowing other non-black colors."
+    },
+    {
+      "id": "independent-024",
+      "messages": ["I need cotton-free socks in black, with a maximum price of US$20."],
+      "expected": {
+        "category": "socks",
+        "attributes": {"color": ["black"], "material": [], "budget": ["max:20 USD"]},
+        "excluded": ["material:cotton"],
+        "notes": "Cotton-free excludes cotton and must not be parsed as a positive cotton requirement."
+      }
+    },
+    {
+      "id": "independent-025",
+      "messages": ["Show me a linen shirt in white. It must be cotton-free and no more than US$85."],
+      "expected": {
+        "category": "shirt",
+        "attributes": {"color": ["white"], "material": ["linen"], "budget": ["max:85 USD"]},
+        "excluded": ["material:cotton"],
+        "notes": "The linen requirement and cotton exclusion coexist."
+      }
+    },
+    {
+      "id": "independent-026",
+      "messages": ["I want linen-look curtains in beige, maximum US$100. Polyester is fine; I only mean the look."],
+      "expected": {
+        "category": "curtains",
+        "attributes": {"color": ["beige"], "material": [], "budget": ["max:100 USD"]},
+        "excluded": [],
+        "notes": "Linen-look describes appearance, not a linen fiber requirement. Polyester is permitted, not required."
+      },
+      "expected_semantics": "Require a linen-like appearance without restricting the actual fiber to linen."
+    },
+    {
+      "id": "independent-027",
+      "messages": ["A wood-look storage box in white, at most US$40. The actual material can be anything."],
+      "expected": {
+        "category": "storage box",
+        "attributes": {"color": ["white"], "material": [], "budget": ["max:40 USD"]},
+        "excluded": [],
+        "notes": "A wood appearance must not create a wood-material filter."
+      },
+      "expected_semantics": "Retain the wood-like appearance request independently of material."
+    },
+    {
+      "id": "independent-028",
+      "messages": ["Find a blueberry-scented candle, no more than US$25. I don't care what color it is."],
+      "expected": {
+        "category": "candle",
+        "attributes": {"color": [], "material": [], "budget": ["max:25 USD"]},
+        "excluded": [],
+        "notes": "Blueberry is a scent and must not create a blue-color requirement."
+      },
+      "expected_semantics": "The scent must be blueberry."
+    },
+    {
+      "id": "independent-029",
+      "messages": ["I'm looking for headphones from the Orange brand, in black, with a US$100 maximum. Orange is the brand name, not the color."],
+      "expected": {
+        "category": "headphones",
+        "attributes": {"color": ["black"], "material": [], "budget": ["max:100 USD"]},
+        "excluded": [],
+        "notes": "Only black is a color requirement."
+      },
+      "expected_semantics": "Retain the explicitly named Orange brand requirement without adding an orange-color filter."
+    },
+    {
+      "id": "independent-030",
+      "messages": ["I need an orange ceramic bowl, maximum US$30. By orange I mean the color, not a brand."],
+      "expected": {
+        "category": "bowl",
+        "attributes": {"color": ["orange"], "material": ["ceramic"], "budget": ["max:30 USD"]},
+        "excluded": [],
+        "notes": "Explicit disambiguation identifies orange as a color."
+      }
+    },
+    {
+      "id": "independent-031",
+      "messages": ["I need a green velvet sofa, maximum US$900.", "Make it the color of the second one. Keep the other requirements."],
+      "expected": {
+        "category": "sofa",
+        "attributes": {"color": ["green"], "material": ["velvet"], "budget": ["max:900 USD"]},
+        "excluded": [],
+        "unchanged_attributes": ["color", "material", "budget"],
+        "notes": "There is no product list or other supplied referent for 'the second one'. Do not invent a replacement color."
+      },
+      "expected_semantics": "Color edit is unresolved and needs clarification. Preserve the established green requirement until its replacement is identified."
+    },
+    {
+      "id": "independent-032",
+      "messages": ["Find a brown leather armchair for no more than US$500.", "Use the material from the first photo instead, and keep everything else."],
+      "expected": {
+        "category": "armchair",
+        "attributes": {"color": ["brown"], "material": ["leather"], "budget": ["max:500 USD"]},
+        "excluded": [],
+        "unchanged_attributes": ["color", "material", "budget"],
+        "notes": "No photo is supplied. An unsupported reference must not erase leather or guess a new material."
+      },
+      "expected_semantics": "Material replacement is unresolved and requires the referenced photo or its material."
+    },
+    {
+      "id": "independent-033",
+      "messages": ["I need a white cotton duvet cover, maximum US$95.", "Same as the second one, please."],
+      "expected": {
+        "category": "duvet cover",
+        "attributes": {"color": ["white"], "material": ["cotton"], "budget": ["max:95 USD"]},
+        "excluded": [],
+        "unchanged_attributes": ["color", "material", "budget"],
+        "notes": "No options have been provided. Neither the attribute to edit nor the referent is established."
+      },
+      "expected_semantics": "Ask which item or properties the user means; preserve established requirements while unresolved."
+    },
+    {
+      "id": "independent-034",
+      "messages": ["A red wool rug costing no more than US$180.", "Raise the ceiling to US$220, and change the color to the second one's color."],
+      "expected": {
+        "category": "rug",
+        "attributes": {"color": ["red"], "material": ["wool"], "budget": ["max:220 USD"]},
+        "excluded": [],
+        "unchanged_attributes": ["color", "material"],
+        "notes": "Apply the explicit budget edit; the unsupported color reference stays unresolved."
+      },
+      "expected_semantics": "Request clarification for color only. A failed reference must not discard the independent budget change."
+    },
+    {
+      "id": "independent-035",
+      "messages": ["Find a black metal desk lamp, maximum US$70.", "Make it white, drop the price limit, and use the material from the second option."],
+      "expected": {
+        "category": "desk lamp",
+        "attributes": {"color": ["white"], "material": ["metal"], "budget": []},
+        "excluded": [],
+        "unchanged_attributes": ["material"],
+        "notes": "The clear color change and budget withdrawal apply. No second option has been supplied to resolve the material edit."
+      },
+      "expected_semantics": "Preserve metal while the proposed replacement material is unresolved."
+    },
+    {
+      "id": "independent-036",
+      "messages": ["I need a blue linen cushion at no more than US$40.", "Keep the linen, make the color cream, and lower my maximum to US$30."],
+      "expected": {
+        "category": "cushion",
+        "attributes": {"color": ["cream"], "material": ["linen"], "budget": ["max:30 USD"]},
+        "excluded": [],
+        "unchanged_attributes": ["material"],
+        "notes": "Mixed clauses explicitly preserve one attribute and replace two others."
+      }
+    },
+    {
+      "id": "independent-037",
+      "messages": ["A white cotton shirt, maximum US$65. Exclude linen.", "Forget the cotton requirement, keep white, and still no linen. I'd prefer silk now."],
+      "expected": {
+        "category": "shirt",
+        "attributes": {"color": ["white"], "material": [], "budget": ["max:65 USD"]},
+        "excluded": ["material:linen"],
+        "unchanged_attributes": ["color", "budget"],
+        "notes": "Material withdrawal does not clear a separate exclusion or promote the new preference to a requirement."
+      },
+      "expected_semantics": "Prefer silk; continue excluding linen. Cotton is allowed after its requirement is withdrawn."
+    },
+    {
+      "id": "independent-038",
+      "messages": ["Find a black leather belt at most US$50.", "Actually, no leather. Make the material canvas and leave the rest alone."],
+      "expected": {
+        "category": "belt",
+        "attributes": {"color": ["black"], "material": ["canvas"], "budget": ["max:50 USD"]},
+        "excluded": ["material:leather"],
+        "unchanged_attributes": ["color", "budget"],
+        "notes": "Explicit replacement plus prohibition removes leather from required materials and adds it to exclusions."
+      }
+    },
+    {
+      "id": "independent-039",
+      "messages": ["I want a white wooden bookcase costing no more than US$200.", "Would a black one be cheaper? Keep my request as it is for now."],
+      "expected": {
+        "category": "bookcase",
+        "attributes": {"color": ["white"], "material": ["wood"], "budget": ["max:200 USD"]},
+        "excluded": [],
+        "unchanged_attributes": ["color", "material", "budget"],
+        "notes": "A question about an alternative accompanied by an explicit preservation instruction does not change intent."
+      }
+    },
+    {
+      "id": "independent-040",
+      "messages": ["A green cotton bath towel, maximum US$35.", "If I changed my mind later, I might choose blue. For now, keep green and everything else."],
+      "expected": {
+        "category": "bath towel",
+        "attributes": {"color": ["green"], "material": ["cotton"], "budget": ["max:35 USD"]},
+        "excluded": [],
+        "unchanged_attributes": ["color", "material", "budget"],
+        "notes": "A hypothetical future color is not an active edit or preference."
+      }
+    },
+    {
+      "id": "independent-041",
+      "messages": ["I'm replacing a red plastic laundry basket. The new laundry basket must be white wicker and cost no more than US$55."],
+      "expected": {
+        "category": "laundry basket",
+        "attributes": {"color": ["white"], "material": ["wicker"], "budget": ["max:55 USD"]},
+        "excluded": [],
+        "notes": "Attributes of the old object do not become requirements or exclusions for the new one."
+      }
+    },
+    {
+      "id": "independent-042",
+      "messages": ["My room has blue walls and a wooden desk. Find me a white metal filing cabinet, maximum US$180."],
+      "expected": {
+        "category": "filing cabinet",
+        "attributes": {"color": ["white"], "material": ["metal"], "budget": ["max:180 USD"]},
+        "excluded": [],
+        "notes": "Room context does not create blue or wood requirements for the requested cabinet."
+      }
+    },
+    {
+      "id": "independent-043",
+      "messages": ["Find a black steel shoe rack, at most US$85.", "Not black after all. Use white, keep steel, and don't change the budget."],
+      "expected": {
+        "category": "shoe rack",
+        "attributes": {"color": ["white"], "material": ["steel"], "budget": ["max:85 USD"]},
+        "excluded": ["color:black"],
+        "unchanged_attributes": ["material", "budget"],
+        "notes": "The explicit 'not black' both withdraws the former requirement and prohibits black."
+      }
+    },
+    {
+      "id": "independent-044",
+      "messages": ["I need a ceramic serving bowl, maximum US$45. Either blue or white is acceptable; no other colors."],
+      "expected": {
+        "category": "serving bowl",
+        "attributes": {"color": ["blue", "white"], "material": ["ceramic"], "budget": ["max:45 USD"]},
+        "excluded": [],
+        "notes": "Color entries here are allowed alternatives, not a requirement to combine both colors in one bowl."
+      },
+      "expected_semantics": "The color condition is blue OR white. Other colors are outside the explicitly allowed set."
+    },
+    {
+      "id": "independent-045",
+      "messages": ["I want a cotton scarf with both black and white stripes, for at most US$30."],
+      "expected": {
+        "category": "scarf",
+        "attributes": {"color": ["black", "white"], "material": ["cotton"], "budget": ["max:30 USD"]},
+        "excluded": [],
+        "notes": "Both colors are required together, unlike an either/or list."
+      },
+      "expected_semantics": "Require black AND white in a striped pattern on the same scarf."
+    },
+    {
+      "id": "independent-046",
+      "messages": ["Find a blue cotton duvet cover, maximum US$80.", "Blue is still my favorite, but I'm willing to consider any color now. Keep cotton and the price cap."],
+      "expected": {
+        "category": "duvet cover",
+        "attributes": {"color": [], "material": ["cotton"], "budget": ["max:80 USD"]},
+        "excluded": [],
+        "unchanged_attributes": ["material", "budget"],
+        "notes": "A required color is explicitly relaxed to a preference."
+      },
+      "expected_semantics": "Prefer blue while permitting every color."
+    },
+    {
+      "id": "independent-047",
+      "messages": ["I need a desk chair, maximum US$190. I prefer grey and mesh, but neither is essential.", "Actually, mesh is a must. Grey is still just a preference."],
+      "expected": {
+        "category": "desk chair",
+        "attributes": {"color": [], "material": ["mesh"], "budget": ["max:190 USD"]},
+        "excluded": [],
+        "unchanged_attributes": ["budget"],
+        "notes": "Only material is promoted from preference to hard requirement."
+      },
+      "expected_semantics": "Require mesh and prefer grey."
+    },
+    {
+      "id": "independent-048",
+      "messages": ["A brown leather messenger bag, maximum US$150.", "My limit is US$120 now.", "Let's make that US$140. Keep the brown leather."],
+      "expected": {
+        "category": "messenger bag",
+        "attributes": {"color": ["brown"], "material": ["leather"], "budget": ["max:140 USD"]},
+        "excluded": [],
+        "unchanged_attributes": ["color", "material"],
+        "notes": "The latest unambiguous budget replaces both earlier amounts."
+      }
+    },
+    {
+      "id": "independent-049",
+      "messages": ["I want a black metal wall shelf for no more than US$70.", "Switch the color to white.", "On second thought, use green. Leave the material and limit as they were."],
+      "expected": {
+        "category": "wall shelf",
+        "attributes": {"color": ["green"], "material": ["metal"], "budget": ["max:70 USD"]},
+        "excluded": [],
+        "unchanged_attributes": ["material", "budget"],
+        "notes": "Later color edits replace earlier ones rather than accumulating alternatives."
+      }
+    },
+    {
+      "id": "independent-050",
+      "messages": ["Find a white ceramic planter with a US$35 maximum.", "Thanks, that's still exactly what I need."],
+      "expected": {
+        "category": "planter",
+        "attributes": {"color": ["white"], "material": ["ceramic"], "budget": ["max:35 USD"]},
+        "excluded": [],
+        "unchanged_attributes": ["color", "material", "budget"],
+        "notes": "Acknowledgment without an edit preserves established requirements."
+      }
+    },
+    {
+      "id": "independent-051",
+      "messages": ["No leather or wool, please. I need a grey winter coat at no more than US$160.", "Leather is okay now, but wool still isn't. Keep the grey and US$160 limit."],
+      "expected": {
+        "category": "winter coat",
+        "attributes": {"color": ["grey"], "material": [], "budget": ["max:160 USD"]},
+        "excluded": ["material:wool"],
+        "unchanged_attributes": ["color", "budget"],
+        "notes": "Selective exclusion withdrawal permits leather without requiring it."
+      }
+    },
+    {
+      "id": "independent-052",
+      "messages": ["I need a blue cotton shower curtain. Hard maximum US$50.", "Try for US$35 if possible, but US$50 is still my absolute limit. Keep blue cotton."],
+      "expected": {
+        "category": "shower curtain",
+        "attributes": {"color": ["blue"], "material": ["cotton"], "budget": ["max:50 USD"]},
+        "excluded": [],
+        "unchanged_attributes": ["color", "material", "budget"],
+        "notes": "A desired cheaper price does not lower the explicitly retained hard ceiling."
+      },
+      "expected_semantics": "Prefer a price at or below US$35, while allowing prices up to the hard US$50 maximum."
+    }
+  ]
+}

@@ -2,8 +2,10 @@ import unittest
 
 from conversational_search.decision import ProtocolObservation, recognize_protocol_observation
 from conversational_search.intent import (
-    IntentState, Requirement, apply_user_message, record_question, render_dense_query,
+    IntentState, Requirement, RequirementImportance, apply_user_message, record_question,
+    render_dense_query,
 )
+from conversational_search.intent_operations import reduce_prose_intent
 
 
 class ProseIntentOperationsTests(unittest.TestCase):
@@ -65,6 +67,92 @@ class ProseIntentOperationsTests(unittest.TestCase):
         self.assertEqual(withdrawn.excluded, ())
         kept = apply_user_message(state, 'Keep cotton; change the color to white.', 3)
         self.assertEqual(kept.requirements[0], state.requirements[1])
+
+    def test_keep_everything_else_preserves_independent_constraints(self):
+        state = self.initial()
+        for text in ('Change the color to white; keep everything else.',
+                     'Keep all other preferences; replace black with white.',
+                     'Avoid black; keep everything else.'):
+            with self.subTest(text=text):
+                result = apply_user_message(state, text, 3)
+                self.assertEqual(result.requirements[0], state.requirements[1])
+                self.assertNotIn('black', [req.value for req in result.requirements])
+                self.assertEqual(result.intent_version, state.intent_version + 1)
+                self.assertTrue(all(req.source != 'free_text' for req in result.requirements))
+        added = apply_user_message(state, 'Budget: under $50; keep everything else.', 3)
+        self.assertEqual(added.requirements[:2], state.requirements)
+        self.assertEqual(added.requirements[-1].attribute, 'budget')
+
+    def test_keep_remaining_does_not_accept_missing_or_invalid_edit(self):
+        state = self.initial()
+        for text in ('Keep everything else.',
+                     'Keep everything else; keep cotton.',
+                     'Change the color to white; keep everything else; whatever.',
+                     'Replace black with white; keep everything else blue.'):
+            with self.subTest(text=text):
+                result = apply_user_message(state, text, 3)
+                self.assertEqual(result.requirements[:2], state.requirements)
+                self.assertEqual(result.intent_version, state.intent_version)
+                self.assertEqual(result.requirements[-1].source, 'free_text')
+
+    def test_polite_exclusion_removes_matching_positive_requirement(self):
+        state = self.initial()
+        for text in ('No cotton, please.', 'Avoid cotton,please.', 'Without cotton please.'):
+            with self.subTest(text=text):
+                result = apply_user_message(state, text, 3)
+                self.assertEqual(result.requirements, state.requirements[:1])
+                self.assertEqual(result.excluded, ('cotton',))
+        named = IntentState(category='shoes', last_turn=1, requirements=(
+            Requirement('Brand: ACME, Inc.', 'initial_explicit', 1, 'brand'),))
+        result = apply_user_message(named, 'Avoid Brand: ACME, Inc., please.', 2)
+        self.assertEqual(result.requirements, ())
+        self.assertEqual(result.excluded, ('Brand: ACME, Inc.',))
+
+    def test_singular_earlier_reference_cannot_remove_multiple_preferences(self):
+        state = IntentState(category='shirts', last_turn=1, requirements=(
+            Requirement('blue', 'initial_explicit', 1, 'color'),
+            Requirement('cotton', 'initial_explicit', 1, 'material'),
+            Requirement('under $50', 'initial_explicit', 1, 'budget')))
+        for text in ('Remove my earlier preference.', 'Drop the previous preference.',
+                     'Forget my previous preference; I need navy.',
+                     'Replace my earlier preference with black.'):
+            with self.subTest(text=text):
+                result = apply_user_message(state, text, 2)
+                self.assertEqual(result.requirements[:3], state.requirements)
+                self.assertEqual(result.intent_version, state.intent_version)
+                self.assertEqual(result.requirements[-1].source, 'free_text')
+        explicit = apply_user_message(state, 'Remove blue; keep everything else.', 2)
+        self.assertEqual(explicit.requirements, state.requirements[1:])
+        self.assertEqual(explicit.excluded, ())
+
+    def test_explicit_importance_survives_value_normalization(self):
+        state = IntentState(category='shirts', last_turn=1)
+        for text, expected in (('I need cotton.', RequirementImportance.MUST),
+                               ('I prefer blue.', RequirementImportance.PREFER),
+                               ('It should be black.', RequirementImportance.SHOULD),
+                               ('I would like silk.', RequirementImportance.PREFER)):
+            with self.subTest(text=text):
+                direct = reduce_prose_intent(state, text, 2)
+                self.assertIsNotNone(direct)
+                self.assertEqual(direct.requirements[-1].importance, expected)
+                self.assertEqual(direct.requirements[-1].strength, 'hard')
+                actual = apply_user_message(state, text, 2)
+                self.assertEqual(actual.requirements[-1].importance, expected)
+        initial = self.initial()
+        changed = apply_user_message(initial, 'I prefer white instead of black.', 3)
+        self.assertEqual(changed.requirements[0], initial.requirements[1])
+        self.assertEqual(changed.requirements[-1].source, 'override')
+        self.assertEqual(changed.requirements[-1].importance, RequirementImportance.PREFER)
+        self.assertEqual(changed.requirements[-1].strength, 'hard')
+
+    def test_asked_attribute_answer_retains_explicit_importance(self):
+        state = record_question(IntentState(category='shirts', last_turn=1), 'material')
+        for text, expected in (('I need cotton.', RequirementImportance.MUST),
+                               ('I prefer cotton.', RequirementImportance.PREFER)):
+            with self.subTest(text=text):
+                actual = apply_user_message(state, text, 2)
+                self.assertEqual(actual.requirements[-1].attribute, 'material')
+                self.assertEqual(actual.requirements[-1].importance, expected)
 
     def test_untyped_replacement_remains_revocable(self):
         state = self.initial()

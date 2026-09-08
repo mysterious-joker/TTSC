@@ -1,0 +1,3879 @@
+{
+  "version": "1.0-runtime-state-collection",
+  "label": "candidate",
+  "runtime_root": "/Users/limzichao/Projects/ttsc/benchmarks/finals-20260907/TTSC",
+  "interpreter": "/Users/limzichao/Projects/ttsc/.venv-runtime/bin/python",
+  "module_path": "/Users/limzichao/Projects/ttsc/benchmarks/finals-20260907/TTSC/conversational_search/intent.py",
+  "module_sha256": "8b3054981d9c1b608e03b8c4566a9832d14f4a6b093652f9a19f9bc2825dc5b7",
+  "corpus_sha256": "20ff7ec7c00fd78d937d4fe653eaeaa12022a60e192ac52eaf7e341088d9db1c",
+  "method": "Fresh IntentState per case; apply_user_message with successive messages and one-based turns; default parsing policy; no question context injected.",
+  "cases": [
+    {
+      "id": "independent-001",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I need a dark blue cotton T-shirt. It must cost no more than US$35.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "I need a dark blue cotton T-shirt. It must cost no more than US$35.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "must"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "I need a dark blue cotton T-shirt. It must cost no more than US$35.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "must"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 1
+      }
+    },
+    {
+      "id": "independent-002",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Find an office chair with a mesh back, in navy blue, at most US$250.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "Find an office chair with a mesh back, in navy blue, at most US$250.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "Find an office chair with a mesh back, in navy blue, at most US$250.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 1
+      }
+    },
+    {
+      "id": "independent-003",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I'm shopping for a coffee table. I haven't decided on a finish or a price range.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "I'm shopping for a coffee table. I haven't decided on a finish or a price range.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "I'm shopping for a coffee table. I haven't decided on a finish or a price range.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 1
+      }
+    },
+    {
+      "id": "independent-004",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "The dining table has to be oak and no more than US$900. White would be nice, but other colors are fine.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "The dining table has to be oak and no more than US$900. White would be nice, but other colors are fine.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "The dining table has to be oak and no more than US$900. White would be nice, but other colors are fine.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 1
+      }
+    },
+    {
+      "id": "independent-005",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Show me a black backpack. Canvas is my first choice, but nylon is fine too. My limit is US$80.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "Show me a black backpack. Canvas is my first choice, but nylon is fine too. My limit is US$80.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "Show me a black backpack. Canvas is my first choice, but nylon is fine too. My limit is US$80.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 1
+      }
+    },
+    {
+      "id": "independent-006",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I want a linen cushion in green, at most US$45.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "I want a linen cushion in green, at most US$45.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "Linen is only a preference, actually. The green color and US$45 limit are firm.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "I want a linen cushion in green, at most US$45.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              },
+              {
+                "value": "Linen is only a preference, actually. The green color and US$45 limit are firm.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "I want a linen cushion in green, at most US$45.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          },
+          {
+            "value": "Linen is only a preference, actually. The green color and US$45 limit are firm.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 2
+      }
+    },
+    {
+      "id": "independent-007",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I need blue cotton curtains with a US$100 ceiling.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "I need blue cotton curtains with a US$100 ceiling.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "must"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "I'd rather avoid navy if possible, but navy is still acceptable.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "I need blue cotton curtains with a US$100 ceiling.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "must"
+              },
+              {
+                "value": "I'd rather avoid navy if possible, but navy is still acceptable.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "I need blue cotton curtains with a US$100 ceiling.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "must"
+          },
+          {
+            "value": "I'd rather avoid navy if possible, but navy is still acceptable.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 2
+      }
+    },
+    {
+      "id": "independent-008",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Find a white ceramic table lamp costing no more than US$120.",
+          "state": {
+            "category": "a white ceramic table lamp costing no more than US$120",
+            "requirements": [],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "I can go up to US$160 now. Keep everything else.",
+          "state": {
+            "category": "a white ceramic table lamp costing no more than US$120",
+            "requirements": [
+              {
+                "value": "I can go up to US$160 now. Keep everything else.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": "a white ceramic table lamp costing no more than US$120",
+        "requirements": [
+          {
+            "value": "I can go up to US$160 now. Keep everything else.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 2
+      }
+    },
+    {
+      "id": "independent-009",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I need a leather wallet in brown, priced from US$40 to US$70 inclusive.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "I need a leather wallet in brown, priced from US$40 to US$70 inclusive.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "must"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "I need a leather wallet in brown, priced from US$40 to US$70 inclusive.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "must"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 1
+      }
+    },
+    {
+      "id": "independent-010",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "A friend suggested US$300, but my own maximum is US$180. I want a grey wool rug.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "A friend suggested US$300, but my own maximum is US$180. I want a grey wool rug.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "A friend suggested US$300, but my own maximum is US$180. I want a grey wool rug.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 1
+      }
+    },
+    {
+      "id": "independent-011",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I need a black steel bed frame for at most US$400.",
+          "state": {
+            "category": "a black steel bed frame for at most US$400",
+            "requirements": [],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "Correction: my limit is S$400, in Singapore dollars. All the other requirements stay.",
+          "state": {
+            "category": "a black steel bed frame for at most US$400",
+            "requirements": [
+              {
+                "value": "Correction: my limit is S$400, in Singapore dollars. All the other requirements stay.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": "a black steel bed frame for at most US$400",
+        "requirements": [
+          {
+            "value": "Correction: my limit is S$400, in Singapore dollars. All the other requirements stay.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 2
+      }
+    },
+    {
+      "id": "independent-012",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "A red silk scarf, at most US$60, please.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "A red silk scarf, at most US$60, please.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "Forget the price cap. I still want red silk.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "A red silk scarf, at most US$60, please.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              },
+              {
+                "value": "Forget the price cap. I still want red silk.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "A red silk scarf, at most US$60, please.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          },
+          {
+            "value": "Forget the price cap. I still want red silk.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 2
+      }
+    },
+    {
+      "id": "independent-013",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Looking for a solid oak bedside table in white. Maximum US$150.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "Looking for a solid oak bedside table in white. Maximum US$150.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "Looking for a solid oak bedside table in white. Maximum US$150.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 1
+      }
+    },
+    {
+      "id": "independent-014",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Find a blue cotton rug, maximum US$90.",
+          "state": {
+            "category": "a blue cotton rug, maximum US$90",
+            "requirements": [],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "Change the item to curtains. Keep the blue, cotton, and US$90 maximum.",
+          "state": {
+            "category": "a blue cotton rug, maximum US$90",
+            "requirements": [
+              {
+                "value": "Change the item to curtains. Keep the blue, cotton, and US$90 maximum.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": "a blue cotton rug, maximum US$90",
+        "requirements": [
+          {
+            "value": "Change the item to curtains. Keep the blue, cotton, and US$90 maximum.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 2
+      }
+    },
+    {
+      "id": "independent-015",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I need two yellow linen cushions, with a maximum of US$60 for the pair.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "I need two yellow linen cushions, with a maximum of US$60 for the pair.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "must"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "I need two yellow linen cushions, with a maximum of US$60 for the pair.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "must"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 1
+      }
+    },
+    {
+      "id": "independent-016",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I want a black cotton tote bag costing at most US$30.",
+          "state": {
+            "category": "a black cotton tote bag costing at most US$30",
+            "requirements": [],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "Use canvas instead of cotton. Keep the color and price limit.",
+          "state": {
+            "category": "a black cotton tote bag costing at most US$30",
+            "requirements": [
+              {
+                "value": "Use canvas instead of cotton. Keep the color and price limit.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": "a black cotton tote bag costing at most US$30",
+        "requirements": [
+          {
+            "value": "Use canvas instead of cotton. Keep the color and price limit.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 2
+      }
+    },
+    {
+      "id": "independent-017",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "A white metal floor lamp, no more than US$110.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "A white metal floor lamp, no more than US$110.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "Make it black instead, please. Everything else stays.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "A white metal floor lamp, no more than US$110.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              },
+              {
+                "value": "Make it black instead, please. Everything else stays.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "A white metal floor lamp, no more than US$110.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          },
+          {
+            "value": "Make it black instead, please. Everything else stays.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 2
+      }
+    },
+    {
+      "id": "independent-018",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Find a green glass vase with a US$50 maximum.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "Find a green glass vase with a US$50 maximum.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "Any color will do now. It still has to be glass and within US$50.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "Find a green glass vase with a US$50 maximum.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              },
+              {
+                "value": "Any color will do now. It still has to be glass and within US$50.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "Find a green glass vase with a US$50 maximum.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          },
+          {
+            "value": "Any color will do now. It still has to be glass and within US$50.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 2
+      }
+    },
+    {
+      "id": "independent-019",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I need a navy wool coat, maximum US$220.",
+          "state": {
+            "category": "a navy wool coat, maximum US$220",
+            "requirements": [],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "Drop the wool requirement. Navy and the price limit still matter.",
+          "state": {
+            "category": "a navy wool coat, maximum US$220",
+            "requirements": [
+              {
+                "value": "Drop the wool requirement. Navy and the price limit still matter.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": "a navy wool coat, maximum US$220",
+        "requirements": [
+          {
+            "value": "Drop the wool requirement. Navy and the price limit still matter.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 2
+      }
+    },
+    {
+      "id": "independent-020",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Show me pink linen curtains at no more than US$140.",
+          "state": {
+            "category": "pink linen curtains at no more than US$140",
+            "requirements": [],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "I no longer care about either the color or the fabric. Keep the US$140 ceiling.",
+          "state": {
+            "category": "pink linen curtains at no more than US$140",
+            "requirements": [
+              {
+                "value": "I no longer care about either the color or the fabric. Keep the US$140 ceiling.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": "pink linen curtains at no more than US$140",
+        "requirements": [
+          {
+            "value": "I no longer care about either the color or the fabric. Keep the US$140 ceiling.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 2
+      }
+    },
+    {
+      "id": "independent-021",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I want a wooden dining chair, maximum US$130.",
+          "state": {
+            "category": "a wooden dining chair, maximum US$130",
+            "requirements": [],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "No black and no leather, please. Keep everything else.",
+          "state": {
+            "category": "a wooden dining chair, maximum US$130",
+            "requirements": [
+              {
+                "value": "No black and no leather, please. Keep everything else.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": "a wooden dining chair, maximum US$130",
+        "requirements": [
+          {
+            "value": "No black and no leather, please. Keep everything else.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 2
+      }
+    },
+    {
+      "id": "independent-022",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Find a cotton bed sheet, at most US$75. Exclude white and cream.",
+          "state": {
+            "category": "a cotton bed sheet, at most US$75",
+            "requirements": [],
+            "excluded": [
+              "white and cream"
+            ],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 1,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "White is okay now. Cream is still out.",
+          "state": {
+            "category": "a cotton bed sheet, at most US$75",
+            "requirements": [
+              {
+                "value": "White is okay now. Cream is still out.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [
+              "white and cream"
+            ],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 1,
+            "last_turn": 2
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": "a cotton bed sheet, at most US$75",
+        "requirements": [
+          {
+            "value": "White is okay now. Cream is still out.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [
+          "white and cream"
+        ],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 1,
+        "last_turn": 2
+      }
+    },
+    {
+      "id": "independent-023",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "A ceramic mug for no more than US$25. Absolutely no black; blue would be my preference.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "A ceramic mug for no more than US$25. Absolutely no black; blue would be my preference.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "A ceramic mug for no more than US$25. Absolutely no black; blue would be my preference.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 1
+      }
+    },
+    {
+      "id": "independent-024",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I need cotton-free socks in black, with a maximum price of US$20.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "I need cotton-free socks in black, with a maximum price of US$20.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "must"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "I need cotton-free socks in black, with a maximum price of US$20.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "must"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 1
+      }
+    },
+    {
+      "id": "independent-025",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Show me a linen shirt in white. It must be cotton-free and no more than US$85.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "Show me a linen shirt in white. It must be cotton-free and no more than US$85.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "Show me a linen shirt in white. It must be cotton-free and no more than US$85.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 1
+      }
+    },
+    {
+      "id": "independent-026",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I want linen-look curtains in beige, maximum US$100. Polyester is fine; I only mean the look.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "I want linen-look curtains in beige, maximum US$100. Polyester is fine; I only mean the look.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "I want linen-look curtains in beige, maximum US$100. Polyester is fine; I only mean the look.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 1
+      }
+    },
+    {
+      "id": "independent-027",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "A wood-look storage box in white, at most US$40. The actual material can be anything.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "A wood-look storage box in white, at most US$40. The actual material can be anything.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "A wood-look storage box in white, at most US$40. The actual material can be anything.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 1
+      }
+    },
+    {
+      "id": "independent-028",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Find a blueberry-scented candle, no more than US$25. I don't care what color it is.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "Find a blueberry-scented candle, no more than US$25. I don't care what color it is.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "Find a blueberry-scented candle, no more than US$25. I don't care what color it is.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 1
+      }
+    },
+    {
+      "id": "independent-029",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I'm looking for headphones from the Orange brand, in black, with a US$100 maximum. Orange is the brand name, not the color.",
+          "state": {
+            "category": "headphones from the Orange brand, in black, with a US$100 maximum",
+            "requirements": [
+              {
+                "value": "Orange is the brand name, not the color",
+                "source": "initial_tentative",
+                "turn": 1,
+                "attribute": "color",
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": "headphones from the Orange brand, in black, with a US$100 maximum",
+        "requirements": [
+          {
+            "value": "Orange is the brand name, not the color",
+            "source": "initial_tentative",
+            "turn": 1,
+            "attribute": "color",
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 1
+      }
+    },
+    {
+      "id": "independent-030",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I need an orange ceramic bowl, maximum US$30. By orange I mean the color, not a brand.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "I need an orange ceramic bowl, maximum US$30. By orange I mean the color, not a brand.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "must"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "I need an orange ceramic bowl, maximum US$30. By orange I mean the color, not a brand.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "must"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 1
+      }
+    },
+    {
+      "id": "independent-031",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I need a green velvet sofa, maximum US$900.",
+          "state": {
+            "category": "a green velvet sofa, maximum US$900",
+            "requirements": [],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "Make it the color of the second one. Keep the other requirements.",
+          "state": {
+            "category": "a green velvet sofa, maximum US$900",
+            "requirements": [
+              {
+                "value": "Make it the color of the second one. Keep the other requirements.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": "a green velvet sofa, maximum US$900",
+        "requirements": [
+          {
+            "value": "Make it the color of the second one. Keep the other requirements.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 2
+      }
+    },
+    {
+      "id": "independent-032",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Find a brown leather armchair for no more than US$500.",
+          "state": {
+            "category": "a brown leather armchair for no more than US$500",
+            "requirements": [],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "Use the material from the first photo instead, and keep everything else.",
+          "state": {
+            "category": "a brown leather armchair for no more than US$500",
+            "requirements": [
+              {
+                "value": "the material from the first photo instead, and keep everything else",
+                "source": "answer",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "should"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": "a brown leather armchair for no more than US$500",
+        "requirements": [
+          {
+            "value": "the material from the first photo instead, and keep everything else",
+            "source": "answer",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "should"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 2
+      }
+    },
+    {
+      "id": "independent-033",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I need a white cotton duvet cover, maximum US$95.",
+          "state": {
+            "category": "a white cotton duvet cover, maximum US$95",
+            "requirements": [],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "Same as the second one, please.",
+          "state": {
+            "category": "a white cotton duvet cover, maximum US$95",
+            "requirements": [
+              {
+                "value": "Same as the second one, please.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": "a white cotton duvet cover, maximum US$95",
+        "requirements": [
+          {
+            "value": "Same as the second one, please.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 2
+      }
+    },
+    {
+      "id": "independent-034",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "A red wool rug costing no more than US$180.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "A red wool rug costing no more than US$180.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "Raise the ceiling to US$220, and change the color to the second one's color.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "A red wool rug costing no more than US$180.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              },
+              {
+                "value": "Raise the ceiling to US$220, and change the color to the second one's color.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "A red wool rug costing no more than US$180.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          },
+          {
+            "value": "Raise the ceiling to US$220, and change the color to the second one's color.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 2
+      }
+    },
+    {
+      "id": "independent-035",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Find a black metal desk lamp, maximum US$70.",
+          "state": {
+            "category": "a black metal desk lamp, maximum US$70",
+            "requirements": [],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "Make it white, drop the price limit, and use the material from the second option.",
+          "state": {
+            "category": "a black metal desk lamp, maximum US$70",
+            "requirements": [
+              {
+                "value": "Make it white, drop the price limit, and use the material from the second option.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": "a black metal desk lamp, maximum US$70",
+        "requirements": [
+          {
+            "value": "Make it white, drop the price limit, and use the material from the second option.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 2
+      }
+    },
+    {
+      "id": "independent-036",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I need a blue linen cushion at no more than US$40.",
+          "state": {
+            "category": "a blue linen cushion at no more than US$40",
+            "requirements": [],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "Keep the linen, make the color cream, and lower my maximum to US$30.",
+          "state": {
+            "category": "a blue linen cushion at no more than US$40",
+            "requirements": [
+              {
+                "value": "Keep the linen, make the color cream, and lower my maximum to US$30.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": "a blue linen cushion at no more than US$40",
+        "requirements": [
+          {
+            "value": "Keep the linen, make the color cream, and lower my maximum to US$30.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 2
+      }
+    },
+    {
+      "id": "independent-037",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "A white cotton shirt, maximum US$65. Exclude linen.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "A white cotton shirt, maximum US$65. Exclude linen.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "Forget the cotton requirement, keep white, and still no linen. I'd prefer silk now.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "A white cotton shirt, maximum US$65. Exclude linen.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              },
+              {
+                "value": "Forget the cotton requirement, keep white, and still no linen. I'd prefer silk now.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "A white cotton shirt, maximum US$65. Exclude linen.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          },
+          {
+            "value": "Forget the cotton requirement, keep white, and still no linen. I'd prefer silk now.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 2
+      }
+    },
+    {
+      "id": "independent-038",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Find a black leather belt at most US$50.",
+          "state": {
+            "category": "a black leather belt at most US$50",
+            "requirements": [],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "Actually, no leather. Make the material canvas and leave the rest alone.",
+          "state": {
+            "category": "a black leather belt at most US$50",
+            "requirements": [
+              {
+                "value": "Actually, no leather. Make the material canvas and leave the rest alone.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": "a black leather belt at most US$50",
+        "requirements": [
+          {
+            "value": "Actually, no leather. Make the material canvas and leave the rest alone.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 2
+      }
+    },
+    {
+      "id": "independent-039",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I want a white wooden bookcase costing no more than US$200.",
+          "state": {
+            "category": "a white wooden bookcase costing no more than US$200",
+            "requirements": [],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "Would a black one be cheaper? Keep my request as it is for now.",
+          "state": {
+            "category": "a white wooden bookcase costing no more than US$200",
+            "requirements": [
+              {
+                "value": "Would a black one be cheaper? Keep my request as it is for now.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": "a white wooden bookcase costing no more than US$200",
+        "requirements": [
+          {
+            "value": "Would a black one be cheaper? Keep my request as it is for now.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 2
+      }
+    },
+    {
+      "id": "independent-040",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "A green cotton bath towel, maximum US$35.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "A green cotton bath towel, maximum US$35.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "If I changed my mind later, I might choose blue. For now, keep green and everything else.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "A green cotton bath towel, maximum US$35.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              },
+              {
+                "value": "If I changed my mind later, I might choose blue. For now, keep green and everything else.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "A green cotton bath towel, maximum US$35.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          },
+          {
+            "value": "If I changed my mind later, I might choose blue. For now, keep green and everything else.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 2
+      }
+    },
+    {
+      "id": "independent-041",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I'm replacing a red plastic laundry basket. The new laundry basket must be white wicker and cost no more than US$55.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "I'm replacing a red plastic laundry basket. The new laundry basket must be white wicker and cost no more than US$55.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "I'm replacing a red plastic laundry basket. The new laundry basket must be white wicker and cost no more than US$55.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 1
+      }
+    },
+    {
+      "id": "independent-042",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "My room has blue walls and a wooden desk. Find me a white metal filing cabinet, maximum US$180.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "My room has blue walls and a wooden desk. Find me a white metal filing cabinet, maximum US$180.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "My room has blue walls and a wooden desk. Find me a white metal filing cabinet, maximum US$180.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 1
+      }
+    },
+    {
+      "id": "independent-043",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Find a black steel shoe rack, at most US$85.",
+          "state": {
+            "category": "a black steel shoe rack, at most US$85",
+            "requirements": [],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "Not black after all. Use white, keep steel, and don't change the budget.",
+          "state": {
+            "category": "a black steel shoe rack, at most US$85",
+            "requirements": [
+              {
+                "value": "Not black after all. Use white, keep steel, and don't change the budget.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": "a black steel shoe rack, at most US$85",
+        "requirements": [
+          {
+            "value": "Not black after all. Use white, keep steel, and don't change the budget.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 2
+      }
+    },
+    {
+      "id": "independent-044",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I need a ceramic serving bowl, maximum US$45. Either blue or white is acceptable; no other colors.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "I need a ceramic serving bowl, maximum US$45. Either blue or white is acceptable; no other colors.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "must"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "I need a ceramic serving bowl, maximum US$45. Either blue or white is acceptable; no other colors.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "must"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 1
+      }
+    },
+    {
+      "id": "independent-045",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I want a cotton scarf with both black and white stripes, for at most US$30.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "I want a cotton scarf with both black and white stripes, for at most US$30.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "I want a cotton scarf with both black and white stripes, for at most US$30.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 1
+      }
+    },
+    {
+      "id": "independent-046",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Find a blue cotton duvet cover, maximum US$80.",
+          "state": {
+            "category": "a blue cotton duvet cover, maximum US$80",
+            "requirements": [],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "Blue is still my favorite, but I'm willing to consider any color now. Keep cotton and the price cap.",
+          "state": {
+            "category": "a blue cotton duvet cover, maximum US$80",
+            "requirements": [
+              {
+                "value": "Blue is still my favorite, but I'm willing to consider any color now. Keep cotton and the price cap.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": "a blue cotton duvet cover, maximum US$80",
+        "requirements": [
+          {
+            "value": "Blue is still my favorite, but I'm willing to consider any color now. Keep cotton and the price cap.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 2
+      }
+    },
+    {
+      "id": "independent-047",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I need a desk chair, maximum US$190. I prefer grey and mesh, but neither is essential.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "I need a desk chair, maximum US$190. I prefer grey and mesh, but neither is essential.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "must"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "Actually, mesh is a must. Grey is still just a preference.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "I need a desk chair, maximum US$190. I prefer grey and mesh, but neither is essential.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "must"
+              },
+              {
+                "value": "Actually, mesh is a must. Grey is still just a preference.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "I need a desk chair, maximum US$190. I prefer grey and mesh, but neither is essential.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "must"
+          },
+          {
+            "value": "Actually, mesh is a must. Grey is still just a preference.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 2
+      }
+    },
+    {
+      "id": "independent-048",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "A brown leather messenger bag, maximum US$150.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "A brown leather messenger bag, maximum US$150.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "My limit is US$120 now.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "A brown leather messenger bag, maximum US$150.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              },
+              {
+                "value": "My limit is US$120 now.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        },
+        {
+          "turn": 3,
+          "message": "Let's make that US$140. Keep the brown leather.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "A brown leather messenger bag, maximum US$150.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              },
+              {
+                "value": "My limit is US$120 now.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              },
+              {
+                "value": "Let's make that US$140. Keep the brown leather.",
+                "source": "free_text",
+                "turn": 3,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 3
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "A brown leather messenger bag, maximum US$150.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          },
+          {
+            "value": "My limit is US$120 now.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          },
+          {
+            "value": "Let's make that US$140. Keep the brown leather.",
+            "source": "free_text",
+            "turn": 3,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 3
+      }
+    },
+    {
+      "id": "independent-049",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I want a black metal wall shelf for no more than US$70.",
+          "state": {
+            "category": "a black metal wall shelf for no more than US$70",
+            "requirements": [],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "Switch the color to white.",
+          "state": {
+            "category": "a black metal wall shelf for no more than US$70",
+            "requirements": [
+              {
+                "value": "Switch the color to white.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        },
+        {
+          "turn": 3,
+          "message": "On second thought, use green. Leave the material and limit as they were.",
+          "state": {
+            "category": "a black metal wall shelf for no more than US$70",
+            "requirements": [
+              {
+                "value": "Switch the color to white.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              },
+              {
+                "value": "On second thought, use green. Leave the material and limit as they were.",
+                "source": "free_text",
+                "turn": 3,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 3
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": "a black metal wall shelf for no more than US$70",
+        "requirements": [
+          {
+            "value": "Switch the color to white.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          },
+          {
+            "value": "On second thought, use green. Leave the material and limit as they were.",
+            "source": "free_text",
+            "turn": 3,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 3
+      }
+    },
+    {
+      "id": "independent-050",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "Find a white ceramic planter with a US$35 maximum.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "Find a white ceramic planter with a US$35 maximum.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "Thanks, that's still exactly what I need.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "Find a white ceramic planter with a US$35 maximum.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              },
+              {
+                "value": "Thanks, that's still exactly what I need.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "Find a white ceramic planter with a US$35 maximum.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          },
+          {
+            "value": "Thanks, that's still exactly what I need.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 2
+      }
+    },
+    {
+      "id": "independent-051",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "No leather or wool, please. I need a grey winter coat at no more than US$160.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "No leather or wool, please. I need a grey winter coat at no more than US$160.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "Leather is okay now, but wool still isn't. Keep the grey and US$160 limit.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "No leather or wool, please. I need a grey winter coat at no more than US$160.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              },
+              {
+                "value": "Leather is okay now, but wool still isn't. Keep the grey and US$160 limit.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "No leather or wool, please. I need a grey winter coat at no more than US$160.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          },
+          {
+            "value": "Leather is okay now, but wool still isn't. Keep the grey and US$160 limit.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 2
+      }
+    },
+    {
+      "id": "independent-052",
+      "initial_state": {
+        "category": null,
+        "requirements": [],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 0
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "message": "I need a blue cotton shower curtain. Hard maximum US$50.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "I need a blue cotton shower curtain. Hard maximum US$50.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "must"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 1
+          }
+        },
+        {
+          "turn": 2,
+          "message": "Try for US$35 if possible, but US$50 is still my absolute limit. Keep blue cotton.",
+          "state": {
+            "category": null,
+            "requirements": [
+              {
+                "value": "I need a blue cotton shower curtain. Hard maximum US$50.",
+                "source": "free_text",
+                "turn": 1,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "must"
+              },
+              {
+                "value": "Try for US$35 if possible, but US$50 is still my absolute limit. Keep blue cotton.",
+                "source": "free_text",
+                "turn": 2,
+                "attribute": null,
+                "strength": "soft",
+                "importance": "prefer"
+              }
+            ],
+            "excluded": [],
+            "no_preference": [],
+            "asked_attributes": [],
+            "last_asked_attribute": null,
+            "intent_version": 0,
+            "last_turn": 2
+          }
+        }
+      ],
+      "error": null,
+      "final_state": {
+        "category": null,
+        "requirements": [
+          {
+            "value": "I need a blue cotton shower curtain. Hard maximum US$50.",
+            "source": "free_text",
+            "turn": 1,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "must"
+          },
+          {
+            "value": "Try for US$35 if possible, but US$50 is still my absolute limit. Keep blue cotton.",
+            "source": "free_text",
+            "turn": 2,
+            "attribute": null,
+            "strength": "soft",
+            "importance": "prefer"
+          }
+        ],
+        "excluded": [],
+        "no_preference": [],
+        "asked_attributes": [],
+        "last_asked_attribute": null,
+        "intent_version": 0,
+        "last_turn": 2
+      }
+    }
+  ]
+}

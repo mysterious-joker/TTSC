@@ -84,7 +84,7 @@ _IMPORTANCE_CUE_PATTERNS: tuple[
     (
         RequirementImportance.MUST,
         re.compile(
-            r"^\s*(?:i\s+)?(?:must|need|require)(?:\s+it)?(?:\s+to)?"
+            r"^\s*(?:(?:i|it|they)\s+)?(?:must|need|require)(?:\s+it)?(?:\s+to)?"
             r"(?:\s+be|\s+have)?\s+(?P<payload>.+?)\s*$",
             re.IGNORECASE,
         ),
@@ -163,7 +163,7 @@ _IMPORTANCE_CUE_PATTERNS: tuple[
 )
 _MAXIMUM_BUDGET_RE = re.compile(
     r"(?:\bunder\b|\bless\s+than\b|\bat\s+most\b|\bmaximum\b|\bmax\b|"
-    r"\bno\s+more\s+than\b|<=)\s*\$?\s*\d",
+    r"\bno\s+more\s+than\b|\bup\s+to\b|<=)\s*\$?\s*\d",
     re.IGNORECASE,
 )
 
@@ -1483,10 +1483,31 @@ def apply_user_message(
 
     cleaned_message = _clean(message)
     if policy is ROBUST_INTENT_POLICY:
+        if turn == 1:
+            from .composed_request import parse_composed_request
+
+            composed = parse_composed_request(state, cleaned_message, turn)
+            if composed is not None:
+                return composed
+        # Polite answer normalization otherwise drops the shopper's explicit
+        # importance cue. Only intercept a fully typed, single-slot addition.
+        if (state.last_asked_attribute is not None
+                and re.match(r"^(?:i (?:also )?(?:need|prefer|would like)|"
+                             r"(?:it|they) (?:must|should))\b", cleaned_message, re.I)):
+            from .intent_operations import reduce_prose_intent
+
+            interpreted = reduce_prose_intent(state, cleaned_message, turn)
+            if (interpreted is not None
+                    and len(interpreted.requirements) == len(state.requirements) + 1
+                    and interpreted.requirements[-1].attribute == state.last_asked_attribute
+                    and interpreted.intent_version == state.intent_version):
+                return interpreted
         # Explicit edits must precede the polite-answer grammar: "I prefer
         # white instead of black" is a replacement, not an appended answer.
-        if re.search(r"\b(?:instead|rather than|replace|swap|switch|change the)\b",
-                     cleaned_message, re.IGNORECASE):
+        if (re.search(r"\b(?:instead|rather than|replace|swap|switch|change the)\b",
+                      cleaned_message, re.IGNORECASE)
+                or re.match(r"^(?:avoid|exclude|without|no|not|i (?:don't|do not) want)\b",
+                            cleaned_message, re.IGNORECASE)):
             from .intent_operations import reduce_prose_intent
 
             interpreted = reduce_prose_intent(state, cleaned_message, turn)

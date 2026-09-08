@@ -1,6 +1,15 @@
 # Finalist engineering review — i anything
 
-**Latest decision:** retain the accepted round-four agent. The
+**Latest decision:** adopt the [round-eight bounded conversation fixes](ROUND8-RESULTS.md).
+Fresh language 800 improves HR .830000 → .938750 and score .787013 → .883110,
+with positive corrected statistical evidence. Public, fresh official and prior
+language compatibility responses remain identical. Ablations attribute the gain
+to preference-edit handling, not the new opening parser. Both versions fail all
+52 independently authored complete-intent cases; broad language understanding
+remains unresolved. See the [competition-first priorities](COMPETITION-FIRST-PRIORITIES.md)
+for all eight requested directions and their actual implementation status.
+
+**Round-five decision:** retain the accepted round-four agent. The
 [round-five accuracy review](ROUND5-RESULTS.md) tested joint product/question
 planning, actual-agent counterfactual verification, a category-only prior and
 metric-constrained questions. A .978500 public experiment was rejected because
@@ -49,9 +58,9 @@ was opened. The branch first preserves the pre-existing working tree at
 
 The [round-seven attribute-index experiment](ROUND7-RESULTS.md) is complete:
 both opt-in ranking variants failed fresh accuracy gates. The active agent
-remains the accepted round-six configuration.
+at the end of that round remained the accepted round-six configuration.
 
-The latest accepted [round-six language repair](ROUND6-RESULTS.md) resolves
+The previously accepted [round-six language repair](ROUND6-RESULTS.md) resolves
 explicit paraphrased preference edits and passes four fresh accuracy gates.
 The public score remains .971875. Adoption prioritizes accuracy; the measured
 public p95 latency rises .022 ms and strict runtime non-regression is not claimed.

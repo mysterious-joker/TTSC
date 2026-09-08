@@ -79,7 +79,7 @@ def _value(text: str) -> tuple[str, str | None]:
     text = _clean(text)
     text = _POSITIVE.sub('', text, count=1)
     text = re.sub(r'^(?:to be|in|made (?:of|from)|with)\s+', '', text, flags=_FLAGS)
-    text = re.sub(r'\s+(?:instead|please)$', '', text, flags=_FLAGS)
+    text = re.sub(r'(?:,\s*|\s+)(?:instead|please)$', '', text, flags=_FLAGS)
     label = _LABEL.fullmatch(text)
     attr, ambiguous = _candidate_attribute(text)
     if ((ambiguous and not label) or not text or len(text) > 256
@@ -99,7 +99,7 @@ def _key(text: str) -> str:
 
 def reduce_prose_intent(state: IntentState, message: str, turn: int) -> IntentState | None:
     """Interpret an entire unsupported message, or leave the old fallback intact."""
-    from .intent import Requirement
+    from .intent import Requirement, infer_requirement_importance
 
     message = _clean(message)
     if not message or len(message) > 2048 or _UNSAFE.search(message):
@@ -130,13 +130,17 @@ def reduce_prose_intent(state: IntentState, message: str, turn: int) -> IntentSt
     declined = set(state.no_preference)
     destructive = False
     withdrawn_preference = False
+    keep_remaining = False
 
     def referenced(raw: str) -> list[int]:
         reference = _clean(raw).casefold()
         if reference in {'my earlier preference', 'my previous preference',
                          'the earlier preference', 'the previous preference'}:
-            return [i for i, req in enumerate(requirements)
-                    if req.source in {'initial_explicit', 'initial_tentative', 'override'}]
+            indices = [i for i, req in enumerate(requirements)
+                       if req.source in {'initial_explicit', 'initial_tentative', 'override'}]
+            if len(indices) > 1:
+                raise ValueError('ambiguous preference reference')
+            return indices
         return [i for i, req in enumerate(requirements) if _key(req.value) == _key(raw)]
 
     def remove(indices: list[int]) -> None:
@@ -182,7 +186,8 @@ def reduce_prose_intent(state: IntentState, message: str, turn: int) -> IntentSt
             source = 'initial_tentative'
         # Untyped semantic evidence remains soft rather than inventing a hard slot.
         requirements.append(Requirement(value=value, source=source, turn=turn,
-                                        attribute=attr, strength='soft' if attr is None else None))
+                                        attribute=attr, strength='soft' if attr is None else None,
+                                        importance=infer_requirement_importance(raw, source, attr)))
 
     try:
         for clause in clauses:
@@ -241,6 +246,10 @@ def reduce_prose_intent(state: IntentState, message: str, turn: int) -> IntentSt
                 add(contextual[2], explicit_attribute=attr)
             elif _POSITIVE.match(clause) or _LABEL.fullmatch(clause):
                 add(clause)
+            elif clause.casefold() in {'keep everything else', 'keep all other preferences'}:
+                # The remaining validated operations already preserve other slots.
+                # This clause alone supplies no actionable shopping preference.
+                keep_remaining = True
             elif clause.casefold().startswith('keep '):
                 if not referenced(clause[5:]):
                     raise ValueError('unknown retained reference')
@@ -250,6 +259,8 @@ def reduce_prose_intent(state: IntentState, message: str, turn: int) -> IntentSt
                 if state.last_asked_attribute != attr or attr is None:
                     raise ValueError('unrecognized clause')
                 add(value)
+        if keep_remaining and not (destructive or tuple(requirements) != original_requirements):
+            raise ValueError('no accompanying intent operation')
         if len(requirements) > 24 or len(exclusions) > 16:
             return None
         return replace(state, category=category, requirements=tuple(requirements),
