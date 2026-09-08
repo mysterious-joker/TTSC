@@ -51,3 +51,16 @@ None. The code and wording transforms were frozen before these pages were
 rechecked. Confirmation completed against that same candidate. We make no claim
 of winning against inaccessible complete implementations, and do not interpret
 repository-access failures as evidence of cheating or intentional concealment.
+
+## Recheck during round-five accuracy confirmation
+
+The root READMEs remain readable through the web index. A fresh, read-only
+`git ls-remote ... HEAD` for both published URLs still returns `Repository not
+found`, and ARC's source-folder view is unavailable through the web reader.
+No complete source or verifiable commit pin was recovered. The indexed
+[ARC README](https://github.com/kelvin715/techjam-2026-shopping-copilot) still
+reports .980400 and the indexed
+[Fable7 README](https://github.com/SrivathsanRam/tiktok-techjam-conversational-search)
+reports .978000. These remain author claims, not new controlled measurements.
+The selected agent and confirmation wording were already frozen; this recheck
+changes neither.

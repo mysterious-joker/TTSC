@@ -1,0 +1,22 @@
+--- a/scripts/verified_accuracy_candidate.py
++++ b/scripts/verified_accuracy_candidate.py
+@@ -117,7 +117,8 @@
+                 scale=max(1.,sum(weights.values()))
+                 safe=all(x+1e-10*scale >= y for x,y in zip(candidate_value,baseline_value))
+                 better=any(x>y+1e-10*scale for x,y in zip(candidate_value,baseline_value))
+-                if safe and better:
++                uniform_gain = sum(w*(x-y) for w,x,y in zip((.5,.3,.2),candidate_value,baseline_value))
++                if safe and better and uniform_gain > 1e-10:
+                     self.__dict__=candidate.__dict__
+                     diagnostics['accepted']+=1
+                     return response
+--- a/scripts/benchmark_verified_accuracy.py
++++ b/scripts/benchmark_verified_accuracy.py
+@@ -5,5 +5,5 @@
+ if __name__ == '__main__':
+     original=runner.local_agent
+-    runner.ARMS=(*runner.ARMS,'joint_verified')
+-    runner.local_agent=lambda arm,catalog: make_agent(catalog) if arm=='joint_verified' else original(arm,catalog)
++    runner.ARMS=(*runner.ARMS,'joint_verified_gain')
++    runner.local_agent=lambda arm,catalog: make_agent(catalog) if arm=='joint_verified_gain' else original(arm,catalog)
+     runner.main()

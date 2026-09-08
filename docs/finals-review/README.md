@@ -1,6 +1,14 @@
 # Finalist engineering review — i anything
 
-**Latest decision:** adopt the bounded intent repair and exact planner pruning
+**Latest decision:** retain the accepted round-four agent. The
+[round-five accuracy review](ROUND5-RESULTS.md) tested joint product/question
+planning, actual-agent counterfactual verification, a category-only prior and
+metric-constrained questions. A .978500 public experiment was rejected because
+it regressed cross-distribution metrics. The final frozen candidate improved
+both 1,600-session confirmation point estimates, but its 6,400-session terminal
+replication regressed MRR and lacked a positive corrected confidence bound.
+
+The accepted bounded intent repair and exact planner pruning remain active
 in the personal fork. The [fourth-round results](ROUND4-RESULTS.md) report large
 controlled-language gains, unchanged public score **.971875**, and lower total
 runtime/p95 on every validation suite, including 4,000 fresh synthetic targets.

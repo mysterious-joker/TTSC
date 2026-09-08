@@ -35,6 +35,7 @@ from conversational_search.exposure_policy import (
     DISABLED_EVIDENCE_EXPOSURE_POLICY,
     PROTOCOL_METRIC_AWARE_EXPOSURE_POLICY,
     PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY,
+    PROTOCOL_METRIC_CONSTRAINED_EXPOSURE_POLICY,
     PROTOCOL_POSTERIOR_EXPOSURE_POLICY,
     PROTOCOL_REPLY_TREE_EXPOSURE_POLICY,
     TOP3_STRUCTURAL_EXPOSURE_POLICY,
@@ -84,6 +85,9 @@ from conversational_search.protocol_index import (
     ELIGIBLE_CONTINUATION_REFUTATION_POLICY,
     FULL_TRANSCRIPT_PROTOCOL_CATALOG_POLICY,
     ProtocolCatalogPolicy,
+    ProtocolFusionPolicy,
+    HYBRID_PROTOCOL_FUSION_POLICY,
+    COLD_PRIOR_PROTOCOL_FUSION_POLICY,
     ProtocolRefutationPolicy,
     ProtocolResolution,
     fuse_protocol_candidates,
@@ -397,6 +401,7 @@ class ConversationalSearchAgent:
         protocol_catalog_policy: ProtocolCatalogPolicy = (
             DISABLED_PROTOCOL_CATALOG_POLICY
         ),
+        protocol_fusion_policy: ProtocolFusionPolicy = HYBRID_PROTOCOL_FUSION_POLICY,
         protocol_refutation_policy: ProtocolRefutationPolicy = (
             DISABLED_PROTOCOL_REFUTATION_POLICY
         ),
@@ -447,6 +452,11 @@ class ConversationalSearchAgent:
             )
         if not isinstance(protocol_catalog_policy, ProtocolCatalogPolicy):
             raise TypeError("protocol_catalog_policy must be a ProtocolCatalogPolicy")
+        if not isinstance(protocol_fusion_policy, ProtocolFusionPolicy):
+            raise TypeError("protocol_fusion_policy must be a ProtocolFusionPolicy")
+        if (protocol_fusion_policy is COLD_PRIOR_PROTOCOL_FUSION_POLICY
+                and protocol_catalog_policy is not FULL_TRANSCRIPT_PROTOCOL_CATALOG_POLICY):
+            raise ValueError("cold prior requires full transcript catalog resolution")
         if not isinstance(protocol_refutation_policy, ProtocolRefutationPolicy):
             raise TypeError(
                 "protocol_refutation_policy must be a ProtocolRefutationPolicy"
@@ -467,6 +477,7 @@ class ConversationalSearchAgent:
                 PROTOCOL_METRIC_AWARE_EXPOSURE_POLICY,
                 PROTOCOL_REPLY_TREE_EXPOSURE_POLICY,
                 PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY,
+                PROTOCOL_METRIC_CONSTRAINED_EXPOSURE_POLICY,
             }
             and protocol_catalog_policy
             is not FULL_TRANSCRIPT_PROTOCOL_CATALOG_POLICY
@@ -480,6 +491,7 @@ class ConversationalSearchAgent:
                 PROTOCOL_METRIC_AWARE_EXPOSURE_POLICY,
                 PROTOCOL_REPLY_TREE_EXPOSURE_POLICY,
                 PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY,
+                PROTOCOL_METRIC_CONSTRAINED_EXPOSURE_POLICY,
             }
             and protocol_refutation_policy
             is not ELIGIBLE_CONTINUATION_REFUTATION_POLICY
@@ -593,6 +605,7 @@ class ConversationalSearchAgent:
                 ),
             )
         self._retriever = retriever
+        self._protocol_fusion_policy = protocol_fusion_policy
         self._protocol_catalog_policy = protocol_catalog_policy
         self._protocol_refutation_policy = protocol_refutation_policy
         self._question_policy = question_policy
@@ -1104,6 +1117,21 @@ class ConversationalSearchAgent:
             except Exception:
                 semantic_structural_support_ids = None
                 semantic_support_ready = False
+        if (
+            turn == 1 and top_k > 0 and protocol_turn_eligible
+            and self._protocol_fusion_policy is COLD_PRIOR_PROTOCOL_FUSION_POLICY
+            and self.evidence_exposure_policy is PROTOCOL_METRIC_CONSTRAINED_EXPOSURE_POLICY
+            and self._slate_policy is INTENT_EPOCH_NOVELTY_SLATE_POLICY
+            and self._ranking_policy is RankingPolicy.LEXICOGRAPHIC_EXACT_EVIDENCE
+            and self.decision_policy is PROTECTED_DECISION_POLICY
+            and state.category and not state.requirements and not state.excluded
+        ):
+            cold_response = self._respond_catalog_cold_start(
+                session_id, state, min(top_k, 10), protocol_outcome,
+            )
+            if cold_response is not None:
+                return cold_response
+
         profile_key = _profile_session_key(session_id)
         profile_prior = self._profile_priors.get(profile_key)
         if not isinstance(profile_prior, ProfilePrior):
@@ -1730,11 +1758,18 @@ class ConversationalSearchAgent:
                         self._protocol_refuted_ids.get(session_id, ())
                     ),
                 )
-                protocol_pool = fuse_protocol_candidates(
-                    resolution,
-                    protected_ranked_ids,
-                    limit=MAX_CANDIDATE_DOCUMENTS,
-                )
+                if (
+                    self._protocol_fusion_policy is COLD_PRIOR_PROTOCOL_FUSION_POLICY
+                    and turn == 1 and state.category
+                    and not state.requirements and not state.excluded
+                ):
+                    protocol_pool = resolution.candidate_ids[:MAX_CANDIDATE_DOCUMENTS]
+                else:
+                    protocol_pool = fuse_protocol_candidates(
+                        resolution,
+                        protected_ranked_ids,
+                        limit=MAX_CANDIDATE_DOCUMENTS,
+                    )
                 if not resolution.exact or not protocol_pool:
                     raise ValueError("full protocol resolution has no support")
                 augmented_exact_context = self._apply_exact_evidence_ranking(
@@ -1967,6 +2002,7 @@ class ConversationalSearchAgent:
                 PROTOCOL_METRIC_AWARE_EXPOSURE_POLICY,
                 PROTOCOL_REPLY_TREE_EXPOSURE_POLICY,
                 PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY,
+                PROTOCOL_METRIC_CONSTRAINED_EXPOSURE_POLICY,
             }
             and full_ranked_ids is not None
             and result_count > 0
@@ -2051,6 +2087,7 @@ class ConversationalSearchAgent:
                             PROTOCOL_METRIC_AWARE_EXPOSURE_POLICY,
                             PROTOCOL_REPLY_TREE_EXPOSURE_POLICY,
                             PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY,
+                            PROTOCOL_METRIC_CONSTRAINED_EXPOSURE_POLICY,
                         }
                         else None
                     ),
@@ -2060,6 +2097,7 @@ class ConversationalSearchAgent:
                             PROTOCOL_METRIC_AWARE_EXPOSURE_POLICY,
                             PROTOCOL_REPLY_TREE_EXPOSURE_POLICY,
                             PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY,
+                            PROTOCOL_METRIC_CONSTRAINED_EXPOSURE_POLICY,
                         }
                     ),
                     reply_tree_protocol_planning=(
@@ -2069,6 +2107,10 @@ class ConversationalSearchAgent:
                     pareto_protocol_planning=(
                         self.evidence_exposure_policy
                         is PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY
+                    ),
+                    metric_constrained_protocol_planning=(
+                        self.evidence_exposure_policy
+                        is PROTOCOL_METRIC_CONSTRAINED_EXPOSURE_POLICY
                     ),
                     protocol_planning_locked=(
                         getattr(self, "_protocol_override_pending", {}).get(
@@ -2106,6 +2148,7 @@ class ConversationalSearchAgent:
                     EvidenceExposureStatus.POSTERIOR_PROBE,
                     EvidenceExposureStatus.POSTERIOR_REPLY_TREE,
                     EvidenceExposureStatus.POSTERIOR_PARETO_HORIZON,
+                    EvidenceExposureStatus.POSTERIOR_METRIC_CONSTRAINED,
                 }:
                     full_ranked_ids = exposure_decision.presentation_ids
                     parent_asins = full_ranked_ids
@@ -2359,6 +2402,91 @@ class ConversationalSearchAgent:
                 "prompt_tokens": 0,
                 "completion_tokens": 0,
             },
+        }
+
+    def _respond_catalog_cold_start(self, session_id, state, top_k, protocol_outcome):
+        """Defer hybrid work whose ordering the cold-prior policy discards.
+
+        Only the caller's exact, unconstrained first-turn guard may enter.
+        Leave no fabricated hybrid cache entry; a later unchanged query can
+        compute its normal ranking when needed. Stage all decisions before
+        committing the slate and refutable-feedback state.
+        """
+        from conversational_search.exposure import plan_evidence_gated_exposure
+
+        try:
+            evidence = tuple(self._retriever.protocol_category_evidence(state.category))
+            resolution = resolve_protocol_transcript(
+                evidence, self._protocol_events.get(session_id, ()), observed_turn_count=1,
+            )
+            if not resolution.exact:
+                return None
+            ids = resolution.candidate_ids[:MAX_CANDIDATE_DOCUMENTS]
+            context = self._apply_exact_evidence_ranking(
+                state, ids, protocol_events=self._protocol_events.get(session_id, ()),
+            )
+            if context.result is None or context.output_ranked_ids != ids:
+                return None
+            exposure = plan_evidence_gated_exposure(
+                state, context.result, context.evidence, current_turn=1,
+                requested_top_k=top_k, protocol_resolution=resolution,
+                metric_aware_protocol_enumeration=True,
+                metric_constrained_protocol_planning=True, protocol_planning_locked=True,
+            )
+            self._validate_evidence_exposure_decision(
+                exposure, ranked_ids=ids, requested_top_k=top_k, current_turn=1,
+            )
+            if exposure.width <= 0:
+                return None
+            signature = ranking_signature(
+                state, render_dense_query(state), render_lexical_query(state),
+                self._fusion_policy.choose(state), self._ranking_policy.value,
+                exposure.presentation_ids, top_k,
+            )
+            prior_slate = self._slates[session_id]
+            epoch = select_slate_with_intent_epoch_novelty(
+                prior_slate, signature, exposure.presentation_ids, exposure.width,
+            )
+            self._validate_intent_epoch_slate_selection(
+                epoch, prior_state=prior_slate, signature=signature,
+                ranked_ids=exposure.presentation_ids, limit=exposure.width,
+            )
+            question = exposure.question
+            next_state = record_question(state, question) if question else state
+        except Exception:
+            return None
+
+        recommendations = epoch.selection.selected_ids
+        self._sessions[session_id] = next_state
+        self._slates[session_id] = epoch.selection.state
+        self._protocol_pending_ids[session_id] = recommendations
+        self._protocol_pending_refutable[session_id] = True
+        self._protocol_shown_ids[session_id] = tuple(dict.fromkeys(
+            (*self._protocol_shown_ids.get(session_id, ()), *recommendations)))
+        self._record_evidence_exposure_status(exposure.status)
+        self._slate_attempts += 1
+        self._slate_successes += 1
+        self._slate_initializations += 1
+        self._record_intent_epoch_slate_status(epoch.status, eligible_prior_shown=epoch.eligible_prior_shown)
+        self._record_protocol_decision_outcome(
+            protocol_outcome or "candidate_or_evidence_error", requested_count=top_k,
+            presented_count=len(recommendations), question=question,
+        )
+        self._protocol_action_traces[session_id] = {
+            "protocol_mode": "catalog_prior", "retrieval_action": "deferred",
+            "retrieval_reason": "unconstrained_first_turn_uses_catalog_order",
+            "dense_policy": "not_needed", "derived_track": "catalog_prior",
+            "bm25_only_conditions": {}, "bm25_status": "not_executed", "dense_status": "not_executed",
+            "planner_outcome": exposure.status.value, "question": question,
+            "requested_width": top_k, "presented_width": len(recommendations),
+            "retrieval_fallback": False, "support_count": resolution.support_count,
+        }
+        return {
+            "message": ("Here are the closest matches so far. " + QUESTION_TEXT[question]
+                        if question else "Here are the closest matches based on your current preferences."),
+            "ask_attribute": question,
+            "recommendations": [{"parent_asin": asin} for asin in recommendations],
+            "usage": {"prompt_tokens": 0, "completion_tokens": 0},
         }
 
     def _observe_expected_protocol_turn(
@@ -3484,7 +3612,10 @@ class ConversationalSearchAgent:
                 or current_turn >= 10
             ):
                 raise ValueError("reply-tree exposure is outside its safe bound")
-        elif result.status is EvidenceExposureStatus.POSTERIOR_PARETO_HORIZON:
+        elif result.status in {
+            EvidenceExposureStatus.POSTERIOR_PARETO_HORIZON,
+            EvidenceExposureStatus.POSTERIOR_METRIC_CONSTRAINED,
+        }:
             if (
                 result.presentation_ids != ranked_ids
                 or not 1 <= result.width <= min(
@@ -3495,7 +3626,7 @@ class ConversationalSearchAgent:
                 or result.question not in QUESTION_TEXT
                 or current_turn >= 10
             ):
-                raise ValueError("Pareto exposure is outside its safe bound")
+                raise ValueError("planned posterior exposure is outside its bound")
         elif result.status is EvidenceExposureStatus.POSTERIOR_BATCH:
             if (
                 result.presentation_ids != ranked_ids
@@ -3531,6 +3662,7 @@ class ConversationalSearchAgent:
                 EvidenceExposureStatus.POSTERIOR_PROBE,
                 EvidenceExposureStatus.POSTERIOR_REPLY_TREE,
                 EvidenceExposureStatus.POSTERIOR_PARETO_HORIZON,
+                EvidenceExposureStatus.POSTERIOR_METRIC_CONSTRAINED,
             }
             and result.question is not None
         ):

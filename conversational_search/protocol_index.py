@@ -40,6 +40,15 @@ DISABLED_PROTOCOL_CATALOG_POLICY = ProtocolCatalogPolicy.DISABLED
 FULL_TRANSCRIPT_PROTOCOL_CATALOG_POLICY = ProtocolCatalogPolicy.FULL_TRANSCRIPT
 
 
+class ProtocolFusionPolicy(str, Enum):
+    HYBRID = "hybrid-protocol-fusion-v1"
+    COLD_PRIOR = "category-only-cold-prior-v2"
+
+
+HYBRID_PROTOCOL_FUSION_POLICY = ProtocolFusionPolicy.HYBRID
+COLD_PRIOR_PROTOCOL_FUSION_POLICY = ProtocolFusionPolicy.COLD_PRIOR
+
+
 class ProtocolRefutationPolicy(str, Enum):
     """Whether a continued score-eligible session refutes its prior slate."""
 

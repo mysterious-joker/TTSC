@@ -70,6 +70,7 @@ def plan_evidence_gated_exposure(
     metric_aware_protocol_enumeration: bool = False,
     reply_tree_protocol_planning: bool = False,
     pareto_protocol_planning: bool = False,
+    metric_constrained_protocol_planning: bool = False,
     protocol_planning_locked: bool = False,
 ) -> EvidenceExposureDecision:
     """Expose only when the best structural tier fits inside the API prefix.
@@ -123,6 +124,8 @@ def plan_evidence_gated_exposure(
         raise TypeError("reply_tree_protocol_planning must be a boolean")
     if type(pareto_protocol_planning) is not bool:
         raise TypeError("pareto_protocol_planning must be a boolean")
+    if type(metric_constrained_protocol_planning) is not bool:
+        raise TypeError("metric_constrained_protocol_planning must be a boolean")
     if type(protocol_planning_locked) is not bool:
         raise TypeError("protocol_planning_locked must be a boolean")
     if reply_tree_protocol_planning and not metric_aware_protocol_enumeration:
@@ -131,6 +134,11 @@ def plan_evidence_gated_exposure(
         raise ValueError("Pareto planning requires metric-aware enumeration")
     if reply_tree_protocol_planning and pareto_protocol_planning:
         raise ValueError("reply-tree and Pareto planning are separate policies")
+    if metric_constrained_protocol_planning and (
+        not metric_aware_protocol_enumeration or reply_tree_protocol_planning
+        or pareto_protocol_planning
+    ):
+        raise ValueError("metric-constrained planning requires its own enumeration policy")
     ranked_ids = exact_result.ranked_ids
     full_width = min(max(requested_top_k, 0), len(ranked_ids))
     if full_width == 0:
@@ -150,6 +158,7 @@ def plan_evidence_gated_exposure(
             metric_aware_enumeration=metric_aware_protocol_enumeration,
             reply_tree_planning=reply_tree_protocol_planning,
             pareto_planning=pareto_protocol_planning,
+            metric_constrained_planning=metric_constrained_protocol_planning,
             planning_locked=protocol_planning_locked,
         )
     if current_turn >= 10:
@@ -273,6 +282,7 @@ def _plan_protocol_posterior_exposure(
     reply_tree_planning: bool,
     pareto_planning: bool,
     planning_locked: bool,
+    metric_constrained_planning: bool = False,
 ) -> EvidenceExposureDecision:
     """Expose a rank-one probe until the complete posterior is exhausted."""
 
@@ -300,6 +310,17 @@ def _plan_protocol_posterior_exposure(
     if current_turn < 10:
         question = protocol_probe_question(resolution)
         if question is not None:
+            if metric_constrained_planning and not planning_locked:
+                from conversational_search.question_value import plan_metric_constrained_question
+
+                width, question = plan_metric_constrained_question(
+                    ranked_ids, resolution, current_turn=current_turn,
+                    top_k=min(requested_top_k, len(ranked_ids)),
+                )
+                return EvidenceExposureDecision(
+                    EvidenceExposureStatus.POSTERIOR_METRIC_CONSTRAINED,
+                    ranked_ids, width, question, support_count,
+                )
             if pareto_planning and not planning_locked:
                 width, question = plan_protocol_pareto_action(
                     ranked_ids,

@@ -20,6 +20,7 @@ class EvidenceExposurePolicy(str, Enum):
     PROTOCOL_METRIC_AWARE = "full-protocol-metric-aware-enumeration-v6"
     PROTOCOL_REPLY_TREE = "full-protocol-reply-tree-planning-v7"
     PROTOCOL_PARETO_HORIZON = "full-protocol-pareto-horizon-v8"
+    PROTOCOL_METRIC_CONSTRAINED = "full-protocol-metric-constrained-v9"
 
 
 DISABLED_EVIDENCE_EXPOSURE_POLICY = EvidenceExposurePolicy.DISABLED
@@ -41,6 +42,9 @@ PROTOCOL_REPLY_TREE_EXPOSURE_POLICY = EvidenceExposurePolicy.PROTOCOL_REPLY_TREE
 PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY = (
     EvidenceExposurePolicy.PROTOCOL_PARETO_HORIZON
 )
+PROTOCOL_METRIC_CONSTRAINED_EXPOSURE_POLICY = (
+    EvidenceExposurePolicy.PROTOCOL_METRIC_CONSTRAINED
+)
 
 
 class EvidenceExposureStatus(str, Enum):
@@ -56,6 +60,7 @@ class EvidenceExposureStatus(str, Enum):
     POSTERIOR_ENUMERATION = "posterior_enumeration"
     POSTERIOR_REPLY_TREE = "posterior_reply_tree"
     POSTERIOR_PARETO_HORIZON = "posterior_pareto_horizon"
+    POSTERIOR_METRIC_CONSTRAINED = "posterior_metric_constrained"
     NO_INFORMATIVE_QUESTION = "no_informative_question"
     FINAL_TURN = "final_turn"
     UNSAFE_STATE = "unsafe_state"

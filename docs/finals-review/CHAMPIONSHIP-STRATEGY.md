@@ -9,7 +9,12 @@ policies under the agreed aggregate gate. The accepted
 [round-four changes](ROUND4-RESULTS.md) repair bounded preference-revision language
 and prune unnecessary planning, on top of round three's computation reuse.
 The public score remains .971875; our demonstrated official-protocol improvement
-is lower runtime at identical outputs.
+is lower runtime at identical outputs. Round five found a .978500 public policy
+with perfect hit rate/MRR, then rejected it for uniform, weighted and category
+regressions. A narrower .974575 candidate also failed terminal replication on
+6,400 unseen weighted targets. That evidence strengthens the case for keeping
+the current architecture and presenting our validation discipline as part of
+the technical contribution.
 
 ## The opportunities, in order
 

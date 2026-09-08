@@ -4,14 +4,17 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from conversational_search.exposure_policy import (
     PROTOCOL_METRIC_AWARE_EXPOSURE_POLICY,
     PROTOCOL_POSTERIOR_EXPOSURE_POLICY,
+    PROTOCOL_METRIC_CONSTRAINED_EXPOSURE_POLICY,
 )
 from conversational_search.protocol_index import (
     ELIGIBLE_CONTINUATION_REFUTATION_POLICY,
     FULL_TRANSCRIPT_PROTOCOL_CATALOG_POLICY,
+    COLD_PRIOR_PROTOCOL_FUSION_POLICY,
 )
 from conversational_search.ranking import (
     LEXICOGRAPHIC_EXACT_EVIDENCE_RANKING_POLICY,
@@ -63,7 +66,7 @@ class ServiceProtocolCatalogTest(unittest.TestCase):
             encoding="utf-8",
         )
 
-    def _agent(self) -> ConversationalSearchAgent:
+    def _agent(self, *, cold=False) -> ConversationalSearchAgent:
         retriever = HybridRetriever(
             self.catalog_path,
             None,
@@ -75,13 +78,54 @@ class ServiceProtocolCatalogTest(unittest.TestCase):
             self.catalog_path,
             retriever=retriever,
             ranking_policy=LEXICOGRAPHIC_EXACT_EVIDENCE_RANKING_POLICY,
-            evidence_exposure_policy=PROTOCOL_POSTERIOR_EXPOSURE_POLICY,
+            evidence_exposure_policy=(PROTOCOL_METRIC_CONSTRAINED_EXPOSURE_POLICY
+                                      if cold else PROTOCOL_POSTERIOR_EXPOSURE_POLICY),
+            **({"protocol_fusion_policy": COLD_PRIOR_PROTOCOL_FUSION_POLICY} if cold else {}),
             protocol_catalog_policy=FULL_TRANSCRIPT_PROTOCOL_CATALOG_POLICY,
             protocol_refutation_policy=(
                 ELIGIBLE_CONTINUATION_REFUTATION_POLICY
             ),
             slate_policy=INTENT_EPOCH_NOVELTY_SLATE_POLICY,
         )
+
+    def test_cold_opening_defers_search_and_later_boundary_matches_eager_path(self):
+        lazy, eager = self._agent(cold=True), self._agent(cold=True)
+        for agent in (lazy, eager):
+            agent.reset("cold", {})
+        messages = ("I'm looking for Shoes, but I'm still exploring.",
+                    "I don't have a preference for other; please use your judgment.",
+                    "For that, what matters is: waterproof; wide.")
+        with patch.object(eager, "_respond_catalog_cold_start", return_value=None), \
+                patch.object(lazy._retriever, "search_with_trace", wraps=lazy._retriever.search_with_trace) as search:
+            for turn, message in enumerate(messages, 1):
+                self.assertEqual(lazy.respond("cold", message, turn, 10),
+                                 eager.respond("cold", message, turn, 10))
+                self.assertEqual(lazy._sessions["cold"], eager._sessions["cold"])
+                self.assertEqual(lazy._slates["cold"], eager._slates["cold"])
+                self.assertEqual(lazy._protocol_refuted_ids["cold"], eager._protocol_refuted_ids["cold"])
+                if turn == 1:
+                    search.assert_not_called()
+                    self.assertEqual(lazy._protocol_action_traces["cold"]["retrieval_action"], "deferred")
+                if turn == 2:
+                    self.assertEqual(search.call_count, 1)  # No fabricated cached hybrid ranking.
+
+    def test_cold_opening_falls_back_if_complete_evidence_is_unavailable(self):
+        agent = self._agent(cold=True)
+        agent.reset("cold", {})
+        with patch.object(agent._retriever, "protocol_category_evidence", side_effect=RuntimeError("offline")), \
+                patch.object(agent._retriever, "search_with_trace", wraps=agent._retriever.search_with_trace) as search:
+            result = agent.respond("cold", "I'm looking for Shoes, but I'm still exploring.", 1, 10)
+            search.assert_called_once()
+        self.assertTrue(result["recommendations"])
+
+    def test_free_form_and_explicit_requirements_do_not_use_cold_shortcut(self):
+        agent = self._agent(cold=True)
+        with patch.object(agent, "_respond_catalog_cold_start", wraps=agent._respond_catalog_cold_start) as shortcut:
+            for message in ("I'm looking for Shoes. A key requirement is: waterproof.",
+                            "Can you find me some comfy shoes?"):
+                agent.reset("session", {})
+                agent.respond("session", message, 1, 10)
+            shortcut.assert_not_called()
 
     def test_continuation_refutes_only_the_prior_score_eligible_product(self) -> None:
         agent = self._agent()

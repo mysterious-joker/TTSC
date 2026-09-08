@@ -42,6 +42,11 @@ def compare(baseline: dict, candidate: dict, *, family_size: int = 3, gate: str 
         for _ in range(20)
     ])
     lower = float(np.quantile(draws, 0.05 / family_size))
+    # Exact zero can acquire a tiny positive residue when turn gains and
+    # losses cancel. Use the same resolution as the session/mean comparisons;
+    # rounding noise is not a strictly positive confidence bound.
+    if abs(lower) <= 1e-12:
+        lower = 0.0
     scenarios = {}
     for scenario in sorted({row["scenario_type"] for row in left.values()}):
         selected = [i for i, key in enumerate(ids) if left[key]["scenario_type"] == scenario]

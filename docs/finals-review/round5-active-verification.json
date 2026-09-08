@@ -1,0 +1,33 @@
+{
+  "decision": "retain_round4_agent",
+  "reference_commit": "26866df8bb36bfdf47d419ac2bc3b8b95a20f840",
+  "public": {
+    "sample_count": 200,
+    "sessions_identical": true,
+    "responses_identical": true,
+    "response_sha256": "617ed260db8fedc5f1add9054f515afc8cfb2aac05c742794864b66b404b6417",
+    "hit_rate_at_10": 1.0,
+    "mrr": 0.99625,
+    "mttc": 2.35,
+    "recommended_technical_score": 0.971875,
+    "exceptions": 0,
+    "invalid_outputs": 0
+  },
+  "uniform_development": {
+    "sample_count": 800,
+    "sessions_identical": true,
+    "responses_identical": true,
+    "response_sha256": "550322df9baa8214b06758f3c234a17ca8f128be6ac5875a71c161aa043a65b9",
+    "hit_rate_at_10": 0.99,
+    "mrr": 0.974892,
+    "mttc": 2.5625,
+    "recommended_technical_score": 0.956218,
+    "exceptions": 0,
+    "invalid_outputs": 0
+  },
+  "unit_tests": {
+    "run": 413,
+    "failures": 0,
+    "errors": 0
+  }
+}

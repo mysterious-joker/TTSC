@@ -1,6 +1,7 @@
 """Regression tests for decisions that could incorrectly promote an experiment."""
 from copy import deepcopy
 import unittest
+from unittest.mock import patch
 
 from scripts.compare_finalist_results import compare, utility
 
@@ -74,6 +75,20 @@ class PromotionGateTest(unittest.TestCase):
         for count in (0, -1, True, 1.5):
             with self.assertRaises(ValueError):
                 compare(result([2]), result([1]), family_size=count)
+
+
+class FinalistComparisonTests(unittest.TestCase):
+    def test_roundoff_at_zero_does_not_certify_a_positive_score_gain(self):
+        before = {'sessions':[{'sample_id':'synthetic','scenario_type':'buying',
+                               'hit':True,'first_hit_turn':3,'reciprocal_rank':1.0}]}
+        after = {'sessions':[{**before['sessions'][0],'first_hit_turn':2}]}
+        for bound in (0.0, 4e-19, -4e-19):
+            with self.subTest(bound=bound), patch('numpy.quantile', return_value=bound):
+                result = compare(before, after, family_size=11, gate='aggregate')
+            self.assertGreater(result['mean_utility_delta'], 0)
+            self.assertEqual(result['one_sided_bootstrap_lower_bound'], 0)
+            self.assertFalse(result['development_gate_pass'])
+            self.assertIn('bootstrap_lower_bound_not_positive', result['rejection_reasons'])
 
 
 if __name__ == "__main__":

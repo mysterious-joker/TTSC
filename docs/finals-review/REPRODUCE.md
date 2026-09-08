@@ -233,3 +233,94 @@ were identical on the screened official suites.
 After the primary timing study, a single replay of the old round-three
 confirmation checks preservation of its responses. It is explicitly a consumed
 suite replay and is not included in the fresh 4,000-target claim.
+
+## Round five: accuracy first, then runtime
+
+The selected configuration and current disposition are in
+[ROUND5-RESULTS.md](ROUND5-RESULTS.md), with all hypotheses and the explicit
+selection-protocol amendment in [ROUND5-PLAN.md](ROUND5-PLAN.md). Do not treat a
+higher public research score as a release configuration. The round-five
+aggregate summary contains no target IDs or transcripts.
+
+Use a separate research root. Create `round5/baseline` from `git archive 26866df`
+and supply the same ignored catalog and preserved model assets. The original
+benchmark runner and selected runner use the same evaluator and wording.
+Historical round-five arms in `scripts.benchmark_round5` must run against that
+baseline source, after copying only their research drivers into the archive;
+running them on an adapter that already enables cold/vector behavior can apply
+the experiment twice. The joint-action/replay arms instead require the cold/
+vector adapter. The strict replay variant is the checked-in
+[patch](experiments/strict-gain.patch), applied only in another disposable copy.
+Keep the actual configuration/source fingerprints alongside every result.
+
+The generator excludes public 200, the previous 2,400 and all round-four 5,600
+targets, then creates mutually disjoint uniform 1,600, review-weighted 1,600 and
+category-balanced language 800. A consumed confirmation never becomes fresh by
+re-running the generator. Exact reproduction requires the preceding datasets;
+check every generated hash against `round5-results-summary.json`.
+
+```bash
+python -m scripts.validate_finals_round5 \
+  --research-root /absolute/research \
+  --candidate-root /absolute/personal-checkout --stage generate
+python -m unittest discover -s tests
+python -m scripts.summarize_round5 \
+  --research-root /absolute/research --output /absolute/research/selection.json
+python -m scripts.validate_accuracy_round5 \
+  --research-root /absolute/research --stage development --family-size 11
+python -m scripts.validate_accuracy_round5 \
+  --research-root /absolute/research --stage confirmation --family-size 11
+```
+
+The accuracy validator refuses to overwrite a study, checks code/data identities,
+and requires every completed development gate before opening confirmation. It
+runs baseline and candidate in separate processes on each frozen suite. Accuracy
+uses unrounded paired session outcomes; all claimed gains need a positive
+corrected bootstrap bound (20,000 draws). Bounds within numerical tolerance of
+zero cannot certify gain. Public gain is required during selection; a positive
+weighted gain is required on confirmation. Every suite must preserve each of
+HR/MRR/turn efficiency; language must preserve complete responses. Any failure
+stops the validation and prevents promotion. Runtime is diagnostic in this stage.
+
+Only after a passing accuracy result, the unchanged implementation can face the
+runtime stage:
+
+```bash
+python -m scripts.validate_finals_round5 \
+  --research-root /absolute/research \
+  --candidate-root /absolute/personal-checkout --stage development --iteration v3
+python -m scripts.validate_finals_round5 \
+  --research-root /absolute/research \
+  --candidate-root /absolute/personal-checkout --stage confirmation --iteration v3
+```
+
+V3 uses three alternating pairs, median startup-plus-evaluation time and p95,
+plus OS `user + sys` CPU time from `/usr/bin/time -p`. All must be non-increasing.
+A speed-gain claim additionally needs a positive paired session-saving bound.
+These timing replays use the already opened accuracy-confirmation data; they
+are not a second independent accuracy holdout. V1/V2 directories remain intact,
+including their failures and the noisy V2 weighted measurements. Source files
+must remain unchanged throughout each frozen validation chain.
+
+The original round-five confirmation stops with no component regression but an
+insufficient weighted significance bound. The unchanged selected candidate then
+receives exactly one larger independent replication, specified before generating
+its outcomes. Its driver is outside the runtime/source tree so the original
+candidate fingerprint remains fixed. Reproduce it only from that frozen source:
+
+```bash
+python docs/finals-review/experiments/replicate-fixed-accuracy.py \
+  --research-root /absolute/research --candidate-root /absolute/personal-checkout \
+  --stage generate
+python docs/finals-review/experiments/replicate-fixed-accuracy.py \
+  --research-root /absolute/research --candidate-root /absolute/personal-checkout \
+  --stage evaluate
+```
+
+It draws 6,400 new weighted targets with seed 202609086, excludes the previous
+12,200 targets, and checks the still-unopened language 800 only after its primary
+gate passes. The second-look bound uses alpha .05/22. The driver itself is hashed
+at generation. No source, driver, seed or sample-size changes are allowed during
+this terminal study, and failure rejects the candidate without further looks.
+The first failed confirmation remains in the report and is not pooled into the
+new primary test.
