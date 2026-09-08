@@ -1,5 +1,9 @@
 # Architecture before and after the finalist review
 
+The [seventh-round attribute-index experiment](ROUND7-RESULTS.md) adds an offline
+provenance sidecar and two opt-in tie-breaks. Both fail fresh accuracy gates;
+neither is enabled. The active architecture remains the accepted sixth round.
+
 The [sixth-round comparison](ROUND6-RESULTS.md#architecture-before-and-after)
 adds compositional intent operations while preserving exact protocol recognition.
 Its four fresh accuracy gates pass; public responses remain unchanged. The

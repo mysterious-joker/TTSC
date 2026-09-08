@@ -5,6 +5,11 @@ This document describes only the configuration exported by
 implementations for fail-open testing, but they are not active unless selected
 explicitly.
 
+The [round-seven attribute index](finals-review/ROUND7-RESULTS.md) is opt-in
+research only. Its field-first and counterevidence-only tie-breaks failed fresh
+accuracy validation. The active adapter does not import it or require its
+derived SQLite assets.
+
 ## 1. Session state
 
 `reset(session_id, user_profile)` creates an immutable, session-local

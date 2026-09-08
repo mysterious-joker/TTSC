@@ -47,6 +47,10 @@ was opened. The branch first preserves the pre-existing working tree at
 
 ## 1. Requirements and competition context
 
+The [round-seven attribute-index experiment](ROUND7-RESULTS.md) is complete:
+both opt-in ranking variants failed fresh accuracy gates. The active agent
+remains the accepted round-six configuration.
+
 The latest accepted [round-six language repair](ROUND6-RESULTS.md) resolves
 explicit paraphrased preference edits and passes four fresh accuracy gates.
 The public score remains .971875. Adoption prioritizes accuracy; the measured

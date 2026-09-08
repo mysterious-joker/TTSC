@@ -1,0 +1,938 @@
+{
+  "freeze": {
+    "utc": "2026-09-08T05:51:02.971180+00:00",
+    "source": {
+      "agent.py": "11e013740f9fcc35246b3eeb8f1d2462a83b6c3e8ee1760538264f4e2f98bb9e",
+      "conversational_search/__init__.py": "8646679dd1c711639636d9cac2aab022553408c082409171ba2aeed1568d3e3f",
+      "conversational_search/attribute_index.py": "03946a68545b4d8d8890dd7364187c4c1bc2dfd3bc708c03f454b7b307e455c6",
+      "conversational_search/decision.py": "28e757620c63c1415d2309a80665b34ad8b75e1d50636d49ea7e27b388c247a8",
+      "conversational_search/decision_policy.py": "c5462d27a2dcedca24d724cc0ab95312f1c06ddf9bdc04aeee6f51777f7cc033",
+      "conversational_search/exact_evidence.py": "c82825fe65f692960c4b16f1c4ea0368238a2cdec6cc7f39901751e6661ceda4",
+      "conversational_search/exposure.py": "541226df63ede7f184defe1870c498eebec3534959fe4fdaeb9c45f8ba83563f",
+      "conversational_search/exposure_policy.py": "009df0dba5835162d6d23b0610b8f28ad0fca94e0d08c026ea2597e1caa20971",
+      "conversational_search/intent.py": "9d5ebcb923e2b2029e0de54f062df3ea1c0b82c09007cd1457305793ec6ceba0",
+      "conversational_search/intent_operations.py": "ed952d8f19a595cf79de5c075931244b37b8e50919c4521de6f7130015f979b1",
+      "conversational_search/orchestration.py": "ee0f8b1cced4a6fd63fa0b85471a7fef895f3e4c416f3e23173b150fa3aa80a0",
+      "conversational_search/profiles.py": "acc0edf87899aad5310bbc0a61c1230e51e7ca2c18eee3d26f8ce5a72577f5f7",
+      "conversational_search/protocol.py": "ea114e78c2fc7250cbd7e2054066a310ce408522d3032d44ae24d6bbb01f854f",
+      "conversational_search/protocol_index.py": "5761b34c3d5a183ef95e8e4f592c25910c68ae5922b58a7f7d2fe31ed2148621",
+      "conversational_search/question_value.py": "a0ccbcd6ef48beed9fae8331f6f301e772d7f9eba81c13b3e2506132f947e01d",
+      "conversational_search/questions.py": "5d5af6a37d8303ddbdcd00596c88ef034683b1f4433571e4fb120637fe11b048",
+      "conversational_search/ranking.py": "b9bffd097bc6f18fe9591d86f798f58d398e0d726c7052d2fede290166de623f",
+      "conversational_search/requirement_satisfaction.py": "350283fae194d5f597228b41b85e686726a2e4ebb49e43abc2a2d12956a19a68",
+      "conversational_search/retrieval.py": "4971f6c041566679aaf8a9e4804a17ebb66a03d87f1f853cee7518e107242c21",
+      "conversational_search/retrieval_routing.py": "ab37573ad24ebce16b7e644d0e6fe1e8049cef656c2d7a6a1d7b35202dbbc90b",
+      "conversational_search/service.py": "f08fdf0fac17cd9d85209df6da6ca8f61ea832830a2e259614df604212532648",
+      "conversational_search/slates.py": "505d0ea48afb13a43f1d1bd2f18f2c244455b4ae6763984d5c1096f418406645",
+      "conversational_search/strategy.py": "b534103d75bd50fcd5921a1d523151b7338c85db1ef8d9ffd5f55471f5347ac7",
+      "conversational_search/utility_planner.py": "66383060948b5e04458583db10ba177d60627ad625570a828e73c7bfb12598ad",
+      "scripts/attribute_candidate.py": "9256ae42bd5285e4be3b171491ddf2fb4b41adbf80f7fb931363dbdc0125c166",
+      "scripts/benchmark_attributes.py": "61f75ba61267a895539375ce9aa4d15e7e1b23b54b93663a869418541102883f",
+      "scripts/benchmark_finalists.py": "45077f260ea067038d5abc77aadae18d0e7292b7e1614d336076fa9784280899",
+      "scripts/benchmark_paraphrases.py": "671f56810cf7c61d5d728a84f4c9937bf74d5cbc871ddf1c99446c4028db318e",
+      "starter/__init__.py": "03c49004df458e7fb767d172cc896fb5dd08a2aa00686d322248befdc2d7f5d4",
+      "starter/agent.py": "19afb841489488f5c9f012358c6bd637be797a894666c16aeccd11802d5545c3",
+      "starter/dense.py": "0bf88f857dbb538403ef4b4765ce92157b8c88944cd1e3350fb44863dbf8b459"
+    },
+    "source_sha256": "b9432668fe418394156ef9702a61c5aaab79620955f0fda1f5284938b05ef1db",
+    "baseline": "c3a18924ffbef04e11b377a06f46d19cfb012628"
+  },
+  "manifest": {
+    "seed": 202609088,
+    "excluded_count": 21400,
+    "excluded_paths": [
+      "TTSC/data/public_set.jsonl",
+      "language-stress.jsonl",
+      "confirmation.jsonl",
+      "development.jsonl",
+      "frozen-2400.jsonl",
+      "round4/suites/confirmation-uniform.jsonl",
+      "round4/suites/confirmation-category.jsonl",
+      "round4/suites/development-weighted.jsonl",
+      "round4/suites/development-category.jsonl",
+      "round4/suites/confirmation-weighted.jsonl",
+      "round5/diagnose-public40.jsonl",
+      "round5/replication-data/weighted.jsonl",
+      "round5/confirmation-data/uniform.jsonl",
+      "round5/confirmation-data/language.jsonl",
+      "round5/confirmation-data/weighted.jsonl",
+      "round6/suites/mixed.jsonl",
+      "round6/suites/official.jsonl",
+      "round6/suites/confirmation.jsonl",
+      "round6/suites/semantic.jsonl"
+    ],
+    "suites": {
+      "language": {
+        "n": 800,
+        "distribution": "weighted",
+        "sha256": "032338b8512ee2631d7aa97b06e641af08cf134e9abe83c3850406059a234e8d"
+      },
+      "missing_fields": {
+        "n": 400,
+        "distribution": "category",
+        "sha256": "c97e51596744742dcf742380983aae701b747548cee2eb88eba83a9bd06a5a83"
+      }
+    },
+    "indexes": {
+      "attributes-v1.sqlite": "e29bace2502648db96025a441c36900d4dfef3bfb106c96bbc6bdc5207b38cf1",
+      "attributes-no-details.sqlite": "8404f5d8d32998f3dea0ad7fb12dae87c308661f0b1c5b58e85c48bf665cc5ae"
+    }
+  },
+  "suites": {
+    "public": {
+      "comparisons": {
+        "attribute_ties": {
+          "gate": "aggregate",
+          "aggregate_metric_deltas": {
+            "hit_rate": 0.0,
+            "mrr": 0.0,
+            "turn_efficiency": 0.0
+          },
+          "n": 200,
+          "mean_utility_delta": 0.0,
+          "improved_sessions": 0,
+          "regressed_sessions": 0,
+          "unchanged_sessions": 200,
+          "lost_hits": 0,
+          "gained_hits": 0,
+          "one_sided_bootstrap_lower_bound": 0.0,
+          "alpha": 0.00625,
+          "bootstrap_draws": 20000,
+          "scenario_deltas": {
+            "boundary": {
+              "n": 10,
+              "utility_delta": 0.0,
+              "regressions": 0
+            },
+            "browsing": {
+              "n": 80,
+              "utility_delta": 0.0,
+              "regressions": 0
+            },
+            "buying": {
+              "n": 80,
+              "utility_delta": 0.0,
+              "regressions": 0
+            },
+            "intent_override": {
+              "n": 30,
+              "utility_delta": 0.0,
+              "regressions": 0
+            }
+          },
+          "development_gate_pass": false,
+          "rejection_reasons": [
+            "no_strict_score_improvement",
+            "bootstrap_lower_bound_not_positive"
+          ],
+          "identical_responses": true,
+          "accuracy_gate_pass": true
+        },
+        "attribute_counterevidence": {
+          "gate": "aggregate",
+          "aggregate_metric_deltas": {
+            "hit_rate": 0.0,
+            "mrr": 0.0,
+            "turn_efficiency": 0.0
+          },
+          "n": 200,
+          "mean_utility_delta": 0.0,
+          "improved_sessions": 0,
+          "regressed_sessions": 0,
+          "unchanged_sessions": 200,
+          "lost_hits": 0,
+          "gained_hits": 0,
+          "one_sided_bootstrap_lower_bound": 0.0,
+          "alpha": 0.00625,
+          "bootstrap_draws": 20000,
+          "scenario_deltas": {
+            "boundary": {
+              "n": 10,
+              "utility_delta": 0.0,
+              "regressions": 0
+            },
+            "browsing": {
+              "n": 80,
+              "utility_delta": 0.0,
+              "regressions": 0
+            },
+            "buying": {
+              "n": 80,
+              "utility_delta": 0.0,
+              "regressions": 0
+            },
+            "intent_override": {
+              "n": 30,
+              "utility_delta": 0.0,
+              "regressions": 0
+            }
+          },
+          "development_gate_pass": false,
+          "rejection_reasons": [
+            "no_strict_score_improvement",
+            "bootstrap_lower_bound_not_positive"
+          ],
+          "identical_responses": true,
+          "accuracy_gate_pass": true
+        }
+      },
+      "metrics": {
+        "baseline": {
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.99625,
+          "mttc": 2.35,
+          "recommended_technical_score": 0.971875,
+          "scenario_metrics": {
+            "boundary": {
+              "sample_count": 10,
+              "hit_rate_at_10": 1.0,
+              "mrr": 1.0,
+              "mttc": 2.7
+            },
+            "browsing": {
+              "sample_count": 80,
+              "hit_rate_at_10": 1.0,
+              "mrr": 1.0,
+              "mttc": 2.2125
+            },
+            "buying": {
+              "sample_count": 80,
+              "hit_rate_at_10": 1.0,
+              "mrr": 0.990625,
+              "mttc": 1.9
+            },
+            "intent_override": {
+              "sample_count": 30,
+              "hit_rate_at_10": 1.0,
+              "mrr": 1.0,
+              "mttc": 3.8
+            }
+          },
+          "measurement": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "857259f7a438e6188ac63e18995b6ff4489bfcfc4a716a798b9a2aa0ee8f7579",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.008116875018459,
+            "evaluation_seconds": 12.996261375024915,
+            "respond_mean_ms": 27.559651337450052,
+            "respond_p95_ms": 50.77600001823157,
+            "respond_max_ms": 90.59983398765326,
+            "calls": 470,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "617ed260db8fedc5f1add9054f515afc8cfb2aac05c742794864b66b404b6417",
+            "runtime_source_sha256": "a01e21c95e00742983aafcdedfa703a70583a6c3a2ff82ca038b97fa9c300954",
+            "peak_rss_mib": 656.03125,
+            "variant": "baseline",
+            "index_sha256": "e29bace2502648db96025a441c36900d4dfef3bfb106c96bbc6bdc5207b38cf1",
+            "changed_messages": 0,
+            "total_messages": 0
+          }
+        },
+        "attribute_ties": {
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.99625,
+          "mttc": 2.35,
+          "recommended_technical_score": 0.971875,
+          "scenario_metrics": {
+            "boundary": {
+              "sample_count": 10,
+              "hit_rate_at_10": 1.0,
+              "mrr": 1.0,
+              "mttc": 2.7
+            },
+            "browsing": {
+              "sample_count": 80,
+              "hit_rate_at_10": 1.0,
+              "mrr": 1.0,
+              "mttc": 2.2125
+            },
+            "buying": {
+              "sample_count": 80,
+              "hit_rate_at_10": 1.0,
+              "mrr": 0.990625,
+              "mttc": 1.9
+            },
+            "intent_override": {
+              "sample_count": 30,
+              "hit_rate_at_10": 1.0,
+              "mrr": 1.0,
+              "mttc": 3.8
+            }
+          },
+          "measurement": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "857259f7a438e6188ac63e18995b6ff4489bfcfc4a716a798b9a2aa0ee8f7579",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 3.9762988329748623,
+            "evaluation_seconds": 13.12984937505098,
+            "respond_mean_ms": 27.845114814934938,
+            "respond_p95_ms": 51.70391598949209,
+            "respond_max_ms": 104.05966598773375,
+            "calls": 470,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "617ed260db8fedc5f1add9054f515afc8cfb2aac05c742794864b66b404b6417",
+            "runtime_source_sha256": "a01e21c95e00742983aafcdedfa703a70583a6c3a2ff82ca038b97fa9c300954",
+            "peak_rss_mib": 663.5625,
+            "research_diagnostics": {
+              "interventions": 0,
+              "eligible_ties": 0,
+              "errors": 0,
+              "index_unavailable": 0
+            },
+            "variant": "attribute_ties",
+            "index_sha256": "e29bace2502648db96025a441c36900d4dfef3bfb106c96bbc6bdc5207b38cf1",
+            "changed_messages": 0,
+            "total_messages": 0
+          }
+        },
+        "attribute_counterevidence": {
+          "hit_rate_at_10": 1.0,
+          "mrr": 0.99625,
+          "mttc": 2.35,
+          "recommended_technical_score": 0.971875,
+          "scenario_metrics": {
+            "boundary": {
+              "sample_count": 10,
+              "hit_rate_at_10": 1.0,
+              "mrr": 1.0,
+              "mttc": 2.7
+            },
+            "browsing": {
+              "sample_count": 80,
+              "hit_rate_at_10": 1.0,
+              "mrr": 1.0,
+              "mttc": 2.2125
+            },
+            "buying": {
+              "sample_count": 80,
+              "hit_rate_at_10": 1.0,
+              "mrr": 0.990625,
+              "mttc": 1.9
+            },
+            "intent_override": {
+              "sample_count": 30,
+              "hit_rate_at_10": 1.0,
+              "mrr": 1.0,
+              "mttc": 3.8
+            }
+          },
+          "measurement": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "official",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "857259f7a438e6188ac63e18995b6ff4489bfcfc4a716a798b9a2aa0ee8f7579",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.034260916989297,
+            "evaluation_seconds": 13.213675040984526,
+            "respond_mean_ms": 28.02313243279214,
+            "respond_p95_ms": 52.22858296474442,
+            "respond_max_ms": 105.71437497856095,
+            "calls": 470,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "617ed260db8fedc5f1add9054f515afc8cfb2aac05c742794864b66b404b6417",
+            "runtime_source_sha256": "a01e21c95e00742983aafcdedfa703a70583a6c3a2ff82ca038b97fa9c300954",
+            "peak_rss_mib": 680.65625,
+            "research_diagnostics": {
+              "interventions": 0,
+              "eligible_ties": 0,
+              "errors": 0,
+              "index_unavailable": 0
+            },
+            "variant": "attribute_counterevidence",
+            "index_sha256": "e29bace2502648db96025a441c36900d4dfef3bfb106c96bbc6bdc5207b38cf1",
+            "changed_messages": 0,
+            "total_messages": 0
+          }
+        }
+      }
+    },
+    "language": {
+      "comparisons": {
+        "attribute_ties": {
+          "gate": "aggregate",
+          "aggregate_metric_deltas": {
+            "hit_rate": 0.0,
+            "mrr": -0.031191964285714288,
+            "turn_efficiency": -0.0003749999999999999
+          },
+          "n": 800,
+          "mean_utility_delta": -0.009432589285714284,
+          "improved_sessions": 72,
+          "regressed_sessions": 88,
+          "unchanged_sessions": 640,
+          "lost_hits": 3,
+          "gained_hits": 3,
+          "one_sided_bootstrap_lower_bound": -0.018003448660714287,
+          "alpha": 0.00625,
+          "bootstrap_draws": 20000,
+          "scenario_deltas": {
+            "boundary": {
+              "n": 40,
+              "utility_delta": -0.019250000000000007,
+              "regressions": 5
+            },
+            "browsing": {
+              "n": 320,
+              "utility_delta": -0.013792038690476188,
+              "regressions": 31
+            },
+            "buying": {
+              "n": 320,
+              "utility_delta": -0.007807291666666663,
+              "regressions": 43
+            },
+            "intent_override": {
+              "n": 120,
+              "utility_delta": 0.001130952380952376,
+              "regressions": 9
+            }
+          },
+          "development_gate_pass": false,
+          "rejection_reasons": [
+            "no_strict_score_improvement",
+            "aggregate_mrr_regression",
+            "aggregate_turn_efficiency_regression",
+            "bootstrap_lower_bound_not_positive"
+          ],
+          "identical_responses": false,
+          "accuracy_gate_pass": false
+        },
+        "attribute_counterevidence": {
+          "gate": "aggregate",
+          "aggregate_metric_deltas": {
+            "hit_rate": -0.0025,
+            "mrr": -0.0035625,
+            "turn_efficiency": -0.004875
+          },
+          "n": 800,
+          "mean_utility_delta": -0.00329375,
+          "improved_sessions": 7,
+          "regressed_sessions": 8,
+          "unchanged_sessions": 785,
+          "lost_hits": 3,
+          "gained_hits": 1,
+          "one_sided_bootstrap_lower_bound": -0.009419720982142858,
+          "alpha": 0.00625,
+          "bootstrap_draws": 20000,
+          "scenario_deltas": {
+            "boundary": {
+              "n": 40,
+              "utility_delta": 0.0,
+              "regressions": 0
+            },
+            "browsing": {
+              "n": 320,
+              "utility_delta": -0.009625,
+              "regressions": 5
+            },
+            "buying": {
+              "n": 320,
+              "utility_delta": -0.0005468749999999998,
+              "regressions": 3
+            },
+            "intent_override": {
+              "n": 120,
+              "utility_delta": 0.0051666666666666675,
+              "regressions": 0
+            }
+          },
+          "development_gate_pass": false,
+          "rejection_reasons": [
+            "no_strict_score_improvement",
+            "aggregate_hit_rate_regression",
+            "aggregate_mrr_regression",
+            "aggregate_turn_efficiency_regression",
+            "bootstrap_lower_bound_not_positive"
+          ],
+          "identical_responses": false,
+          "accuracy_gate_pass": false
+        }
+      },
+      "metrics": {
+        "baseline": {
+          "hit_rate_at_10": 0.9075,
+          "mrr": 0.630714,
+          "mttc": 3.17625,
+          "recommended_technical_score": 0.799439,
+          "scenario_metrics": {
+            "boundary": {
+              "sample_count": 40,
+              "hit_rate_at_10": 0.925,
+              "mrr": 0.621141,
+              "mttc": 3.75
+            },
+            "browsing": {
+              "sample_count": 320,
+              "hit_rate_at_10": 0.9625,
+              "mrr": 0.650091,
+              "mttc": 2.8
+            },
+            "buying": {
+              "sample_count": 320,
+              "hit_rate_at_10": 0.9625,
+              "mrr": 0.684074,
+              "mttc": 2.225
+            },
+            "intent_override": {
+              "sample_count": 120,
+              "hit_rate_at_10": 0.608333,
+              "mrr": 0.43994,
+              "mttc": 6.525
+            }
+          },
+          "measurement": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "semantic",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "032338b8512ee2631d7aa97b06e641af08cf134e9abe83c3850406059a234e8d",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 3.9785960829467513,
+            "evaluation_seconds": 68.85593866702402,
+            "respond_mean_ms": 27.830380444872834,
+            "respond_p95_ms": 67.28083302732557,
+            "respond_max_ms": 135.70233300561085,
+            "calls": 2467,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "5877376e59a1c9de63c5b122766aa03a843edcc1f6fb33463989089c43e2c923",
+            "runtime_source_sha256": "a01e21c95e00742983aafcdedfa703a70583a6c3a2ff82ca038b97fa9c300954",
+            "peak_rss_mib": 687.28125,
+            "variant": "baseline",
+            "index_sha256": "e29bace2502648db96025a441c36900d4dfef3bfb106c96bbc6bdc5207b38cf1",
+            "changed_messages": 2431,
+            "total_messages": 2467
+          }
+        },
+        "attribute_ties": {
+          "hit_rate_at_10": 0.9075,
+          "mrr": 0.599522,
+          "mttc": 3.18,
+          "recommended_technical_score": 0.790007,
+          "scenario_metrics": {
+            "boundary": {
+              "sample_count": 40,
+              "hit_rate_at_10": 0.925,
+              "mrr": 0.568641,
+              "mttc": 3.925
+            },
+            "browsing": {
+              "sample_count": 320,
+              "hit_rate_at_10": 0.95625,
+              "mrr": 0.616409,
+              "mttc": 2.828125
+            },
+            "buying": {
+              "sample_count": 320,
+              "hit_rate_at_10": 0.9625,
+              "mrr": 0.656799,
+              "mttc": 2.20625
+            },
+            "intent_override": {
+              "sample_count": 120,
+              "hit_rate_at_10": 0.625,
+              "mrr": 0.412044,
+              "mttc": 6.466667
+            }
+          },
+          "measurement": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "semantic",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "032338b8512ee2631d7aa97b06e641af08cf134e9abe83c3850406059a234e8d",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.048332707956433,
+            "evaluation_seconds": 68.76546304201474,
+            "respond_mean_ms": 27.758127457753528,
+            "respond_p95_ms": 66.88108301023021,
+            "respond_max_ms": 113.80908300634474,
+            "calls": 2470,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "8d714c10a3d2696aaf83f1a69a9523b9b298ee913abe46b056c1022021893edf",
+            "runtime_source_sha256": "a01e21c95e00742983aafcdedfa703a70583a6c3a2ff82ca038b97fa9c300954",
+            "peak_rss_mib": 616.96875,
+            "research_diagnostics": {
+              "interventions": 634,
+              "eligible_ties": 1195,
+              "errors": 0,
+              "index_unavailable": 0
+            },
+            "variant": "attribute_ties",
+            "index_sha256": "e29bace2502648db96025a441c36900d4dfef3bfb106c96bbc6bdc5207b38cf1",
+            "changed_messages": 2434,
+            "total_messages": 2470
+          }
+        },
+        "attribute_counterevidence": {
+          "hit_rate_at_10": 0.905,
+          "mrr": 0.627151,
+          "mttc": 3.225,
+          "recommended_technical_score": 0.796145,
+          "scenario_metrics": {
+            "boundary": {
+              "sample_count": 40,
+              "hit_rate_at_10": 0.925,
+              "mrr": 0.621141,
+              "mttc": 3.75
+            },
+            "browsing": {
+              "sample_count": 320,
+              "hit_rate_at_10": 0.953125,
+              "mrr": 0.640716,
+              "mttc": 2.90625
+            },
+            "buying": {
+              "sample_count": 320,
+              "hit_rate_at_10": 0.9625,
+              "mrr": 0.683501,
+              "mttc": 2.24375
+            },
+            "intent_override": {
+              "sample_count": 120,
+              "hit_rate_at_10": 0.616667,
+              "mrr": 0.442718,
+              "mttc": 6.516667
+            }
+          },
+          "measurement": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "semantic",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "032338b8512ee2631d7aa97b06e641af08cf134e9abe83c3850406059a234e8d",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.020976124971639,
+            "evaluation_seconds": 68.58280816697516,
+            "respond_mean_ms": 27.30931741883885,
+            "respond_p95_ms": 66.12058397149667,
+            "respond_max_ms": 112.68887500045821,
+            "calls": 2504,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "9ecabeac95600c5770513b5fdaffb2db6adc544d52010938e34de17a7ece3fe3",
+            "runtime_source_sha256": "a01e21c95e00742983aafcdedfa703a70583a6c3a2ff82ca038b97fa9c300954",
+            "peak_rss_mib": 621.734375,
+            "research_diagnostics": {
+              "interventions": 121,
+              "eligible_ties": 1229,
+              "errors": 0,
+              "index_unavailable": 0
+            },
+            "variant": "attribute_counterevidence",
+            "index_sha256": "e29bace2502648db96025a441c36900d4dfef3bfb106c96bbc6bdc5207b38cf1",
+            "changed_messages": 2468,
+            "total_messages": 2504
+          }
+        }
+      }
+    },
+    "missing_fields": {
+      "comparisons": {
+        "attribute_ties": {
+          "gate": "aggregate",
+          "aggregate_metric_deltas": {
+            "hit_rate": 0.0,
+            "mrr": -0.005614087301587303,
+            "turn_efficiency": 0.0005
+          },
+          "n": 400,
+          "mean_utility_delta": -0.0015842261904761904,
+          "improved_sessions": 17,
+          "regressed_sessions": 9,
+          "unchanged_sessions": 374,
+          "lost_hits": 0,
+          "gained_hits": 0,
+          "one_sided_bootstrap_lower_bound": -0.006769380580357142,
+          "alpha": 0.00625,
+          "bootstrap_draws": 20000,
+          "scenario_deltas": {
+            "boundary": {
+              "n": 20,
+              "utility_delta": 0.004499999999999999,
+              "regressions": 0
+            },
+            "browsing": {
+              "n": 160,
+              "utility_delta": -0.003171875,
+              "regressions": 5
+            },
+            "buying": {
+              "n": 160,
+              "utility_delta": -7.440476190474776e-06,
+              "regressions": 3
+            },
+            "intent_override": {
+              "n": 60,
+              "utility_delta": -0.0035833333333333346,
+              "regressions": 1
+            }
+          },
+          "development_gate_pass": false,
+          "rejection_reasons": [
+            "no_strict_score_improvement",
+            "aggregate_mrr_regression",
+            "bootstrap_lower_bound_not_positive"
+          ],
+          "identical_responses": false,
+          "accuracy_gate_pass": false
+        },
+        "attribute_counterevidence": {
+          "gate": "aggregate",
+          "aggregate_metric_deltas": {
+            "hit_rate": 0.0,
+            "mrr": 4.464285714285712e-05,
+            "turn_efficiency": 0.0
+          },
+          "n": 400,
+          "mean_utility_delta": 1.3392857142857095e-05,
+          "improved_sessions": 1,
+          "regressed_sessions": 0,
+          "unchanged_sessions": 399,
+          "lost_hits": 0,
+          "gained_hits": 0,
+          "one_sided_bootstrap_lower_bound": 0.0,
+          "alpha": 0.00625,
+          "bootstrap_draws": 20000,
+          "scenario_deltas": {
+            "boundary": {
+              "n": 20,
+              "utility_delta": 0.0,
+              "regressions": 0
+            },
+            "browsing": {
+              "n": 160,
+              "utility_delta": 0.0,
+              "regressions": 0
+            },
+            "buying": {
+              "n": 160,
+              "utility_delta": 3.348214285714274e-05,
+              "regressions": 0
+            },
+            "intent_override": {
+              "n": 60,
+              "utility_delta": 0.0,
+              "regressions": 0
+            }
+          },
+          "development_gate_pass": false,
+          "rejection_reasons": [
+            "bootstrap_lower_bound_not_positive"
+          ],
+          "identical_responses": false,
+          "accuracy_gate_pass": false
+        }
+      },
+      "metrics": {
+        "baseline": {
+          "hit_rate_at_10": 0.92,
+          "mrr": 0.679366,
+          "mttc": 2.6825,
+          "recommended_technical_score": 0.83016,
+          "scenario_metrics": {
+            "boundary": {
+              "sample_count": 20,
+              "hit_rate_at_10": 0.95,
+              "mrr": 0.616845,
+              "mttc": 3.6
+            },
+            "browsing": {
+              "sample_count": 160,
+              "hit_rate_at_10": 0.99375,
+              "mrr": 0.64751,
+              "mttc": 1.94375
+            },
+            "buying": {
+              "sample_count": 160,
+              "hit_rate_at_10": 0.95625,
+              "mrr": 0.77255,
+              "mttc": 1.91875
+            },
+            "intent_override": {
+              "sample_count": 60,
+              "hit_rate_at_10": 0.616667,
+              "mrr": 0.536667,
+              "mttc": 6.383333
+            }
+          },
+          "measurement": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "semantic",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "c97e51596744742dcf742380983aae701b747548cee2eb88eba83a9bd06a5a83",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 3.9669459159485996,
+            "evaluation_seconds": 28.732450459036045,
+            "respond_mean_ms": 27.511619627708345,
+            "respond_p95_ms": 67.54033401375636,
+            "respond_max_ms": 123.45037498744205,
+            "calls": 1041,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "d756d1703923f40dbab783a6b8e430666845f65344face8ff7f4bf02834a61f0",
+            "runtime_source_sha256": "a01e21c95e00742983aafcdedfa703a70583a6c3a2ff82ca038b97fa9c300954",
+            "peak_rss_mib": 679.65625,
+            "variant": "baseline",
+            "index_sha256": "8404f5d8d32998f3dea0ad7fb12dae87c308661f0b1c5b58e85c48bf665cc5ae",
+            "changed_messages": 996,
+            "total_messages": 1041
+          }
+        },
+        "attribute_ties": {
+          "hit_rate_at_10": 0.92,
+          "mrr": 0.673752,
+          "mttc": 2.6775,
+          "recommended_technical_score": 0.828576,
+          "scenario_metrics": {
+            "boundary": {
+              "sample_count": 20,
+              "hit_rate_at_10": 0.95,
+              "mrr": 0.631845,
+              "mttc": 3.6
+            },
+            "browsing": {
+              "sample_count": 160,
+              "hit_rate_at_10": 0.99375,
+              "mrr": 0.636104,
+              "mttc": 1.93125
+            },
+            "buying": {
+              "sample_count": 160,
+              "hit_rate_at_10": 0.95625,
+              "mrr": 0.772525,
+              "mttc": 1.91875
+            },
+            "intent_override": {
+              "sample_count": 60,
+              "hit_rate_at_10": 0.616667,
+              "mrr": 0.524722,
+              "mttc": 6.383333
+            }
+          },
+          "measurement": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "semantic",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "c97e51596744742dcf742380983aae701b747548cee2eb88eba83a9bd06a5a83",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.008150666020811,
+            "evaluation_seconds": 28.84738054202171,
+            "respond_mean_ms": 27.678235193377912,
+            "respond_p95_ms": 67.84108298597857,
+            "respond_max_ms": 125.3599589690566,
+            "calls": 1039,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "015f8fe7af20eaf45d8beb80d104329a3e3905f4132d1e1fa220b3ca2702253c",
+            "runtime_source_sha256": "a01e21c95e00742983aafcdedfa703a70583a6c3a2ff82ca038b97fa9c300954",
+            "peak_rss_mib": 682.578125,
+            "research_diagnostics": {
+              "interventions": 160,
+              "eligible_ties": 368,
+              "errors": 0,
+              "index_unavailable": 0
+            },
+            "variant": "attribute_ties",
+            "index_sha256": "8404f5d8d32998f3dea0ad7fb12dae87c308661f0b1c5b58e85c48bf665cc5ae",
+            "changed_messages": 994,
+            "total_messages": 1039
+          }
+        },
+        "attribute_counterevidence": {
+          "hit_rate_at_10": 0.92,
+          "mrr": 0.679411,
+          "mttc": 2.6825,
+          "recommended_technical_score": 0.830173,
+          "scenario_metrics": {
+            "boundary": {
+              "sample_count": 20,
+              "hit_rate_at_10": 0.95,
+              "mrr": 0.616845,
+              "mttc": 3.6
+            },
+            "browsing": {
+              "sample_count": 160,
+              "hit_rate_at_10": 0.99375,
+              "mrr": 0.64751,
+              "mttc": 1.94375
+            },
+            "buying": {
+              "sample_count": 160,
+              "hit_rate_at_10": 0.95625,
+              "mrr": 0.772661,
+              "mttc": 1.91875
+            },
+            "intent_override": {
+              "sample_count": 60,
+              "hit_rate_at_10": 0.616667,
+              "mrr": 0.536667,
+              "mttc": 6.383333
+            }
+          },
+          "measurement": {
+            "arm": "baseline",
+            "external_root": null,
+            "wording": "semantic",
+            "python": "3.13.15",
+            "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+            "catalog_sha256": "da979b05a68af864cb0dcf9ee6a81c010c7e66a57978ad286c7a2e005fc69a67",
+            "dataset_sha256": "c97e51596744742dcf742380983aae701b747548cee2eb88eba83a9bd06a5a83",
+            "evaluator_sha256": "79a5ea06f9a1b8c5036f30efa85dc1f36b8f6b06eb8feb8f545dfa767bc45564",
+            "startup_seconds": 4.0015969590167515,
+            "evaluation_seconds": 28.652499833027832,
+            "respond_mean_ms": 27.43828004303475,
+            "respond_p95_ms": 67.1760420082137,
+            "respond_max_ms": 124.78629103861749,
+            "calls": 1041,
+            "exceptions": 0,
+            "invalid_outputs": 0,
+            "response_sha256": "a4bdd1736cffc0e02d3087990e5f186f7db0211b11959fc38929959154c7200a",
+            "runtime_source_sha256": "a01e21c95e00742983aafcdedfa703a70583a6c3a2ff82ca038b97fa9c300954",
+            "peak_rss_mib": 678.1875,
+            "research_diagnostics": {
+              "interventions": 22,
+              "eligible_ties": 370,
+              "errors": 0,
+              "index_unavailable": 0
+            },
+            "variant": "attribute_counterevidence",
+            "index_sha256": "8404f5d8d32998f3dea0ad7fb12dae87c308661f0b1c5b58e85c48bf665cc5ae",
+            "changed_messages": 996,
+            "total_messages": 1041
+          }
+        }
+      }
+    }
+  },
+  "accepted": []
+}
