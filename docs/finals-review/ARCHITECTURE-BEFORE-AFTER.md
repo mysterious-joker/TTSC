@@ -1,5 +1,10 @@
 # Architecture before and after the finalist review
 
+The [sixth-round comparison](ROUND6-RESULTS.md#architecture-before-and-after)
+adds compositional intent operations while preserving exact protocol recognition.
+Its four fresh accuracy gates pass; public responses remain unchanged. The
+fifth round's ranking and planning experiments remain disabled.
+
 The latest [fourth-round comparison](ROUND4-RESULTS.md#architecture-before-and-after)
 adds anchored intent forms that correctly revise tentative preferences, and
 prunes planner widths whose immediate hit already violates the existing utility
@@ -89,10 +94,13 @@ than asking once more and returning the target at rank one.
 
 ## Limits that should be stated accurately
 
-1. The workshop Q&A explicitly promises the released templates and simulator
-   policy for private evaluation. Exact transcript replay is therefore relevant
-   to the stated contest; it is not evidence of unrestricted natural-language
-   understanding. Changed envelopes substantially reduce the measured score.
+1. The saved specification allows organizer-added paraphrasing; the workshop
+   transcript says no undisclosed paraphrases would be introduced and template
+   updates would be published. Identical private wording must not be assumed
+   unconditionally. Exact replay is relevant to the released evaluator, but its
+   benefit is conditional on recognized wording. The accepted language repairs
+   cover bounded sentence forms with literal catalog values, not unrestricted
+   natural-language understanding. See the [paraphrase audit](PARAPHRASE-AUDIT.md).
 2. The current Pareto planner proves dominance **inside its continuation model**.
    It holds an ordering of survivors while predicting future branches; the live
    service can reretrieve and rerank after replies. It is not a proof of

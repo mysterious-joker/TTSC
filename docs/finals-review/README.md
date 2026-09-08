@@ -47,14 +47,24 @@ was opened. The branch first preserves the pre-existing working tree at
 
 ## 1. Requirements and competition context
 
+The latest accepted [round-six language repair](ROUND6-RESULTS.md) resolves
+explicit paraphrased preference edits and passes four fresh accuracy gates.
+The public score remains .971875. Adoption prioritizes accuracy; the measured
+public p95 latency rises .022 ms and strict runtime non-regression is not claimed.
+
 The official task is exact parent-ASIN retrieval from a frozen 50,000-product
 catalog, with ten turns and Buying/Browsing/Override/Boundary scenarios. The
-public 200 and private 800 use disjoint users and target products. The workshop
-Q&A explicitly states that private evaluation uses the released templates,
-repeat-`other` behavior, stopping rules, and scoring policy, with no undisclosed
-paraphrases. Pretrained models and catalog-derived indexes are permitted; an LLM
-is optional. Sources: [official Track 4 resources](https://bytedance.larkoffice.com/wiki/GdYFwzWNLiREsSkuIjZcDznInWc#SyMVd34O6o2gEsxc5HZmMLoWyvi)
-and the user-supplied workshop transcript.
+public 200 and private 800 use disjoint users and target products. The saved
+specification allows organizer-added natural-language paraphrasing. The supplied
+workshop Q&A says no undisclosed paraphrases would be introduced and any template
+updates would be published before submission. These statements must be reported
+together: identical private wording is an assumption, not an unconditional
+guarantee. The released local evaluator provides the deterministic reference
+policy. Pretrained models and catalog-derived indexes are permitted; an LLM is
+optional. Sources: [saved specification](../competition_specification.md),
+[official Track 4 resources](https://bytedance.larkoffice.com/wiki/GdYFwzWNLiREsSkuIjZcDznInWc#SyMVd34O6o2gEsxc5HZmMLoWyvi),
+and the user-supplied workshop transcript. See the
+[paraphrase audit](PARAPHRASE-AUDIT.md) for the actual coverage and remaining gaps.
 
 The supplied finalist email permits refinements within the original scope and
 sets a 10-minute pitch plus five-minute Q&A and an A1 foam-board poster for

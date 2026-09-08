@@ -521,7 +521,7 @@ class IntentStateTest(unittest.TestCase):
             ],
         )
 
-    def test_unmatched_follow_up_stays_free_text_but_polite_bare_answer_is_typed(self) -> None:
+    def test_explicit_follow_up_uses_its_own_slot_and_polite_answer_uses_question(self) -> None:
         state = apply_user_message(
             IntentState(),
             "I'm looking for Shoes, but I'm still exploring.",
@@ -533,8 +533,9 @@ class IntentStateTest(unittest.TestCase):
             "I also need it under $100.",
             2,
         )
-        self.assertEqual(unrelated.requirements[-1].source, "free_text")
-        self.assertIsNone(unrelated.requirements[-1].attribute)
+        self.assertEqual(unrelated.requirements[-1].value, "under $100")
+        self.assertEqual(unrelated.requirements[-1].attribute, "budget")
+        self.assertNotIn("material", [r.attribute for r in unrelated.requirements])
 
         polite = apply_user_message(
             material_question,
@@ -545,7 +546,6 @@ class IntentStateTest(unittest.TestCase):
         self.assertEqual(polite.requirements[-1].attribute, "material")
 
         ambiguous_refinements = (
-            (material_question, "I need it under $100."),
             (material_question, "Show me cheaper ones, please."),
             (record_question(state, "feature"), "Show me cheaper ones, please."),
             (record_question(state, "feature"), "Different products, please."),

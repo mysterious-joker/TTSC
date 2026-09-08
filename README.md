@@ -358,12 +358,11 @@ and [DATA_ATTRIBUTION.md](DATA_ATTRIBUTION.md).
 
 ### Current Limitations
 
-- **Template-specialized parser.** The intent reducer is deliberately
-  specialized for the evaluator's deterministic message templates. Arbitrary
-  free-form paraphrases are handled conservatively as soft lexical evidence
-  rather than being precisely parsed. A more robust NLU component (e.g., a
-  lightweight local intent classifier) could improve coverage on
-  out-of-template inputs.
+- **Bounded language coverage.** The intent reducer combines the evaluator
+  grammar with explicit prose add/replace/withdraw/exclude operations. Unknown
+  interpretations retain soft evidence; arbitrary paraphrases are not precisely
+  parsed. The [language repair and validation](docs/finals-review/ROUND6-RESULTS.md)
+  document the gains, remaining failure modes and limited test populations.
 
 - **Protocol replay scope.** The full-catalog protocol posterior is effective
   only when the evaluator uses its published deterministic templates.

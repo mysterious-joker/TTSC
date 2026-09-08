@@ -120,10 +120,14 @@ are now consumed and cannot be advertised as fresh for subsequently tuned code.
 The source/wording fingerprint frozen before confirmation is
 `6854a8e65190af677f6aa41b0a370daa9704dee28f4b67d30ca83c7ab3385a49`.
 No runtime or research source changed during or after confirmation. These are
-synthetic targets, not the organizer's private 800. The organizer's stated hidden
-templates match the official protocol, so the language gain is robustness
-evidence, not evidence of a higher hidden technical score. The official-wording
-improvement demonstrated here is lower computation at identical outputs.
+synthetic targets, not the organizer's private 800. The saved specification
+allows organizer-added paraphrasing, while the workshop transcript says no
+undisclosed paraphrases would be introduced. Identical hidden wording is not an
+unconditional guarantee. These language gains establish robustness on the tested
+fixed forms with literal catalog values; they do not estimate a hidden score or
+validate unseen wording families. The official-wording improvement demonstrated
+here is lower computation at identical outputs. See the
+[2026-09-08 language coverage audit](PARAPHRASE-AUDIT.md).
 
 The [aggregate evidence bundle](round4-results-summary.json) records both
 validation stages, all seven rejected ranking arms, source/data identities,

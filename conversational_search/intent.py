@@ -1483,6 +1483,15 @@ def apply_user_message(
 
     cleaned_message = _clean(message)
     if policy is ROBUST_INTENT_POLICY:
+        # Explicit edits must precede the polite-answer grammar: "I prefer
+        # white instead of black" is a replacement, not an appended answer.
+        if re.search(r"\b(?:instead|rather than|replace|swap|switch|change the)\b",
+                     cleaned_message, re.IGNORECASE):
+            from .intent_operations import reduce_prose_intent
+
+            interpreted = reduce_prose_intent(state, cleaned_message, turn)
+            if interpreted is not None:
+                return interpreted
         scratch_override = _ROBUST_SCRATCH_OVERRIDE_RE.fullmatch(cleaned_message)
         if scratch_override is not None:
             return _apply_strong_override(
@@ -1592,6 +1601,13 @@ def apply_user_message(
 
     if not cleaned_message or _NOT_RIGHT_RE.fullmatch(cleaned_message):
         return next_state
+
+    if policy is ROBUST_INTENT_POLICY:
+        from .intent_operations import reduce_prose_intent
+
+        interpreted = reduce_prose_intent(state, cleaned_message, turn)
+        if interpreted is not None:
+            return interpreted
 
     return replace(
         next_state,

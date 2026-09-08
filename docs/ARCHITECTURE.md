@@ -45,6 +45,23 @@ later confirmed answers. Contextual priority statements and `any ... is fine
 with me` use the existing answer/decline reducers. This extends intent parsing;
 it does not make paraphrases eligible for exact simulator replay or refutation.
 
+The [round-six repair](finals-review/ROUND6-RESULTS.md) adds a bounded compositional
+operation layer for unsupported prose. It resolves explicit add, replace,
+withdraw, exclude and no-preference operations against known values or typed
+slots, retaining unrelated confirmations. Explicit replacements take precedence
+over polite-answer parsing. Unknown values stay soft with revocable provenance;
+uncertain or incomplete interpretations fall back atomically. The original
+message still independently controls exact protocol recognition.
+
+Coverage remains bounded. Outside the supported grammar, openings can still
+leave the category unset and corrections can still fall back to free text.
+BGE retrieval does not itself repair state transitions. The saved specification
+allows organizer-added paraphrasing, so identical private wording must not be
+assumed. Round-six validation includes new forms, mixed wording and limited
+attribute paraphrases, but does not establish unrestricted language robustness.
+The [original audit](finals-review/PARAPHRASE-AUDIT.md) records the earlier failure
+and source discrepancy.
+
 ## 2. Query construction and cache
 
 The state renders separate lexical and dense queries. All ranking-relevant

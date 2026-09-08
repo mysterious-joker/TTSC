@@ -1,5 +1,12 @@
 # What can materially strengthen i anything's finalist submission
 
+**Language accuracy update:** the accepted [round-six repair](ROUND6-RESULTS.md)
+adds explicit intent operations and passes fresh official, new-form, mixed and
+limited attribute-paraphrase accuracy gates. This now takes priority over further
+public-template ranking work. General language robustness remains unproven; the
+report discloses subgroup losses and the small measured p95 latency increase.
+The earlier ranking/efficiency strategy below remains historical context.
+
 The defensible strategy is to preserve our measured retrieval strength, make
 its decisions inspectable, and reduce the cost of delivering them. We have not
 established that we beat ARC or Fable7 on hidden targets. Indexed documentation
