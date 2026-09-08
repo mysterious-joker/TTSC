@@ -17,7 +17,7 @@ from __future__ import annotations
 
 import hashlib
 import math
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 from typing import TYPE_CHECKING, Sequence
 
@@ -34,6 +34,7 @@ from conversational_search.exposure_policy import (
     BUYING_TOP3_AMBIGUOUS_TOP1_EXPOSURE_POLICY,
     DISABLED_EVIDENCE_EXPOSURE_POLICY,
     PROTOCOL_METRIC_AWARE_EXPOSURE_POLICY,
+    PROTOCOL_CHAMPION_EXPOSURE_POLICY,
     PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY,
     PROTOCOL_METRIC_CONSTRAINED_EXPOSURE_POLICY,
     PROTOCOL_POSTERIOR_EXPOSURE_POLICY,
@@ -88,6 +89,7 @@ from conversational_search.protocol_index import (
     ProtocolFusionPolicy,
     HYBRID_PROTOCOL_FUSION_POLICY,
     COLD_PRIOR_PROTOCOL_FUSION_POLICY,
+    CHAMPION_BOUNDED_PROTOCOL_FUSION_POLICY,
     ProtocolRefutationPolicy,
     ProtocolResolution,
     fuse_protocol_candidates,
@@ -454,9 +456,18 @@ class ConversationalSearchAgent:
             raise TypeError("protocol_catalog_policy must be a ProtocolCatalogPolicy")
         if not isinstance(protocol_fusion_policy, ProtocolFusionPolicy):
             raise TypeError("protocol_fusion_policy must be a ProtocolFusionPolicy")
-        if (protocol_fusion_policy is COLD_PRIOR_PROTOCOL_FUSION_POLICY
-                and protocol_catalog_policy is not FULL_TRANSCRIPT_PROTOCOL_CATALOG_POLICY):
-            raise ValueError("cold prior requires full transcript catalog resolution")
+        if (
+            protocol_fusion_policy
+            in {
+                COLD_PRIOR_PROTOCOL_FUSION_POLICY,
+                CHAMPION_BOUNDED_PROTOCOL_FUSION_POLICY,
+            }
+            and protocol_catalog_policy
+            is not FULL_TRANSCRIPT_PROTOCOL_CATALOG_POLICY
+        ):
+            raise ValueError(
+                "protocol prior requires full transcript catalog resolution"
+            )
         if not isinstance(protocol_refutation_policy, ProtocolRefutationPolicy):
             raise TypeError(
                 "protocol_refutation_policy must be a ProtocolRefutationPolicy"
@@ -478,6 +489,7 @@ class ConversationalSearchAgent:
                 PROTOCOL_REPLY_TREE_EXPOSURE_POLICY,
                 PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY,
                 PROTOCOL_METRIC_CONSTRAINED_EXPOSURE_POLICY,
+                PROTOCOL_CHAMPION_EXPOSURE_POLICY,
             }
             and protocol_catalog_policy
             is not FULL_TRANSCRIPT_PROTOCOL_CATALOG_POLICY
@@ -492,6 +504,7 @@ class ConversationalSearchAgent:
                 PROTOCOL_REPLY_TREE_EXPOSURE_POLICY,
                 PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY,
                 PROTOCOL_METRIC_CONSTRAINED_EXPOSURE_POLICY,
+                PROTOCOL_CHAMPION_EXPOSURE_POLICY,
             }
             and protocol_refutation_policy
             is not ELIGIBLE_CONTINUATION_REFUTATION_POLICY
@@ -1758,11 +1771,31 @@ class ConversationalSearchAgent:
                         self._protocol_refuted_ids.get(session_id, ())
                     ),
                 )
-                if (
-                    self._protocol_fusion_policy is COLD_PRIOR_PROTOCOL_FUSION_POLICY
-                    and turn == 1 and state.category
-                    and not state.requirements and not state.excluded
-                ):
+                protocol_events = self._protocol_events.get(session_id, ())
+                tentative_protocol_start = bool(
+                    protocol_events
+                    and protocol_events[0].kind.value == "initial_tentative"
+                )
+                use_protocol_prior = bool(
+                    (
+                        self._protocol_fusion_policy
+                        in {
+                            COLD_PRIOR_PROTOCOL_FUSION_POLICY,
+                            CHAMPION_BOUNDED_PROTOCOL_FUSION_POLICY,
+                        }
+                        and turn == 1
+                        and state.category
+                        and not state.requirements
+                        and not state.excluded
+                    )
+                    or (
+                        self._protocol_fusion_policy
+                        is CHAMPION_BOUNDED_PROTOCOL_FUSION_POLICY
+                        and not tentative_protocol_start
+                        and resolution.support_count <= 70
+                    )
+                )
+                if use_protocol_prior:
                     protocol_pool = resolution.candidate_ids[:MAX_CANDIDATE_DOCUMENTS]
                 else:
                     protocol_pool = fuse_protocol_candidates(
@@ -1783,6 +1816,36 @@ class ConversationalSearchAgent:
                     != set(protocol_pool)
                 ):
                     raise ValueError("full protocol ranking is incomplete")
+                if (
+                    self.evidence_exposure_policy
+                    is PROTOCOL_CHAMPION_EXPOSURE_POLICY
+                    and tentative_protocol_start
+                    and not self._protocol_override_pending.get(session_id, False)
+                ):
+                    from conversational_search.champion_planner import (
+                        plan_purchase_prior_probe_order,
+                    )
+
+                    top_k = min(
+                        result_count,
+                        len(augmented_exact_context.output_ranked_ids),
+                    )
+                    purchase_order = plan_purchase_prior_probe_order(
+                        augmented_exact_context.output_ranked_ids,
+                        resolution,
+                        augmented_exact_context.evidence,
+                        current_turn=turn,
+                        top_k=top_k,
+                    )
+                    if purchase_order != augmented_exact_context.output_ranked_ids:
+                        augmented_exact_context = replace(
+                            augmented_exact_context,
+                            result=replace(
+                                augmented_exact_context.result,
+                                ranked_ids=purchase_order,
+                            ),
+                            output_ranked_ids=purchase_order,
+                        )
             except Exception:
                 protocol_resolution = None
                 full_ranked_ids = protected_ranked_ids
@@ -2003,6 +2066,7 @@ class ConversationalSearchAgent:
                 PROTOCOL_REPLY_TREE_EXPOSURE_POLICY,
                 PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY,
                 PROTOCOL_METRIC_CONSTRAINED_EXPOSURE_POLICY,
+                PROTOCOL_CHAMPION_EXPOSURE_POLICY,
             }
             and full_ranked_ids is not None
             and result_count > 0
@@ -2088,6 +2152,7 @@ class ConversationalSearchAgent:
                             PROTOCOL_REPLY_TREE_EXPOSURE_POLICY,
                             PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY,
                             PROTOCOL_METRIC_CONSTRAINED_EXPOSURE_POLICY,
+                            PROTOCOL_CHAMPION_EXPOSURE_POLICY,
                         }
                         else None
                     ),
@@ -2098,6 +2163,7 @@ class ConversationalSearchAgent:
                             PROTOCOL_REPLY_TREE_EXPOSURE_POLICY,
                             PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY,
                             PROTOCOL_METRIC_CONSTRAINED_EXPOSURE_POLICY,
+                            PROTOCOL_CHAMPION_EXPOSURE_POLICY,
                         }
                     ),
                     reply_tree_protocol_planning=(
@@ -2107,10 +2173,25 @@ class ConversationalSearchAgent:
                     pareto_protocol_planning=(
                         self.evidence_exposure_policy
                         is PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY
+                        or (
+                            self.evidence_exposure_policy
+                            is PROTOCOL_CHAMPION_EXPOSURE_POLICY
+                            and not (
+                                planning_events
+                                and planning_events[0].kind.value
+                                == "initial_tentative"
+                            )
+                        )
                     ),
                     metric_constrained_protocol_planning=(
                         self.evidence_exposure_policy
                         is PROTOCOL_METRIC_CONSTRAINED_EXPOSURE_POLICY
+                    ),
+                    two_step_protocol_planning=(
+                        self.evidence_exposure_policy
+                        is PROTOCOL_CHAMPION_EXPOSURE_POLICY
+                        and bool(planning_events)
+                        and planning_events[0].kind.value == "initial_tentative"
                     ),
                     protocol_planning_locked=(
                         getattr(self, "_protocol_override_pending", {}).get(
@@ -2149,6 +2230,7 @@ class ConversationalSearchAgent:
                     EvidenceExposureStatus.POSTERIOR_REPLY_TREE,
                     EvidenceExposureStatus.POSTERIOR_PARETO_HORIZON,
                     EvidenceExposureStatus.POSTERIOR_METRIC_CONSTRAINED,
+                    EvidenceExposureStatus.POSTERIOR_CHAMPION_TWO_STEP,
                 }:
                     full_ranked_ids = exposure_decision.presentation_ids
                     parent_asins = full_ranked_ids
@@ -3629,6 +3711,7 @@ class ConversationalSearchAgent:
         elif result.status in {
             EvidenceExposureStatus.POSTERIOR_PARETO_HORIZON,
             EvidenceExposureStatus.POSTERIOR_METRIC_CONSTRAINED,
+            EvidenceExposureStatus.POSTERIOR_CHAMPION_TWO_STEP,
         }:
             if (
                 result.presentation_ids != ranked_ids
@@ -3677,6 +3760,7 @@ class ConversationalSearchAgent:
                 EvidenceExposureStatus.POSTERIOR_REPLY_TREE,
                 EvidenceExposureStatus.POSTERIOR_PARETO_HORIZON,
                 EvidenceExposureStatus.POSTERIOR_METRIC_CONSTRAINED,
+                EvidenceExposureStatus.POSTERIOR_CHAMPION_TWO_STEP,
             }
             and result.question is not None
         ):

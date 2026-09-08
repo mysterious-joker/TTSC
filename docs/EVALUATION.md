@@ -1,5 +1,12 @@
 # Evaluation evidence
 
+> **Finals update (8 September 2026):** the active bounded-prior champion
+> controller supersedes the historical tables below. On the unchanged public
+> evaluator it reaches HR@10 `1.000`, MRR `1.000`, MTTC `2.000`, and
+> TechnicalScore `0.980000`. See the
+> [final report](finals-review/ROUND11-CHAMPION-SOLUTION.md) for the frozen
+> purchase-derived confirmation and disclosed uniform sensitivity result.
+
 ## Reproducible public result
 
 The active `starter.agent.Agent` was run with the unmodified organizer

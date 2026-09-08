@@ -1,0 +1,44 @@
+{
+  "decision": "promote champion composite controller",
+  "selection_objective": "20 percent public plus 80 percent purchase-derived private proxy technical score",
+  "public_200": {
+    "protected_score": 0.971875,
+    "champion_hit_rate_at_10": 1.0,
+    "champion_mrr": 1.0,
+    "champion_mttc": 2.0,
+    "champion_score": 0.98
+  },
+  "fresh_purchase_1600": {
+    "protected_score": 0.961493,
+    "champion_hit_rate_at_10": 0.999375,
+    "champion_mrr": 0.981923,
+    "champion_mttc": 2.545,
+    "champion_score": 0.963364,
+    "paired_mean_utility_delta": 0.001871652,
+    "paired_bootstrap_95": [0.000446131, 0.003443676]
+  },
+  "fresh_uniform_1600": {
+    "protected_score": 0.952629,
+    "champion_hit_rate_at_10": 0.98875,
+    "champion_mrr": 0.975426,
+    "champion_mttc": 2.72875,
+    "champion_score": 0.952428
+  },
+  "projected_20_80": {
+    "protected_score": 0.9635694,
+    "champion_score": 0.9666912,
+    "delta": 0.0031218
+  },
+  "runtime": {
+    "llm": false,
+    "network": false,
+    "max_protocol_candidates": 200,
+    "bounded_prior_support_limit": 70
+  },
+  "tests": 457,
+  "limitations": [
+    "The organizer private 800 labels are unavailable.",
+    "The purchase-derived and uniform 1600-session suites are proxies.",
+    "No championship outcome is guaranteed."
+  ]
+}

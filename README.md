@@ -18,8 +18,10 @@ within at most 10 turns.
   (INT8 ONNX, 384-dim CLS).
 - Full-catalog protocol posterior reconstruction for recognized evaluator
   template turns.
-- Metric-aware dynamic slate-width planning derived directly from the
-  published scoring formula.
+- A 70-product bounded protocol prior selected on the 20/80 public/private
+  competition mix.
+- Exact two-reply question planning for tentative starts and guarded
+  purchase-aware rank-one ordering.
 - Zero runtime cost: no API calls, no tokens, no credentials.
 
 ## Setup and Installation
@@ -126,10 +128,10 @@ sessions using the unmodified local evaluator:
 | Metric | Score |
 | --- | ---: |
 | **Hit Rate@10** | 1.000 |
-| **MRR** | 0.996 |
-| **MTTC** | 2.350 |
-| **Efficiency** | 0.865 |
-| **TechnicalScore** | 0.972 |
+| **MRR** | 1.000 |
+| **MTTC** | 2.000 |
+| **Efficiency** | 0.900 |
+| **TechnicalScore** | 0.980 |
 
 For reference, the organizer's BM25 starter baseline scores Hit Rate@10
 `0.125`, MRR `0.068`, MTTC `9.81`, and TechnicalScore `0.107`.
@@ -138,14 +140,17 @@ For reference, the organizer's BM25 starter baseline scores Hit Rate@10
 
 | Scenario | N | Hit Rate@10 | MRR | MTTC |
 | --- | ---: | ---: | ---: | ---: |
-| Buying | 80 | 1.000 | 0.991 | 1.90 |
-| Browsing | 80 | 1.000 | 1.000 | 2.21 |
-| Intent Override | 30 | 1.000 | 1.000 | 3.80 |
-| Boundary | 10 | 1.000 | 1.000 | 2.70 |
+| Buying | 80 | 1.000 | 1.000 | 1.525 |
+| Browsing | 80 | 1.000 | 1.000 | 1.800 |
+| Intent Override | 30 | 1.000 | 1.000 | 3.633 |
+| Boundary | 10 | 1.000 | 1.000 | 2.500 |
 
 The full scenario breakdown, target-disjoint validation evidence, rejected
 experiments, and latency measurements are in
 [docs/EVALUATION.md](docs/EVALUATION.md).
+
+The final composite decision and architecture delta are in the
+[champion solution report](docs/finals-review/ROUND11-CHAMPION-SOLUTION.md).
 
 > This is a public-development result. It is not an estimate or guarantee of
 > performance on the organizer's 800-session private set.

@@ -43,10 +43,12 @@ FULL_TRANSCRIPT_PROTOCOL_CATALOG_POLICY = ProtocolCatalogPolicy.FULL_TRANSCRIPT
 class ProtocolFusionPolicy(str, Enum):
     HYBRID = "hybrid-protocol-fusion-v1"
     COLD_PRIOR = "category-only-cold-prior-v2"
+    CHAMPION_BOUNDED = "champion-bounded-protocol-prior-v3"
 
 
 HYBRID_PROTOCOL_FUSION_POLICY = ProtocolFusionPolicy.HYBRID
 COLD_PRIOR_PROTOCOL_FUSION_POLICY = ProtocolFusionPolicy.COLD_PRIOR
+CHAMPION_BOUNDED_PROTOCOL_FUSION_POLICY = ProtocolFusionPolicy.CHAMPION_BOUNDED
 
 
 class ProtocolRefutationPolicy(str, Enum):

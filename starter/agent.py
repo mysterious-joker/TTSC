@@ -4,8 +4,9 @@
 evaluated for submission: smart hybrid retrieval routing, lexicographic
 exact-evidence ranking, full-transcript protocol resolution with eligible
 continuation refutation, the wildcard ``other`` question policy,
-Pareto-safe protocol planning, exact-ranking reuse orchestration, and
-intent-epoch novelty slates.
+bounded-prior protocol fusion, two-step tentative planning, purchase-aware
+probe ordering, exact-ranking reuse orchestration, and intent-epoch novelty
+slates.
 """
 
 from __future__ import annotations
@@ -13,13 +14,14 @@ from __future__ import annotations
 from pathlib import Path
 
 from conversational_search.exposure_policy import (
-    PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY,
+    PROTOCOL_CHAMPION_EXPOSURE_POLICY,
 )
 from conversational_search.orchestration import (
     EXACT_RANKING_REUSE_ORCHESTRATION_POLICY,
 )
 from conversational_search.questions import WILDCARD_OTHER_POLICY
 from conversational_search.protocol_index import (
+    CHAMPION_BOUNDED_PROTOCOL_FUSION_POLICY,
     ELIGIBLE_CONTINUATION_REFUTATION_POLICY,
     FULL_TRANSCRIPT_PROTOCOL_CATALOG_POLICY,
 )
@@ -43,10 +45,11 @@ class Agent(ConversationalSearchAgent):
         super().__init__(
             catalog_path,
             evidence_exposure_policy=(
-                PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY
+                PROTOCOL_CHAMPION_EXPOSURE_POLICY
             ),
             orchestration_policy=EXACT_RANKING_REUSE_ORCHESTRATION_POLICY,
             protocol_catalog_policy=FULL_TRANSCRIPT_PROTOCOL_CATALOG_POLICY,
+            protocol_fusion_policy=CHAMPION_BOUNDED_PROTOCOL_FUSION_POLICY,
             protocol_refutation_policy=(
                 ELIGIBLE_CONTINUATION_REFUTATION_POLICY
             ),

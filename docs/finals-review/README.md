@@ -1,11 +1,10 @@
 # Finalist engineering review — i anything
 
-**Latest decision:** [retain the protected agent after the final integration
-gate](ROUND10-FINAL-DECISION.md). The combined purchase-prior and deeper-planning
-candidate reaches public HR/MRR `1.0` and score `0.9788`, but regresses MRR on a
-fresh purchase-derived 1,600-session confirmation. Its isolated components also
-fail either an aggregate metric, corrected statistical evidence, or runtime.
-The active agent remains `2234a3d`; it contains no LLM or generative runtime.
+**Latest decision:** promote the
+[champion composite controller](ROUND11-CHAMPION-SOLUTION.md). It reaches public
+HR/MRR `1.0`, MTTC `2.0`, and score `0.9800`; the fresh purchase-derived
+1,600-session proxy also improves from `0.961493` to `0.963364`. The active
+agent contains no LLM, generative model, network request, or token cost.
 
 **Latest accepted improvement:** the [round-eight bounded conversation fixes](ROUND8-RESULTS.md).
 Fresh language 800 improves HR .830000 → .938750 and score .787013 → .883110,
@@ -57,6 +56,8 @@ was opened. The branch first preserves the pre-existing working tree at
 `e4d5dab`, then adds this review and isolated evaluation tooling.
 
 - [Architecture before/after](ARCHITECTURE-BEFORE-AFTER.md)
+- [Champion composite decision](ROUND11-CHAMPION-SOLUTION.md)
+- [Champion machine-readable results](round11-champion-results.json)
 - [Final integration decision](ROUND10-FINAL-DECISION.md)
 - [Final machine-readable results](round10-final-results.json)
 - [Predeclared experiments and promotion gate](EXPERIMENT-PLAN.md)

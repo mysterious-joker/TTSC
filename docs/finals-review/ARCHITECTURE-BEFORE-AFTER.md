@@ -1,10 +1,18 @@
 # Architecture before and after the finalist review
 
-The [final integration pass](ROUND10-FINAL-DECISION.md) tested the purchase
+The [champion composite decision](ROUND11-CHAMPION-SOLUTION.md) supersedes the
+round-ten strict per-metric gate. The active runtime now adds a 70-product
+bounded protocol prior, exact two-reply planning for tentative openings, and a
+uniform-guarded purchase-aware rank-one probe. BM25+BGE fallback, exact card
+replay, intent corrections, eligible refutation, validation, and the no-LLM
+runtime remain intact. Public score rises from `0.971875` to `0.980000`; the
+frozen purchase-derived 1,600-session proxy rises from `0.961493` to `0.963364`.
+
+The historical [round-ten integration pass](ROUND10-FINAL-DECISION.md) tested the purchase
 prior, an exact two-step planner, their combination, and a constrained cold
 prior. None clears the aggregate, corrected-statistical, fresh-validation, and
-runtime gates together. The active runtime therefore remains `2234a3d`; this is
-an evidence-based non-change rather than an unfinished integration.
+runtime gates together. Its rejection followed the earlier stricter rule and is
+superseded by the official-composite selection above.
 
 The [eighth-round comparison](ROUND8-RESULTS.md#architecture-before-and-after)
 adopts bounded conversation corrections and truthful fallback wording. Four
@@ -70,11 +78,18 @@ flowchart TD
     S --> P{Complete transcript exactly recognized?}
     P -->|yes| PC[Replay catalog cards in exact coarse category]
     PC --> N[Remove only eligible previously displayed misses]
-    N --> U[Protocol plus hybrid RRF, then exact evidence]
+    N --> B{Non-tentative exact support at most 70?}
+    B -->|yes| U[Protocol prior then exact evidence]
+    B -->|no| U2[Protocol plus hybrid RRF then exact evidence]
     R --> U
+    R --> U2
     P -->|no| G[Ordinary hybrid evidence gate]
     R --> G
-    U --> D[Question and slate-width planning]
+    U --> D[Pareto question and slate-width planning]
+    U2 --> T{Tentative start?}
+    T -->|yes| C[Guarded purchase probe plus two-reply planning]
+    T -->|no| D
+    C --> L
     D --> L[Intent-epoch novelty and output validation]
     G --> L
     L --> O[At most 10 unique catalog-valid ASINs and natural reply]

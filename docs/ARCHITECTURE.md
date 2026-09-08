@@ -257,6 +257,15 @@ This uses the existing comparison tolerance and preserves the selected action;
 it does not alter the utility formula or approximate the remaining question
 search.
 
+The finals controller specializes this policy by opening with the reconstructed
+protocol order on an exact non-tentative support set of at most 70 products.
+Larger support keeps BM25+BGE/protocol fusion. Tentative openings keep that
+fusion and use exact two-reply lookahead. For a rank-one tentative probe, catalog
+review volume supplies a purchase prior only after the modeled action preserves
+uniform hit count, reciprocal rank, and turn efficiency. All branches remain
+bounded to 200 candidates and fall back to the earlier Pareto planner when the
+exact preconditions do not hold.
+
 The check is disabled while an intent override is pending and on the first
 boundary-ambiguous browsing turn. When the exact support is larger than the
 existing 200-candidate ranking pool, width remains one and a named question may

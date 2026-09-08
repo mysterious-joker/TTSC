@@ -8,7 +8,7 @@ from types import SimpleNamespace
 from unittest import mock
 
 from conversational_search.exposure_policy import (
-    PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY,
+    PROTOCOL_CHAMPION_EXPOSURE_POLICY,
 )
 from conversational_search.intent import (
     CANONICAL_INTENT_POLICY,
@@ -28,6 +28,7 @@ from conversational_search.ranking import (
 )
 from conversational_search.questions import WILDCARD_OTHER_POLICY
 from conversational_search.protocol_index import (
+    CHAMPION_BOUNDED_PROTOCOL_FUSION_POLICY,
     ELIGIBLE_CONTINUATION_REFUTATION_POLICY,
     FULL_TRANSCRIPT_PROTOCOL_CATALOG_POLICY,
 )
@@ -1443,10 +1444,11 @@ class ConversationalSearchAgentTest(unittest.TestCase):
         initialize.assert_called_once_with(
             DEFAULT_CATALOG_PATH,
             evidence_exposure_policy=(
-                PROTOCOL_PARETO_HORIZON_EXPOSURE_POLICY
+                PROTOCOL_CHAMPION_EXPOSURE_POLICY
             ),
             orchestration_policy=EXACT_RANKING_REUSE_ORCHESTRATION_POLICY,
             protocol_catalog_policy=FULL_TRANSCRIPT_PROTOCOL_CATALOG_POLICY,
+            protocol_fusion_policy=CHAMPION_BOUNDED_PROTOCOL_FUSION_POLICY,
             protocol_refutation_policy=(
                 ELIGIBLE_CONTINUATION_REFUTATION_POLICY
             ),
